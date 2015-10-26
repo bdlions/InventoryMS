@@ -211,15 +211,71 @@
                 </RibbonGroup>
             </RibbonTab>
 
-           
+
+            <!--
+            <RibbonTab x:Name="NewProduct" Header="New Product" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="NewProductLeftGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <partial:ProductSearch Margin="3 7 3 5"/>
+                    <partial:ProductItem Margin="3 7 3 5"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="NewProductRightGroup" Background="{StaticResource Inventory}" Margin="0,0,-100,-627">
+                    <partial:ProductInfoTabs />
+                </RibbonGroup>
+            </RibbonTab>
             
-            <!--<RibbonTab x:Name="sales_quote" Header="Sales Quote" Margin="0,0,-100,-627">
-                --><!-- Sales Order Search group & Searched list group--><!--
+            <RibbonTab x:Name="ProductOrderList" Header="Product Order List" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="ProductOrderListGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <partial:ProductListSearch/>
+                    <Label Padding="0 60 0 0"></Label>
+                    <partial:ProductListItem />
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="CurrentStock" Header="Current Stock" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="CurrentStockGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <partial:CurrentStockSearch/>
+                    <Label Padding="0 60 0 0"></Label>
+                    <partial:CurrentStockItem />
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="StockMovementHistory" Header="Stock Movement History" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="StockMovementHistoryGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <partial:MovementHistorySearch/>
+                    <Label Padding="0 60 0 0"></Label>
+                    <partial:MovementHistoryItem />
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="AdjustStock" Header="Adjust Stock" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="AdjustStockGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Adjust Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <partial:AdjustStock/>
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab x:Name="TransferStock" Header="Transfer Stock" Margin="0,0,-200,-727">
+                <RibbonGroup x:Name="TransferStockGroup" Background="{StaticResource Inventory}" >
+                    <Label Content="Transfer Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                    <Button HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" Content="Add by Location" Background="{StaticResource DarkBackground}" Width="120"  Height="22" Margin="515 0 0 0"/>
+                    <partial:TransferStock/>
+                </RibbonGroup>
+            </RibbonTab>
+    
+            -->
+
+            <!--
+            
+            <RibbonTab x:Name="sales_quote" Header="Sales Quote" Margin="0,0,-100,-627">
+                
                 <RibbonGroup x:Name="sales_quote_left" Background="{StaticResource Sales}" >
                     <partial:sales_quote_left_top Margin="3 7 3 5"/>
                     <partial:sales_quote_left_bottom Margin="3 7 3 5"/>
                 </RibbonGroup>
-                --><!-- Sales Order Details group--><!--
                 <RibbonGroup x:Name="sales_quote_right" Background="{StaticResource Sales}" Margin="0,0,-100,-627">
                     <partial:sales_quote_right_top Margin="3 7 3 5"/>
                     <partial:sales_quote_right_bottom Margin="3 7 3 5"/>
@@ -248,12 +304,10 @@
 
 
             <RibbonTab x:Name="customer" Header="Customer" Margin="0,0,-200,-727">
-                    --><!-- Sales Order Search group & Searched list group--><!--
                     <RibbonGroup x:Name="new_customer_left" Background="{StaticResource Sales}" >
                     <partial:new_customer_left_top Margin="3 7 3 5"/>
                     <partial:new_customer_left_bottom Margin="3 7 3 5"/>
                     </RibbonGroup>
-                    --><!-- Sales Order Details group--><!--
                 <RibbonGroup x:Name="new_customer_right" Background="{StaticResource Sales}" Margin="0,0,-100,-627">
                         <partial:new_customer_right Margin="10"/>
                     
@@ -289,10 +343,7 @@
                 </RibbonGroup>
             </RibbonTab>
             
-            -->
-
-
-            <RibbonTab x:Name="supplier" Header="Supplier" Margin="0,0,-200,-727">
+             <RibbonTab x:Name="supplier" Header="Supplier" Margin="0,0,-200,-727">
                 <RibbonGroup x:Name="Supplier" Background="{StaticResource Purchase}" >
                     <partial:ManageSupplier />
                 </RibbonGroup>
@@ -308,16 +359,14 @@
             </RibbonTab>
 
             <RibbonTab x:Name="NewProduct" Header="New Product" Margin="0,0,-200,-727">
-                <!-- Sales Order Search group & Searched list group-->
-                <RibbonGroup x:Name="NewProductLeftGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:ProductSearch Margin="3 7 3 5"/>
-                    <partial:ProductItem Margin="3 7 3 5"/>
-                </RibbonGroup>
-                <!-- Sales Order Details group-->
-                <RibbonGroup x:Name="NewProductRightGroup" Background="{StaticResource Inventory}" Margin="0,0,-100,-627">
-                    <partial:ProductInfoTabs />
-                </RibbonGroup>
+            <RibbonGroup x:Name="NewProductLeftGroup" Background="{StaticResource Inventory}" >
+                <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+                <partial:ProductSearch Margin="3 7 3 5"/>
+                <partial:ProductItem Margin="3 7 3 5"/>
+            </RibbonGroup>
+            <RibbonGroup x:Name="NewProductRightGroup" Background="{StaticResource Inventory}" Margin="0,0,-100,-627">
+                <partial:ProductInfoTabs />
+            </RibbonGroup>
             </RibbonTab>
 
             <RibbonTab x:Name="ProductOrderList" Header="Product Order List" Margin="0,0,-200,-727">
@@ -362,6 +411,12 @@
                 </RibbonGroup>
             </RibbonTab>
 
+
+
+            -->
+
+
+           
 
             <!-- <Border Width="100" Height="100">
                         <Border.Background>

@@ -81,10 +81,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ManageSupplier.cs" />
-    <Compile Include="View\Inventory\Stock\AdjustStock.xaml.cs">
+    <Compile Include="CustomWindow\AdjustStock.xaml.cs">
       <DependentUpon>AdjustStock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomWindow\TransferStock.xaml.cs">
+      <DependentUpon>TransferStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ManageSupplier.cs" />
     <Compile Include="View\Inventory\Stock\CurrentStock\CurrentStockItem.xaml.cs">
       <DependentUpon>CurrentStockItem.xaml</DependentUpon>
     </Compile>
@@ -253,12 +256,13 @@
     <Compile Include="View\Purchase\Supplier\SupplierList\SupplierListName.xaml.cs">
       <DependentUpon>SupplierListName.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Inventory\Stock\TransferStock.xaml.cs">
-      <DependentUpon>TransferStock.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ManageSupplier.xaml.cs">
       <DependentUpon>ManageSupplier.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomWindow\AdjustStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -275,7 +279,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Inventory\Stock\AdjustStock.xaml">
+    <Page Include="CustomWindow\TransferStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -500,10 +504,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Purchase\Supplier\SupplierList\SupplierListName.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Stock\TransferStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
