@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Ribbon.View.sales_quote_right_top"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="632" BorderBrush="Gray" BorderThickness="1">
+    <Grid Margin="5">
+        <!-- Top menubar-->
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Image Source="/Ribbon;component/img/new.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">New</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="54,0,0,0" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Image Source="/Ribbon;component/img/save.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Save</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="109,0,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3" Height="18">
+                <Image Source="/Ribbon;component/img/print.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Print</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="164,0,0,0" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Image Source="/Ribbon;component/img/email.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Email</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="222,0,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3" Height="18">
+                <Image Source="/Ribbon;component/img/copy.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Copy</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="279,0,0,0" Height="28" BorderBrush="#5D8AA8" BorderThickness="1" Background="{StaticResource GlassFXDisabled}">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Image Source="/Ribbon;component/img/attachment.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Attachment</TextBlock>
+            </StackPanel>
+        </Button>
+        <!--<Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="381,9,0,0" Height="28" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" Margin="3">
+                <Image Source="/Ribbon;component/img/cancel.png" Width="16" Height="32" Margin="0,0,5,0"/>
+                <TextBlock VerticalAlignment="Center">Cancel Quote</TextBlock>
+            </StackPanel>
+        </Button>-->
+        <Grid Margin="0,42,0,-43" HorizontalAlignment="Left" Width="618">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+
+            <!-- 1st row-->
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Customer:"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" />
+            <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sales Rep:"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Margin="3" />
+            <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:"/>
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="3" />
+
+            <!-- 2nd row-->
+            <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Contact:"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" />
+            <Label Grid.Row="1" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:"/>
+            <TextBox Grid.Row="1" Grid.Column="3" Margin="3" />
+            <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:"/>
+
+            <!-- 3rd row-->
+            <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Phone:"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" />
+            <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Status:"/>
+            <TextBox Grid.Row="2" Grid.Column="6" Margin="3" />
+
+            <!-- 4th row-->
+            <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Address:"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,66" TextWrapping="Wrap" AcceptsReturn="True" Height="32"/>
+            <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" BorderThickness="1" Height="22"/>
+
+        </Grid>
+    </Grid>
+</UserControl>

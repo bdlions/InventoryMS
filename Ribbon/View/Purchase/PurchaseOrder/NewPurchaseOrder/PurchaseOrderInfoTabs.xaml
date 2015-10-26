@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Ribbon.View.PurchaseOrderInfoTabs"
+             xmlns:View="clr-namespace:Ribbon.View"
+             xmlns:PurchaseTopMenu="clr-namespace:Ribbon.View.purchase.section"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="615" d:DesignWidth="632">
+    <Grid Height="615">
+        <TabControl TabStripPlacement="Bottom">
+            <TabItem Header="Order" Padding="20 5" Margin="-2 0 0 0">
+                <StackPanel>
+                    <PurchaseTopMenu:PurchaseTopMenu/>
+                    <View:PurchaseOrderInfo/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Receive" Padding="20 5">
+                <StackPanel>
+                    <PurchaseTopMenu:PurchaseTopMenu/>
+                    <View:PurchaseOrderPayment/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Payment" Padding="20 5">
+                <StackPanel>
+                    <PurchaseTopMenu:PurchaseTopMenu/>
+                    <View:PurchaseOrderPayment/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Return" Padding="20 5">
+                <StackPanel>
+                    <PurchaseTopMenu:PurchaseTopMenu/>
+                    <View:PurchaseOrderReturn/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Unstock" Padding="20 5">
+                <StackPanel>
+                    <PurchaseTopMenu:PurchaseTopMenu/>
+                    <View:PurchaseOrderUnstock/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
+
