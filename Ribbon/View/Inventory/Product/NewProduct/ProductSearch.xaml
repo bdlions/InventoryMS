@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ribbon.View.ProductSearch"
+﻿<UserControl x:Class="Ribbon.View.Inventory.Product.NewProduct.ProductSearch"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
-        
+
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1">
             <ComboBoxItem IsSelected="True" Content="Show"/>
             <ComboBoxItem Content="Item Name/Code"/>

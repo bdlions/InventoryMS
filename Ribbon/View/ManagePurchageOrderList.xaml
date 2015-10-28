@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Ribbon.View.ManagePurchageOrderList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:modelView="clr-namespace:Ribbon.ViewModel"
+              xmlns:PurchaseOrderListAddSection="clr-namespace:Ribbon.View.Purchase.PurchaseOrder.PurchaseOrderList">
+
+    <UserControl.Resources>
+        <modelView:ManagePurchaseOrderList x:Key="managePurchaseOrderList"/>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource managePurchaseOrderList}">
+        <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+        <PurchaseOrderListAddSection:PurchaseOrderSearchList Margin="3 7 3 5"/>
+        <PurchaseOrderListAddSection:PurchaseOrderList Margin="3 7 3 5"/>
+    </StackPanel>
+</UserControl>

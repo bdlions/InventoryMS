@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ribbon.View.PurchaseOrderInfoTabs"
+﻿<UserControl x:Class="Ribbon.View.Purchase.PurchaseOrder.NewPurchaseOrder.PurchaseOrderInfoTabs"
              xmlns:View="clr-namespace:Ribbon.View"
              xmlns:PurchaseTopMenu="clr-namespace:Ribbon.View.purchase.section"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"

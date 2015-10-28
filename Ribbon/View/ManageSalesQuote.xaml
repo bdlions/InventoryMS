@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Ribbon.View.ManageSalesQuote"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:SalesTopMenu="clr-namespace:Ribbon.View.Sales.sales_quote.section"
+             xmlns:modelView="clr-namespace:Ribbon.ViewModel"
+             xmlns:salesQuoteAddSection="clr-namespace:Ribbon.View.Sales.sales_quote">
+
+    <UserControl.Resources>
+        <modelView:ManageSalesQuote x:Key="manageSalesQuote"/>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesQuote}">
+        <StackPanel>
+            <salesQuoteAddSection:SalesQuoteSearch Margin="3 7 3 5"/>
+            <salesQuoteAddSection:SalesQuoteOrder Margin="3 7 3 5"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+            <SalesTopMenu:SalesTopMenu/>
+            <salesQuoteAddSection:SalesQuoteInfo  Margin="5"/>
+        </StackPanel>
+       
+    </StackPanel>
+
+</UserControl>

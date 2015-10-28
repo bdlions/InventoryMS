@@ -81,15 +81,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ManageCurrentStock.cs" />
+    <Compile Include="ViewModel\ManageCustomer.cs" />
+    <Compile Include="ViewModel\ManageCustomerList.cs" />
+    <Compile Include="ViewModel\ManageMovementHistory.cs" />
+    <Compile Include="ViewModel\ManageProduct.cs" />
+    <Compile Include="ViewModel\ManageProductList.cs" />
+    <Compile Include="ViewModel\ManagePurchaseOrder.cs" />
+    <Compile Include="ViewModel\ManagePurchaseOrderList.cs" />
+    <Compile Include="ViewModel\ManageSalesOrder.cs" />
+    <Compile Include="ViewModel\ManageSalesOrderList.cs" />
+    <Compile Include="ViewModel\ManageSalesQuote.cs" />
     <Compile Include="ViewModel\ManageSupplier.cs" />
+    <Compile Include="ViewModel\ManageSupplierList.cs" />
+    <Compile Include="View\Inventory\Product\NewProduct\ProductInfoTabs.xaml.cs">
+      <DependentUpon>ProductInfoTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventory\Product\NewProduct\ProductItem.xaml.cs">
+      <DependentUpon>ProductItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventory\Product\NewProduct\ProductSearch.xaml.cs">
+      <DependentUpon>ProductSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventory\Product\ProductList\ProductItemList.xaml.cs">
+      <DependentUpon>ProductItemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Inventory\Product\ProductList\ProductSearchList.xaml.cs">
+      <DependentUpon>ProductSearchList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Inventory\Stock\AdjustStock.xaml.cs">
       <DependentUpon>AdjustStock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Inventory\Stock\CurrentStock\CurrentStockItem.xaml.cs">
-      <DependentUpon>CurrentStockItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Inventory\Stock\CurrentStock\CurrentStockSearch.xaml.cs">
-      <DependentUpon>CurrentStockSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\General\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -112,20 +133,11 @@
     <Compile Include="View\Inventory\Section\ProductSuppliers.xaml.cs">
       <DependentUpon>ProductSuppliers.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Inventory\Product\NewProduct\ProductInfoTabs.xaml.cs">
-      <DependentUpon>ProductInfoTabs.xaml</DependentUpon>
+    <Compile Include="View\Inventory\Stock\CurrentStock\CurrentStockItem.xaml.cs">
+      <DependentUpon>CurrentStockItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Inventory\Product\NewProduct\ProductSearch.xaml.cs">
-      <DependentUpon>ProductSearch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Inventory\Product\NewProduct\ProductItem.xaml.cs">
-      <DependentUpon>ProductItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Inventory\Product\ProductList\ProductListSearch.xaml.cs">
-      <DependentUpon>ProductListSearch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Inventory\Product\ProductList\ProductListItem.xaml.cs">
-      <DependentUpon>ProductListItem.xaml</DependentUpon>
+    <Compile Include="View\Inventory\Stock\CurrentStock\CurrentStockSearch.xaml.cs">
+      <DependentUpon>CurrentStockSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Inventory\Stock\MovementHistory\MovementHistoryItem.xaml.cs">
       <DependentUpon>MovementHistoryItem.xaml</DependentUpon>
@@ -136,11 +148,107 @@
     <Compile Include="View\Inventory\Stock\TransferStock.xaml.cs">
       <DependentUpon>TransferStock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderListName.xaml.cs">
-      <DependentUpon>PurchaseOrderListName.xaml</DependentUpon>
+    <Compile Include="View\ManageCurrentStock.xaml.cs">
+      <DependentUpon>ManageCurrentStock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderListSearch.xaml.cs">
-      <DependentUpon>PurchaseOrderListSearch.xaml</DependentUpon>
+    <Compile Include="View\ManageCustomerList.xaml.cs">
+      <DependentUpon>ManageCustomerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageMovementHistory.xaml.cs">
+      <DependentUpon>ManageMovementHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageNewCustomer.xaml.cs">
+      <DependentUpon>ManageNewCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageNewSalesOrder.xaml.cs">
+      <DependentUpon>ManageNewSalesOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageProduct.xaml.cs">
+      <DependentUpon>ManageProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageProductList.xaml.cs">
+      <DependentUpon>ManageProductList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagePurchageOrder.xaml.cs">
+      <DependentUpon>ManagePurchageOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagePurchageOrderList.xaml.cs">
+      <DependentUpon>ManagePurchageOrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageSalesOrderList.xaml.cs">
+      <DependentUpon>ManageSalesOrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageSalesQuote.xaml.cs">
+      <DependentUpon>ManageSalesQuote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManageSupplierList.xaml.cs">
+      <DependentUpon>ManageSupplierList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml.cs">
+      <DependentUpon>PurchaseOrderInfoTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderName.xaml.cs">
+      <DependentUpon>PurchaseOrderName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderSearch.xaml.cs">
+      <DependentUpon>PurchaseOrderSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderList.xaml.cs">
+      <DependentUpon>PurchaseOrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderSearchList.xaml.cs">
+      <DependentUpon>PurchaseOrderSearchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\Supplier\SupplierList\SupplierList.xaml.cs">
+      <DependentUpon>SupplierList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Purchase\Supplier\SupplierList\SupplierSearchList.xaml.cs">
+      <DependentUpon>SupplierSearchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\customer_list\CustomerListSearch.xaml.cs">
+      <DependentUpon>CustomerListSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\customer_list\CustomerNameList.xaml.cs">
+      <DependentUpon>CustomerNameList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\new_customer\CustomerInfoTabs.xaml.cs">
+      <DependentUpon>CustomerInfoTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\new_customer\CustomerName.xaml.cs">
+      <DependentUpon>CustomerName.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\new_customer\NewCustomerSearch.xaml.cs">
+      <DependentUpon>NewCustomerSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\new_sale_order\NewSalesOrder.xaml.cs">
+      <DependentUpon>NewSalesOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\new_sale_order\NewSalesOrderSearch.xaml.cs">
+      <DependentUpon>NewSalesOrderSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\new_sale_order\NewSalesOrderTabs.xaml.cs">
+      <DependentUpon>NewSalesOrderTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\sale_order_list\SalesOrderList.xaml.cs">
+      <DependentUpon>SalesOrderList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\sale_order_list\SalesOrderListSearch.xaml.cs">
+      <DependentUpon>SalesOrderListSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\Section\SalesOrderInfo.xaml.cs">
+      <DependentUpon>SalesOrderInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\Section\SalesOrderInvoiceInfo.xaml.cs">
+      <DependentUpon>SalesOrderInvoiceInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\Section\SalesOrderPickInfo.xaml.cs">
+      <DependentUpon>SalesOrderPickInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\Section\SalesOrderRestockInfo.xaml.cs">
+      <DependentUpon>SalesOrderRestockInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\sales_order\Section\SalesOrderReturnInfo.xaml.cs">
+      <DependentUpon>SalesOrderReturnInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Purchase\Section\PurchaseOrderPayment.xaml.cs">
       <DependentUpon>PurchaseOrderPayment.xaml</DependentUpon>
@@ -157,15 +265,6 @@
     <Compile Include="View\Purchase\Section\PurchaseOrderInfo.xaml.cs">
       <DependentUpon>PurchaseOrderInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml.cs">
-      <DependentUpon>PurchaseOrderInfoTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderName.xaml.cs">
-      <DependentUpon>PurchaseOrderName.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderSearch.xaml.cs">
-      <DependentUpon>PurchaseOrderSearch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Purchase\Section\NewSupplierInfo.xaml.cs">
       <DependentUpon>NewSupplierInfo.xaml</DependentUpon>
     </Compile>
@@ -174,21 +273,6 @@
     </Compile>
     <Compile Include="View\Purchase\Section\SupplierTopMenu.xaml.cs">
       <DependentUpon>SupplierTopMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\new_customer\new_customer_left_bottom.xaml.cs">
-      <DependentUpon>new_customer_left_bottom.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\new_customer\new_customer_right.xaml.cs">
-      <DependentUpon>new_customer_right.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\new_customer\new_customer_left_top.xaml.cs">
-      <DependentUpon>new_customer_left_top.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\customer_list\customer_list_bottom.xaml.cs">
-      <DependentUpon>customer_list_bottom.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\customer_list\customer_list_top.xaml.cs">
-      <DependentUpon>customer_list_top.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sales\customer\section\customer_oder_history.xaml.cs">
       <DependentUpon>customer_oder_history.xaml</DependentUpon>
@@ -202,35 +286,17 @@
     <Compile Include="View\Sales\customer\section\new_customer_info.xaml.cs">
       <DependentUpon>new_customer_info.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Sales\sales_order\new_sale_order\sales_order_left_bottom.xaml.cs">
-      <DependentUpon>sales_order_left_bottom.xaml</DependentUpon>
+    <Compile Include="View\Sales\sales_quote\SalesQuoteInfo.xaml.cs">
+      <DependentUpon>SalesQuoteInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Sales\sales_order\new_sale_order\sales_order_left_top.xaml.cs">
-      <DependentUpon>sales_order_left_top.xaml</DependentUpon>
+    <Compile Include="View\Sales\sales_quote\SalesQuoteOrder.xaml.cs">
+      <DependentUpon>SalesQuoteOrder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Sales\sales_order\new_sale_order\sales_order_right_bottom.xaml.cs">
-      <DependentUpon>sales_order_right_bottom.xaml</DependentUpon>
+    <Compile Include="View\Sales\sales_quote\SalesQuoteSearch.xaml.cs">
+      <DependentUpon>SalesQuoteSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Sales\sales_order\new_sale_order\sales_order_right_top.xaml.cs">
-      <DependentUpon>sales_order_right_top.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_order\sale_order_list\sales_order_list_top.xaml.cs">
-      <DependentUpon>sales_order_list_top.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_order\sale_order_list\sales_order_list_bottom.xaml.cs">
-      <DependentUpon>sales_order_list_bottom.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_quote\sales_quote_left_bottom.xaml.cs">
-      <DependentUpon>sales_quote_left_bottom.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_quote\sales_quote_left_top.xaml.cs">
-      <DependentUpon>sales_quote_left_top.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_quote\sales_quote_right_bottom.xaml.cs">
-      <DependentUpon>sales_quote_right_bottom.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\sales_quote\sales_quote_right_top.xaml.cs">
-      <DependentUpon>sales_quote_right_top.xaml</DependentUpon>
+    <Compile Include="View\Sales\sales_quote\section\SalesTopMenu.xaml.cs">
+      <DependentUpon>SalesTopMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SimpleFontChooser.xaml.cs">
       <DependentUpon>SimpleFontChooser.xaml</DependentUpon>
@@ -249,12 +315,6 @@
     </Compile>
     <Compile Include="View\Purchase\Section\SupplierProducts.xaml.cs">
       <DependentUpon>SupplierProducts.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Purchase\Supplier\SupplierList\SupplierListSearch.xaml.cs">
-      <DependentUpon>SupplierListSearch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Purchase\Supplier\SupplierList\SupplierListName.xaml.cs">
-      <DependentUpon>SupplierListName.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageSupplier.xaml.cs">
       <DependentUpon>ManageSupplier.xaml</DependentUpon>
@@ -275,15 +335,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Inventory\Product\NewProduct\ProductInfoTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Inventory\Product\NewProduct\ProductItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Inventory\Product\NewProduct\ProductSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Inventory\Product\ProductList\ProductItemList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Inventory\Product\ProductList\ProductSearchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Inventory\Stock\AdjustStock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Stock\CurrentStock\CurrentStockItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Stock\CurrentStock\CurrentStockSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,23 +387,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Inventory\Product\NewProduct\ProductInfoTabs.xaml">
+    <Page Include="View\Inventory\Stock\CurrentStock\CurrentStockItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Inventory\Product\NewProduct\ProductSearch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Product\NewProduct\ProductItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Product\ProductList\ProductListSearch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Inventory\Product\ProductList\ProductListItem.xaml">
+    <Page Include="View\Inventory\Stock\CurrentStock\CurrentStockSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -347,11 +407,139 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderListName.xaml">
+    <Page Include="View\ManageCurrentStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderListSearch.xaml">
+    <Page Include="View\ManageCustomerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageMovementHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageNewCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageNewSalesOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageProductList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagePurchageOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagePurchageOrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageSalesOrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageSalesQuote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManageSupplierList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\PurchaseOrder\PurchaseOrderList\PurchaseOrderSearchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\Supplier\SupplierList\SupplierList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Purchase\Supplier\SupplierList\SupplierSearchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\customer_list\CustomerListSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\customer_list\CustomerNameList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\new_customer\CustomerInfoTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\new_customer\CustomerName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\new_customer\NewCustomerSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\new_sale_order\NewSalesOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\new_sale_order\NewSalesOrderSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\new_sale_order\NewSalesOrderTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\sale_order_list\SalesOrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\sale_order_list\SalesOrderListSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\Section\SalesOrderInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\Section\SalesOrderInvoiceInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\Section\SalesOrderPickInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\Section\SalesOrderRestockInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\sales_order\Section\SalesOrderReturnInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -375,18 +563,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderName.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderSearch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Purchase\Section\NewSupplierInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -396,26 +572,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Purchase\Section\SupplierTopMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\new_customer\new_customer_left_bottom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\new_customer\new_customer_right.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\new_customer\new_customer_left_top.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\customer_list\customer_list_bottom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\customer_list\customer_list_top.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -435,43 +591,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Sales\sales_order\new_sale_order\sales_order_left_bottom.xaml">
+    <Page Include="View\Sales\sales_quote\SalesQuoteInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Sales\sales_order\new_sale_order\sales_order_left_top.xaml">
+    <Page Include="View\Sales\sales_quote\SalesQuoteOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Sales\sales_order\new_sale_order\sales_order_right_bottom.xaml">
+    <Page Include="View\Sales\sales_quote\SalesQuoteSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Sales\sales_order\new_sale_order\sales_order_right_top.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_order\sale_order_list\sales_order_list_top.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_order\sale_order_list\sales_order_list_bottom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_quote\sales_quote_left_bottom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_quote\sales_quote_left_top.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_quote\sales_quote_right_bottom.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\sales_quote\sales_quote_right_top.xaml">
+    <Page Include="View\Sales\sales_quote\section\SalesTopMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -496,14 +628,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Purchase\Section\SupplierProducts.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Purchase\Supplier\SupplierList\SupplierListSearch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Purchase\Supplier\SupplierList\SupplierListName.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

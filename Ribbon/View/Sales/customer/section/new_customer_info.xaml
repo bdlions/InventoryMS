@@ -5,15 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ms="http://namespaces.mindscape.co.nz/wpf" 
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="632">
+             d:DesignHeight="800" d:DesignWidth="662">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="308" />
-            <ColumnDefinition Width="308" />
+            <ColumnDefinition Width="323" />
+            <ColumnDefinition Width="323" />
 
         </Grid.ColumnDefinitions>
         <!-- 1st row-->
@@ -30,7 +30,7 @@
             <Separator/>
             <ComboBoxItem Content="Add new Address"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="277" Grid.Column="1"/>
 
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="0,155,0,-18" />
@@ -73,10 +73,10 @@
             <ComboBoxItem Content="Add new Address"/>
         </ComboBox>
         <Label Content="Discount:" HorizontalAlignment="Left" Margin="19,253,0,-121" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="128,253,0,-80" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="153" Grid.Column="1" Text="$0.0" FontWeight="Bold" TextAlignment="Right"/>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="128,254,0,-79" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="168" Grid.Column="1" Text="$0.0" FontWeight="Bold" TextAlignment="Right"/>
 
         <Label Content="Tax Exempt:" HorizontalAlignment="Left" Margin="19,359,0,-226" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25" Grid.Column="1" RenderTransformOrigin="0.607,0.512"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="128,359,0,-186" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="128,359,0,-184" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Grid.Column="1"/>
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="0,402,0,-255" />
         <TextBox HorizontalAlignment="Left" Height="51" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262"/>

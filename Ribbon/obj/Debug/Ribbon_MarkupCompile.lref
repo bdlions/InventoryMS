@@ -1,9 +1,22 @@
-﻿F:\InventoryMS\Ribbon\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 
-FF:\InventoryMS\Ribbon\MainWindow.xaml;;
-FF:\InventoryMS\Ribbon\View\Inventory\Product\NewProduct\ProductInfoTabs.xaml;;
-FF:\InventoryMS\Ribbon\View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml;;
-FF:\InventoryMS\Ribbon\View\Sales\customer\new_customer\new_customer_right.xaml;;
-FF:\InventoryMS\Ribbon\View\Purchase\Supplier\NewSupplier\SupplierInfoTabs.xaml;;
-FF:\InventoryMS\Ribbon\View\ManageSupplier.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\MainWindow.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Inventory\Product\NewProduct\ProductInfoTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageCurrentStock.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageCustomerList.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageMovementHistory.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageNewCustomer.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageNewSalesOrder.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageProduct.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageProductList.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManagePurchageOrder.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManagePurchageOrderList.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSalesOrderList.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSalesQuote.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSupplierList.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Sales\customer\new_customer\CustomerInfoTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Sales\sales_order\new_sale_order\NewSalesOrderTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Purchase\Supplier\NewSupplier\SupplierInfoTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSupplier.xaml;;
 

@@ -66,7 +66,7 @@
         </Grid.ColumnDefinitions>
         <Ribbon x:Name="RibbonContainer" SelectedIndex="0" Grid.ColumnSpan="2"
                 Background="{DynamicResource Brush1}" 
-                Grid.IsSharedSizeScope="True" >
+                Grid.IsSharedSizeScope="True" SelectionChanged="RibbonContainer_SelectionChanged" >
 
             <Ribbon.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -107,11 +107,7 @@
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu>
                     <!-- Application Menu: General, located at the left-hand side (down arrow) -->
-                    <RibbonApplicationMenuItem Header="General" 
-                                               ImageSource="img\general.png" Background="{StaticResource General}" 
-                                               TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" 
-                                               TextElement.FontWeight="Bold" Height="100"
-                                               BorderBrush="Bisque" BorderThickness="5" >
+                    <RibbonApplicationMenuItem Header="General" ImageSource="img\general.png" Background="{StaticResource General}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5" >
 
                         <!--<Border Name="myBorder" BorderBrush="Bisque" BorderThickness="5">
                             <RibbonApplicationMenuItem Header="HomePage" ImageSource="img\options.png"></RibbonApplicationMenuItem>
@@ -131,34 +127,34 @@
                     <!-- Application Menu: Sales, located at the left-hand side (down arrow) -->
                     <RibbonApplicationMenuItem Header="Sales" ImageSource="img\sales.png"  Background="{StaticResource Sales}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
 
-                        <RibbonApplicationMenuItem Header="New Sales Quote" ImageSource="img\sales\new_sales_quote.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="New Sales Order" ImageSource="img\sales\new_sales_order.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Sales Order List" ImageSource="img\sales\sales_order_list.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="New Sales Quote" ImageSource="img\sales\new_sales_quote.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuSalesQuote"/>
+                        <RibbonApplicationMenuItem Header="New Sales Order" ImageSource="img\sales\new_sales_order.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageNewSalesOrder"/>
+                        <RibbonApplicationMenuItem Header="Sales Order List" ImageSource="img\sales\sales_order_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageSalesOrderList"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#9966CC" Height="6" Width="250" Margin="0 15 0 15"/>
-                        <RibbonApplicationMenuItem Header="New Customer" ImageSource="img\sales\new_customer.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Customer List" ImageSource="img\sales\customer_list.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="New Customer" ImageSource="img\sales\new_customer.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageNewCustomer"/>
+                        <RibbonApplicationMenuItem Header="Customer List" ImageSource="img\sales\customer_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageCustomerList"/>
                     </RibbonApplicationMenuItem>
 
                     <!-- Application Menu: Purchasing, located at the left-hand side (down arrow) -->
                     <RibbonApplicationMenuItem Header="Purchasing" ImageSource="img\purchasing.png" Background="{StaticResource Purchase}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
 
-                        <RibbonApplicationMenuItem Header="New Purchase Order" ImageSource="img\new_purchage_order.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Purchase Order List" ImageSource="img\purchase_order_list.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="New Purchase Order" ImageSource="img\new_purchage_order.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManagePurchageOrder"/>
+                        <RibbonApplicationMenuItem Header="Purchase Order List" ImageSource="img\purchase_order_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManagePurchageOrderList"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#8DB600" Height="6" Width="250" Margin="0 15 0 15"/>
                         <RibbonApplicationMenuItem Header="New Supplier" ImageSource="img\new_vendor.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Supplier List" ImageSource="img\vendor_list.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="Supplier List" ImageSource="img\vendor_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageSupplierList"/>
                     </RibbonApplicationMenuItem>
 
                     <!-- Application Menu: Inventory, located at the left-hand side (down arrow) -->
                     <RibbonApplicationMenuItem Header="Inventory" ImageSource="img\inventory.png" Background="{StaticResource Inventory}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
 
-                        <RibbonApplicationMenuItem Header="New Product" ImageSource="img\inventory\new_product.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Product List" ImageSource="img\inventory\product_list.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="New Product" ImageSource="img\inventory\new_product.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageProduct"/>
+                        <RibbonApplicationMenuItem Header="Product List" ImageSource="img\inventory\product_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageProductList"/>
                         <RibbonApplicationMenuItem Header="Product Categories" ImageSource="img\inventory\product_ categories.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem Header="Product Pricing" ImageSource="img\inventory\product pricing.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#FAD6A5" Height="6" Width="250" Margin="0 10 0 10"/>
-                        <RibbonApplicationMenuItem Header="Current Stock" ImageSource="img\inventory\current_stock.png" FontSize="12" Foreground="#6E7F80"/>
-                        <RibbonApplicationMenuItem Header="Movement History" ImageSource="img\inventory\movement_history.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="Current Stock" ImageSource="img\inventory\current_stock.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageCurrentStock"/>
+                        <RibbonApplicationMenuItem Header="Movement History" ImageSource="img\inventory\movement_history.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageMovementHistory"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#FAD6A5" Height="6" Width="250" Margin="0 10 0 10"/>
                         <RibbonApplicationMenuItem Header="Adjust Stock" ImageSource="img\inventory\adjust_stock.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem Header="Count Sheet" ImageSource="img\inventory\count_sheet.png" FontSize="12" Foreground="#6E7F80"/>
@@ -188,13 +184,38 @@
                     <!-- <RibbonApplicationMenuItem Header="Exit" ImageSource="img\quit.png" />-->
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
+            
             <!-- Ribbon Tab #1: Home -->
             <RibbonTab x:Name="home" Header="Home" Margin="0,0,-100,-627">
                 <RibbonGroup x:Name="homePage" Width="1000" Background="{StaticResource HomePage}">
                     <partial:HomePage Margin="50 200 0 0"/>
                 </RibbonGroup>
             </RibbonTab>
-            <RibbonButton Content="+" x:Name="buttonAddTab" Background="#FFD41616" BorderBrush="#FF683939" BorderThickness="6" ></RibbonButton>
+            
+            <Button Content="+" FontWeight="Bold" FontSize="16" Width="24" Height="24" Background="Transparent" BorderBrush="#FF683939" BorderThickness="3" Margin="-132 0 -135 -3" x:Name="buttonAddTab">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Stroke="Black"  StrokeThickness="0">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Offset="0"   Color="Gray" />
+                                        <GradientStop Offset="1"   Color="Gray" />
+                                        <GradientStop Offset="1"   Color="DarkGray" />
+                                        <RadialGradientBrush.Transform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="0.65" />
+                                            </TransformGroup>
+                                        </RadialGradientBrush.Transform>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
         </Ribbon>
     </Grid>
 </Window>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Ribbon.View.ManageCustomerList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:modelView="clr-namespace:Ribbon.ViewModel"
+              xmlns:newCustomerListAddSection="clr-namespace:Ribbon.View.Sales.customer.customer_list">
+
+    <UserControl.Resources>
+        <modelView:ManageCustomerList x:Key="manageCustomerList"/>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageCustomerList}">
+        <Label Content="Search" FontSize="20" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+            <newCustomerListAddSection:CustomerListSearch Margin="3 7 3 5"/>
+            <newCustomerListAddSection:CustomerNameList Margin="3 7 3 5"/>
+    </StackPanel>
+</UserControl>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ribbon.View
+namespace Ribbon.View.Inventory.Product.NewProduct
 {
     /// <summary>
     /// Interaction logic for ProductItem.xaml

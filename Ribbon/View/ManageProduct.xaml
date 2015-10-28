@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Ribbon.View.ManageProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            xmlns:modelView="clr-namespace:Ribbon.ViewModel"
+           xmlns:productAddSection="clr-namespace:Ribbon.View.Inventory.Product.NewProduct">
+
+    <UserControl.Resources>
+        <modelView:ManageProduct x:Key="manageProduct"/>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Inventory}" DataContext="{StaticResource manageProduct}">
+        <StackPanel>
+            <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
+            <productAddSection:ProductSearch Margin="3 7 3 5"/>
+            <productAddSection:ProductItem Margin="3 7 3 5"/>
+        </StackPanel>
+        <productAddSection:ProductInfoTabs />
+    </StackPanel>
+    
+</UserControl>

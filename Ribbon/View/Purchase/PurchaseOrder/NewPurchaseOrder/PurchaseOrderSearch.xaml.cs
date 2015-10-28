@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ribbon.View
+namespace Ribbon.View.Purchase.PurchaseOrder.NewPurchaseOrder
 {
     /// <summary>
     /// Interaction logic for PurchaseOrderSearch.xaml
