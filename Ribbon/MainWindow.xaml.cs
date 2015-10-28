@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Ribbon.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,36 +25,77 @@ namespace Ribbon
         public MainWindow()
         {
             InitializeComponent();
+            buttonAddTab.Click += onClickTabCreationButton;
+            subMenuHomePage.Click += onClickSubMenuHomePage;
+            subMenuDashboard.Click += onClickSubMenuDashboard;
         }
 
-        private void RibbonApplicationMenu_GotMouseCapture(object sender, MouseEventArgs e)
+        private void onClickSubMenuDashboard(object sender, RoutedEventArgs e)
+        {
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                selectedTab.Items.Clear();
+                selectedTab.Header = "Dashboard";
+
+                selectedTab.Margin = new Thickness(0, 0, -200, -727);
+
+                RibbonGroup dashboardTabGroup = new RibbonGroup();
+                dashboardTabGroup.Background = (Brush)FindResource("Purchase");
+
+                UserControl dashboardTabContent = new ManageSupplier();
+
+                dashboardTabGroup.Items.Add(dashboardTabContent);
+                selectedTab.Items.Add(dashboardTabGroup);
+            }
+        }
+
+        private void onClickSubMenuHomePage(object sender, RoutedEventArgs e)
+        {
+            if(RibbonContainer.SelectedItem is RibbonTab){
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                selectedTab.Items.Clear();
+                selectedTab.Header = "Home";
+
+                selectedTab.Margin = new Thickness(0, 0, -100, -627);
+
+                RibbonGroup homeTabGroup = new RibbonGroup();
+                homeTabGroup.Background = (Brush)FindResource("HomePage");
+
+                UserControl homeTabContent = new HomePage();
+                homeTabContent.Margin = new Thickness(50, 200, 0, 0);
+
+                homeTabGroup.Items.Add(homeTabContent);
+                selectedTab.Items.Add(homeTabGroup);
+
+                
+            }
+            
+        }
+
+        private void onClickTabCreationButton(object sender, RoutedEventArgs e)
         {
 
-        }
+            RibbonButton tabCreationButton = (RibbonButton)RibbonContainer.Items.GetItemAt(RibbonContainer.Items.Count - 1);
 
-        private void RibbonApplicationMenu_MouseEnter(object sender, MouseEventArgs e)
-        {
+            RibbonTab homeTab = new RibbonTab() { Header = "Home" };
+            homeTab.Margin = new Thickness(0, 0, -100, -627);
 
-        }
+            RibbonGroup homeTabGroup = new RibbonGroup();
+            homeTabGroup.Background = (Brush)FindResource("HomePage");
 
-        private void Ribbon_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            UserControl homeTabContent = new HomePage();
+            homeTabContent.Margin = new Thickness(50, 200, 0, 0);
+            
+            homeTabGroup.Items.Add(homeTabContent);
+            homeTab.Items.Add(homeTabGroup);
 
-        }
-
-        private void RibbonApplicationMenuItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void RibbonApplicationMenuItem_Click(object sender, RoutedEventArgs e)
-        {
+            RibbonContainer.Items.Remove(tabCreationButton);
+            RibbonContainer.Items.Add(homeTab);
+            RibbonContainer.Items.Add(tabCreationButton);
 
         }
 
-        private void RibbonApplicationMenuItem_GotFocus(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }

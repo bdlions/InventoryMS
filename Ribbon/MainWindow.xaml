@@ -9,7 +9,9 @@
         ResizeMode="CanMinimize"
         Title="inventory" MinHeight="720" MinWidth="1024" 
         WindowStyle="threedborderwindow" 
+        xmlns:ViewModel="clr-namespace:Ribbon.ViewModel"
         Background="#f8f8f8f8" Icon="img/quit.png">
+
 
     <Window.Resources>
 
@@ -52,6 +54,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="Brush1" Color="#FFF0F0F0"/>
 
     </Window.Resources>
 
@@ -61,7 +64,9 @@
             <ColumnDefinition Width="222*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <Ribbon x:Name="Ribbon" SelectedIndex="0" Grid.ColumnSpan="2" SelectionChanged="Ribbon_SelectionChanged" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}" Grid.IsSharedSizeScope="True">
+        <Ribbon x:Name="RibbonContainer" SelectedIndex="0" Grid.ColumnSpan="2"
+                Background="{DynamicResource Brush1}" 
+                Grid.IsSharedSizeScope="True" >
 
             <Ribbon.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -102,13 +107,17 @@
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu>
                     <!-- Application Menu: General, located at the left-hand side (down arrow) -->
-                    <RibbonApplicationMenuItem Header="General" ImageSource="img\general.png" Background="{StaticResource General}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5" >
+                    <RibbonApplicationMenuItem Header="General" 
+                                               ImageSource="img\general.png" Background="{StaticResource General}" 
+                                               TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" 
+                                               TextElement.FontWeight="Bold" Height="100"
+                                               BorderBrush="Bisque" BorderThickness="5" >
 
                         <!--<Border Name="myBorder" BorderBrush="Bisque" BorderThickness="5">
                             <RibbonApplicationMenuItem Header="HomePage" ImageSource="img\options.png"></RibbonApplicationMenuItem>
                         </Border>-->
-                        <RibbonApplicationMenuItem Header="HomePage" ImageSource="img\home.png" FontSize="12" Foreground="#6E7F80" />
-                        <RibbonApplicationMenuItem Header="DashBoard"  ImageSource="img\dashboard.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="HomePage" ImageSource="img\home.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuHomePage" />
+                        <RibbonApplicationMenuItem Header="DashBoard"  ImageSource="img\dashboard.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuDashboard"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#C8BDAA" Height="6" Width="250" Margin="0 15 0 15"/>
                         <RibbonApplicationMenuItem Header="Import Data" ImageSource="img\import.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem Header="Export Data" ImageSource="img\export.png" FontSize="12" Foreground="#6E7F80"/>
@@ -181,269 +190,11 @@
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->
             <RibbonTab x:Name="home" Header="Home" Margin="0,0,-100,-627">
-                <RibbonGroup x:Name="homePage" Background="{StaticResource HomePage}" Width="1000">
+                <RibbonGroup x:Name="homePage" Width="1000" Background="{StaticResource HomePage}">
                     <partial:HomePage Margin="50 200 0 0"/>
                 </RibbonGroup>
-                <!-- Home/Clipboard group-->
-                <!--<RibbonGroup x:Name="ClipboardGroup" Header="Clipboard">
-                    <RibbonMenuButton LargeImageSource="img\paste.png" Label="Paste" KeyTip="V">
-                        <RibbonMenuItem ImageSource="img\paste.png" Header="Keep Text Only" KeyTip="T"/>
-                        <RibbonMenuItem ImageSource="img\paste.png" Header="Paste Special" KeyTip="S"/>
-                    </RibbonMenuButton>
-                    <RibbonButton SmallImageSource="img\cut.png" Label="Cut" KeyTip="X" />
-                    <RibbonButton SmallImageSource="img\copy.png" Label="Copy" KeyTip="C" />
-                    <RibbonButton SmallImageSource="img\format.png" Label="Format" KeyTip="FP" />
-                </RibbonGroup>
-                 Home/Colors group
-                <RibbonGroup x:Name="Color" Header="Colors">
-                    <RibbonRadioButton LargeImageSource="img\red.png" Label="Red" KeyTip="R" IsChecked="True"/>
-                    <RibbonRadioButton LargeImageSource="img\green.png" Label="Green" KeyTip="G"/>
-                    <RibbonRadioButton LargeImageSource="img\blue.png" Label="Blue" KeyTip="B"/>
-                </RibbonGroup> -->
             </RibbonTab>
-            <!-- Ribbon Tab #2: DashBoard -->
-            <RibbonTab x:Name="dashboard" Header="DashBoard" Margin="0,0,-100,-627">
-                <!-- DashBoard/Applications group-->
-                <RibbonGroup x:Name="Desktop" Header="Desktop"/>
-                <!-- Launch/Games group-->
-                <RibbonGroup x:Name="App" Header="Apps">
-                    <partial:SimpleFontChooser/>
-                </RibbonGroup>
-            </RibbonTab>
-
-
-            <!--
-            <RibbonTab x:Name="NewProduct" Header="New Product" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="NewProductLeftGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:ProductSearch Margin="3 7 3 5"/>
-                    <partial:ProductItem Margin="3 7 3 5"/>
-                </RibbonGroup>
-                <RibbonGroup x:Name="NewProductRightGroup" Background="{StaticResource Inventory}" Margin="0,0,-100,-627">
-                    <partial:ProductInfoTabs />
-                </RibbonGroup>
-            </RibbonTab>
-            
-            <RibbonTab x:Name="ProductOrderList" Header="Product Order List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="ProductOrderListGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:ProductListSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:ProductListItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="CurrentStock" Header="Current Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="CurrentStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:CurrentStockSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:CurrentStockItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="StockMovementHistory" Header="Stock Movement History" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="StockMovementHistoryGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:MovementHistorySearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:MovementHistoryItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="AdjustStock" Header="Adjust Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="AdjustStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Adjust Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:AdjustStock/>
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="TransferStock" Header="Transfer Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="TransferStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Transfer Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <Button HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" Content="Add by Location" Background="{StaticResource DarkBackground}" Width="120"  Height="22" Margin="515 0 0 0"/>
-                    <partial:TransferStock/>
-                </RibbonGroup>
-            </RibbonTab>
-    
-            -->
-
-            <!--
-            
-            <RibbonTab x:Name="sales_quote" Header="Sales Quote" Margin="0,0,-100,-627">
-                
-                <RibbonGroup x:Name="sales_quote_left" Background="{StaticResource Sales}" >
-                    <partial:sales_quote_left_top Margin="3 7 3 5"/>
-                    <partial:sales_quote_left_bottom Margin="3 7 3 5"/>
-                </RibbonGroup>
-                <RibbonGroup x:Name="sales_quote_right" Background="{StaticResource Sales}" Margin="0,0,-100,-627">
-                    <partial:sales_quote_right_top Margin="3 7 3 5"/>
-                    <partial:sales_quote_right_bottom Margin="3 7 3 5"/>
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="sales_order" Header="Sales Oder" Margin="0,0,-100,-627">
-                <RibbonGroup x:Name="sales_order_left" Background="{StaticResource Sales}" >
-                    <partial:sales_order_left_top Margin="3 7 3 5"/>
-                    <partial:sales_order_left_bottom Margin="3 7 3 5"/>
-                </RibbonGroup>
-                <RibbonGroup x:Name="sales_order_right" Background="{StaticResource Sales}" Margin="0,0,-100,-627">
-                    <partial:sales_order_right_top Margin="3 7 3 5"/>
-                    <partial:sales_order_right_bottom Margin="3 7 3 5"/>
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="sales_order_list" Header="Sales Order List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="sales_order_list_group" Background="{StaticResource Sales}" >
-                    <Label Content="Search" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource Sales_ForeBackground}"/>
-                    <partial:sales_order_list_top/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:sales_order_list_bottom />
-                </RibbonGroup>
-            </RibbonTab>
-
-
-            <RibbonTab x:Name="customer" Header="Customer" Margin="0,0,-200,-727">
-                    <RibbonGroup x:Name="new_customer_left" Background="{StaticResource Sales}" >
-                    <partial:new_customer_left_top Margin="3 7 3 5"/>
-                    <partial:new_customer_left_bottom Margin="3 7 3 5"/>
-                    </RibbonGroup>
-                <RibbonGroup x:Name="new_customer_right" Background="{StaticResource Sales}" Margin="0,0,-100,-627">
-                        <partial:new_customer_right Margin="10"/>
-                    
-                    </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="customer_list" Header="Customer List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="customer_list_group" Background="{StaticResource Sales}" >
-                    <Label Content="Search" FontSize="24" FontWeight="Bold" FontStyle="Italic" Foreground="{StaticResource Sales_ForeBackground}"/>
-                    <partial:customer_list_top/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:customer_list_bottom />
-                </RibbonGroup>
-            </RibbonTab>
-            
-            <RibbonTab x:Name="PurchaseOder" Header="Purchase Oder" Margin="0,0,-100,-627">
-                <RibbonGroup x:Name="PurchaseOderLeftGroup" Background="{StaticResource Purchase}">
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:PurchaseOrderSearch Margin="3 7 3 5"/>
-                    <partial:PurchaseOrderName Margin="3 7 3 5"/>
-                </RibbonGroup>
-                <RibbonGroup x:Name="PurchaseOderRightGroup" Background="{StaticResource Purchase}" Margin="0,0,-100,-627">
-                    <partial:PurchaseOrderInfoTabs />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="PurchaseOrderList" Header="Purchase Order List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="PurchaseOrderListGroup" Background="{StaticResource Purchase}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:PurchaseOrderListSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:PurchaseOrderListName />
-                </RibbonGroup>
-            </RibbonTab>
-            
-             <RibbonTab x:Name="supplier" Header="Supplier" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="Supplier" Background="{StaticResource Purchase}" >
-                    <partial:ManageSupplier />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="SupplierList" Header="Supplier List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="SupplierListGroup" Background="{StaticResource Purchase}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:SupplierListSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:SupplierListName />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="NewProduct" Header="New Product" Margin="0,0,-200,-727">
-            <RibbonGroup x:Name="NewProductLeftGroup" Background="{StaticResource Inventory}" >
-                <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                <partial:ProductSearch Margin="3 7 3 5"/>
-                <partial:ProductItem Margin="3 7 3 5"/>
-            </RibbonGroup>
-            <RibbonGroup x:Name="NewProductRightGroup" Background="{StaticResource Inventory}" Margin="0,0,-100,-627">
-                <partial:ProductInfoTabs />
-            </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="ProductOrderList" Header="Product Order List" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="ProductOrderListGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:ProductListSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:ProductListItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="CurrentStock" Header="Current Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="CurrentStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:CurrentStockSearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:CurrentStockItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="StockMovementHistory" Header="Stock Movement History" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="StockMovementHistoryGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:MovementHistorySearch/>
-                    <Label Padding="0 60 0 0"></Label>
-                    <partial:MovementHistoryItem />
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="AdjustStock" Header="Adjust Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="AdjustStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Adjust Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <partial:AdjustStock/>
-                </RibbonGroup>
-            </RibbonTab>
-
-            <RibbonTab x:Name="TransferStock" Header="Transfer Stock" Margin="0,0,-200,-727">
-                <RibbonGroup x:Name="TransferStockGroup" Background="{StaticResource Inventory}" >
-                    <Label Content="Transfer Stock" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
-                    <Button HorizontalAlignment="Right" Foreground="White" FontWeight="Bold" Content="Add by Location" Background="{StaticResource DarkBackground}" Width="120"  Height="22" Margin="515 0 0 0"/>
-                    <partial:TransferStock/>
-                </RibbonGroup>
-            </RibbonTab>
-
-
-
-            -->
-
-
-           
-
-            <!-- <Border Width="100" Height="100">
-                        <Border.Background>
-                            <SolidColorBrush x:Name="bgBrush" Color="red" />
-                        </Border.Background>
-                        <Border.Triggers>
-                            <EventTrigger RoutedEvent="Border.MouseEnter">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="bgBrush" Storyboard.TargetProperty="Color" To="Blue" Duration="0:0:0.250"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Border.MouseLeave">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="bgBrush" Storyboard.TargetProperty="Color" To="red" Duration="0:0:0.250"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </Border.Triggers>
-                    </Border> -->
-                    
-                    
+            <RibbonButton Content="+" x:Name="buttonAddTab" Background="#FFD41616" BorderBrush="#FF683939" BorderThickness="6" ></RibbonButton>
         </Ribbon>
     </Grid>
 </Window>
-
-
-
