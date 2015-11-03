@@ -26,7 +26,7 @@
 
             <!-- 1st row-->
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Customer:"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding Customername}"/>
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sales Rep:"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="3" />
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:"/>
@@ -34,20 +34,20 @@
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Contact:"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Contact}"/>
             <Label Grid.Row="1" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:"/>
             <TextBox Grid.Row="1" Grid.Column="3" Margin="3" />
             <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:"/>
 
             <!-- 3rd row-->
             <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Phone:"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding Phone}"/>
             <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Status:"/>
             <TextBox Grid.Row="2" Grid.Column="6" Margin="3" />
 
             <!-- 4th row-->
             <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Address:"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,66" TextWrapping="Wrap" AcceptsReturn="True" Height="32"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,66" TextWrapping="Wrap" AcceptsReturn="True" Height="32" Text="{Binding Address}"/>
             <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" BorderThickness="1" Height="22"/>
         </Grid>
         <Grid>

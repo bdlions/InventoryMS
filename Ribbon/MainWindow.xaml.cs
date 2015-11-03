@@ -29,6 +29,7 @@ namespace Ribbon
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
             subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
+            subMenuManageSupplier.Click += onClickSubManageSupplier;
             subMenuManageSupplierList.Click += onClickSubManageSupplierList;
             subMenuManageSalesOrderList.Click += onClickSubManageSalesOrderList;
             subMenuManagePurchageOrderList.Click += onClickSubManagePurchageOrderList;
@@ -241,6 +242,26 @@ namespace Ribbon
 
                 ManageSupplierListTabGroup.Items.Add(ManageSupplierListTabContent);
                 selectedTab.Items.Add(ManageSupplierListTabGroup);
+            }
+        }
+
+        private void onClickSubManageSupplier(object sender, RoutedEventArgs e)
+        {
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                selectedTab.Items.Clear();
+                selectedTab.Header = "Supplier";
+
+                selectedTab.Margin = new Thickness(0, 0, -200, -727);
+
+                RibbonGroup ManageSupplierTabGroup = new RibbonGroup();
+                ManageSupplierTabGroup.Background = (Brush)FindResource("Purchase");
+
+                UserControl ManageSupplierTabContent = new ManageSupplier();
+
+                ManageSupplierTabGroup.Items.Add(ManageSupplierTabContent);
+                selectedTab.Items.Add(ManageSupplierTabGroup);
             }
         }
 

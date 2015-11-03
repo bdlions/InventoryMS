@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:treeList="clr-namespace:Ribbon.View"
+
         mc:Ignorable="d" x:Class="Ribbon.MainWindow"
         xmlns:partial="clr-namespace:Ribbon.View"
         WindowStartupLocation="CenterScreen"
@@ -141,7 +143,7 @@
                         <RibbonApplicationMenuItem Header="New Purchase Order" ImageSource="img\new_purchage_order.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManagePurchageOrder"/>
                         <RibbonApplicationMenuItem Header="Purchase Order List" ImageSource="img\purchase_order_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManagePurchageOrderList"/>
                         <RibbonApplicationMenuItem BorderThickness="3" BorderBrush="#8DB600" Height="6" Width="250" Margin="0 15 0 15"/>
-                        <RibbonApplicationMenuItem Header="New Supplier" ImageSource="img\new_vendor.png" FontSize="12" Foreground="#6E7F80"/>
+                        <RibbonApplicationMenuItem Header="New Supplier" ImageSource="img\new_vendor.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageSupplier"/>
                         <RibbonApplicationMenuItem Header="Supplier List" ImageSource="img\vendor_list.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageSupplierList"/>
                     </RibbonApplicationMenuItem>
 
@@ -184,6 +186,7 @@
                     <!-- <RibbonApplicationMenuItem Header="Exit" ImageSource="img\quit.png" />-->
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
+
             
             <!-- Ribbon Tab #1: Home -->
             <RibbonTab x:Name="home" Header="Home" Margin="0,0,-100,-627">

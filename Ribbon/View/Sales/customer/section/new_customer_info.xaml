@@ -20,9 +20,9 @@
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Address" Margin="19,0,0,0" />
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Customername}"/>
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,46,0,-33" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,46,0,-33" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,46,0,-33" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Balance}"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,10,28,155" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address (Optional)" />
