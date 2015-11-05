@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="632">
-    <Grid Margin="5">
+    <Grid Margin="5 7 5 5">
         <!-- Top menubar-->
         <Button VerticalAlignment="Top" HorizontalAlignment="Left" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
                 Background="{StaticResource GlassFXDisabled}" Command="{Binding Reset}" >

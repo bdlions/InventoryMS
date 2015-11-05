@@ -37,6 +37,103 @@ namespace Ribbon.ViewModel
             }
         }
 
+
+        private string _address = "Sector-8, Road-9, Block-A, Uttara, Dhaka.";
+        public string Address
+        {
+            get
+            {
+                return this._address;
+            }
+            set
+            {
+                this._address = value;
+            }
+        }
+
+        private string _phone = "027286564";
+        public string Phone
+        {
+            get
+            {
+                return this._phone;
+            }
+            set
+            {
+                this._phone = value;
+            }
+        }
+
+        private string _fax = "+44-208-1234567";
+        public string Fax
+        {
+            get
+            {
+                return this._fax;
+            }
+            set
+            {
+                this._fax = value;
+            }
+        }
+
+        private string _email = "abul@gmail.com";
+        public string Email
+        {
+            get
+            {
+                return this._email;
+            }
+            set
+            {
+                this._email = value;
+            }
+        }
+
+        private string _website = "www.abul-inventory.com";
+        public string Website
+        {
+            get
+            {
+                return this._website;
+            }
+            set
+            {
+                this._website = value;
+            }
+        }
+
+        private string _remark = "Good Supplier";
+        public string Remark
+        {
+            get
+            {
+                return this._remark;
+            }
+            set
+            {
+                this._remark = value;
+            }
+        }
+
+        private string _carrier = "Don't Knnow Carrier";
+        public string Carrier
+        {
+            get
+            {
+                return this._carrier;
+            }
+            set
+            {
+                this._carrier = value;
+            }
+        }
+
+
+
+
+    //    Supplier menu
+
         public ICommand Add { 
             get {
                 return new DelegateCommand(this.OnAdd);
@@ -80,12 +177,13 @@ namespace Ribbon.ViewModel
         }
 
 
+
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: " + "Name is " + this._name + " Balance: " + _balance);
+            MessageBox.Show("OnAdd: " + "\n Name: " + this._name + "\n Balance: " + this._balance + "\n Address: " + this._address + "\n Phone: " + this._phone + "\n Fax: " + this._fax + "\n Email: " + this._email + "\n Website: " + this._website + "\n Carrier: " + this._carrier + "\n Remarks: " + this._remark);
         }
 
 

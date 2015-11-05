@@ -26,8 +26,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private long _contact = 01912314466;
-        public long Contact
+        private string _contact = "01912314466";
+        public string Contact
         {
             get
             {
@@ -39,8 +39,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private long _phone = 7286564;
-        public long Phone
+        private string _phone = "7286564";
+        public string Phone
         {
             get
             {
@@ -64,6 +64,128 @@ namespace Ribbon.ViewModel
                 this._address = value;
             }
         }
+
+       
+        private string _salesRep = "Unknown";
+        public string SalesRep
+        {
+            get
+            {
+                return this._salesRep;
+            }
+            set
+            {
+                this._salesRep = value;
+            }
+        }
+
+        private string _location = "Rampura";
+        public string Location
+        {
+            get
+            {
+                return this._location;
+            }
+            set
+            {
+                this._location = value;
+            }
+        }
+
+        private string _quote = "1";
+        public string Quote
+        {
+            get
+            {
+                return this._quote;
+            }
+            set
+            {
+                this._quote = value;
+            }
+        }
+
+        private string _status = "Active";
+        public string Status
+        {
+            get
+            {
+                return this._status;
+            }
+            set
+            {
+                this._status = value;
+            }
+        }
+
+        private string _taxingScheme = "Sales Quote Tax Scheme";
+        public string TaxingScheme
+        {
+            get
+            {
+                return this._taxingScheme;
+            }
+            set
+            {
+                this._taxingScheme = value;
+            }
+        }
+
+
+        private string _pricingCurrency = "Tk";
+        public string PricingCurrency
+        {
+            get
+            {
+                return this._pricingCurrency;
+            }
+            set
+            {
+                this._pricingCurrency = value;
+            }
+        }
+
+        private string _remark = "Sales Quote Remark";
+        public string Remark
+        {
+            get
+            {
+                return this._remark;
+            }
+            set
+            {
+                this._remark = value;
+            }
+        }
+
+        private string _subTotal = "Tk. 1000000000000";
+        public string SubTotal
+        {
+            get
+            {
+                return this._subTotal;
+            }
+            set
+            {
+                this._subTotal = value;
+            }
+        }
+
+        private string _total = "Tk. 2000000000000";
+        public string Total
+        {
+            get
+            {
+                return this._total;
+            }
+            set
+            {
+                this._total = value;
+            }
+        }
+
+       
+
 
         public ICommand Add
         {
@@ -114,7 +236,7 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: \n" + "Customer Name: " + this._customername + "\nContact: " + _contact + "\nPhone: " + _phone + "\nAddress: " + _address);
+            MessageBox.Show("OnAdd: \n" + "Customer Name: " + this._customername + "\n Contact: " + _contact + "\n Phone: " + _phone + "\n Address: " + _address + "\n Sales Rep: " + _salesRep + "\n Location: " + _location + "\n Quote: " + _quote + "\n Status: " + _status);
         }
 
 

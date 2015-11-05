@@ -29,20 +29,20 @@
             <Separator/>
             <ComboBoxItem Content="Add new Address"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1" Text="{Binding Address}"/>
 
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="0,155,0,-18" />
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,-192" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Name}" />
         <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,248,0,-208" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,248,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,248,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Phone}"/>
         <Label Content="Fax:" HorizontalAlignment="Left" Margin="10,282,0,-243" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,282,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,282,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Fax}"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,319,0,-279" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,319,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,319,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Email}"/>
         <Label Content="Website:" HorizontalAlignment="Left" Margin="10,359,0,-306" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,359,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,359,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Website}"/>
 
 
 
@@ -63,7 +63,7 @@
             <ComboBoxItem Content="Add New" />
         </ComboBox>
         <Label Content="Carrier:" HorizontalAlignment="Left" Margin="19,289,0,-118" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
-        <TextBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,291,28,-115" Grid.Column="1" Grid.Row="1" Height="23"/>
+        <TextBox Margin="128,291,28,-115" Grid.Column="1" Grid.Row="1" Height="23" Text="{Binding Carrier}"/>
 
         <Label Content="Currency:" HorizontalAlignment="Left" Margin="19,325,0,-152" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,328,28,-150" Grid.Column="1" Grid.Row="1" Height="23">
@@ -79,7 +79,7 @@
         </ComboBox>
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="0,402,0,-255" />
-        <TextBox HorizontalAlignment="Left" Height="51" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262"/>
+        <TextBox HorizontalAlignment="Left" Height="51" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Text="{Binding Remark}"/>
 
     </Grid>
 </UserControl>

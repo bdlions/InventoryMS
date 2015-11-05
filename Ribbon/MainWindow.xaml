@@ -9,10 +9,11 @@
         xmlns:partial="clr-namespace:Ribbon.View"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Title="inventory" MinHeight="720" MinWidth="1024" 
+        Title="InventoryMS" MinHeight="720" MinWidth="1024" 
         WindowStyle="threedborderwindow" 
         xmlns:ViewModel="clr-namespace:Ribbon.ViewModel"
-        Background="#f8f8f8f8" Icon="img/quit.png">
+        Background="#f8f8f8f8" 
+        Icon="img/bdlions.png">
 
 
     <Window.Resources>

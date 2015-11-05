@@ -13,15 +13,17 @@
     </UserControl.Resources>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesQuote}">
+        <Border BorderBrush="Lavender" BorderThickness="0 0 2 0">
         <StackPanel>
             <salesQuoteAddSection:SalesQuoteSearch Margin="3 7 3 5"/>
             <salesQuoteAddSection:SalesQuoteOrder Margin="3 7 3 5"/>
         </StackPanel>
+        </Border>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
             <SalesTopMenu:SalesTopMenu/>
-            <salesQuoteAddSection:SalesQuoteInfo  Margin="5"/>
+            <salesQuoteAddSection:SalesQuoteInfo  Margin="5 5 25 5" />
+            <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 -10 25 10" Foreground="{StaticResource copyRightForeBackground}"/>
         </StackPanel>
-       
     </StackPanel>
 
 </UserControl>

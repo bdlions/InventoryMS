@@ -86,10 +86,18 @@
         <GradientStop Offset="1" Color="#9AB973"></GradientStop>
     </LinearGradientBrush>
 
+    <!-- ============================================================== Copy right =========================================================================== -->
+    <!-- ForeBackground-->
+    <LinearGradientBrush x:Key="copyRightForeBackground" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#FF333344" ></GradientStop>
+        <GradientStop Offset="1" Color="#FF333344" ></GradientStop>
+    </LinearGradientBrush>
+   
 
-   
-   
-    
+
+
+
+
 
     <!-- GLASS EFFECT -->
     <LinearGradientBrush x:Key="GlassFX" StartPoint=".5,0" EndPoint=".5,.5">
