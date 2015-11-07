@@ -4,19 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="632">
+             d:DesignHeight="600" d:DesignWidth="662">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="616" />
+            <ColumnDefinition Width="644" />
 
         </Grid.ColumnDefinitions>
-
-
-        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Preferences" Margin="0,0,19,95" Grid.RowSpan="2" />
+        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Preferences" Margin="0,0,19,95" Grid.RowSpan="2" />
         <Label Content="Default Location:" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,39,19,164" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Default Location"/>
@@ -46,7 +44,7 @@
             <ComboBoxItem Content="VISA"/>
         </ComboBox>
 
-        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Credit Card" Margin="0,211,19,-117" Grid.Row="1" />
+        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Credit Card" Margin="0,211,19,-117" Grid.Row="1" />
         <Label Content="Card Type:" HorizontalAlignment="Left" Margin="10,249,0,-85" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,254,19,-45" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="VISA"/>
@@ -57,14 +55,14 @@
 
         </ComboBox>
         <Label Content="Card Number:" HorizontalAlignment="Left" Margin="10,286,0,-122" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
-        <TextBox Margin="137,286,19,-76" Grid.Row="1"/>
+        <TextBox Margin="137,286,19,-76" Grid.Row="1" Text="{Binding CardNumber}"/>
 
         <Label Content="Expiration Date:" HorizontalAlignment="Left" Margin="10,319,0,-164" Grid.Row="1" Width="104"/>
 
 
         <Label Content="Card Security Code:" HorizontalAlignment="Left" Margin="10,346,0,-140" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="28"/>
         <DatePicker HorizontalAlignment="Left" Margin="137,319,0,-106" Grid.Row="1" VerticalAlignment="Top" Width="153"/>
-        <TextBox Margin="137,348,19,-136" Grid.Row="1"/>
+        <TextBox Margin="137,348,19,-136" Grid.Row="1" Text="{Binding CardSecurityCode}"/>
         
 
     </Grid>

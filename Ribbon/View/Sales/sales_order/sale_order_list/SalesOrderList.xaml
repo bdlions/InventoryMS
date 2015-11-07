@@ -4,10 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="632">
+             d:DesignHeight="400" d:DesignWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -44,10 +47,13 @@
         <TextBox Grid.Row="7" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 2nd Column-->
-        <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+        <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order&#x0a;Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="3" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
@@ -57,7 +63,10 @@
         <TextBox Grid.Row="7" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="8" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="9" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
-        <TextBox Grid.Row="10" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
+        <TextBox Grid.Row="10" Grid.Column="1" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="1" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="1" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 3rd Column-->
         <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Status:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -70,7 +79,10 @@
         <TextBox Grid.Row="7" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="2" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="2" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="2" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="2" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 4th Column-->
         <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Customer:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -83,7 +95,10 @@
         <TextBox Grid.Row="7" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="3" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="3" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="3" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="3" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 5th Column-->
         <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="P.O.:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -96,7 +111,10 @@
         <TextBox Grid.Row="7" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="4" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="4" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="4" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="4" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 6th Column-->
         <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -109,7 +127,10 @@
         <TextBox Grid.Row="7" Grid.Column="5"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="5"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="5"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="5"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="5" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="5" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="5" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="5" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 7th Column-->
         <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Requested&#x0a;Ship Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -122,7 +143,10 @@
         <TextBox Grid.Row="7" Grid.Column="6"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="6"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="6"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="6"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="6" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="6" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="6" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="6" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 8th Column-->
         <Label Grid.Row="0" Grid.Column="7" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Due Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -135,7 +159,10 @@
         <TextBox Grid.Row="7" Grid.Column="7"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="7"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="7"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="7"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="7" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="7" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="7" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="7" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 9th Column-->
         <Label Grid.Row="0" Grid.Column="8" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Shipped Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -148,7 +175,10 @@
         <TextBox Grid.Row="7" Grid.Column="8"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="8"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="8"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="8"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="8" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="8" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="8" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="8" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 10th Column-->
         <Label Grid.Row="0" Grid.Column="9" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -161,7 +191,10 @@
         <TextBox Grid.Row="7" Grid.Column="9"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="9"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="9"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="9"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="9" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="9" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="9" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="9" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 11th Column-->
         <Label Grid.Row="0" Grid.Column="10" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Paid:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
@@ -174,7 +207,10 @@
         <TextBox Grid.Row="7" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="8" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
         <TextBox Grid.Row="9" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"/>
-        <TextBox Grid.Row="10" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
+        <TextBox Grid.Row="10" Grid.Column="10" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="11" Grid.Column="10" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="12" Grid.Column="10" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"/>
+        <TextBox Grid.Row="13" Grid.Column="10" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"/>
 
         <!-- 12th Column-->
         <Label Grid.Row="0" Grid.Column="11" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Balance:" BorderBrush="Gray" BorderThickness="1"/>
@@ -187,7 +223,10 @@
         <TextBox Grid.Row="7" Grid.Column="11"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="8" Grid.Column="11"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="9" Grid.Column="11"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0"/>
-        <TextBox Grid.Row="10" Grid.Column="11"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1"/>
+        <TextBox Grid.Row="10" Grid.Column="11" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="11" Grid.Column="11" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="12" Grid.Column="11" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="13" Grid.Column="11" Padding="0 3" VerticalAlignment="Center" BorderThickness="1"/>
 
     </Grid>
 </UserControl>

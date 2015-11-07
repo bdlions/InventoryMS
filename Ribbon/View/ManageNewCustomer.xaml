@@ -18,5 +18,6 @@
             <newCustomerAddSection:CustomerName Margin="3 7 3 5"/>
         </StackPanel>
         <newCustomerAddSection:CustomerInfoTabs />
+        <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="-180,590,25,0" Foreground="{StaticResource copyRightForeBackground}"/>
     </StackPanel>
 </UserControl>

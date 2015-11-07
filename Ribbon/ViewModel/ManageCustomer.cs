@@ -39,6 +39,138 @@ namespace Ribbon.ViewModel
             }
         }
 
+
+        private string _address = "Niketon";
+        public string Address
+        {
+            get
+            {
+                return this._address;
+            }
+            set
+            {
+                this._address = value;
+            }
+        }
+
+        private string _phone = "0291556548";
+        public string Phone
+        {
+            get
+            {
+                return this._phone;
+            }
+            set
+            {
+                this._phone = value;
+            }
+        }
+
+        private string _fax = "+88-0000-4444";
+        public string Fax
+        {
+            get
+            {
+                return this._fax;
+            }
+            set
+            {
+                this._fax = value;
+            }
+        }
+
+        private string _email = "rashida@gmail.com";
+        public string CustomerEmail
+        {
+            get
+            {
+                return this._email;
+            }
+            set
+            {
+                this._email = value;
+            }
+        }
+
+        private string _website = "www.rashida.com";
+        public string Website
+        {
+            get
+            {
+                return this._website;
+            }
+            set
+            {
+                this._website = value;
+            }
+        }
+
+        private string _discount = "Tk. 5.0 %";
+        public string Discount
+        {
+            get
+            {
+                return this._discount;
+            }
+            set
+            {
+                this._discount = value;
+            }
+        }
+
+        private string _taxExempt = "Tk. 1000000000000";
+        public string TaxExempt
+        {
+            get
+            {
+                return this._taxExempt;
+            }
+            set
+            {
+                this._taxExempt = value;
+            }
+        }
+
+        private string _remark = "Very good Customer";
+        public string Remark
+        {
+            get
+            {
+                return this._remark;
+            }
+            set
+            {
+                this._remark = value;
+            }
+        }
+
+        private string _cardNumber = "1";
+        public string CardNumber
+        {
+            get
+            {
+                return this._cardNumber;
+            }
+            set
+            {
+                this._cardNumber = value;
+            }
+        }
+
+        private string _cardSecurityCode = "James Bond 007";
+        public string CardSecurityCode
+        {
+            get
+            {
+                return this._cardSecurityCode;
+            }
+            set
+            {
+                this._cardSecurityCode = value;
+            }
+        }
+
+
         public ICommand Add
         {
             get

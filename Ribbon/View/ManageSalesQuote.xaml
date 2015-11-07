@@ -22,7 +22,7 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
             <SalesTopMenu:SalesTopMenu/>
             <salesQuoteAddSection:SalesQuoteInfo  Margin="5 5 25 5" />
-            <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 -10 25 10" Foreground="{StaticResource copyRightForeBackground}"/>
+            <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 -12 25 0" Foreground="{StaticResource copyRightForeBackground}"/>
         </StackPanel>
     </StackPanel>
 
