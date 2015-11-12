@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="632">
+             d:DesignHeight="600" d:DesignWidth="662">
     <Grid Margin="5">
-        <Grid HorizontalAlignment="Left" Width="618">
+        <Grid HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto" />
@@ -15,21 +15,21 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70" />
-                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="160" />
                 <ColumnDefinition Width="65" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="125" />
+                <ColumnDefinition Width="15" />
                 <ColumnDefinition Width="75" />
-                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="142" />
             </Grid.ColumnDefinitions>
 
             <!-- 1st row-->
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier:"/>
             <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding Suppliername}"/>
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location:"/>
-            <TextBox Grid.Row="0" Grid.Column="3" Margin="3" />
+            <TextBox Grid.Row="0" Grid.Column="3" Margin="3" Text="{Binding Location}"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order:"/>
-            <TextBox Grid.Row="0" Grid.Column="6" Margin="3" />
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="3" Text="{Binding Order}"/>
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact:"/>
@@ -40,15 +40,15 @@
             <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Phone:"/>
             <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding Phone}"/>
             <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Status:"/>
-            <TextBox Grid.Row="2" Grid.Column="6" Margin="3" />
+            <TextBox Grid.Row="2" Grid.Column="6" Margin="3" Text="{Binding Status}"/>
 
             <!-- 4th row-->
             <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Address:"/>
             <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,66" TextWrapping="Wrap" AcceptsReturn="True" Height="30" Text="{Binding Address}"/>
-            <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" BorderThickness="1" Height="22"/>
+            <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="136" BorderThickness="1" />
         </Grid>
 
-        <Grid Margin="0 150 0 0">
+        <Grid Margin="5 160 5 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -62,12 +62,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160"/>
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="91" />
+                <ColumnDefinition Width="91" />
+                <ColumnDefinition Width="91" />
+                <ColumnDefinition Width="91" />
+                <ColumnDefinition Width="91" />
             </Grid.ColumnDefinitions>
 
             <!-- 1st row-->
@@ -151,8 +151,7 @@
             <TextBox Grid.Row="9" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
         </Grid>
 
-
-        <Grid Margin="0 410 0 0" HorizontalAlignment="Left" Width="620">
+        <Grid Margin="5,425,5,5" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -160,13 +159,13 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="188" />
-                <ColumnDefinition Width="1" />
-                <ColumnDefinition Width="58" />
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="1" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="15" />
                 <ColumnDefinition Width="65" />
-                <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="110" />
 
             </Grid.ColumnDefinitions>
             <!-- 1st row-->
@@ -176,16 +175,16 @@
                 <ComboBoxItem Content="Add New" />
             </ComboBox>
             <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
-            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60"/>
+            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60" Text="{Binding OrderRemark}"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sub-Total"/>
-            <TextBlock Grid.Row="0" Grid.Column="7" Text="$ 0.0" FontWeight="Bold" HorizontalAlignment="Right"  Margin="0,4,-14,58" Width="55"  />
+            <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding OrderSubTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-14,58"  />
 
             <!-- 2nd row-->
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Non-Supplier Costs" Margin="0,24,0,22"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,26,0,28"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,26,0,28" Text="{Binding NonSupplierCost}"/>
             <Button Grid.Row="1" Grid.Column="4" Width="70" Height="22" HorizontalAlignment="Right" Content="Save" FontWeight="Bold" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,5,0,1"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total" Margin="0,28,0,-6" Grid.RowSpan="3"/>
-            <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,33,-14,22" Text="$ 0.0" FontWeight="Bold" HorizontalAlignment="Right" Width="55" />
+            <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,33,-14,22" Text="{Binding OrderTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left" />
 
             <!-- 3rd row-->
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Currency" Margin="0,50,0,0"/>

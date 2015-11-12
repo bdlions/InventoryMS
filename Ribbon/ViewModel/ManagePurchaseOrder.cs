@@ -26,8 +26,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private long _contact = 017123456789;
-        public long Contact
+        private string _contact = "017123456789";
+        public string Contact
         {
             get
             {
@@ -39,8 +39,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private long _phone = 9114050;
-        public long Phone
+        private string _phone = "9114050";
+        public string Phone
         {
             get
             {
@@ -62,6 +62,298 @@ namespace Ribbon.ViewModel
             set
             {
                 this._address = value;
+            }
+        }
+
+
+        private string _location = "Dhaka";
+        public string Location
+        {
+            get
+            {
+                return this._location;
+            }
+            set
+            {
+                this._location = value;
+            }
+        }
+
+
+        private string _order = "007";
+        public string Order
+        {
+            get
+            {
+                return this._order;
+            }
+            set
+            {
+                this._order = value;
+            }
+        }
+
+        private string _status = "Open";
+        public string Status
+        {
+            get
+            {
+                return this._status;
+            }
+            set
+            {
+                this._status = value;
+            }
+        }
+
+        private string _nonSupplierCost = "Tk. 5000";
+        public string NonSupplierCost
+        {
+            get
+            {
+                return this._nonSupplierCost;
+            }
+            set
+            {
+                this._nonSupplierCost = value;
+            }
+        }
+
+        private string _orderRemark = "Order Remark";
+        public string OrderRemark
+        {
+            get
+            {
+                return this._orderRemark;
+            }
+            set
+            {
+                this._orderRemark = value;
+            }
+        }
+
+
+        private string _receiveRemark = "Receive Remark";
+        public string ReceiveRemark
+        {
+            get
+            {
+                return this._receiveRemark;
+            }
+            set
+            {
+                this._receiveRemark = value;
+            }
+        }
+
+        private string _paymentRemark = "Payment Remark";
+        public string PaymentRemark
+        {
+            get
+            {
+                return this._paymentRemark;
+            }
+            set
+            {
+                this._paymentRemark = value;
+            }
+        }
+
+        private string _returnRemark = "Return Remark";
+        public string ReturnRemark
+        {
+            get
+            {
+                return this._returnRemark;
+            }
+            set
+            {
+                this._returnRemark = value;
+            }
+        }
+
+        private string _unstockRemark = "Unstock Remark";
+        public string UnstockRemark
+        {
+            get
+            {
+                return this._unstockRemark;
+            }
+            set
+            {
+                this._unstockRemark = value;
+            }
+        }
+
+        private string _orderSubTotal = "Tk. 1234567891234";
+        public string OrderSubTotalAmount
+        {
+            get
+            {
+                return this._orderSubTotal;
+            }
+            set
+            {
+                this._orderSubTotal = value;
+            }
+        }
+
+        private string _orderTotal = "Tk. 1234567891234";
+        public string OrderTotalAmount
+        {
+            get
+            {
+                return this._orderTotal;
+            }
+            set
+            {
+                this._orderTotal = value;
+            }
+        }
+
+        private string _totalOrdered = "50000";
+        public string TotalOrderedQuantity
+        {
+            get
+            {
+                return this._totalOrdered;
+            }
+            set
+            {
+                this._totalOrdered = value;
+            }
+        }
+
+        private string _totalReceived = "10000";
+        public string TotalReceivedQuantity
+        {
+            get
+            {
+                return this._totalReceived;
+            }
+            set
+            {
+                this._totalReceived = value;
+            }
+        }
+
+        private string _paymentSubTotalAmount = "Tk. 0123456789123";
+        public string PaymentSubTotalAmount
+        {
+            get
+            {
+                return this._paymentSubTotalAmount;
+            }
+            set
+            {
+                this._paymentSubTotalAmount = value;
+            }
+        }
+
+        private string _paymentTotalAmount = "Tk. 987654321987";
+        public string PaymentTotalAmount
+        {
+            get
+            {
+                return this._paymentTotalAmount;
+            }
+            set
+            {
+                this._paymentTotalAmount = value;
+            }
+        }
+
+
+        private string _paymentPaidAmount = "Tk. 456789123456";
+        public string PaymentPaidAmount
+        {
+            get
+            {
+                return this._paymentPaidAmount;
+            }
+            set
+            {
+                this._paymentPaidAmount = value;
+            }
+        }
+
+        private string _paymentBalanceAmount = "Tk. 789123456789";
+        public string PaymentBalanceAmount
+        {
+            get
+            {
+                return this._paymentBalanceAmount;
+            }
+            set
+            {
+                this._paymentBalanceAmount = value;
+            }
+        }
+
+
+        private string _returnSubTotalAmount = "Tk. 789123456789";
+        public string ReturnSubTotalAmount
+        {
+            get
+            {
+                return this._returnSubTotalAmount;
+            }
+            set
+            {
+                this._returnSubTotalAmount = value;
+            }
+        }
+
+        private string _returnTotalAmount = "Tk. 987654321987";
+        public string ReturnTotalAmount
+        {
+            get
+            {
+                return this._returnTotalAmount;
+            }
+            set
+            {
+                this._returnTotalAmount = value;
+            }
+        }
+
+
+        private string _returnFeeAmount = "Tk. 234567891234";
+        public string ReturnFeeAmount
+        {
+            get
+            {
+                return this._returnFeeAmount;
+            }
+            set
+            {
+                this._returnFeeAmount = value;
+            }
+        }
+
+        private string _returnRefundedAmount = "Tk. 345678912345";
+        public string ReturnRefundedAmount
+        {
+            get
+            {
+                return this._returnRefundedAmount;
+            }
+            set
+            {
+                this._returnRefundedAmount = value;
+            }
+        }
+
+        private string _returnCreditAmount = "Tk. 456789123456";
+        public string ReturnCreditAmount
+        {
+            get
+            {
+                return this._returnCreditAmount;
+            }
+            set
+            {
+                this._returnCreditAmount = value;
             }
         }
 

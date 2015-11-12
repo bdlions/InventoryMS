@@ -18,7 +18,7 @@
             <TabItem Header="Receive" Padding="20 5">
                 <StackPanel>
                     <PurchaseTopMenu:PurchaseTopMenu/>
-                    <View:PurchaseOrderPayment/>
+                    <View:PurchaseOrderReceive/>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Payment" Padding="20 5">

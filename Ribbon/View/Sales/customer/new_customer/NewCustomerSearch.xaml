@@ -15,8 +15,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="180" />
         </Grid.ColumnDefinitions>
 
         <!--1st column-->

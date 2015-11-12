@@ -191,7 +191,7 @@ namespace Ribbon
             {
                 RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
                 selectedTab.Items.Clear();
-                selectedTab.Header = "Purchage Order List";
+                selectedTab.Header = "Purchage Order";
 
                 selectedTab.Margin = new Thickness(0, 0, -200, -727);
 

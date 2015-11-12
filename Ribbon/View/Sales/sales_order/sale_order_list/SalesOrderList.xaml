@@ -36,6 +36,7 @@
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="70" />
         </Grid.ColumnDefinitions>
+        
         <!-- 1st Column-->
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0"/>

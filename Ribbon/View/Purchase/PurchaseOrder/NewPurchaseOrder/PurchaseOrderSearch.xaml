@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="12 10 10 10">
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="180" />
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
@@ -40,7 +40,6 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-
         <ComboBox Grid.Row="1" Grid.Column="0"  Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0,1,0,1" >
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem IsSelected="True" Content="Oder Date"/>
@@ -82,7 +81,6 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-
         <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="3">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
@@ -103,7 +101,6 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-
         <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Grid.Row="4" Margin="0 0 0 24" Grid.RowSpan="2">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
@@ -155,7 +152,6 @@
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
-
         <ComboBox Grid.Row="2" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,0,5,1"  Text="">
             <ComboBoxItem Content="All"/>
             <ComboBoxItem Content="Open"/>
@@ -166,7 +162,6 @@
         </ComboBox>
         <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" />
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-
         <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  />
     </Grid>
 </UserControl>
