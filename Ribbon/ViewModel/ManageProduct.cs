@@ -98,8 +98,8 @@ namespace Ribbon.ViewModel
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
             productManager.createProduct(productInfo);
-            
-           // MessageBox.Show("OnAdd: \n" + "Item Name: " + this._productName);
+
+            // MessageBox.Show("OnAdd: \n" + "Item Name: " + this._productName);
         }
 
 
