@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using com.inventory.bean;
+using com.inventory.db;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -14,20 +16,33 @@ namespace Ribbon.ViewModel
 {
     class ManageProduct : BindableBase
     {
-        private string _name = "Mohammad Ashraful";
-        public string Productname
+
+
+        private string _productName = "Pran Dal Vaja";
+        public string ProductName
         {
             get
             {
-                return this._name;
+                return this._productName;
             }
             set
             {
-                this._name = value;
+                this._productName = value;
             }
         }
 
-
+        private string _productCode = "007";
+        public string ProductCode
+        {
+            get
+            {
+                return this._productCode;
+            }
+            set
+            {
+                this._productCode = value;
+            }
+        }
         public ICommand Add
         {
             get
@@ -78,7 +93,13 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: \n" + "Item Name/Code: " + this._name);
+            ProductManager productManager = new ProductManager();
+            ProductInfo productInfo = new ProductInfo();
+            productInfo.setName(ProductName);
+            productInfo.setCode(ProductCode);
+            productManager.createProduct(productInfo);
+            
+           // MessageBox.Show("OnAdd: \n" + "Item Name: " + this._productName);
         }
 
 

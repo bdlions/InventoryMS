@@ -10,6 +10,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="308" />
@@ -18,9 +19,11 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Picture" Margin="19,0,0,0" />
-        <Label Grid.Row="1" Content="Item Name/Code:" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Productname}"/>
-        <Label Content="Category:" HorizontalAlignment="Left" Margin="10,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Height="25"/>
+        <Label Grid.Row="1" Content="Item Name:" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductName}"/>
+        <Label Grid.Row="1" Content="Item Code:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,46,10,130 " Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductCode}"/>
+        <Label Content="Category:" HorizontalAlignment="Left" Margin="10,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Height="25"/>
         <Image/>
         <TextBox HorizontalAlignment="Left" Height="97" Margin="19,12,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Browse" Foreground="{StaticResource InventoryForeBackground}"  FontWeight="Bold" Margin="128,114,107,65"/>
@@ -30,7 +33,7 @@
         <Label Content="Normal Price:" HorizontalAlignment="Left" Margin="10,47,0,-62" Grid.Row="3" VerticalAlignment="Top" Width="99" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="114,47,0,-63" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Type:" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="77" Height="25"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Type:" HorizontalAlignment="Left" Margin="12,118,0,0" VerticalAlignment="Top" Width="77" Height="25"/>
         <Label Grid.Row="1" Grid.Column="1" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Costing Info" Margin="19,155,0,0" />
         <Label Content="Costing Method:" HorizontalAlignment="Left" Margin="19,214,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
         <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="128,216,28,-49" Grid.Column="1" Grid.Row="1" Height="25">
@@ -40,14 +43,14 @@
         </ComboBox>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="128,253,0,-80" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="153" Grid.Column="1" FontWeight="Bold" TextAlignment="Right"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Inventory" Margin="10,146,299,-183" Grid.ColumnSpan="2" />
+        <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Inventory" Margin="10,125,299,-183" Grid.ColumnSpan="2" />
 
 
-        <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="114,46,10,130" Grid.Row="1">
+        <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="114,84,10,92" Grid.Row="1">
             <ComboBoxItem IsSelected="True" Content="Default Category"/>
             <ComboBoxItem Content="Add New"/>
         </ComboBox>
-        <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="114,84,10,92" Grid.Row="1">
+        <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="114,115,10,61" Grid.Row="1">
             <ComboBoxItem IsSelected="True" Content="Stockable"/>
             <ComboBoxItem IsSelected="True" Content="Non-stocked"/>
             <ComboBoxItem IsSelected="True" Content="Service"/>

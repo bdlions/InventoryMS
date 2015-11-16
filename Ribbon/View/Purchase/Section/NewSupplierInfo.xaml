@@ -9,6 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="308" />
@@ -18,10 +19,12 @@
         <!-- 1st row-->
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Address" Margin="19,0,0,0" />
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Name}"  />
-        <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,46,0,-33" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,46,0,-33" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  />
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-150,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding LastName}"  />
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,-150,0,0" Grid.Row="2" VerticalAlignment="Top" Width="77" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding  Path = FirstName}"  />
+        <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,-120,0,-33" Grid.Row="3" VerticalAlignment="Top" Width="77" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-120,0,-33" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  />
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,12,28,167" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address (Optional)" />
@@ -34,7 +37,7 @@
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="0,155,0,-18" />
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,-192" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Name}" />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Path = Name}"/>
         <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,248,0,-208" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,248,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Phone}"/>
         <Label Content="Fax:" HorizontalAlignment="Left" Margin="10,282,0,-243" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>

@@ -25,6 +25,7 @@ namespace Ribbon
         public MainWindow()
         {
             InitializeComponent();
+
             buttonAddTab.Click += onClickTabCreationButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
@@ -370,6 +371,7 @@ namespace Ribbon
 
             RibbonContainer.Items.Remove(tabCreationButton);
             RibbonContainer.Items.Add(homeTab);
+            RibbonContainer.SelectedItem = homeTab;
             RibbonContainer.Items.Add(tabCreationButton);
 
         }

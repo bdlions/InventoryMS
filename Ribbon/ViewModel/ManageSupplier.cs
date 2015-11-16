@@ -1,28 +1,87 @@
-﻿using Prism.Commands;
+﻿using com.inventory.bean;
+using com.inventory.db;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using java.util;
 
 namespace Ribbon.ViewModel
 {
-   
-    class ManageSupplier : BindableBase
+
+    class ManageSupplier : BindableBase, INotifyPropertyChanged
     {
-        private string _name = "Abul Hasan";
-        public string Name { 
-            get {
-                return this._name;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                if (!String.IsNullOrEmpty(propertyName))
+                {
+                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
+                    {
+                        Name = FirstName + " " + LastName;
+                        handler(this, new PropertyChangedEventArgs("Name"));
+                    }
+                }
+                else
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
+
             }
-            set {
+        }
+        private string _fName = "Abul";
+        public string FirstName
+        {
+            get
+            {
+                return this._fName;
+            }
+            set
+            {
+                this._fName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _lName = "Hasan";
+        public string LastName
+        {
+            get
+            {
+                return this._lName;
+                OnPropertyChanged();
+            }
+            set
+            {
+                this._lName = value;
+            }
+        }
+
+        private string _name = "Hasan";
+        public string Name
+        {
+            get
+            {
+                return this._fName + " " + this._lName;
+            }
+            set
+            {
                 this._name = value;
             }
         }
+
 
         private double _balance = 0.0;
         public double Balance
@@ -132,12 +191,14 @@ namespace Ribbon.ViewModel
 
 
 
-    //    Supplier menu
+        //    Supplier menu
 
-        public ICommand Add { 
-            get {
+        public ICommand Add
+        {
+            get
+            {
                 return new DelegateCommand(this.OnAdd);
-            } 
+            }
         }
         public ICommand Reset
         {
@@ -183,7 +244,37 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: " + "\n Name: " + this._name + "\n Balance: " + this._balance + "\n Address: " + this._address + "\n Phone: " + this._phone + "\n Fax: " + this._fax + "\n Email: " + this._email + "\n Website: " + this._website + "\n Carrier: " + this._carrier + "\n Remarks: " + this._remark);
+            UserInfo userInfo = new UserInfo();
+            userInfo.setFirstName(FirstName);
+            userInfo.setLastName(LastName);
+
+            userInfo.setEmail(Email);
+            userInfo.setPhone(Phone);
+            userInfo.setFax(Fax);
+            userInfo.setWebsite(Website);
+
+            userInfo.setGroupId(1);
+
+            AddressInfo addressInfo = new AddressInfo();
+            addressInfo.setAddress("niketon");
+            addressInfo.setCity("dhaka");
+            addressInfo.setState("dhaka");
+            addressInfo.setZip("1207");
+
+
+
+            java.util.List addresses = new java.util.ArrayList();
+            addresses.add(addressInfo);
+            userInfo.setAddresses(addresses);
+
+            SupplierInfo supplierInfo = new SupplierInfo();
+            supplierInfo.setUserInfo(userInfo);
+            supplierInfo.setRemarks("Good day");
+
+            SupplierManager supplierManager = new SupplierManager();
+            supplierManager.createSupplier(supplierInfo);
+
+            //MessageBox.Show("OnAdd: \n" + "Remark: " + supplierInfo.getRemarks());
         }
 
 
