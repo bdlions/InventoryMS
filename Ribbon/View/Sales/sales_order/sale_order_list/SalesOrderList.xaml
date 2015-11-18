@@ -11,12 +11,12 @@
               CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding SaleList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="80"  Header="Order" FontFamily="Arial" Binding="{Binding Order}"/>
-                <DataGridTextColumn Width="80"  Header="OrderDate" FontFamily="Arial" Binding="{Binding OrderDate}"/>
+                <DataGridTextColumn Width="80"  Header="Order Date" FontFamily="Arial" Binding="{Binding OrderDate}"/>
                 <DataGridTextColumn Width="80"  Header="Status" FontFamily="Arial" Binding="{Binding Status}"/>
                 <DataGridTextColumn Width="80"  Header="Customer" FontFamily="CaliArialbri" Binding="{Binding Customer}"/>
                 <DataGridTextColumn Width="80"  Header="Postal Code" FontFamily="Arial" Binding="{Binding PostalCode}"/>
-                <DataGridTextColumn Width="100"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
-                <DataGridTextColumn Width="80"  Header="Requested&#x0a;Ship Date" FontFamily="Arial" Binding="{Binding RequestedShipDatr}"/>
+                <DataGridTextColumn Width="100" Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
+                <DataGridTextColumn Width="80"  Header="Requested&#x0a;Ship Date" FontFamily="Arial" Binding="{Binding RequestedShipDate}"/>
                 <DataGridTextColumn Width="80"  Header="Due Date" FontFamily="Arial" Binding="{Binding DueDate}"/>
                 <DataGridTextColumn Width="80"  Header="Shipped Date" FontFamily="Arial" Binding="{Binding ShippedDate}"/>
                 <DataGridTextColumn Width="80"  Header="Total" FontFamily="Arial" Binding="{Binding Total}"/>

@@ -55,25 +55,25 @@
         <StackPanel>
             <StackPanel>
                 <DataGrid Name="productSaleOrderGrid" Grid.Row="2" 
-                          Grid.Column="0" Width="980" Margin="0 160 0 0" 
+                          Grid.Column="0" Width="655" Margin="0 160 0 0" 
                           HorizontalAlignment="Left" 
                           AutoGenerateColumns="False" CanUserAddRows="True"
                           CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" 
                           ScrollViewer.CanContentScroll="True" 
                           ScrollViewer.VerticalScrollBarVisibility="Auto" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                          Height="250" CanUserResizeRows="False" 
+                          Height="235" CanUserResizeRows="False" 
                           CanUserSortColumns="False" SelectionMode="Single" 
                           ItemsSource="{Binding SaleList}" BorderBrush="Gray"  
                           Foreground="{StaticResource Sales_ForeBackground}" 
                           BeginningEdit="productSaleOrderGrid_BeginningEdit" CellEditEnding="productSaleOrderGrid_CellEditEnding">
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="200" Header="Order" FontFamily="Arial" Binding="{Binding OrderItem}"/>
-                        <DataGridTextColumn Width="91"  Header="OrderDate" FontFamily="Arial" Binding="{Binding OrderItemQuantity}"/>
-                        <DataGridTextColumn Width="91"  Header="Status" FontFamily="Arial" Binding="{Binding OrderItemUnitPrice}"/>
-                        <DataGridTextColumn Width="91"  Header="Customer" FontFamily="Arial" Binding="{Binding OrderItemDiscount}"/>
-                        <DataGridTextColumn Width="91"  Header="Postal Code" FontFamily="Arial" Binding="{Binding OrderItemSubTotal}"/>
+                        <DataGridTextColumn Width="255" Header="Item" FontFamily="Arial" Binding="{Binding OrderItem}"/>
+                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding OrderItemQuantity}"/>
+                        <DataGridTextColumn Width="100"  Header="Unit Price" FontFamily="Arial" Binding="{Binding OrderItemUnitPrice}"/>
+                        <DataGridTextColumn Width="100"  Header="Discount" FontFamily="Arial" Binding="{Binding OrderItemDiscount}"/>
+                        <DataGridTextColumn Width="100"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding OrderItemSubTotal}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Popup Name="productSelector">

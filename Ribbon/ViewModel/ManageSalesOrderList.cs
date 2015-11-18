@@ -32,7 +32,7 @@ namespace Ribbon.ViewModel
                 {
                     SaleInfo saleInfo = (SaleInfo)i.next();
                     SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
-                    saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
+                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
 
                     _saleList.Add(saleInfoNJ);
                 }
