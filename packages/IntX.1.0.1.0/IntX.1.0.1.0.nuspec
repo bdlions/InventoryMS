@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>IntX</id>
+    <version>1.0.1.0</version>
+    <title>IntX</title>
+    <authors>Andriy Kozachuk</authors>
+    <owners>Andriy Kozachuk</owners>
+    <licenseUrl>http://intx.codeplex.com/license</licenseUrl>
+    <projectUrl>http://intx.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>IntX is an arbitrary precision integers class written in pure C# with fast - about O(N * log N) - multiplication/division algorithms implementation. Runs on .NET 2.0+.</description>
+    <releaseNotes>Added bitwise operations and is odd/even flag support.</releaseNotes>
+    <copyright>Copyright (c) 2005-2015, Andriy Kozachuk</copyright>
+    <tags>biginteger numeric fht</tags>
+  </metadata>
+</package>

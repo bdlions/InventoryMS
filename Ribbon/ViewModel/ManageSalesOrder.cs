@@ -13,36 +13,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManageSalesOrder : BindableBase, INotifyPropertyChanged
+    class ManageSalesOrder : BindableBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                if (!String.IsNullOrEmpty(propertyName))
-                {
-                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
-                    {
-                        Customername = FirstName + " " + LastName;
-                        handler(this, new PropertyChangedEventArgs("Name"));
-                    }
-                }
-                else
-                {
-                    handler(this, new PropertyChangedEventArgs(propertyName));
-                }
-
-            }
-        }
-
         private string _fName;
         public string FirstName
         {
@@ -74,33 +51,19 @@ namespace Ribbon.ViewModel
                 this._saleList = value;
             }
         }
-        
-        private string _lName;
-        public string LastName
-        {
-            get
-            {
-                return this._lName;
-                OnPropertyChanged();
-            }
-            set
-            {
-                this._lName = value;
-            }
-        }
 
-        private string _customerName;
-        public string Customername
-        {
-            get
-            {
-                return this._fName + " " + this._lName;
-            }
-            set
-            {
-                this._customerName = value;
-            }
-        }
+        //private string _customerName;
+        //public string Customername
+        //{
+        //    get
+        //    {
+        //        return this._fName + " " + this._lName;
+        //    }
+        //    set
+        //    {
+        //        this._customerName = value;
+        //    }
+        //}
 
         private string _contact;
         public string Contact
@@ -278,70 +241,84 @@ namespace Ribbon.ViewModel
             }
         }
 
-        //private string _orderItem;
-        //public string OrderItem
-        //{
-        //    get
-        //    {
-        //        return this._orderItem;
-        //    }
-        //    set
-        //    {
-        //        this._orderItem = value;
-        //    }
-        //}
 
-        //private string _orderItemQuantity;
-        //public string OrderItemQuantity
-        //{
-        //    get
-        //    {
-        //        return this._orderItemQuantity;
-        //    }
-        //    set
-        //    {
-        //        this._orderItemQuantity = value;
-        //    }
-        //}
+        /*  ------------ Sale Order Item ----------------------*/
+        private string _orderItem;
+        public string OrderItem
+        {
+            get
+            {
+                return this._orderItem;
+            }
+            set
+            {
+                this._orderItem = value;
+            }
+        }
 
-        //private string _orderItemUnitPrice;
-        //public string OrderItemUnitPrice
-        //{
-        //    get
-        //    {
-        //        return this._orderItemUnitPrice;
-        //    }
-        //    set
-        //    {
-        //        this._orderItemUnitPrice = value;
-        //    }
-        //}
+        private string _orderItemCategory;
+        public string OrderItemCategory
+        {
+            get
+            {
+                return this._orderItem;
+            }
+            set
+            {
+                this._orderItemCategory = value;
+            }
+        }
+        private string _orderItemQuantity;
+        public string OrderItemQuantity
+        {
+            get
+            {
+                return this._orderItemQuantity;
+            }
+            set
+            {
+                this._orderItemQuantity = value;
+            }
+        }
 
-        //private string _orderItemDiscount;
-        //public string OrderItemDiscount
-        //{
-        //    get
-        //    {
-        //        return this._orderItemDiscount;
-        //    }
-        //    set
-        //    {
-        //        this._orderItemDiscount = value;
-        //    }
-        //}
+        private long _orderItemUnitPrice;
+        public long OrderItemUnitPrice
+        {
+            get
+            {
+                return this._orderItemUnitPrice;
+            }
+            set
+            {
+                this._orderItemUnitPrice = value;
+            }
+        }
 
-        //private string _orderItemSubTotal;
-        //public string OrderItemSubTotal
-        //{
-        //    get
-        //    {
-        //        return this._orderItemSubTotal;
-        //    }
-        //    set
-        //    {
-        //        this._orderItemSubTotal = value;
-        //    }
-        //}
+        private string _orderItemDiscount;
+        public string OrderItemDiscount
+        {
+            get
+            {
+                return this._orderItemDiscount;
+            }
+            set
+            {
+                this._orderItemDiscount = value;
+            }
+        }
+
+        private string _orderItemSubTotal;
+        public string OrderItemSubTotal
+        {
+            get
+            {
+                return this._orderItemSubTotal;
+            }
+            set
+            {
+                this._orderItemSubTotal = value;
+            }
+        }
 
 
 
@@ -559,7 +536,32 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<ProductInfoNJ> _productItemList;
 
+        public ObservableCollection<ProductInfoNJ> ProductItemList
+        {
+            get
+            {
+                ProductManager productManager = new ProductManager();
+
+                _productItemList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                {
+                    ProductInfo prodcutInfo = (ProductInfo)i.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Code = prodcutInfo.getCode();
+                    productInfoNJ.Name = prodcutInfo.getName();
+                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
+
+                    _productItemList.Add(productInfoNJ);
+                }
+                return _productItemList;
+            }
+            set
+            {
+                this._productItemList = value;
+            }
+        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -572,6 +574,7 @@ namespace Ribbon.ViewModel
             productInfo.setQuantity(10);
             productInfo.setDiscount(3);
             productInfo.setPurchaseOrderNo("007");
+            productInfo.setUnitPrice(OrderItemUnitPrice);
 
             java.util.List productList = new java.util.ArrayList();
             productList.add(productInfo);
@@ -585,13 +588,18 @@ namespace Ribbon.ViewModel
             //Date d = new Date();
             //long milliseconds = d.getTime();
             //saleInfo.setSaleDate(milliseconds);
-
+            
             
 
             SaleManager saleManager = new SaleManager();
             saleManager.addSaleOrder(saleInfo);
 
             MessageBox.Show("Save Successfully");
+        }
+
+        private void OnItemSelected(object sender, object e)
+        {
+            Console.WriteLine("dsfsdfZ");
         }
 
 

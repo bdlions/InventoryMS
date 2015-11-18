@@ -9,6 +9,7 @@
         <Grid HorizontalAlignment="Left">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="100" />
@@ -24,31 +25,36 @@
             </Grid.ColumnDefinitions>
 
             <!-- 1st row-->
-            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier:"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding Suppliername}"/>
-            <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location:"/>
-            <TextBox Grid.Row="0" Grid.Column="3" Margin="3" Text="{Binding Location}"/>
-            <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order:"/>
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier &#10;First Name" Grid.ColumnSpan="2" Margin="0,0,157,0"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,3,3,10" Text="{Binding SupplierFirstName}"/>
+            <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location"/>
+            <TextBox Grid.Row="0" Grid.Column="3" Margin="3,3,3,10" Text="{Binding Location}"/>
+            <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order"/>
             <TextBox Grid.Row="0" Grid.Column="6" Margin="3" Text="{Binding Order}"/>
 
             <!-- 2nd row-->
-            <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact:"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Contact}"/>
-            <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order Date:"/>
+            <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier &#10;Last Name"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="3,3,3,16" Text="{Binding SupplierLastName}"/>
+            <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order Date"/>
 
             <!-- 3rd row-->
-            <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Phone:"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding Phone}"/>
-            <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Status:"/>
+            <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding Contact}"/>
+
+            <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Status"/>
             <TextBox Grid.Row="2" Grid.Column="6" Margin="3" Text="{Binding Status}"/>
 
             <!-- 4th row-->
-            <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Address:"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,66" TextWrapping="Wrap" AcceptsReturn="True" Height="30" Text="{Binding Address}"/>
+            <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Phone"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding Phone}"/>
+
+            <!-- 5th row-->
+            <Label Grid.Row="1" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Address:" Grid.ColumnSpan="2" Margin="2,7,118,10"/>
+            <TextBox Grid.Row="1" Grid.Column="3" Margin="3,6,3,10" TextWrapping="Wrap" AcceptsReturn="True" Height="30" Text="{Binding Address}"/>
             <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="136" BorderThickness="1" />
         </Grid>
 
-        <Grid Margin="5 160 5 5">
+        <Grid Margin="5 170 5 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -152,7 +158,7 @@
         </Grid>
 
 
-        <Grid Margin="0 410 0 0" HorizontalAlignment="Left" Width="620">
+        <Grid Margin="0 425 0 0" HorizontalAlignment="Left" Width="620">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,18 +14,69 @@ using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManageCustomer : BindableBase
+    class ManageCustomer : BindableBase, INotifyPropertyChanged
     {
-        private string _customername = "Rahsida Sultana";
-        public string Customername
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                if (!String.IsNullOrEmpty(propertyName))
+                {
+                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
+                    {
+                        Name = FirstName + " " + LastName;
+                        handler(this, new PropertyChangedEventArgs("Name"));
+                    }
+                }
+                else
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
+
+            }
+        }
+        private string _fName;
+        public string FirstName
         {
             get
             {
-                return this._customername;
+                return this._fName;
             }
             set
             {
-                this._customername = value;
+                this._fName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _lName;
+        public string LastName
+        {
+            get
+            {
+                return this._lName;
+                OnPropertyChanged();
+            }
+            set
+            {
+                this._lName = value;
+            }
+        }
+
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return this._fName + " " + this._lName;
+            }
+            set
+            {
+                this._name = value;
             }
         }
 

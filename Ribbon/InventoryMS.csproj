@@ -126,11 +126,17 @@
     <Reference Include="IKVM.Runtime.JNI">
       <HintPath>..\..\..\..\ikvm\bin\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
+    <Reference Include="IntXLib">
+      <HintPath>..\packages\IntX.1.0.1.0\lib\net20\IntXLib.dll</HintPath>
+    </Reference>
     <Reference Include="InvDataAccess, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\InvDataAccess\dist\InvDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
@@ -157,6 +163,9 @@
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -180,6 +189,7 @@
     <Compile Include="Model\CustomerInfoNJ.cs" />
     <Compile Include="Model\SupplierInfoNJ.cs" />
     <Compile Include="Model\ProductInfoNJ.cs" />
+    <Compile Include="util\DataGridExtension.cs" />
     <Compile Include="ViewModel\ManageCurrentStock.cs" />
     <Compile Include="ViewModel\ManageCustomer.cs" />
     <Compile Include="ViewModel\ManageCustomerList.cs" />

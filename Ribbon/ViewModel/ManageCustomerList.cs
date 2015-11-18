@@ -31,7 +31,7 @@ namespace Ribbon.ViewModel
                 {
                     CustomerInfo customerInfo = (CustomerInfo)i.next();
                     CustomerInfoNJ CustomerInfoNJ = new CustomerInfoNJ();
-                    //CustomerInfoNJ.Customer = customerInfo.getUserInfo();
+                    //CustomerInfoNJ.Name = customerInfo.getUserInfo();
 
                     _customerList.Add(CustomerInfoNJ);
                 }

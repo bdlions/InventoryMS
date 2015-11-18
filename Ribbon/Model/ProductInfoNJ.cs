@@ -33,5 +33,18 @@ namespace Ribbon.Model
                 this._code = value;
             }
         }
+
+        private long _price;
+        public long Price
+        {
+            get
+            {
+                return this._price;
+            }
+            set
+            {
+                this._price = value;
+            }
+        }
     }
 }

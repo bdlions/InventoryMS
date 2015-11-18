@@ -34,7 +34,7 @@ namespace Ribbon.ViewModel
                     ProductInfoNJ pInfoNJ = new ProductInfoNJ();
                     pInfoNJ.Name = pInfo.getName();
                     pInfoNJ.Code = pInfo.getCode();
-
+                    //pInfoNJ.Price = pInfo.getUnitPrice();
                     _productList.Add(pInfoNJ);
                 }
                 return _productList;

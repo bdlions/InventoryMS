@@ -43,6 +43,20 @@ namespace Ribbon.ViewModel
                 this._productCode = value;
             }
         }
+
+        private long _price;
+        public long Price
+        {
+            get
+            {
+                return this._price;
+            }
+            set
+            {
+                this._price = value;
+            }
+        }
+
         public ICommand Add
         {
             get
@@ -97,6 +111,7 @@ namespace Ribbon.ViewModel
             ProductInfo productInfo1 = new ProductInfo();
             productInfo1.setName(ProductName);
             productInfo1.setCode(ProductCode);
+            productInfo1.setUnitPrice(Price);
             productInfo1.setLength("c1");
             productInfo1.setWidth("d1");
             productInfo1.setHeight("e1");

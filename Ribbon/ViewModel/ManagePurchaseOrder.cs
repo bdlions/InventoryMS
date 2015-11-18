@@ -15,20 +15,33 @@ namespace Ribbon.ViewModel
 {
     class ManagePurchaseOrder : BindableBase
     {
-        private string _suppliername = "Salma Akter";
-        public string Suppliername
+        private string _supplierFirstName;
+        public string SupplierFirstName
         {
             get
             {
-                return this._suppliername;
+                return this._supplierFirstName;
             }
             set
             {
-                this._suppliername = value;
+                this._supplierFirstName = value;
             }
         }
 
-        private string _contact = "017123456789";
+        private string _supplierLastName;
+        public string SupplierLastName
+        {
+            get
+            {
+                return this._supplierLastName;
+            }
+            set
+            {
+                this._supplierLastName = value;
+            }
+        }
+
+        private string _contact;
         public string Contact
         {
             get
@@ -41,7 +54,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _phone = "9114050";
+        private string _phone;
         public string Phone
         {
             get
@@ -54,7 +67,20 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _address = "Shamoli";
+
+        private string _location;
+        public string Location
+        {
+            get
+            {
+                return this._location;
+            }
+            set
+            {
+                this._location = value;
+            }
+        }
+        private string _address;
         public string Address
         {
             get
@@ -68,21 +94,10 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _location = "Dhaka";
-        public string Location
-        {
-            get
-            {
-                return this._location;
-            }
-            set
-            {
-                this._location = value;
-            }
-        }
+        
 
 
-        private string _order = "007";
+        private string _order;
         public string Order
         {
             get
@@ -95,7 +110,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _status = "Open";
+        private string _status;
         public string Status
         {
             get
@@ -108,7 +123,10 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _nonSupplierCost = "Tk. 5000";
+
+        /* Purchase Order */
+
+        private string _nonSupplierCost;
         public string NonSupplierCost
         {
             get
@@ -121,7 +139,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderRemark = "Order Remark";
+        private string _orderRemark;
         public string OrderRemark
         {
             get
@@ -135,7 +153,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _receiveRemark = "Receive Remark";
+        private string _receiveRemark;
         public string ReceiveRemark
         {
             get
@@ -148,7 +166,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _paymentRemark = "Payment Remark";
+        private string _paymentRemark;
         public string PaymentRemark
         {
             get
@@ -161,7 +179,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _returnRemark = "Return Remark";
+        private string _returnRemark;
         public string ReturnRemark
         {
             get
@@ -174,7 +192,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _unstockRemark = "Unstock Remark";
+        private string _unstockRemark;
         public string UnstockRemark
         {
             get
@@ -187,7 +205,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderSubTotal = "Tk. 1234567891234";
+        private string _orderSubTotal;
         public string OrderSubTotalAmount
         {
             get
@@ -200,7 +218,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderTotal = "Tk. 1234567891234";
+        private string _orderTotal;
         public string OrderTotalAmount
         {
             get
@@ -213,7 +231,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _totalOrdered = "50000";
+        private string _totalOrdered;
         public string TotalOrderedQuantity
         {
             get
@@ -226,7 +244,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _totalReceived = "10000";
+        private string _totalReceived;
         public string TotalReceivedQuantity
         {
             get
@@ -239,7 +257,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _paymentSubTotalAmount = "Tk. 0123456789123";
+        private string _paymentSubTotalAmount;
         public string PaymentSubTotalAmount
         {
             get
@@ -252,7 +270,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _paymentTotalAmount = "Tk. 987654321987";
+        private string _paymentTotalAmount;
         public string PaymentTotalAmount
         {
             get
@@ -266,7 +284,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _paymentPaidAmount = "Tk. 456789123456";
+        private string _paymentPaidAmount;
         public string PaymentPaidAmount
         {
             get
@@ -279,7 +297,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _paymentBalanceAmount = "Tk. 789123456789";
+        private string _paymentBalanceAmount;
         public string PaymentBalanceAmount
         {
             get
@@ -293,7 +311,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _returnSubTotalAmount = "Tk. 789123456789";
+        private string _returnSubTotalAmount;
         public string ReturnSubTotalAmount
         {
             get
@@ -306,7 +324,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _returnTotalAmount = "Tk. 987654321987";
+        private string _returnTotalAmount;
         public string ReturnTotalAmount
         {
             get
@@ -320,7 +338,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _returnFeeAmount = "Tk. 234567891234";
+        private string _returnFeeAmount;
         public string ReturnFeeAmount
         {
             get
@@ -333,7 +351,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _returnRefundedAmount = "Tk. 345678912345";
+        private string _returnRefundedAmount;
         public string ReturnRefundedAmount
         {
             get
@@ -346,7 +364,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _returnCreditAmount = "Tk. 456789123456";
+        private string _returnCreditAmount;
         public string ReturnCreditAmount
         {
             get
@@ -358,6 +376,9 @@ namespace Ribbon.ViewModel
                 this._returnCreditAmount = value;
             }
         }
+
+
+        
 
         public ICommand Add
         {
@@ -409,27 +430,26 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-          ProductInfo productInfo1 = new ProductInfo();
-          productInfo1.setId(1);
-          productInfo1.setUnitPrice(100);
-          productInfo1.setQuantity(500);
-          productInfo1.setDiscount(0);
+          ProductInfo productInfo = new ProductInfo();
+          productInfo.setId(1);
+          productInfo.setQuantity(500);
+          productInfo.setDiscount(0);
 
           java.util.List productList = new java.util.ArrayList();
-          productList.add(productInfo1);
+          productList.add(productInfo);
           
           PurchaseInfo purchaseInfo = new PurchaseInfo();
           purchaseInfo.setProductList(productList);
           purchaseInfo.setSupplierUserId(3218648);
           purchaseInfo.setOrderNo(Order);
           purchaseInfo.setStatusId(1);
-          purchaseInfo.setRemarks("remarks5");
+          purchaseInfo.setRemarks(OrderRemark);
           purchaseInfo.setOrderDate(150);
           purchaseInfo.setRequestShippedDate(566);
 
           PurchaseManager purchaseManager = new PurchaseManager();
           purchaseManager.addPurchaseOrder(purchaseInfo);
-            MessageBox.Show("Save Successfully");
+          MessageBox.Show("Save Successfully");
         }
 
 

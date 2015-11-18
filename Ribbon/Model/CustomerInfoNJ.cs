@@ -8,16 +8,16 @@ namespace Ribbon.Model
 {
     class CustomerInfoNJ
     {
-        private string _customer;
-        public string Customer
+        private string _name;
+        public string Name
         {
             get
             {
-                return this._customer;
+                return this._name;
             }
             set
             {
-                this._customer = value;
+                this._name = value;
             }
         } 
     }

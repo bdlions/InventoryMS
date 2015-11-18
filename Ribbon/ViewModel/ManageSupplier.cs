@@ -311,7 +311,7 @@ namespace Ribbon.ViewModel
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);
 
-            MessageBox.Show("Save Successfully. Supplier is Created...");
+            MessageBox.Show("Save Successfully.");
         }
 
 
