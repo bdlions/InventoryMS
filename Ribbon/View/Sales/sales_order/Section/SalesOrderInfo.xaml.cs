@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ribbon.util;
 
 namespace Ribbon.View
 {
@@ -30,14 +31,16 @@ namespace Ribbon.View
         {
             DataGrid grid = (DataGrid) sender;
             Popup productSelector = (Popup)grid.FindName("productSelector");
-            //productSelector.PlacementTarget = grid.GetCell(e.Row.GetIndex(), e.Column.DisplayIndex);
+            productSelector.PlacementTarget = grid.GetCell(e.Row.GetIndex(), e.Column.DisplayIndex);
             productSelector.IsOpen = true;
             
         }
 
         private void productSaleOrderGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-
+            DataGrid grid = (DataGrid)sender;
+            Popup productSelector = (Popup)grid.FindName("productSelector");
+            productSelector.IsOpen = false;
         }
     }
 }

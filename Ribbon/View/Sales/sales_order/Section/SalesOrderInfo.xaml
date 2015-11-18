@@ -65,7 +65,7 @@
                           Height="235" CanUserResizeRows="False" 
                           CanUserSortColumns="False" SelectionMode="Single" 
                           ItemsSource="{Binding SaleList}" BorderBrush="Gray"  
-                          Foreground="{StaticResource Sales_ForeBackground}" 
+                          Foreground="{StaticResource Sales_ForeBackground}"
                           BeginningEdit="productSaleOrderGrid_BeginningEdit" CellEditEnding="productSaleOrderGrid_CellEditEnding">
                     
                     <DataGrid.Columns>
@@ -77,8 +77,8 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Popup Name="productSelector">
-                    <Border Width="300" Height="200" 
-                            BorderThickness="2" BorderBrush="Black" />
+                    <Border Width="300" Height="200" BorderThickness="2" 
+                            BorderBrush="Black" Background="Cyan" />
                 </Popup>
             </StackPanel>
         </StackPanel>

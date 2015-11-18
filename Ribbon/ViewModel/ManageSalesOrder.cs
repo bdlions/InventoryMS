@@ -3,8 +3,10 @@ using com.inventory.db;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
+using Ribbon.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -55,6 +57,24 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<ProductInfoNJ> _saleList;
+
+        public ObservableCollection<ProductInfoNJ> SaleList
+        {
+            get
+            {
+                if (_saleList == null || _saleList.Count <= 0) {
+                    _saleList = new ObservableCollection<ProductInfoNJ>();
+                }
+                return _saleList;
+                
+            }
+            set
+            {
+                this._saleList = value;
+            }
+        }
+        
         private string _lName;
         public string LastName
         {
