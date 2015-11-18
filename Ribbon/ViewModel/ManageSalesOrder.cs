@@ -1,9 +1,13 @@
-﻿using Prism.Commands;
+﻿using com.inventory.bean;
+using com.inventory.db;
+using java.util;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,22 +15,74 @@ using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManageSalesOrder:BindableBase
+    class ManageSalesOrder : BindableBase, INotifyPropertyChanged
     {
-        private string _customername = "Shobuj Gope";
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                if (!String.IsNullOrEmpty(propertyName))
+                {
+                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
+                    {
+                        Customername = FirstName + " " + LastName;
+                        handler(this, new PropertyChangedEventArgs("Name"));
+                    }
+                }
+                else
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
+
+            }
+        }
+
+        private string _fName;
+        public string FirstName
+        {
+            get
+            {
+                return this._fName;
+            }
+            set
+            {
+                this._fName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _lName;
+        public string LastName
+        {
+            get
+            {
+                return this._lName;
+                OnPropertyChanged();
+            }
+            set
+            {
+                this._lName = value;
+            }
+        }
+
+        private string _customerName;
         public string Customername
         {
             get
             {
-                return this._customername;
+                return this._fName + " " + this._lName;
             }
             set
             {
-                this._customername = value;
+                this._customerName = value;
             }
         }
 
-        private string _contact = "01729331182";
+        private string _contact;
         public string Contact
         {
             get
@@ -39,7 +95,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _phone = "N/A";
+        private string _phone;
         public string Phone
         {
             get
@@ -52,7 +108,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _address = "Azimpur";
+        private string _address;
         public string Address
         {
             get
@@ -65,7 +121,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesRep = "Unknown";
+
+        private string _salesRep;
         public string SalesRep
         {
             get
@@ -78,7 +135,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _location = "Dhaka";
+
+        private string _location;
         public string Location
         {
             get
@@ -91,8 +149,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-
-        private string _order = "1";
+        private string _order;
         public string Order
         {
             get
@@ -105,7 +162,20 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _status = "Active";
+        private string _saleOrderDate;
+         public string SaleOrderDate
+        {
+            get
+            {
+                return this._saleOrderDate;
+            }
+            set
+            {
+                this._saleOrderDate = value;
+            }
+        }
+        
+        private string _status;
         public string Status
         {
             get
@@ -118,7 +188,11 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _nonCustomerCost = "Tk. 5000";
+
+
+        /*  ------------ Sale Order ----------------------*/
+
+        private string _nonCustomerCost;
         public string NonCustomerCost
         {
             get
@@ -131,7 +205,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _taxingScheme = "Sales Order Tax Scheme";
+        private string _taxingScheme;
         public string TaxingScheme
         {
             get
@@ -144,34 +218,118 @@ namespace Ribbon.ViewModel
             }
         }
 
-
-        private string _pricingCurrency = "Tk";
-        public string PricingCurrency
+        private string _pricing;
+        public string Pricing
         {
             get
             {
-                return this._pricingCurrency;
+                return this._pricing;
             }
             set
             {
-                this._pricingCurrency = value;
+                this._pricing = value;
             }
         }
 
-        private string _salesOrderPickRemark = "Sales Order Pick Remark";
-        public string SalesOrderPickRemark
+        private string _salesOrderSubTotal;
+        public string SalesOrderSubTotal
         {
             get
             {
-                return this._salesOrderPickRemark;
+                return this._salesOrderSubTotal;
             }
             set
             {
-                this._salesOrderPickRemark = value;
+                this._salesOrderSubTotal = value;
             }
         }
 
-        private string _salesOrderInvoiceRemark = "Sales Order Invoice Remark";
+
+        private string _salesOrderTotal;
+        public string SalesOrderTotal
+        {
+            get
+            {
+                return this._salesOrderTotal;
+            }
+            set
+            {
+                this._salesOrderTotal = value;
+            }
+        }
+
+        //private string _orderItem;
+        //public string OrderItem
+        //{
+        //    get
+        //    {
+        //        return this._orderItem;
+        //    }
+        //    set
+        //    {
+        //        this._orderItem = value;
+        //    }
+        //}
+
+        //private string _orderItemQuantity;
+        //public string OrderItemQuantity
+        //{
+        //    get
+        //    {
+        //        return this._orderItemQuantity;
+        //    }
+        //    set
+        //    {
+        //        this._orderItemQuantity = value;
+        //    }
+        //}
+
+        //private string _orderItemUnitPrice;
+        //public string OrderItemUnitPrice
+        //{
+        //    get
+        //    {
+        //        return this._orderItemUnitPrice;
+        //    }
+        //    set
+        //    {
+        //        this._orderItemUnitPrice = value;
+        //    }
+        //}
+
+        //private string _orderItemDiscount;
+        //public string OrderItemDiscount
+        //{
+        //    get
+        //    {
+        //        return this._orderItemDiscount;
+        //    }
+        //    set
+        //    {
+        //        this._orderItemDiscount = value;
+        //    }
+        //}
+
+        //private string _orderItemSubTotal;
+        //public string OrderItemSubTotal
+        //{
+        //    get
+        //    {
+        //        return this._orderItemSubTotal;
+        //    }
+        //    set
+        //    {
+        //        this._orderItemSubTotal = value;
+        //    }
+        //}
+
+
+
+
+
+        /*  ------------ Invoice Sale Order ----------------------*/
+
+        private string _salesOrderInvoiceRemark;
         public string SalesOrderInvoiceRemark
         {
             get
@@ -184,21 +342,109 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderReturnRemark = "Sales Order Return Remark";
-        public string SalesOrderReturnRemark
+
+        private string _salesOrderInvoiceSubTotal;
+        public string SalesOrderInvoiceSubTotal
         {
             get
             {
-                return this._salesOrderReturnRemark;
+                return this._salesOrderInvoiceSubTotal;
             }
             set
             {
-                this._salesOrderReturnRemark = value;
+                this._salesOrderInvoiceSubTotal = value;
+            }
+        }
+
+        private string _salesOrderInvoiceTotal;
+        public string SalesOrderInvoiceTotal
+        {
+            get
+            {
+                return this._salesOrderInvoiceTotal;
+            }
+            set
+            {
+                this._salesOrderInvoiceTotal = value;
             }
         }
 
 
-        private string _salesOrderRestockRemark = "Sales Order Restock Remark";
+        private string _salesOrderInvoicePaid;
+        public string SalesOrderInvoicePaid
+        {
+            get
+            {
+                return this._salesOrderInvoicePaid;
+            }
+            set
+            {
+                this._salesOrderInvoicePaid = value;
+            }
+        }
+
+
+        private string _salesOrderInvoiceBalance;
+        public string SalesOrderInvoiceBalance
+        {
+            get
+            {
+                return this._salesOrderInvoiceBalance;
+            }
+            set
+            {
+                this._salesOrderInvoiceBalance = value;
+            }
+        }
+
+
+        /*  ------------ Pick Sale Order ----------------------*/
+
+        private string _salesOrderPickRemark;
+        public string SalesOrderPickRemark
+        {
+            get
+            {
+                return this._salesOrderPickRemark;
+            }
+            set
+            {
+                this._salesOrderPickRemark = value;
+            }
+        }
+
+
+        private string _pickOrderedQuantity;
+        public string PickOrderedQuantity
+        {
+            get
+            {
+                return this._pickOrderedQuantity;
+            }
+            set
+            {
+                this._pickOrderedQuantity = value;
+            }
+        }
+
+
+        private string _pickedQuantity;
+        public string PickedQuantity
+        {
+            get
+            {
+                return this._pickedQuantity;
+            }
+            set
+            {
+                this._pickedQuantity = value;
+            }
+        }
+
+        /*  ------------ Restock Sale Order ----------------------*/
+
+
+        private string _salesOrderRestockRemark;
         public string SalesOrderRestockRemark
         {
             get
@@ -212,124 +458,22 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _salesOrderRemark = "Sales Order Remark";
-        public string SalesOrderRemark
+        /*  ------------ Return Sale Order ----------------------*/
+
+        private string _salesOrderReturnRemark;
+        public string SalesOrderReturnRemark
         {
             get
             {
-                return this._salesOrderRemark;
+                return this._salesOrderReturnRemark;
             }
             set
             {
-                this._salesOrderRemark = value;
+                this._salesOrderReturnRemark = value;
             }
         }
 
-        private string _salesOrderSubTotal = "Tk. 1000999003330";
-        public string SalesOrderSubTotal
-        {
-            get
-            {
-                return this._salesOrderSubTotal;
-            }
-            set
-            {
-                this._salesOrderSubTotal = value;
-            }
-        }
-
-        private string _salesOrderTotal = "Tk. 2008880002220";
-        public string SalesOrderTotal
-        {
-            get
-            {
-                return this._salesOrderTotal;
-            }
-            set
-            {
-                this._salesOrderTotal = value;
-            }
-        }
-
-        private string _orderQuantiry = "250";
-        public string OrderQuantiry
-        {
-            get
-            {
-                return this._orderQuantiry;
-            }
-            set
-            {
-                this._orderQuantiry = value;
-            }
-        }
-
-        private string _pickedQuantiry = "120";
-        public string PickedQuantiry
-        {
-            get
-            {
-                return this._pickedQuantiry;
-            }
-            set
-            {
-                this._pickedQuantiry = value;
-            }
-        }
-
-        private string _salesOrderInvoiceSubTotal = "Tk. 1000999003330";
-        public string SalesOrderInvoiceSubTotal
-        {
-            get
-            {
-                return this._salesOrderInvoiceSubTotal;
-            }
-            set
-            {
-                this._salesOrderInvoiceSubTotal = value;
-            }
-        }
-
-        private string _salesOrderInvoiceTotal = "Tk. 2777999003330";
-        public string SalesOrderInvoiceTotal
-        {
-            get
-            {
-                return this._salesOrderInvoiceTotal;
-            }
-            set
-            {
-                this._salesOrderInvoiceTotal = value;
-            }
-        }
-
-        private string _salesOrderInvoicePaid = "Tk. 2555999003330";
-        public string SalesOrderInvoicePaid
-        {
-            get
-            {
-                return this._salesOrderInvoicePaid;
-            }
-            set
-            {
-                this._salesOrderInvoicePaid = value;
-            }
-        }
-
-        private string _salesOrderInvoiceBalance = "Tk. 1444999003330";
-        public string SalesOrderInvoiceBalance
-        {
-            get
-            {
-                return this._salesOrderInvoiceBalance;
-            }
-            set
-            {
-                this._salesOrderInvoiceBalance = value;
-            }
-        }
-
-        private string _salesOrderReturnSubTotalAmount = "Tk. 1000999003330";
+        private string _salesOrderReturnSubTotalAmount;
         public string SalesOrderReturnSubTotalAmount
         {
             get
@@ -342,7 +486,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderReturnTotalAmount = "Tk. 2000999003330";
+
+        private string _salesOrderReturnTotalAmount;
         public string SalesOrderReturnTotalAmount
         {
             get
@@ -355,7 +500,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderReturnFreeAmount = "Tk. 0000000000000";
+        private string _salesOrderReturnFreeAmount;
         public string SalesOrderReturnFreeAmount
         {
             get
@@ -368,7 +513,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderReturnRefundedAmount = "Tk. 0000999003330";
+        private string _salesOrderReturnRefundedAmount;
         public string SalesOrderReturnRefundedAmount
         {
             get
@@ -381,7 +526,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderReturnCreditAmount = "Tk. 3000999003330";
+        private string _salesOrderReturnCreditAmount;
         public string SalesOrderReturnCreditAmount
         {
             get
@@ -394,56 +539,39 @@ namespace Ribbon.ViewModel
             }
         }
 
-        public ICommand Add
-        {
-            get
-            {
-                return new DelegateCommand(this.OnAdd);
-            }
-        }
-        public ICommand Reset
-        {
-            get
-            {
-                return new DelegateCommand(this.OnReset);
-            }
-        }
-        public ICommand Print
-        {
-            get
-            {
-                return new DelegateCommand(this.OnPrint);
-            }
-        }
-        public ICommand Attachment
-        {
-            get
-            {
-                return new DelegateCommand(this.OnAddAttachment);
-            }
-        }
 
-        public ICommand Email
-        {
-            get
-            {
-                return new DelegateCommand(this.OnEmail);
-            }
-        }
-        public ICommand Copy
-        {
-            get
-            {
-                return new DelegateCommand(this.OnCopy);
-            }
-        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: \n" + "Customer Name: " + this._customername + "\nContact: " + _contact + "\nPhone: " + _phone + "\nAddress: " + _address);
+
+            ProductInfo productInfo = new ProductInfo();
+            productInfo.setUnitPrice(1000);
+            productInfo.setQuantity(10);
+            productInfo.setDiscount(3);
+            productInfo.setPurchaseOrderNo("007");
+
+            java.util.List productList = new java.util.ArrayList();
+            productList.add(productInfo);
+
+            SaleInfo saleInfo = new SaleInfo();
+            saleInfo.setProductList(productList);
+            saleInfo.setOrderNo("o2");
+            saleInfo.setStatusId(5);
+            saleInfo.setRemarks("remarks2");
+            
+            //Date d = new Date();
+            //long milliseconds = d.getTime();
+            //saleInfo.setSaleDate(milliseconds);
+
+            
+
+            SaleManager saleManager = new SaleManager();
+            saleManager.addSaleOrder(saleInfo);
+
+            MessageBox.Show("Save Successfully");
         }
 
 

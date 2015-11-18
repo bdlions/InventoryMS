@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using com.inventory.bean;
+using com.inventory.db;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -406,7 +408,28 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: \n" + "Supplier Name: " + this._suppliername + "\nContact: " + _contact + "\nPhone: " + _phone + "\nAddress: " + _address);
+
+          ProductInfo productInfo1 = new ProductInfo();
+          productInfo1.setId(1);
+          productInfo1.setUnitPrice(100);
+          productInfo1.setQuantity(500);
+          productInfo1.setDiscount(0);
+
+          java.util.List productList = new java.util.ArrayList();
+          productList.add(productInfo1);
+          
+          PurchaseInfo purchaseInfo = new PurchaseInfo();
+          purchaseInfo.setProductList(productList);
+          purchaseInfo.setSupplierUserId(3218648);
+          purchaseInfo.setOrderNo(Order);
+          purchaseInfo.setStatusId(1);
+          purchaseInfo.setRemarks("remarks5");
+          purchaseInfo.setOrderDate(150);
+          purchaseInfo.setRequestShippedDate(566);
+
+          PurchaseManager purchaseManager = new PurchaseManager();
+          purchaseManager.addPurchaseOrder(purchaseInfo);
+            MessageBox.Show("Save Successfully");
         }
 
 

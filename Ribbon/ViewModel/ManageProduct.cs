@@ -18,7 +18,7 @@ namespace Ribbon.ViewModel
     {
 
 
-        private string _productName = "Pran Dal Vaja";
+        private string _productName;
         public string ProductName
         {
             get
@@ -31,7 +31,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _productCode = "007";
+        private string _productCode;
         public string ProductCode
         {
             get
@@ -93,13 +93,20 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            ProductManager productManager = new ProductManager();
-            ProductInfo productInfo = new ProductInfo();
-            productInfo.setName(ProductName);
-            productInfo.setCode(ProductCode);
-            productManager.createProduct(productInfo);
 
-            // MessageBox.Show("OnAdd: \n" + "Item Name: " + this._productName);
+            ProductInfo productInfo1 = new ProductInfo();
+            productInfo1.setName(ProductName);
+            productInfo1.setCode(ProductCode);
+            productInfo1.setLength("c1");
+            productInfo1.setWidth("d1");
+            productInfo1.setHeight("e1");
+            productInfo1.setWeight("f1");
+
+            ProductManager productManager = new ProductManager();
+            productManager.createProduct(productInfo1);
+
+
+            MessageBox.Show("Save Successfully");
         }
 
 

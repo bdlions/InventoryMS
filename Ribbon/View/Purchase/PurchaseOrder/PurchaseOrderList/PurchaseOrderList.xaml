@@ -5,7 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
               d:DesignHeight="400" d:DesignWidth="1000">
-    <Grid Margin="5">
+
+    <StackPanel>
+        <DataGrid Name="dgDownloadsInfo" Grid.Row="2" Grid.Column="0" Width="980" Margin="5" HorizontalAlignment="Left" AutoGenerateColumns="False" CanUserAddRows="True"
+              CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
+              CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding PurchaseList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="140" Header="Order" FontFamily="Arial" Binding="{Binding Order}"/>
+                <DataGridTextColumn Width="84"  Header="Order Date" FontFamily="Arial" Binding="{Binding OrderDate}"/>
+                <DataGridTextColumn Width="84"  Header="Status" FontFamily="Arial" Binding="{Binding Status}"/>
+                <DataGridTextColumn Width="84"  Header="Supplier" FontFamily="CaliArialbri" Binding="{Binding Supplier}"/>
+                <DataGridTextColumn Width="84"  Header="Supplier &#10;Order" FontFamily="Arial" Binding="{Binding SupplierOrder}"/>
+                <DataGridTextColumn Width="84"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
+                <DataGridTextColumn Width="84"  Header="Requested &#10;Ship Date" FontFamily="Arial" Binding="{Binding RequestedShipDate}"/>
+                <DataGridTextColumn Width="84"  Header="Due Date" FontFamily="Arial" Binding="{Binding DueDate}"/>
+                <DataGridTextColumn Width="84"  Header="Total" FontFamily="Arial" Binding="{Binding Total}"/>
+                <DataGridTextColumn Width="84"  Header="Pain" FontFamily="Arial" Binding="{Binding Pain}"/>
+                <DataGridTextColumn Width="84"  Header="Balance" FontFamily="Arial" Binding="{Binding Balance}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+    
+    <!--<Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
@@ -36,7 +57,7 @@
             <ColumnDefinition Width="84" />
         </Grid.ColumnDefinitions>
         
-        <!-- 1st Column-->
+        --><!-- 1st Column--><!--
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:" BorderBrush="Gray" BorderThickness="1 1 0 1" />
         <TextBox Grid.Row="1" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0"  />
         <TextBox Grid.Row="2" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"  />
@@ -52,7 +73,7 @@
         <TextBox Grid.Row="12" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 2nd Column-->
+        --><!-- 2nd Column--><!--
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0"  />
         <TextBox Grid.Row="2" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"   />
@@ -68,7 +89,7 @@
         <TextBox Grid.Row="12" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 3rd Column-->
+        --><!-- 3rd Column--><!--
         <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Status:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="2" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -84,7 +105,7 @@
         <TextBox Grid.Row="12" Grid.Column="2" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="2" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 4th Column-->
+        --><!-- 4th Column--><!--
         <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Supplier:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="3" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -100,7 +121,7 @@
         <TextBox Grid.Row="12" Grid.Column="3" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="3" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 5th Column-->
+        --><!-- 5th Column--><!--
         <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Supplier &#10;Order:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="4" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -116,7 +137,7 @@
         <TextBox Grid.Row="12" Grid.Column="4" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="4" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 6th Column-->
+        --><!-- 6th Column--><!--
         <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="5" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="5"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -132,7 +153,7 @@
         <TextBox Grid.Row="12" Grid.Column="5" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="5" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 7th Column-->
+        --><!-- 7th Column--><!--
         <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Requested &#10;Ship Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="6" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="6"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -148,7 +169,7 @@
         <TextBox Grid.Row="12" Grid.Column="6" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="6" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 8th Column-->
+        --><!-- 8th Column--><!--
         <Label Grid.Row="0" Grid.Column="7" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Due Date:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="7" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="7"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -164,7 +185,7 @@
         <TextBox Grid.Row="12" Grid.Column="7" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="7" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 9th Column-->
+        --><!-- 9th Column--><!--
         <Label Grid.Row="0" Grid.Column="8" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="8" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="8"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -180,7 +201,7 @@
         <TextBox Grid.Row="12" Grid.Column="8" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="8" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 10th Column-->
+        --><!-- 10th Column--><!--
         <Label Grid.Row="0" Grid.Column="9" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Paid:" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="9" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" />
         <TextBox Grid.Row="2" Grid.Column="9"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" />
@@ -196,7 +217,7 @@
         <TextBox Grid.Row="12" Grid.Column="9" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0"  />
         <TextBox Grid.Row="13" Grid.Column="9" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  />
 
-        <!-- 11th Column-->
+        --><!-- 11th Column--><!--
         <Label Grid.Row="0" Grid.Column="10" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Balance:" BorderBrush="Gray" BorderThickness="1"/>
         <TextBox Grid.Row="1" Grid.Column="10" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 1 0" />
         <TextBox Grid.Row="2" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0" />
@@ -212,6 +233,7 @@
         <TextBox Grid.Row="12" Grid.Column="10" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0"  />
         <TextBox Grid.Row="13" Grid.Column="10"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1" />
 
-    </Grid>
+    </Grid>-->
+    
 </UserControl>
 

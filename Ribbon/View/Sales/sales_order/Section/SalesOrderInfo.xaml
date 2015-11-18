@@ -49,9 +49,24 @@
             <!-- 4th row-->
             <Label Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Address:"/>
             <TextBox Grid.Row="3" Grid.Column="1" Margin="3,2,3,48" TextWrapping="Wrap" AcceptsReturn="True" Height="50" Text="{Binding Address}"/>
-            <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" BorderThickness="1" Height="22"/>
+            <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" BorderThickness="1" Height="22" SelectedDate="{Binding SaleOrderDate}"/>
         </Grid>
 
+        <!--<StackPanel>
+            <StackPanel>
+                <DataGrid Name="dgDownloadsInfo" Grid.Row="2" Grid.Column="0" Width="980" Margin="0 160 0 0" HorizontalAlignment="Left" AutoGenerateColumns="False" CanUserAddRows="True"
+              CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="250"
+              CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding SaleList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="200" Header="Order" FontFamily="Arial" Binding="{Binding OrderItem}"/>
+                        <DataGridTextColumn Width="91"  Header="OrderDate" FontFamily="Arial" Binding="{Binding OrderItemQuantity}"/>
+                        <DataGridTextColumn Width="91"  Header="Status" FontFamily="Arial" Binding="{Binding OrderItemUnitPrice}"/>
+                        <DataGridTextColumn Width="91"  Header="Customer" FontFamily="Arial" Binding="{Binding OrderItemDiscount}"/>
+                        <DataGridTextColumn Width="91"  Header="Postal Code" FontFamily="Arial" Binding="{Binding OrderItemSubTotal}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>-->
         <Grid Margin="5 160 5 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -74,70 +89,90 @@
                 <ColumnDefinition Width="91" />
             </Grid.ColumnDefinitions>
 
-            <!-- 1st row-->
+
+            <!--1st row-->
+
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Item" Grid.ColumnSpan="2"/>
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Quantity"/>
             <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Unit Price"/>
             <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Discount"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1" Content="Sub-Total"/>
 
-            <!-- 2nd row-->
+
+            <!--2nd row-->
+
             <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="1" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="1" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="1" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="1" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 3rd row-->
+
+            <!--3rd row-->
+
             <TextBox Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="2" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="2" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="2" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="2" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 4th row-->
+
+            <!--4th row-->
+
             <TextBox Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="3" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="3" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="3" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="3" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 5th row-->
+
+            <!--5th row-->
+
             <TextBox Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="4" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="4" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="4" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="4" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 6th row-->
+
+            <!--6th row-->
+
             <TextBox Grid.Row="5" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="5" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="5" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="5" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="5" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 7th row-->
+
+            <!--7th row-->
+
             <TextBox Grid.Row="6" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="6" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="6" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="6" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3" />
             <TextBox Grid.Row="6" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3" />
 
-            <!-- 8th row-->
+
+            <!--8th row-->
+
             <TextBox Grid.Row="7" Grid.Column="0" BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="7" Grid.Column="2" BorderThickness="1 0 0 1"  Padding="0 3" />
             <TextBox Grid.Row="7" Grid.Column="3" BorderThickness="1 0 0 1"  Padding="0 3" />
             <TextBox Grid.Row="7" Grid.Column="4" BorderThickness="1 0 0 1"  Padding="0 3" />
             <TextBox Grid.Row="7" Grid.Column="5" BorderThickness="1 0 1 1"  Padding="0 3" />
 
-            <!-- 9th row-->
+
+            <!--9th row-->
+
             <TextBox Grid.Row="8" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="8" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="8" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="8" Grid.Column="4"  BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="8" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
-            <!-- 10th row-->
+
+            <!--10th row-->
+
             <TextBox Grid.Row="9" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="9" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3" />
             <TextBox Grid.Row="9" Grid.Column="3"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -179,7 +214,7 @@
 
             <!-- 3rd row-->
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Pricing/Currency" Margin="0,59,0,0" Height="25"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,59,0,0" Text="{Binding PricingCurrency}" Height="25"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,59,0,0" Text="{Binding Pricing}" Height="25"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -10,10 +10,10 @@
     <UserControl.Resources>
         <modelView:ManageProductList x:Key="manageProductList"/>
     </UserControl.Resources>
-
     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Background="{StaticResource Inventory}" DataContext="{StaticResource manageProductList}">
         <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
         <productListAddSection:ProductSearchList Margin="3 7 3 5"/>
         <productListAddSection:ProductItemList Margin="3 7 3 5"/>
+        <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 -5 25 0" Foreground="{StaticResource copyRightForeBackground}"/>
     </StackPanel>
 </UserControl>

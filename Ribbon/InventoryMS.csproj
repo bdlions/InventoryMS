@@ -126,7 +126,8 @@
     <Reference Include="IKVM.Runtime.JNI">
       <HintPath>..\..\..\..\ikvm\bin\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
-    <Reference Include="InvDataAccess">
+    <Reference Include="InvDataAccess, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\InvDataAccess\dist\InvDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
@@ -174,8 +175,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\ArrayList.cs" />
-    <Compile Include="ViewModel\ArrayList_2.cs" />
+    <Compile Include="Model\SaleInfoNJ.cs" />
+    <Compile Include="Model\PurchaseInfoNJ.cs" />
+    <Compile Include="Model\CustomerInfoNJ.cs" />
+    <Compile Include="Model\SupplierInfoNJ.cs" />
+    <Compile Include="Model\ProductInfoNJ.cs" />
     <Compile Include="ViewModel\ManageCurrentStock.cs" />
     <Compile Include="ViewModel\ManageCustomer.cs" />
     <Compile Include="ViewModel\ManageCustomerList.cs" />
@@ -816,7 +820,6 @@
   <ItemGroup>
     <Folder Include="DataAccess\" />
     <Folder Include="img\general\" />
-    <Folder Include="Model\" />
     <Folder Include="View\CustomWindow\" />
     <Folder Include="View\Inventory\Product\ProductCategory\" />
     <Folder Include="View\Option\" />

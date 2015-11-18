@@ -14,6 +14,6 @@
         <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="2 0 0 -10"/>
         <PurchaseOrderListAddSection:PurchaseOrderSearchList Margin="3 7 3 5"/>
         <PurchaseOrderListAddSection:PurchaseOrderList Margin="3 7 3 5" Padding="0 30 0 0"/>
-        <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 5 25 0" Foreground="{StaticResource copyRightForeBackground}"/>
+        <Label Content="© Bdlions Copyright 2015 " HorizontalAlignment="Right" Margin="0 -5 25 0" Foreground="{StaticResource copyRightForeBackground}"/>
     </StackPanel>
 </UserControl>

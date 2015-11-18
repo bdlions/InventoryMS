@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using com.inventory.bean;
+using com.inventory.db;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -221,7 +223,36 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            MessageBox.Show("OnAdd: \n" + "Customer Name: " + this._customername + "\nBalance: " + _balance);
+
+                      UserInfo userInfo = new UserInfo();
+                      userInfo.setFirstName("fn3");
+                      userInfo.setLastName("ln8");
+                      userInfo.setEmail("email8");
+                      userInfo.setPhone("phone8");
+                      userInfo.setFax("fax8");
+                      userInfo.setWebsite("website8");
+                      
+                      AddressInfo addressInfo = new AddressInfo();
+                      addressInfo.setAddress("niketon");
+                      addressInfo.setCity("dhaka");
+                      addressInfo.setState("dhaka");
+                      addressInfo.setZip("1807");
+
+                      java.util.List addresses = new java.util.ArrayList();
+                      addresses.add(addressInfo);
+                      userInfo.setAddresses(addresses);
+                      //List<AddressInfo> addresses = new ArrayList<>();
+                      //addresses.add(addressInfo);
+                      //userInfo.setAddresses(addresses);
+                      
+                      CustomerInfo customerInfo = new CustomerInfo();
+                      customerInfo.setUserInfo(userInfo);
+                      
+                      CustomerManager customerManager = new CustomerManager();
+                      customerManager.createCustomer(customerInfo);
+
+
+            MessageBox.Show("Save Successfully");
         }
 
 

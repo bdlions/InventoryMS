@@ -13,22 +13,30 @@ using com.inventory.bean;
 using com.inventory.db.repositories;
 using com.inventory.db;
 using java.util;
+using Ribbon.Model;
+
+
 namespace Ribbon.ViewModel
 {
     class ManageProductList : BindableBase
     {
-        ObservableCollection<ProductInfo> _productList;
+        ObservableCollection<ProductInfoNJ> _productList;
 
-        public ObservableCollection<ProductInfo> ProductList
+        public ObservableCollection<ProductInfoNJ> ProductList
         { 
             get {
                 ProductManager productManager = new ProductManager();
 
-                _productList = new ObservableCollection<ProductInfo>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); ){
-                    _productList.Add((ProductInfo)i.next());
-                }
+                _productList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                {
+                    ProductInfo pInfo = (ProductInfo)i.next();
+                    ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                    pInfoNJ.Name = pInfo.getName();
+                    pInfoNJ.Code = pInfo.getCode();
 
+                    _productList.Add(pInfoNJ);
+                }
                 return _productList;
             }
             set {

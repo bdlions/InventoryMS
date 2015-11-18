@@ -138,11 +138,11 @@
             <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
             <TextBox Grid.Row="0" Grid.Column="2" TextWrapping="WrapWithOverflow" AcceptsReturn="True" Height="80" Text="{Binding SalesOrderPickRemark}"/>
             <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Ordered Quantity" Margin="0,0,0,53"/>
-            <TextBlock Grid.Row="0" Grid.Column="5" Text="{Binding OrderQuantiry}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-46,58" Width="152" />
+            <TextBlock Grid.Row="0" Grid.Column="5" Text="{Binding PickOrderedQuantity}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-46,58" Width="152" />
 
             <!-- 2nd row-->
             <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Picked Quantity" Margin="0,28,0,22"/>
-            <TextBlock Grid.Row="0" Grid.Column="5" Margin="0,33,-46,32" Text="{Binding PickedQuantiry}" FontWeight="Bold" HorizontalAlignment="Left" Width="152" />
+            <TextBlock Grid.Row="0" Grid.Column="5" Margin="0,33,-46,32" Text="{Binding PickedQuantity}" FontWeight="Bold" HorizontalAlignment="Left" Width="152" />
 
             <Button Width="125" Height="22" HorizontalAlignment="Right" Content="Complete" FontWeight="Bold" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,10,-33,-31" Grid.ColumnSpan="2" Grid.Column="4" Grid.Row="1"/>
             <Button Width="125" Height="22" HorizontalAlignment="Right" Content="Auto Fill" FontWeight="Bold" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,10,198,-28" Grid.ColumnSpan="3" Grid.Row="1"/>

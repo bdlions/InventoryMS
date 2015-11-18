@@ -19,10 +19,13 @@
         <!-- 1st row-->
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Address" Margin="19,0,0,0" />
+        
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-150,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding LastName}"  />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding FirstName}"  />
+        
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,-150,0,0" Grid.Row="2" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding  Path = FirstName}"  />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-150,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding LastName}"  />
+        
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,-120,0,-33" Grid.Row="3" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-120,0,-33" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  />
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,12,28,167" Grid.Column="1" Grid.Row="1" Height="23">
@@ -46,8 +49,6 @@
         <TextBox HorizontalAlignment="Left" Height="25" Margin="87,319,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Email}"/>
         <Label Content="Website:" HorizontalAlignment="Left" Margin="10,359,0,-306" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="87,359,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Website}"/>
-
-
 
         <Label Grid.Row="1" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Purchasing Info" Margin="19,155,0,-18" />
         <Label Content="Payment Terms:" HorizontalAlignment="Left" Margin="19,214,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />

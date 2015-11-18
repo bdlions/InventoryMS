@@ -41,7 +41,7 @@ namespace Ribbon.ViewModel
 
             }
         }
-        private string _fName = "Abul";
+        private string _fName;
         public string FirstName
         {
             get
@@ -55,7 +55,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _lName = "Hasan";
+        private string _lName;
         public string LastName
         {
             get
@@ -69,7 +69,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _name = "Hasan";
+        private string _name;
         public string Name
         {
             get
@@ -83,7 +83,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private double _balance = 0.0;
+        private double _balance;
         public double Balance
         {
             get
@@ -96,21 +96,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-
-        private string _address = "Sector-8, Road-9, Block-A, Uttara, Dhaka.";
-        public string Address
-        {
-            get
-            {
-                return this._address;
-            }
-            set
-            {
-                this._address = value;
-            }
-        }
-
-        private string _phone = "027286564";
+        private string _phone;
         public string Phone
         {
             get
@@ -123,7 +109,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _fax = "+44-208-1234567";
+        private string _fax;
         public string Fax
         {
             get
@@ -136,7 +122,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _email = "abul@gmail.com";
+        private string _email;
         public string Email
         {
             get
@@ -149,7 +135,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _website = "www.abul-inventory.com";
+        private string _website;
         public string Website
         {
             get
@@ -162,7 +148,60 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _remark = "Good Supplier";
+        private string _address;
+        public string Address
+        {
+            get
+            {
+                return this._address;
+            }
+            set
+            {
+                this._address = value;
+            }
+        }
+
+        private string _city;
+        public string City
+        {
+            get
+            {
+                return this._city;
+            }
+            set
+            {
+                this._city = value;
+            }
+        }
+
+        private string _state;
+        public string State
+        {
+            get
+            {
+                return this._state;
+            }
+            set
+            {
+                this._state = value;
+            }
+        }
+
+        private string _zip;
+        public string Zip
+        {
+            get
+            {
+                return this._zip;
+            }
+            set
+            {
+                this._zip = value;
+            }
+        }
+
+        
+        private string _remark;
         public string Remark
         {
             get
@@ -175,7 +214,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _carrier = "Don't Knnow Carrier";
+        private string _carrier;
         public string Carrier
         {
             get
@@ -247,21 +286,19 @@ namespace Ribbon.ViewModel
             UserInfo userInfo = new UserInfo();
             userInfo.setFirstName(FirstName);
             userInfo.setLastName(LastName);
+            //userInfo.setBalance(Balance);
 
-            userInfo.setEmail(Email);
             userInfo.setPhone(Phone);
             userInfo.setFax(Fax);
+            userInfo.setEmail(Email);
             userInfo.setWebsite(Website);
-
             userInfo.setGroupId(1);
 
             AddressInfo addressInfo = new AddressInfo();
-            addressInfo.setAddress("niketon");
-            addressInfo.setCity("dhaka");
-            addressInfo.setState("dhaka");
-            addressInfo.setZip("1207");
-
-
+            addressInfo.setAddress(Address);
+            addressInfo.setCity(City);
+            addressInfo.setState(State);
+            addressInfo.setZip(Zip);
 
             java.util.List addresses = new java.util.ArrayList();
             addresses.add(addressInfo);
@@ -269,12 +306,12 @@ namespace Ribbon.ViewModel
 
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setUserInfo(userInfo);
-            supplierInfo.setRemarks("Good day");
+            supplierInfo.setRemarks(Remark);
 
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);
 
-            //MessageBox.Show("OnAdd: \n" + "Remark: " + supplierInfo.getRemarks());
+            MessageBox.Show("Save Successfully. Supplier is Created...");
         }
 
 
