@@ -46,5 +46,44 @@ namespace Ribbon.Model
                 this._price = value;
             }
         }
+
+        private long _quantity;
+        public long Quantity
+        {
+            get
+            {
+                return this._quantity;
+            }
+            set
+            {
+                this._quantity = value;
+            }
+        }
+
+        private long _discount;
+        public long Discount
+        {
+            get
+            {
+                return this._discount;
+            }
+            set
+            {
+                this._discount = value;
+            }
+        }
+
+        private int _productId;
+        public int ProductId
+        {
+            get
+            {
+                return this._productId;
+            }
+            set
+            {
+                this._productId = value;
+            }
+        }
     }
 }

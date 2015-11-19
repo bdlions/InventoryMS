@@ -32,7 +32,18 @@ namespace Ribbon.ViewModel
                 {
                     SaleInfo saleInfo = (SaleInfo)i.next();
                     SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
-                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
+
+                    //saleInfoNJ.Name = saleInfo.getCustomerInfo().
+
+                    saleInfoNJ.Order = saleInfo.getOrderNo();
+                    saleInfoNJ.Remark = saleInfo.getRemarks();
+                    
+
+                    //PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
+                    //PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
+                    //purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
+                    //purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
+                    //purchaseInfoNJ.Supplier = purchaseInfo.getSupplierInfo().getUserInfo().getFirstName() + " " + purchaseInfo.getSupplierInfo().getUserInfo().getLastName();
 
                     _saleList.Add(saleInfoNJ);
                 }

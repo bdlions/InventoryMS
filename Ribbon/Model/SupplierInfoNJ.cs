@@ -10,6 +10,18 @@ namespace Ribbon.Model
     class SupplierInfoNJ
     {
 
+        private string _supplier;
+        public string Supplier
+        {
+            get
+            {
+                return this._supplier;
+            }
+            set
+            {
+                this._supplier = value;
+            }
+        }
 
         private string _fname;
         public string SupplierFirstName

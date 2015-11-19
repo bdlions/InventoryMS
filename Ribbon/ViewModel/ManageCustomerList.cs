@@ -30,10 +30,10 @@ namespace Ribbon.ViewModel
                 for (Iterator i = customerManager.getAllCustomers().iterator(); i.hasNext(); )
                 {
                     CustomerInfo customerInfo = (CustomerInfo)i.next();
-                    CustomerInfoNJ CustomerInfoNJ = new CustomerInfoNJ();
-                    //CustomerInfoNJ.Name = customerInfo.getUserInfo();
+                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+                    customerInfoNJ.Name = customerInfo.getUserInfo().getFirstName() + " " + customerInfo.getUserInfo().getLastName();
 
-                    _customerList.Add(CustomerInfoNJ);
+                    _customerList.Add(customerInfoNJ);
                 }
                 return _customerList;
             }

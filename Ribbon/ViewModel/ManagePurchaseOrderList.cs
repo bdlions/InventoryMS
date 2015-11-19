@@ -29,9 +29,14 @@ namespace Ribbon.ViewModel
                 _purchaseList = new ObservableCollection<PurchaseInfoNJ>();
                 for (Iterator i = purchaseManager.getAllPurchaseOrders().iterator(); i.hasNext(); )
                 {
+
+
                     PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
                     PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
                     purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
+                    purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
+                    purchaseInfoNJ.Supplier = purchaseInfo.getSupplierInfo().getUserInfo().getFirstName() + " " + purchaseInfo.getSupplierInfo().getUserInfo().getLastName();
+
 
                     _purchaseList.Add(purchaseInfoNJ);
                 }

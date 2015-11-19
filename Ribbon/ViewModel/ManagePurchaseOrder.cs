@@ -67,6 +67,14 @@ namespace Ribbon.ViewModel
                 if (_purchaseList == null || _purchaseList.Count <= 0)
                 {
                     _purchaseList = new ObservableCollection<ProductInfoNJ>();
+
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    ProductInfo productInfo = new ProductInfo();
+                    //productInfoNJ.Price = productInfo.getUnitPrice();
+                    //productInfoNJ.Quantity = productInfo.getQuantity();
+                    //productInfoNJ.Discount = productInfo.getDiscount();
+                    productInfoNJ.ProductId = productInfo.getId();
+
                 }
                 return _purchaseList;
 
@@ -196,6 +204,7 @@ namespace Ribbon.ViewModel
         {
             get
             {
+                this._order = Guid.NewGuid().ToString().ToUpper();
                 return this._order;
             }
             set
@@ -520,6 +529,44 @@ namespace Ribbon.ViewModel
             }
         }
 
+        public ICommand SavePurchase 
+        {
+            get 
+            {
+                return new DelegateCommand(new Action(() =>
+                {
+                    
+                    java.util.List productList = new java.util.ArrayList();
+
+                    foreach (ProductInfoNJ productInfoNJ in PurchaseList) { 
+                        ProductInfo productInfo = new ProductInfo();
+                        productInfo.setName(productInfoNJ.Name);
+                        productInfo.setCode(productInfoNJ.Code);
+                        productInfo.setUnitPrice(productInfoNJ.Price);
+                        productInfo.setQuantity(productInfoNJ.Quantity);
+                        productInfo.setDiscount(productInfoNJ.Discount);
+                        productInfo.setId(productInfoNJ.ProductId);
+                        
+                        productList.add(productInfo);
+                    }
+
+
+                    PurchaseInfo purchaseInfo = new PurchaseInfo();
+                    purchaseInfo.setProductList(productList);
+                    purchaseInfo.setSupplierUserId(9695697);
+                    purchaseInfo.setOrderNo(Order);
+                    purchaseInfo.setStatusId(1);
+                    purchaseInfo.setRemarks(OrderRemark);
+                    //purchaseInfo.setOrderDate(123);
+                    purchaseInfo.setRequestShippedDate(456);
+
+                    PurchaseManager purchaseManager = new PurchaseManager();
+                    purchaseManager.addPurchaseOrder(purchaseInfo);
+                    MessageBox.Show("Save Successfully");
+                }));
+            }
+        }
+
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
@@ -528,7 +575,6 @@ namespace Ribbon.ViewModel
 
 
             ProductInfo productInfo = new ProductInfo();
-            //productInfo.setId(productInfo.getId());
             productInfo.setUnitPrice(productInfo.getUnitPrice());
             productInfo.setQuantity(productInfo.getQuantity());
             productInfo.setDiscount(productInfo.getDiscount());
@@ -539,11 +585,11 @@ namespace Ribbon.ViewModel
 
             PurchaseInfo purchaseInfo = new PurchaseInfo();
             purchaseInfo.setProductList(productList);
-            purchaseInfo.setSupplierUserId(9695697);
+            purchaseInfo.setSupplierUserId(1044315);
             purchaseInfo.setOrderNo("order10");
             purchaseInfo.setStatusId(1);
             purchaseInfo.setRemarks("remarks10");
-            purchaseInfo.setOrderDate(123);
+            //purchaseInfo.setOrderDate(123);
             purchaseInfo.setRequestShippedDate(456);
 
             PurchaseManager purchaseManager = new PurchaseManager();
@@ -591,6 +637,8 @@ namespace Ribbon.ViewModel
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
                     productInfoNJ.Code = prodcutInfo.getCode();
                     productInfoNJ.Name = prodcutInfo.getName();
+                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                    productInfoNJ.ProductId = prodcutInfo.getId();
                     //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
 
                     _productItemList.Add(productInfoNJ);

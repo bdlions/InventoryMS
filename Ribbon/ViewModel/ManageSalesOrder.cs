@@ -40,11 +40,15 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                if (_saleList == null || _saleList.Count <= 0) {
+                if (_saleList == null || _saleList.Count <= 0)
+                {
                     _saleList = new ObservableCollection<ProductInfoNJ>();
+                    //ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    //ProductInfo productInfo = new ProductInfo();
+                    //productInfoNJ.ProductId = productInfo.getId();
                 }
                 return _saleList;
-                
+
             }
             set
             {
@@ -137,6 +141,7 @@ namespace Ribbon.ViewModel
         {
             get
             {
+                this._order = Guid.NewGuid().ToString().ToUpper();
                 return this._order;
             }
             set
@@ -146,7 +151,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _saleOrderDate;
-         public string SaleOrderDate
+        public string SaleOrderDate
         {
             get
             {
@@ -157,7 +162,7 @@ namespace Ribbon.ViewModel
                 this._saleOrderDate = value;
             }
         }
-        
+
         private string _status;
         public string Status
         {
@@ -173,7 +178,25 @@ namespace Ribbon.ViewModel
 
 
 
+
+
+
+
         /*  ------------ Sale Order ----------------------*/
+
+
+        private string _orderRemark;
+        public string OrderRemark
+        {
+            get
+            {
+                return this._orderRemark;
+            }
+            set
+            {
+                this._orderRemark = value;
+            }
+        }
 
         private string _nonCustomerCost;
         public string NonCustomerCost
@@ -551,6 +574,8 @@ namespace Ribbon.ViewModel
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
                     productInfoNJ.Code = prodcutInfo.getCode();
                     productInfoNJ.Name = prodcutInfo.getName();
+                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                    productInfoNJ.ProductId = prodcutInfo.getId();
                     //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
 
                     _productItemList.Add(productInfoNJ);
@@ -570,34 +595,75 @@ namespace Ribbon.ViewModel
         {
 
             ProductInfo productInfo = new ProductInfo();
-            productInfo.setUnitPrice(1000);
-            productInfo.setQuantity(10);
-            productInfo.setDiscount(3);
-            productInfo.setPurchaseOrderNo("007");
-            productInfo.setUnitPrice(OrderItemUnitPrice);
+            productInfo.setUnitPrice(productInfo.getUnitPrice());
+            productInfo.setQuantity(productInfo.getQuantity());
+            productInfo.setDiscount(productInfo.getDiscount());
+            productInfo.setPurchaseOrderNo(productInfo.getPurchaseOrderNo());
 
             List productList = new ArrayList();
             productList.add(productInfo);
 
             SaleInfo saleInfo = new SaleInfo();
             saleInfo.setProductList(productList);
-            saleInfo.setOrderNo("o2");
-            saleInfo.setStatusId(5);
-            saleInfo.setRemarks("remarks2");
-            
+            saleInfo.setOrderNo(saleInfo.getOrderNo());
+            saleInfo.setStatusId(saleInfo.getStatusId());
+            saleInfo.setRemarks(saleInfo.getRemarks());
+
             SaleManager saleManager = new SaleManager();
             saleManager.addSaleOrder(saleInfo);
 
             MessageBox.Show("Save Successfully");
         }
 
-        public DelegateCommand<object> OnItemSelected {
-            get {
+        public DelegateCommand<object> OnItemSelected
+        {
+            get
+            {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
                     SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
                     SaleList.RemoveAt(SaleList.Count - 1);
                 });
+            }
+        }
+
+
+        public ICommand SaveSale
+        {
+            get
+            {
+                return new DelegateCommand(new Action(() =>
+                {
+
+                    java.util.List productList = new java.util.ArrayList();
+
+                    foreach (ProductInfoNJ productInfoNJ in SaleList)
+                    {
+                        ProductInfo productInfo = new ProductInfo();
+                        productInfo.setName(productInfoNJ.Name);
+                        productInfo.setCode(productInfoNJ.Code);
+                        productInfo.setUnitPrice(productInfoNJ.Price);
+                        productInfo.setQuantity(productInfoNJ.Quantity);
+                        productInfo.setDiscount(productInfoNJ.Discount);
+                        productInfo.setId(productInfoNJ.ProductId);
+
+                        productList.add(productInfo);
+                    }
+
+
+                    SaleInfo saleInfo = new SaleInfo();
+                    saleInfo.setProductList(productList);
+                    saleInfo.setCustomerUserId(5905093);
+                    saleInfo.setOrderNo(Order);
+                    saleInfo.setStatusId(1);
+                    saleInfo.setRemarks(OrderRemark);
+                    //purchaseInfo.setOrderDate(123);
+                    //saleInfo.setRequestShippedDate(456);
+
+                    SaleManager saleManager = new SaleManager();
+                    saleManager.addSaleOrder(saleInfo);
+                    MessageBox.Show("Save Successfully");
+                }));
             }
         }
 

@@ -8,6 +8,20 @@ namespace Ribbon.Model
 {
     class SaleInfoNJ
     {
+
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this._name = value;
+            }
+        }
+
         private string _order;
         public string Order
         {
@@ -18,6 +32,19 @@ namespace Ribbon.Model
             set
             {
                 this._order = value;
+            }
+        }
+
+        private string _remark;
+        public string Remark
+        {
+            get
+            {
+                return this._remark;
+            }
+            set
+            {
+                this._remark = value;
             }
         }
 

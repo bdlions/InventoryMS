@@ -12,7 +12,7 @@
                             BorderBrush="Black" Background="{StaticResource Sales}" >
         <StackPanel>
             <DataGrid Name="productSelectionGrid" ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False"
                           Height="100" ItemsSource="{Binding ProductItemList}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
@@ -20,11 +20,11 @@
                                         CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Width="33*" Header="Category" FontFamily="Arial" Binding="{Binding Path=Name}"/>
-                    <DataGridTextColumn Width="33*" Header="Item" FontFamily="Arial" Binding="{Binding Path=Code}"/>
-                    <DataGridTextColumn Width="33*" Header="Unit Price" FontFamily="Arial" Binding="{Binding OrderItemUnitPrice}"/>
-                </DataGrid.Columns>-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="33*" Header="Item Name" FontFamily="Arial" Binding="{Binding Path=Name}"/>
+                    <DataGridTextColumn Width="33*" Header="Item Code" FontFamily="Arial" Binding="{Binding Path=Code}"/>
+                    <DataGridTextColumn Width="33*" Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
+                </DataGrid.Columns>
             </DataGrid>
             <Grid Height="175">
                 <Grid.RowDefinitions>
