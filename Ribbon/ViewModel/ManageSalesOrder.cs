@@ -576,7 +576,7 @@ namespace Ribbon.ViewModel
             productInfo.setPurchaseOrderNo("007");
             productInfo.setUnitPrice(OrderItemUnitPrice);
 
-            java.util.List productList = new java.util.ArrayList();
+            List productList = new ArrayList();
             productList.add(productInfo);
 
             SaleInfo saleInfo = new SaleInfo();
@@ -585,29 +585,21 @@ namespace Ribbon.ViewModel
             saleInfo.setStatusId(5);
             saleInfo.setRemarks("remarks2");
             
-            //Date d = new Date();
-            //long milliseconds = d.getTime();
-            //saleInfo.setSaleDate(milliseconds);
-            
-            
-
             SaleManager saleManager = new SaleManager();
             saleManager.addSaleOrder(saleInfo);
 
             MessageBox.Show("Save Successfully");
         }
 
-        public DelegateCommand<object> OnItemSelected { 
+        public DelegateCommand<object> OnItemSelected {
             get {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
                     SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
                     SaleList.RemoveAt(SaleList.Count - 1);
                 });
-            } 
+            }
         }
-
-
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
