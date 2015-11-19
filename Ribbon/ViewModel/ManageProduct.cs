@@ -112,10 +112,10 @@ namespace Ribbon.ViewModel
             productInfo1.setName(ProductName);
             productInfo1.setCode(ProductCode);
             productInfo1.setUnitPrice(Price);
-            productInfo1.setLength("c1");
-            productInfo1.setWidth("d1");
-            productInfo1.setHeight("e1");
-            productInfo1.setWeight("f1");
+            //productInfo1.setLength("c1");
+            //productInfo1.setWidth("d1");
+            //productInfo1.setHeight("e1");
+            //productInfo1.setWeight("f1");
 
             ProductManager productManager = new ProductManager();
             productManager.createProduct(productInfo1);

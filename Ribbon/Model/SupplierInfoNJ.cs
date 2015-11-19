@@ -11,16 +11,29 @@ namespace Ribbon.Model
     {
 
 
-        private string _name;
-        public string Name
+        private string _fname;
+        public string SupplierFirstName
         {
             get
             {
-                return this._name;
+                return this._fname;
             }
             set
             {
-                this._name = value;
+                this._fname = value;
+            }
+        }
+
+        private string _lname;
+        public string SupplierLastName
+        {
+            get
+            {
+                return this._lname;
+            }
+            set
+            {
+                this._lname = value;
             }
         }
 
@@ -38,8 +51,8 @@ namespace Ribbon.Model
             }
         }
 
-        private double _phone;
-        public double Phone
+        private string _phone;
+        public string Phone
         {
             get
             {

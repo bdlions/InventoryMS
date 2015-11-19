@@ -30,8 +30,8 @@ namespace Ribbon.ViewModel
                 {
                     if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
                     {
-                        Name = FirstName + " " + LastName;
-                        handler(this, new PropertyChangedEventArgs("Name"));
+                        SupplierName = FirstName + " " + LastName;
+                        handler(this, new PropertyChangedEventArgs("SupplierName"));
                     }
                 }
                 else
@@ -61,16 +61,17 @@ namespace Ribbon.ViewModel
             get
             {
                 return this._lName;
-                OnPropertyChanged();
+
             }
             set
             {
                 this._lName = value;
+                OnPropertyChanged();
             }
         }
 
         private string _name;
-        public string Name
+        public string SupplierName
         {
             get
             {
@@ -200,7 +201,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
+
         private string _remark;
         public string Remark
         {
@@ -283,26 +284,25 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
+
+
             UserInfo userInfo = new UserInfo();
             userInfo.setFirstName(FirstName);
             userInfo.setLastName(LastName);
-            //userInfo.setBalance(Balance);
-
+            userInfo.setEmail(Email);
             userInfo.setPhone(Phone);
             userInfo.setFax(Fax);
-            userInfo.setEmail(Email);
             userInfo.setWebsite(Website);
-            userInfo.setGroupId(1);
 
-            AddressInfo addressInfo = new AddressInfo();
-            addressInfo.setAddress(Address);
-            addressInfo.setCity(City);
-            addressInfo.setState(State);
-            addressInfo.setZip(Zip);
+            //AddressInfo addressInfo = new AddressInfo();
+            //addressInfo.setAddress(Address);
+            //addressInfo.setCity(City);
+            //addressInfo.setState(State);
+            //addressInfo.setZip(Zip);
 
-            java.util.List addresses = new java.util.ArrayList();
-            addresses.add(addressInfo);
-            userInfo.setAddresses(addresses);
+            //java.util.List addresses = new java.util.ArrayList();
+            //addresses.add(addressInfo);
+            //userInfo.setAddresses(addresses);
 
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setUserInfo(userInfo);
@@ -310,6 +310,35 @@ namespace Ribbon.ViewModel
 
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);
+
+
+
+            //UserInfo userInfo = new UserInfo();
+            //userInfo.setFirstName(FirstName);
+            //userInfo.setLastName(LastName);
+            ////userInfo.setBalance(Balance);
+            //userInfo.setEmail(Email);
+            //userInfo.setPhone(Phone);
+            //userInfo.setFax(Fax);
+            //userInfo.setWebsite(Website);
+            //userInfo.setGroupId(1);
+
+            //AddressInfo addressInfo = new AddressInfo();
+            //addressInfo.setAddress(Address);
+            //addressInfo.setCity(City);
+            //addressInfo.setState(State);
+            //addressInfo.setZip(Zip);
+
+            //java.util.List addresses = new java.util.ArrayList();
+            //addresses.add(addressInfo);
+            //userInfo.setAddresses(addresses);
+
+            //SupplierInfo supplierInfo = new SupplierInfo();
+            //supplierInfo.setUserInfo(userInfo);
+            //supplierInfo.setRemarks(Remark);
+
+            //SupplierManager supplierManager = new SupplierManager();
+            //supplierManager.createSupplier(supplierInfo);
 
             MessageBox.Show("Save Successfully.");
         }

@@ -17,6 +17,8 @@ FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSupplierList.xaml;;
 FC:\xampp\htdocs\InventoryMS\Ribbon\View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml;;
 FC:\xampp\htdocs\InventoryMS\Ribbon\View\Sales\customer\new_customer\CustomerInfoTabs.xaml;;
 FC:\xampp\htdocs\InventoryMS\Ribbon\View\Sales\sales_order\new_sale_order\NewSalesOrderTabs.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Sales\sales_order\Section\SalesOrderInfo.xaml;;
+FC:\xampp\htdocs\InventoryMS\Ribbon\View\Purchase\Section\PurchaseOrderInfo.xaml;;
 FC:\xampp\htdocs\InventoryMS\Ribbon\View\Purchase\Supplier\NewSupplier\SupplierInfoTabs.xaml;;
 FC:\xampp\htdocs\InventoryMS\Ribbon\View\ManageSupplier.xaml;;
 

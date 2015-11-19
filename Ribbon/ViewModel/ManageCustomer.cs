@@ -28,8 +28,8 @@ namespace Ribbon.ViewModel
                 {
                     if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
                     {
-                        Name = FirstName + " " + LastName;
-                        handler(this, new PropertyChangedEventArgs("Name"));
+                        CustomerName = CustomerFirstName + " " + CustomerLastName;
+                        handler(this, new PropertyChangedEventArgs("CustomerName"));
                     }
                 }
                 else
@@ -40,7 +40,7 @@ namespace Ribbon.ViewModel
             }
         }
         private string _fName;
-        public string FirstName
+        public string CustomerFirstName
         {
             get
             {
@@ -54,21 +54,22 @@ namespace Ribbon.ViewModel
         }
 
         private string _lName;
-        public string LastName
+        public string CustomerLastName
         {
             get
             {
                 return this._lName;
-                OnPropertyChanged();
+
             }
             set
             {
                 this._lName = value;
+                OnPropertyChanged();
             }
         }
 
         private string _name;
-        public string Name
+        public string CustomerName
         {
             get
             {
@@ -80,8 +81,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private double _balance = 0.0;
-        public double Balance
+        private double _balance;
+        public double CustomerBalance
         {
             get
             {
@@ -94,7 +95,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        private string _address = "Niketon";
+        private string _address;
         public string Address
         {
             get
@@ -107,8 +108,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _phone = "0291556548";
-        public string Phone
+        private string _phone;
+        public string CustomerPhone
         {
             get
             {
@@ -120,8 +121,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _fax = "+88-0000-4444";
-        public string Fax
+        private string _fax;
+        public string CustomerFax
         {
             get
             {
@@ -133,7 +134,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _email = "rashida@gmail.com";
+        private string _email;
         public string CustomerEmail
         {
             get
@@ -146,8 +147,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _website = "www.rashida.com";
-        public string Website
+        private string _website;
+        public string CustomerWebsite
         {
             get
             {
@@ -159,8 +160,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _discount = "Tk. 5.0 %";
-        public string Discount
+        private string _discount;
+        public string CustomerDiscount
         {
             get
             {
@@ -172,8 +173,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _taxExempt = "Tk. 1000000000000";
-        public string TaxExempt
+        private string _taxExempt;
+        public string CustomerTaxExempt
         {
             get
             {
@@ -185,8 +186,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _remark = "Very good Customer";
-        public string Remark
+        private string _remark;
+        public string CustomerRemark
         {
             get
             {
@@ -198,8 +199,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _cardNumber = "1";
-        public string CardNumber
+        private string _cardNumber;
+        public string CustomerCardNumber
         {
             get
             {
@@ -211,8 +212,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _cardSecurityCode = "James Bond 007";
-        public string CardSecurityCode
+        private string _cardSecurityCode;
+        public string CustomerCardSecurityCode
         {
             get
             {
@@ -276,32 +277,59 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-                      UserInfo userInfo = new UserInfo();
-                      userInfo.setFirstName("fn3");
-                      userInfo.setLastName("ln8");
-                      userInfo.setEmail("email8");
-                      userInfo.setPhone("phone8");
-                      userInfo.setFax("fax8");
-                      userInfo.setWebsite("website8");
-                      
-                      AddressInfo addressInfo = new AddressInfo();
-                      addressInfo.setAddress("niketon");
-                      addressInfo.setCity("dhaka");
-                      addressInfo.setState("dhaka");
-                      addressInfo.setZip("1807");
 
-                      java.util.List addresses = new java.util.ArrayList();
-                      addresses.add(addressInfo);
-                      userInfo.setAddresses(addresses);
-                      //List<AddressInfo> addresses = new ArrayList<>();
-                      //addresses.add(addressInfo);
-                      //userInfo.setAddresses(addresses);
-                      
-                      CustomerInfo customerInfo = new CustomerInfo();
-                      customerInfo.setUserInfo(userInfo);
-                      
-                      CustomerManager customerManager = new CustomerManager();
-                      customerManager.createCustomer(customerInfo);
+
+            UserInfo userInfo = new UserInfo();
+            userInfo.setFirstName(CustomerFirstName);
+            userInfo.setLastName(CustomerLastName);
+            userInfo.setEmail(CustomerEmail);
+            userInfo.setPhone(CustomerPhone);
+            userInfo.setFax(CustomerFax);
+            userInfo.setWebsite(CustomerWebsite);
+
+            //AddressInfo addressInfo = new AddressInfo();
+            //addressInfo.setAddress("niketon");
+            //addressInfo.setCity("dhaka");
+            //addressInfo.setState("dhaka");
+            //addressInfo.setZip("1507");
+
+            //java.util.List addresses = new java.util.ArrayList();
+            //addresses.add(addressInfo);
+            //userInfo.setAddresses(addresses);
+
+            CustomerInfo customerInfo = new CustomerInfo();
+            customerInfo.setUserInfo(userInfo);
+
+            CustomerManager customerManager = new CustomerManager();
+            customerManager.createCustomer(customerInfo);
+
+
+
+
+
+            //UserInfo userInfo = new UserInfo();
+            //userInfo.setFirstName("fn3");
+            //userInfo.setLastName("ln8");
+            //userInfo.setEmail("email8");
+            //userInfo.setPhone("phone8");
+            //userInfo.setFax("fax8");
+            //userInfo.setWebsite("website8");
+
+            //AddressInfo addressInfo = new AddressInfo();
+            //addressInfo.setAddress("niketon");
+            //addressInfo.setCity("dhaka");
+            //addressInfo.setState("dhaka");
+            //addressInfo.setZip("1807");
+
+            //java.util.List addresses = new java.util.ArrayList();
+            //addresses.add(addressInfo);
+            //userInfo.setAddresses(addresses);
+
+            //CustomerInfo customerInfo = new CustomerInfo();
+            //customerInfo.setUserInfo(userInfo);
+
+            //CustomerManager customerManager = new CustomerManager();
+            //customerManager.createCustomer(customerInfo);
 
 
             MessageBox.Show("Save Successfully");

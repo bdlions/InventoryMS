@@ -7,10 +7,10 @@
             xmlns:SupplierListAddSection="clr-namespace:Ribbon.View.Purchase.Supplier.SupplierList">
 
     <UserControl.Resources>
-        <modelView:ManageSalesOrderList x:Key="manageSalesOrderList"/>
+        <modelView:ManageSupplierList x:Key="manageSupplierList"/>
     </UserControl.Resources>
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource manageSalesOrderList}">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource manageSupplierList}">
         <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
         <SupplierListAddSection:SupplierSearchList Margin="3 7 3 5"/>
         <SupplierListAddSection:SupplierList Margin="3 7 3 5"/>

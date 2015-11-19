@@ -1,9 +1,12 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
+using Ribbon.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,31 +18,19 @@ namespace Ribbon.ViewModel
 {
     class ManagePurchaseOrder : BindableBase
     {
-        private string _supplierFirstName;
-        public string SupplierFirstName
+        private string _supplierName;
+        public string SupplierName
         {
             get
             {
-                return this._supplierFirstName;
+                return this._supplierName;
             }
             set
             {
-                this._supplierFirstName = value;
+                this._supplierName = value;
             }
         }
 
-        private string _supplierLastName;
-        public string SupplierLastName
-        {
-            get
-            {
-                return this._supplierLastName;
-            }
-            set
-            {
-                this._supplierLastName = value;
-            }
-        }
 
         private string _contact;
         public string Contact
@@ -66,6 +57,109 @@ namespace Ribbon.ViewModel
                 this._phone = value;
             }
         }
+
+        ObservableCollection<ProductInfoNJ> _purchaseList;
+
+        public ObservableCollection<ProductInfoNJ> PurchaseList
+        {
+            get
+            {
+                if (_purchaseList == null || _purchaseList.Count <= 0)
+                {
+                    _purchaseList = new ObservableCollection<ProductInfoNJ>();
+                }
+                return _purchaseList;
+
+            }
+            set
+            {
+                this._purchaseList = value;
+            }
+        }
+
+
+        /*  ------------------------- Purchase Order Item ----------------------*/
+
+
+        private string _orderItem;
+        public string OrderItem
+        {
+            get
+            {
+                return this._orderItem;
+            }
+            set
+            {
+                this._orderItem = value;
+            }
+        }
+
+        private string _orderItemCategory;
+        public string OrderItemCategory
+        {
+            get
+            {
+                return this._orderItem;
+            }
+            set
+            {
+                this._orderItemCategory = value;
+            }
+        }
+        private long _orderItemQuantity;
+        public long OrderItemQuantity
+        {
+            get
+            {
+                return this._orderItemQuantity;
+            }
+            set
+            {
+                this._orderItemQuantity = value;
+            }
+        }
+
+        private long _orderItemUnitPrice;
+        public long OrderItemUnitPrice
+        {
+            get
+            {
+                return this._orderItemUnitPrice;
+            }
+            set
+            {
+                this._orderItemUnitPrice = value;
+            }
+        }
+
+        private long _orderItemDiscount;
+        public long OrderItemDiscount
+        {
+            get
+            {
+                return this._orderItemDiscount;
+            }
+            set
+            {
+                this._orderItemDiscount = value;
+            }
+        }
+
+        private string _orderItemSubTotal;
+        public string OrderItemSubTotal
+        {
+            get
+            {
+                return this._orderItemSubTotal;
+            }
+            set
+            {
+                this._orderItemSubTotal = value;
+            }
+        }
+
+        /*-------------------------------------------------------------------------------*/
+
 
 
         private string _location;
@@ -94,7 +188,7 @@ namespace Ribbon.ViewModel
         }
 
 
-        
+
 
 
         private string _order;
@@ -378,7 +472,9 @@ namespace Ribbon.ViewModel
         }
 
 
-        
+
+
+
 
         public ICommand Add
         {
@@ -430,26 +526,93 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-          ProductInfo productInfo = new ProductInfo();
-          productInfo.setId(1);
-          productInfo.setQuantity(500);
-          productInfo.setDiscount(0);
 
-          java.util.List productList = new java.util.ArrayList();
-          productList.add(productInfo);
-          
-          PurchaseInfo purchaseInfo = new PurchaseInfo();
-          purchaseInfo.setProductList(productList);
-          purchaseInfo.setSupplierUserId(3218648);
-          purchaseInfo.setOrderNo(Order);
-          purchaseInfo.setStatusId(1);
-          purchaseInfo.setRemarks(OrderRemark);
-          purchaseInfo.setOrderDate(150);
-          purchaseInfo.setRequestShippedDate(566);
+            ProductInfo productInfo = new ProductInfo();
+            //productInfo.setId(productInfo.getId());
+            productInfo.setUnitPrice(productInfo.getUnitPrice());
+            productInfo.setQuantity(productInfo.getQuantity());
+            productInfo.setDiscount(productInfo.getDiscount());
 
-          PurchaseManager purchaseManager = new PurchaseManager();
-          purchaseManager.addPurchaseOrder(purchaseInfo);
-          MessageBox.Show("Save Successfully");
+            java.util.List productList = new java.util.ArrayList();
+            productList.add(productInfo);
+
+
+            PurchaseInfo purchaseInfo = new PurchaseInfo();
+            purchaseInfo.setProductList(productList);
+            purchaseInfo.setSupplierUserId(9695697);
+            purchaseInfo.setOrderNo("order10");
+            purchaseInfo.setStatusId(1);
+            purchaseInfo.setRemarks("remarks10");
+            purchaseInfo.setOrderDate(123);
+            purchaseInfo.setRequestShippedDate(456);
+
+            PurchaseManager purchaseManager = new PurchaseManager();
+            purchaseManager.addPurchaseOrder(purchaseInfo);
+
+
+
+
+            //ProductInfo productInfo = new ProductInfo();
+            //productInfo.setId(1);
+            //productInfo.setQuantity(500);
+            //productInfo.setDiscount(0);
+
+            //java.util.List productList = new java.util.ArrayList();
+            //productList.add(productInfo);
+
+            //PurchaseInfo purchaseInfo = new PurchaseInfo();
+            //purchaseInfo.setProductList(productList);
+            //purchaseInfo.setSupplierUserId(3218648);
+            //purchaseInfo.setOrderNo(Order);
+            //purchaseInfo.setStatusId(1);
+            //purchaseInfo.setRemarks(OrderRemark);
+            //purchaseInfo.setOrderDate(150);
+            //purchaseInfo.setRequestShippedDate(566);
+
+            //PurchaseManager purchaseManager = new PurchaseManager();
+            //purchaseManager.addPurchaseOrder(purchaseInfo);
+
+
+            MessageBox.Show("Save Successfully");
+        }
+
+        ObservableCollection<ProductInfoNJ> _productItemList;
+
+        public ObservableCollection<ProductInfoNJ> ProductItemList
+        {
+            get
+            {
+                ProductManager productManager = new ProductManager();
+
+                _productItemList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                {
+                    ProductInfo prodcutInfo = (ProductInfo)i.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Code = prodcutInfo.getCode();
+                    productInfoNJ.Name = prodcutInfo.getName();
+                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
+
+                    _productItemList.Add(productInfoNJ);
+                }
+                return _productItemList;
+            }
+            set
+            {
+                this._productItemList = value;
+            }
+        }
+
+        public DelegateCommand<object> OnItemSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    PurchaseList.Insert(PurchaseList.Count - 1, (ProductInfoNJ)selectedItem);
+                    PurchaseList.RemoveAt(PurchaseList.Count - 1);
+                });
+            }
         }
 
 
