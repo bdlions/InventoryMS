@@ -85,13 +85,12 @@
                             <DataGrid Name="productSelectionGrid" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                           Height="100" ItemsSource="{Binding ProductItemList}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction
-                                            Command="{Binding OnItemSelected}"
-                                            CommandParameter="{Binding SelectedItems,ElementName=productSelectionGrid}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction Command="{Binding OnItemSelected}" 
+                                        CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Width="33*" Header="Category" FontFamily="Arial" Binding="{Binding Path=Name}"/>
                                     <DataGridTextColumn Width="33*" Header="Item" FontFamily="Arial" Binding="{Binding Path=Code}"/>
@@ -182,7 +181,7 @@
             </Grid.ColumnDefinitions>
 
 
-            1st row
+           
 
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Item" Grid.ColumnSpan="2"/>
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Quantity"/>
@@ -191,7 +190,7 @@
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" BorderBrush="#5D8AA8" BorderThickness="1" Content="Sub-Total"/>
 
 
-            2nd row
+       
 
             <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="1" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -200,7 +199,7 @@
             <TextBox Grid.Row="1" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            3rd row
+        
 
             <TextBox Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="2" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -209,7 +208,7 @@
             <TextBox Grid.Row="2" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            4th row
+          
 
             <TextBox Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="3" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -218,7 +217,7 @@
             <TextBox Grid.Row="3" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            5th row
+       
 
             <TextBox Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3"/>
             <TextBox Grid.Row="4" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -227,7 +226,7 @@
             <TextBox Grid.Row="4" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            6th row
+            
 
             <TextBox Grid.Row="5" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="5" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -236,7 +235,7 @@
             <TextBox Grid.Row="5" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            7th row
+            
 
             <TextBox Grid.Row="6" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="6" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -245,7 +244,7 @@
             <TextBox Grid.Row="6" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3" />
 
 
-            8th row
+          
 
             <TextBox Grid.Row="7" Grid.Column="0" BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="7" Grid.Column="2" BorderThickness="1 0 0 1"  Padding="0 3" />
@@ -254,7 +253,7 @@
             <TextBox Grid.Row="7" Grid.Column="5" BorderThickness="1 0 1 1"  Padding="0 3" />
 
 
-            9th row
+       
 
             <TextBox Grid.Row="8" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="8" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -263,7 +262,7 @@
             <TextBox Grid.Row="8" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
 
 
-            10th row
+         
 
             <TextBox Grid.Row="9" Grid.Column="0"  BorderThickness="1 0 0 1"  Padding="0 3" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="9" Grid.Column="2"  BorderThickness="1 0 0 1"  Padding="0 3" />
@@ -289,7 +288,7 @@
                 <ColumnDefinition Width="110" />
 
             </Grid.ColumnDefinitions>
-            <!-- 1st row-->
+           
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Non-Customer Costs" Margin="0,0,0,57" Height="25"/>
             <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,58" Text="{Binding NonCustomerCost}" Height="25"/>
             <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
@@ -297,14 +296,14 @@
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sub-Total" Margin="0,0,0,62" Height="25"/>
             <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding SalesOrderSubTotal}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,0,58" Width="110"  Height="25"/>
 
-            <!-- 2nd row-->
+         
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Taxing Scheme" Margin="0,29,0,27" Height="25"/>
             <TextBox Grid.Row="0" Grid.Column="1" Margin="0,29,0,28" Text="{Binding TaxingScheme}" Height="25"/>
             <Button Grid.Row="1" Grid.Column="4" Width="70" Height="22" HorizontalAlignment="Right" Content="Save" FontWeight="Bold" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,5,0,1"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total" Margin="0,33,0,32" Height="25"/>
             <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,33,0,22" Text="{Binding SalesOrderTotal}" FontWeight="Bold" HorizontalAlignment="Left" Width="110" Height="25"/>
 
-            <!-- 3rd row-->
+           
             <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Pricing/Currency" Margin="0,59,0,0" Height="25"/>
             <TextBox Grid.Row="0" Grid.Column="1" Margin="0,59,0,0" Text="{Binding Pricing}" Height="25"/>
         </Grid>

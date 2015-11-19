@@ -597,10 +597,15 @@ namespace Ribbon.ViewModel
             MessageBox.Show("Save Successfully");
         }
 
-        private void OnItemSelected(object sender, object e)
-        {
-            Console.WriteLine("dsfsdfZ");
+        public DelegateCommand<object> OnItemSelected { 
+            get {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    SaleList.Add((ProductInfoNJ)selectedItem);
+                });
+            } 
         }
+
 
 
         /// <summary>
