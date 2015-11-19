@@ -7,12 +7,13 @@
              d:DesignHeight="400" d:DesignWidth="1000">
     <StackPanel>
         <DataGrid Name="dgDownloadsInfo" Grid.Row="2" Grid.Column="0" Width="980" Margin="5" HorizontalAlignment="Left" AutoGenerateColumns="False" CanUserAddRows="True"
-              CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
+              CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
               CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding SuppplierList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="140" Header="Name" FontFamily="Arial" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="84"  Header="Contact:" FontFamily="Arial" Binding="{Binding Contact}"/>
-                <DataGridTextColumn Width="84"  Header="Phone" FontFamily="CaliArialbri" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Width="70" Header="First Name" FontFamily="Arial" Binding="{Binding SupplierFirstName}"/>
+                <DataGridTextColumn Width="70" Header="Last Name" FontFamily="Arial" Binding="{Binding SupplierLastName}"/>
+                <DataGridTextColumn Width="84"  Header="Contact" FontFamily="Arial" Binding="{Binding Contact}"/>
+                <DataGridTextColumn Width="84"  Header="Phone" FontFamily="Arial" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Width="84"  Header="Fax" FontFamily="Arial" Binding="{Binding Fax}"/>
                 <DataGridTextColumn Width="84"  Header="Email" FontFamily="Arial" Binding="{Binding Email}"/>
                 <DataGridTextColumn Width="84"  Header="Website" FontFamily="Arial" Binding="{Binding Website}"/>

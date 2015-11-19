@@ -33,7 +33,12 @@ namespace Ribbon.ViewModel
                     SupplierInfo supplierInfo = (SupplierInfo)i.next();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
 
-                    //supplierInfoNJ.Email = supplierInfo.;
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
+                    supplierInfoNJ.Fax = supplierInfo.getUserInfo().getFax();
+                    supplierInfoNJ.Email = supplierInfo.getUserInfo().getEmail();
+                    supplierInfoNJ.Website = supplierInfo.getUserInfo().getWebsite();
 
                     _supplierList.Add(supplierInfoNJ);
                 }

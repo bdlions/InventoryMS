@@ -12,11 +12,11 @@
               CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
               CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding ProductList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
             <DataGrid.Columns>
+                <DataGridTextColumn Width="195"  Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="195"  Header="Code" FontFamily="Arial" Binding="{Binding Code}"/>
-                <DataGridTextColumn Width="195"  Header="Product Name" FontFamily="Calibri" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="195"  Header="Category" FontFamily="Calibri" Binding="{Binding Category}"/>
+                <DataGridTextColumn Width="195"  Header="Category" FontFamily="Arial" Binding="{Binding Category}"/>
                 <DataGridTextColumn Width="195"  Header="Price" FontFamily="Arial" Binding="{Binding Price}"/>
-                <DataGridTextColumn Width="195"  Header="Type" FontFamily="Calibri" Binding="{Binding Type}"/>
+                <DataGridTextColumn Width="195"  Header="Type" FontFamily="Arial" Binding="{Binding Type}"/>
                 <DataGridTextColumn Width="195"  Header="Last Supplier" FontFamily="Arial" Binding="{Binding LastSupplier}"/>
             </DataGrid.Columns>
         </DataGrid>

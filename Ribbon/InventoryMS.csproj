@@ -296,6 +296,12 @@
     <Compile Include="View\ManageSupplierList.xaml.cs">
       <DependentUpon>ManageSupplierList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PopUpWindow\PurchaseOrderProductSelector.xaml.cs">
+      <DependentUpon>PurchaseOrderProductSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PopUpWindow\SaleOrderProductSelector.xaml.cs">
+      <DependentUpon>SaleOrderProductSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml.cs">
       <DependentUpon>PurchaseOrderInfoTabs.xaml</DependentUpon>
     </Compile>
@@ -571,6 +577,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PopUpWindow\PurchaseOrderProductSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopUpWindow\SaleOrderProductSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Purchase\PurchaseOrder\NewPurchaseOrder\PurchaseOrderInfoTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -830,7 +844,6 @@
   <ItemGroup>
     <Folder Include="DataAccess\" />
     <Folder Include="img\general\" />
-    <Folder Include="View\CustomWindow\" />
     <Folder Include="View\Inventory\Product\ProductCategory\" />
     <Folder Include="View\Option\" />
     <Folder Include="View\Report\" />
