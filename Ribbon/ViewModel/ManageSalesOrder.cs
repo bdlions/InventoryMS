@@ -601,7 +601,8 @@ namespace Ribbon.ViewModel
             get {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
-                    SaleList.Add((ProductInfoNJ)selectedItem);
+                    SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
+                    SaleList.RemoveAt(SaleList.Count - 1);
                 });
             } 
         }

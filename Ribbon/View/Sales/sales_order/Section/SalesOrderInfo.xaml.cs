@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ribbon.util;
+using Ribbon.Model;
 
 namespace Ribbon.View
 {
@@ -30,9 +31,14 @@ namespace Ribbon.View
         private void productSaleOrderGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
             DataGrid grid = (DataGrid) sender;
-            Popup productSelector = (Popup)grid.FindName("productSelector");
-            productSelector.PlacementTarget = grid.GetCell(e.Row.GetIndex(), e.Column.DisplayIndex);
-            productSelector.IsOpen = true;
+            ProductInfoNJ productInfo = (ProductInfoNJ)e.Row.Item;
+            if (String.IsNullOrEmpty(productInfo.Name)) {
+                Popup productSelector = (Popup)grid.FindName("productSelector");
+
+                productSelector.PlacementTarget = grid.GetCell(e.Row.GetIndex(), e.Column.DisplayIndex);
+                productSelector.IsOpen = true;
+            }
+            
             
         }
 
