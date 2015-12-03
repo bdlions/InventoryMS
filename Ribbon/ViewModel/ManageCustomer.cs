@@ -1,9 +1,12 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
+using Ribbon.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -26,7 +29,7 @@ namespace Ribbon.ViewModel
             {
                 if (!String.IsNullOrEmpty(propertyName))
                 {
-                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
+                    if (propertyName.ToLower().Equals("CustomerFirstName") || propertyName.ToLower().Equals("CustomerLastName"))
                     {
                         CustomerName = CustomerFirstName + " " + CustomerLastName;
                         handler(this, new PropertyChangedEventArgs("CustomerName"));
@@ -287,15 +290,7 @@ namespace Ribbon.ViewModel
             userInfo.setFax(CustomerFax);
             userInfo.setWebsite(CustomerWebsite);
 
-            //AddressInfo addressInfo = new AddressInfo();
-            //addressInfo.setAddress("niketon");
-            //addressInfo.setCity("dhaka");
-            //addressInfo.setState("dhaka");
-            //addressInfo.setZip("1507");
-
-            //java.util.List addresses = new java.util.ArrayList();
-            //addresses.add(addressInfo);
-            //userInfo.setAddresses(addresses);
+            
 
             CustomerInfo customerInfo = new CustomerInfo();
             customerInfo.setUserInfo(userInfo);
@@ -307,33 +302,11 @@ namespace Ribbon.ViewModel
 
 
 
-            //UserInfo userInfo = new UserInfo();
-            //userInfo.setFirstName("fn3");
-            //userInfo.setLastName("ln8");
-            //userInfo.setEmail("email8");
-            //userInfo.setPhone("phone8");
-            //userInfo.setFax("fax8");
-            //userInfo.setWebsite("website8");
-
-            //AddressInfo addressInfo = new AddressInfo();
-            //addressInfo.setAddress("niketon");
-            //addressInfo.setCity("dhaka");
-            //addressInfo.setState("dhaka");
-            //addressInfo.setZip("1807");
-
-            //java.util.List addresses = new java.util.ArrayList();
-            //addresses.add(addressInfo);
-            //userInfo.setAddresses(addresses);
-
-            //CustomerInfo customerInfo = new CustomerInfo();
-            //customerInfo.setUserInfo(userInfo);
-
-            //CustomerManager customerManager = new CustomerManager();
-            //customerManager.createCustomer(customerInfo);
-
-
             MessageBox.Show("Save Successfully");
         }
+
+
+
 
 
         /// <summary>

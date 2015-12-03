@@ -21,6 +21,48 @@ namespace Ribbon.Model
             }
         }
 
+
+        private string _fname;
+        public string SupplierFirstName
+        {
+            get
+            {
+                return this._fname;
+            }
+            set
+            {
+                this._fname = value;
+            }
+        }
+
+        private string _lname;
+        public string SupplierLastName
+        {
+            get
+            {
+                return this._lname;
+            }
+            set
+            {
+                this._lname = value;
+            }
+        }
+
+
+        private string _supplier;
+        public string SupplierName
+        {
+            get
+            {
+                return this._supplier = SupplierFirstName + " " + SupplierLastName;
+            }
+            set
+            {
+                this._supplier = value;
+            }
+        }
+
+
         private string _code;
         public string Code
         {

@@ -10,15 +10,41 @@ namespace Ribbon.Model
     {
 
         private string _supplier;
-        public string Supplier
+        public string SupplierName
         {
             get
             {
-                return this._supplier;
+                return this._supplier = SupplierFirstName + " "+ SupplierLastName;
             }
             set
             {
                 this._supplier = value;
+            }
+        }
+
+        private string _supplierFirstName;
+        public string SupplierFirstName
+        {
+            get
+            {
+                return this._supplierFirstName;
+            }
+            set
+            {
+                this._supplierFirstName = value;
+            }
+        }
+
+        private string _supplierLastName;
+        public string SupplierLastName
+        {
+            get
+            {
+                return this._supplierLastName;
+            }
+            set
+            {
+                this._supplierLastName = value;
             }
         } 
 
@@ -34,7 +60,21 @@ namespace Ribbon.Model
             {
                 this._order = value;
             }
+        }
+
+        private string _orderDate;
+        public string OrderDate
+        {
+            get
+            {
+                return this._orderDate;
+            }
+            set
+            {
+                this._orderDate = value;
+            }
         } 
+
         private string _remark;
         public string Remark
         {
@@ -48,8 +88,8 @@ namespace Ribbon.Model
             }
         }
 
-        private int _requestedShipDate;
-        public int RequestedShipDate
+        private long _requestedShipDate;
+        public long RequestedShipDate
         {
             get
             {
@@ -59,8 +99,33 @@ namespace Ribbon.Model
             {
                 this._requestedShipDate = value;
             }
-        } 
+        }
 
+        private long _statusId;
+        public long StatusId
+        {
+            get
+            {
+                return this._statusId;
+            }
+            set
+            {
+                this._statusId = value;
+            }
+        }
+
+        private long _discount;
+        public long Discount
+        {
+            get
+            {
+                return this._discount;
+            }
+            set
+            {
+                this._discount = value;
+            }
+        } 
         
     }
 }

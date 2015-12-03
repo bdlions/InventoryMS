@@ -83,6 +83,19 @@ namespace Ribbon.ViewModel
             }
         }
 
+        private double _supplierUserID;
+        public double SupplierUserID
+        {
+            get
+            {
+                return this._supplierUserID;
+            }
+            set
+            {
+                this._supplierUserID = value;
+            }
+        }
+
 
         private double _balance;
         public double Balance
@@ -293,6 +306,7 @@ namespace Ribbon.ViewModel
             userInfo.setPhone(Phone);
             userInfo.setFax(Fax);
             userInfo.setWebsite(Website);
+            userInfo.setId(userInfo.getId());
 
             //AddressInfo addressInfo = new AddressInfo();
             //addressInfo.setAddress(Address);
@@ -307,7 +321,6 @@ namespace Ribbon.ViewModel
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setUserInfo(userInfo);
             supplierInfo.setRemarks(Remark);
-
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);
 

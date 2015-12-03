@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,18 +17,61 @@ using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManagePurchaseOrder : BindableBase
+    class ManagePurchaseOrder : BindableBase, INotifyPropertyChanged
     {
-        private string _supplierName;
+        private string _fname;
+        public string SupplierFirstName
+        {
+            get
+            {
+                return this._fname;
+            }
+            set
+            {
+                this._fname = value;
+                OnPropertyChanged("SupplierName");
+            }
+        }
+
+        private string _lname;
+        public string SupplierLastName
+        {
+            get
+            {
+                return this._lname;
+            }
+            set
+            {
+                this._lname = value;
+                OnPropertyChanged("SupplierName");
+            }
+        }
+
+
+        private string _supplier;
         public string SupplierName
         {
             get
             {
-                return this._supplierName;
+                return this._supplier = SupplierFirstName + " " + SupplierLastName;
             }
             set
             {
-                this._supplierName = value;
+                this._supplier = value;
+                OnPropertyChanged("SupplierName");
+            }
+        }
+
+        private int _supplierUserId;
+        public int SupplierUserId
+        {
+            get
+            {
+                return this._supplierUserId;
+            }
+            set
+            {
+                this._supplierUserId = value;
             }
         }
 
@@ -45,6 +89,19 @@ namespace Ribbon.ViewModel
             }
         }
 
+        private long _requestShippedDate;
+        public long RequestShippedDate
+        {
+            get
+            {
+                return this._requestShippedDate;
+            }
+            set
+            {
+                this._requestShippedDate = value;
+            }
+        }
+
         private string _phone;
         public string Phone
         {
@@ -55,35 +112,11 @@ namespace Ribbon.ViewModel
             set
             {
                 this._phone = value;
+                OnPropertyChanged("Phone");
             }
         }
 
-        ObservableCollection<ProductInfoNJ> _purchaseList;
-
-        public ObservableCollection<ProductInfoNJ> PurchaseList
-        {
-            get
-            {
-                if (_purchaseList == null || _purchaseList.Count <= 0)
-                {
-                    _purchaseList = new ObservableCollection<ProductInfoNJ>();
-
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    ProductInfo productInfo = new ProductInfo();
-                    //productInfoNJ.Price = productInfo.getUnitPrice();
-                    //productInfoNJ.Quantity = productInfo.getQuantity();
-                    //productInfoNJ.Discount = productInfo.getDiscount();
-                    productInfoNJ.ProductId = productInfo.getId();
-
-                }
-                return _purchaseList;
-
-            }
-            set
-            {
-                this._purchaseList = value;
-            }
-        }
+        
 
 
         /*  ------------------------- Purchase Order Item ----------------------*/
@@ -213,8 +246,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _status;
-        public string Status
+        private int _status;
+        public int Status
         {
             get
             {
@@ -553,19 +586,23 @@ namespace Ribbon.ViewModel
 
                     PurchaseInfo purchaseInfo = new PurchaseInfo();
                     purchaseInfo.setProductList(productList);
-                    purchaseInfo.setSupplierUserId(9695697);
+                    purchaseInfo.setSupplierUserId(SupplierUserId);
                     purchaseInfo.setOrderNo(Order);
-                    purchaseInfo.setStatusId(1);
+                    purchaseInfo.setStatusId(Status);
                     purchaseInfo.setRemarks(OrderRemark);
-                    //purchaseInfo.setOrderDate(123);
-                    purchaseInfo.setRequestShippedDate(456);
+                    purchaseInfo.setOrderDate(Order);
+                    purchaseInfo.setRequestShippedDate(RequestShippedDate);
 
                     PurchaseManager purchaseManager = new PurchaseManager();
                     purchaseManager.addPurchaseOrder(purchaseInfo);
+
                     MessageBox.Show("Save Successfully");
                 }));
             }
         }
+
+
+
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -573,54 +610,40 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
+            //ProductInfo productInfo = new ProductInfo();
 
-            ProductInfo productInfo = new ProductInfo();
-            productInfo.setUnitPrice(productInfo.getUnitPrice());
-            productInfo.setQuantity(productInfo.getQuantity());
-            productInfo.setDiscount(productInfo.getDiscount());
+            //productInfo.setId(productInfo.getId());
+            //productInfo.setUnitPrice(productInfo.getUnitPrice());
+            //productInfo.setQuantity(productInfo.getQuantity());
+            //productInfo.setDiscount(productInfo.getDiscount());
 
             java.util.List productList = new java.util.ArrayList();
-            productList.add(productInfo);
-
-
+                      
+            for(int i = 0; i < ProductItemList.Count; i ++){
+                ProductInfo product = new ProductInfo();
+                ProductInfoNJ productNJ = ProductItemList.ElementAt(i);
+                product.setId(productNJ.ProductId);
+                product.setUnitPrice(productNJ.Price);
+                product.setQuantity(productNJ.Quantity);
+                product.setDiscount(productNJ.Discount);
+                productList.add(product);
+            }
             PurchaseInfo purchaseInfo = new PurchaseInfo();
             purchaseInfo.setProductList(productList);
-            purchaseInfo.setSupplierUserId(1044315);
-            purchaseInfo.setOrderNo("order10");
-            purchaseInfo.setStatusId(1);
-            purchaseInfo.setRemarks("remarks10");
-            //purchaseInfo.setOrderDate(123);
-            purchaseInfo.setRequestShippedDate(456);
-
+            purchaseInfo.setSupplierUserId(SupplierUserId);
+            purchaseInfo.setOrderNo(purchaseInfo.getOrderNo());
+            purchaseInfo.setStatusId(purchaseInfo.getStatusId());
+            purchaseInfo.setRemarks(purchaseInfo.getRemarks());
+            purchaseInfo.setOrderDate(purchaseInfo.getOrderDate());
+            purchaseInfo.setRequestShippedDate(purchaseInfo.getRequestShippedDate());
+                      
             PurchaseManager purchaseManager = new PurchaseManager();
             purchaseManager.addPurchaseOrder(purchaseInfo);
-
-
-
-
-            //ProductInfo productInfo = new ProductInfo();
-            //productInfo.setId(1);
-            //productInfo.setQuantity(500);
-            //productInfo.setDiscount(0);
-
-            //java.util.List productList = new java.util.ArrayList();
-            //productList.add(productInfo);
-
-            //PurchaseInfo purchaseInfo = new PurchaseInfo();
-            //purchaseInfo.setProductList(productList);
-            //purchaseInfo.setSupplierUserId(3218648);
-            //purchaseInfo.setOrderNo(Order);
-            //purchaseInfo.setStatusId(1);
-            //purchaseInfo.setRemarks(OrderRemark);
-            //purchaseInfo.setOrderDate(150);
-            //purchaseInfo.setRequestShippedDate(566);
-
-            //PurchaseManager purchaseManager = new PurchaseManager();
-            //purchaseManager.addPurchaseOrder(purchaseInfo);
-
+            
 
             MessageBox.Show("Save Successfully");
         }
+
 
         ObservableCollection<ProductInfoNJ> _productItemList;
 
@@ -639,7 +662,6 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Name = prodcutInfo.getName();
                     productInfoNJ.Price = prodcutInfo.getUnitPrice();
                     productInfoNJ.ProductId = prodcutInfo.getId();
-                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
 
                     _productItemList.Add(productInfoNJ);
                 }
@@ -651,6 +673,104 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<ProductInfoNJ> _purchaseList;
+
+        public ObservableCollection<ProductInfoNJ> PurchaseList
+        {
+            get
+            {
+                if (_purchaseList == null || _purchaseList.Count <= 0)
+                {
+                    _purchaseList = new ObservableCollection<ProductInfoNJ>();
+
+
+                    ProductInfo productInfo = new ProductInfo();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.Quantity = productInfo.getQuantity();
+                    productInfoNJ.Discount = productInfo.getDiscount();
+                    productInfoNJ.ProductId = productInfo.getId();
+
+                    SupplierInfo supplierInfo = new SupplierInfo();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                }
+                return _purchaseList;
+
+            }
+            set
+            {
+                this._purchaseList = value;
+            }
+        }
+
+
+
+
+        ObservableCollection<SupplierInfoNJ> _supplierItemList;
+
+        public ObservableCollection<SupplierInfoNJ> SupplierItemList
+        {
+            get
+            {
+                SupplierManager supplierManager = new SupplierManager();
+
+                _supplierItemList = new ObservableCollection<SupplierInfoNJ>();
+                for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
+                {
+                    SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
+
+
+
+                    _supplierItemList.Add(supplierInfoNJ);
+                }
+                return _supplierItemList;
+            }
+            set
+            {
+                this._supplierItemList = value;
+            }
+        }
+
+
+        ObservableCollection<SupplierInfoNJ> _supplierList;
+
+        public ObservableCollection<SupplierInfoNJ> SupplierList
+        {
+            get
+            {
+                if (_supplierList == null || _supplierList.Count <= 0)
+                {
+                    _supplierList = new ObservableCollection<SupplierInfoNJ>();
+
+                    SupplierInfo supplierInfo = new SupplierInfo();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
+                }
+                return _supplierList;
+
+            }
+            set
+            {
+                this._supplierList = value;
+            }
+        }
+
+        
+
+
+        
+
         public DelegateCommand<object> OnItemSelected
         {
             get
@@ -659,6 +779,27 @@ namespace Ribbon.ViewModel
                 {
                     PurchaseList.Insert(PurchaseList.Count - 1, (ProductInfoNJ)selectedItem);
                     PurchaseList.RemoveAt(PurchaseList.Count - 1);
+
+                });
+            }
+        }
+
+
+        public DelegateCommand<object> OnSupplierSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((SelectedSupplier) =>
+                {
+
+                    
+                    SupplierInfoNJ supplierInfo = (SupplierInfoNJ)SelectedSupplier;
+                    SupplierFirstName = supplierInfo.SupplierFirstName;
+                    SupplierLastName = supplierInfo.SupplierLastName;
+                    Phone = supplierInfo.Phone;
+                    SupplierUserId = supplierInfo.SupplierUserID;
+                   
+
                 });
             }
         }
@@ -701,6 +842,16 @@ namespace Ribbon.ViewModel
         private void OnEmail()
         {
             MessageBox.Show("OnEmail");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler(this, new PropertyChangedEventArgs(propertyName));
+                
         }
 
     }

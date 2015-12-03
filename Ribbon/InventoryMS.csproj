@@ -299,6 +299,12 @@
     <Compile Include="View\PopUpWindow\PurchaseOrderProductSelector.xaml.cs">
       <DependentUpon>PurchaseOrderProductSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PopUpWindow\PurchaseOrderSupplierSelector.xaml.cs">
+      <DependentUpon>PurchaseOrderSupplierSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PopUpWindow\SaleOrderCustomerSelector.xaml.cs">
+      <DependentUpon>SaleOrderCustomerSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PopUpWindow\SaleOrderProductSelector.xaml.cs">
       <DependentUpon>SaleOrderProductSelector.xaml</DependentUpon>
     </Compile>
@@ -578,6 +584,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PopUpWindow\PurchaseOrderProductSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopUpWindow\PurchaseOrderSupplierSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopUpWindow\SaleOrderCustomerSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

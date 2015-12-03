@@ -29,7 +29,7 @@ namespace Ribbon
             buttonAddTab.Click += onClickTabCreationButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
-            subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
+          //  subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
             subMenuManageSupplier.Click += onClickSubManageSupplier;
             subMenuManageSupplierList.Click += onClickSubManageSupplierList;
             subMenuManageSalesOrderList.Click += onClickSubManageSalesOrderList;
@@ -39,7 +39,7 @@ namespace Ribbon
             subMenuManageProduct.Click += onClicksubManageProduct;
             subMenuManageNewSalesOrder.Click += onClicksubManageNewSalesOrder;
             subMenuManageNewCustomer.Click += onClicksubManageNewCustomer;
-            subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
+           // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
             subMenuManageCustomerList.Click += onClicksuManageCustomerList;
             subMenuManageCurrentStock.Click += onClicksuManageCurrentStock;
         }

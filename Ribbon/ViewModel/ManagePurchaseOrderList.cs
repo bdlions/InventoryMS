@@ -18,9 +18,10 @@ namespace Ribbon.ViewModel
 {
     class ManagePurchaseOrderList: BindableBase
     {
+
         ObservableCollection<PurchaseInfoNJ> _purchaseList;
 
-        public ObservableCollection<PurchaseInfoNJ> PurchaseList
+        public ObservableCollection<PurchaseInfoNJ> SuppplierList
         {
             get
             {
@@ -29,13 +30,20 @@ namespace Ribbon.ViewModel
                 _purchaseList = new ObservableCollection<PurchaseInfoNJ>();
                 for (Iterator i = purchaseManager.getAllPurchaseOrders().iterator(); i.hasNext(); )
                 {
-
-
                     PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
                     PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
-                    purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
                     purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
-                    purchaseInfoNJ.Supplier = purchaseInfo.getSupplierInfo().getUserInfo().getFirstName() + " " + purchaseInfo.getSupplierInfo().getUserInfo().getLastName();
+                    purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
+                    purchaseInfoNJ.RequestedShipDate = purchaseInfo.getRequestShippedDate();
+                    purchaseInfoNJ.OrderDate = purchaseInfo.getOrderDate();
+                    purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
+                    purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
+
+                    SupplierInfo supplierInfo = new SupplierInfo();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
 
 
                     _purchaseList.Add(purchaseInfoNJ);

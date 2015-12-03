@@ -18,10 +18,10 @@ using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManageSalesOrder : BindableBase
+    class ManageSalesOrder : BindableBase, INotifyPropertyChanged
     {
         private string _fName;
-        public string FirstName
+        public string CustomerFirstName
         {
             get
             {
@@ -30,44 +30,40 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fName = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CustomerName");
             }
         }
 
-        ObservableCollection<ProductInfoNJ> _saleList;
-
-        public ObservableCollection<ProductInfoNJ> SaleList
+        private string _lName;
+        public string CustomerLastName
         {
             get
             {
-                if (_saleList == null || _saleList.Count <= 0)
-                {
-                    _saleList = new ObservableCollection<ProductInfoNJ>();
-                    //ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    //ProductInfo productInfo = new ProductInfo();
-                    //productInfoNJ.ProductId = productInfo.getId();
-                }
-                return _saleList;
+                return this._lName;
 
             }
             set
             {
-                this._saleList = value;
+                this._lName = value;
+                OnPropertyChanged("CustomerName");
             }
         }
 
-        //private string _customerName;
-        //public string Customername
-        //{
-        //    get
-        //    {
-        //        return this._fName + " " + this._lName;
-        //    }
-        //    set
-        //    {
-        //        this._customerName = value;
-        //    }
-        //}
+        private string _name;
+        public string CustomerName
+        {
+            get
+            {
+                return this._fName + " " + this._lName;
+            }
+            set
+            {
+                this._name = value;
+                OnPropertyChanged("CustomerName");
+            }
+        }
+
+       
 
         private string _contact;
         public string Contact
@@ -82,6 +78,19 @@ namespace Ribbon.ViewModel
             }
         }
 
+        private int _cusomerUserId;
+        public int CusomerUserId
+        {
+            get
+            {
+                return this._cusomerUserId;
+            }
+            set
+            {
+                this._cusomerUserId = value;
+            }
+        }
+
         private string _phone;
         public string Phone
         {
@@ -92,6 +101,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._phone = value;
+                OnPropertyChanged("Phone");
             }
         }
 
@@ -559,34 +569,6 @@ namespace Ribbon.ViewModel
             }
         }
 
-        ObservableCollection<ProductInfoNJ> _productItemList;
-
-        public ObservableCollection<ProductInfoNJ> ProductItemList
-        {
-            get
-            {
-                ProductManager productManager = new ProductManager();
-
-                _productItemList = new ObservableCollection<ProductInfoNJ>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
-                {
-                    ProductInfo prodcutInfo = (ProductInfo)i.next();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Code = prodcutInfo.getCode();
-                    productInfoNJ.Name = prodcutInfo.getName();
-                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
-                    productInfoNJ.ProductId = prodcutInfo.getId();
-                    //saleInfoNJ.SalesOrderRemark = saleInfo.getRemarks();
-
-                    _productItemList.Add(productInfoNJ);
-                }
-                return _productItemList;
-            }
-            set
-            {
-                this._productItemList = value;
-            }
-        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -604,7 +586,9 @@ namespace Ribbon.ViewModel
             productList.add(productInfo);
 
             SaleInfo saleInfo = new SaleInfo();
+            CustomerInfo customerInfo = new CustomerInfo();
             saleInfo.setProductList(productList);
+            saleInfo.setCustomerUserId(customerInfo.getUserInfo().getId());
             saleInfo.setOrderNo(saleInfo.getOrderNo());
             saleInfo.setStatusId(saleInfo.getStatusId());
             saleInfo.setRemarks(saleInfo.getRemarks());
@@ -614,6 +598,9 @@ namespace Ribbon.ViewModel
 
             MessageBox.Show("Save Successfully");
         }
+
+
+       
 
         public DelegateCommand<object> OnItemSelected
         {
@@ -667,6 +654,128 @@ namespace Ribbon.ViewModel
             }
         }
 
+        public DelegateCommand<object> OnCustomerSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((SelectedCustomer) =>
+                {
+
+
+                    CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
+
+                    CustomerFirstName = customerInfoNJ.CustomerFirstName;
+                    CustomerLastName = customerInfoNJ.CustomerLastName;
+                    
+                    Phone = customerInfoNJ.Phone;
+                    //SupplierFirstName = supplierInfo.SupplierFirstName;
+                    //SupplierLastName = supplierInfo.SupplierLastName;
+                    
+
+                  
+
+                });
+            }
+        }
+
+
+        ObservableCollection<ProductInfoNJ> _saleList;
+
+        public ObservableCollection<ProductInfoNJ> SaleList
+        {
+            get
+            {
+                if (_saleList == null || _saleList.Count <= 0)
+                {
+                    _saleList = new ObservableCollection<ProductInfoNJ>();
+
+
+                    ProductInfo productInfo = new ProductInfo();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.Quantity = productInfo.getQuantity();
+                    productInfoNJ.Discount = productInfo.getDiscount();
+                    productInfoNJ.ProductId = productInfo.getId();
+
+                    CustomerInfo customerInfo = new CustomerInfo();
+                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                }
+                return _saleList;
+
+            }
+            set
+            {
+                this._saleList = value;
+            }
+        }
+
+
+
+        ObservableCollection<CustomerInfoNJ> _customerItemList;
+
+        public ObservableCollection<CustomerInfoNJ> CustomerItemList
+        {
+            get
+            {
+                CustomerManager supplierManager = new CustomerManager();
+
+                _customerItemList = new ObservableCollection<CustomerInfoNJ>();
+                for (Iterator i = supplierManager.getAllCustomers().iterator(); i.hasNext(); )
+                {
+                    CustomerInfo customerInfo = (CustomerInfo)i.next();
+                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
+                    customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
+
+
+                    _customerItemList.Add(customerInfoNJ);
+                }
+                return _customerItemList;
+            }
+            set
+            {
+                this._customerItemList = value;
+            }
+        }
+
+
+        ObservableCollection<CustomerInfoNJ> _customerList;
+
+        public ObservableCollection<CustomerInfoNJ> CustomerList
+        {
+            get
+            {
+                if (_customerList == null || _customerList.Count <= 0)
+                {
+                    _customerList = new ObservableCollection<CustomerInfoNJ>();
+
+                    CustomerInfo customerInfo = new CustomerInfo();
+                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
+                    customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
+
+                    
+                }
+                return _customerList;
+
+            }
+            set
+            {
+                this._customerList = value;
+            }
+        }
+
+
+
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
@@ -704,6 +813,16 @@ namespace Ribbon.ViewModel
         private void OnEmail()
         {
             MessageBox.Show("OnEmail");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler(this, new PropertyChangedEventArgs(propertyName));
+
         }
 
     }

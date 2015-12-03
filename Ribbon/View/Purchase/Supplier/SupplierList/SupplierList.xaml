@@ -10,8 +10,7 @@
               CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
               CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding SuppplierList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="70" Header="First Name" FontFamily="Arial" Binding="{Binding SupplierFirstName}"/>
-                <DataGridTextColumn Width="70" Header="Last Name" FontFamily="Arial" Binding="{Binding SupplierLastName}"/>
+                <DataGridTextColumn Width="140" Header="Supplier Name" FontFamily="Arial" Binding="{Binding SupplierName}"/>
                 <DataGridTextColumn Width="84"  Header="Contact" FontFamily="Arial" Binding="{Binding Contact}"/>
                 <DataGridTextColumn Width="84"  Header="Phone" FontFamily="Arial" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Width="84"  Header="Fax" FontFamily="Arial" Binding="{Binding Fax}"/>

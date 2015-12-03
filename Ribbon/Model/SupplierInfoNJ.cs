@@ -10,18 +10,7 @@ namespace Ribbon.Model
     class SupplierInfoNJ
     {
 
-        private string _supplier;
-        public string Supplier
-        {
-            get
-            {
-                return this._supplier;
-            }
-            set
-            {
-                this._supplier = value;
-            }
-        }
+       
 
         private string _fname;
         public string SupplierFirstName
@@ -49,6 +38,32 @@ namespace Ribbon.Model
             }
         }
 
+
+        private string _supplier;
+        public string SupplierName
+        {
+            get
+            {
+                return this._supplier = SupplierFirstName + " " + SupplierLastName;
+            }
+            set
+            {
+                this._supplier = value;
+            }
+        }
+
+        private int _supplierUserID;
+        public int SupplierUserID
+        {
+            get
+            {
+                return this._supplierUserID;
+            }
+            set
+            {
+                this._supplierUserID = value;
+            }
+        }
 
         private double _contact;
         public double Contact

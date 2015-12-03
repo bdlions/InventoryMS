@@ -31,7 +31,13 @@ namespace Ribbon.ViewModel
                 {
                     CustomerInfo customerInfo = (CustomerInfo)i.next();
                     CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
-                    customerInfoNJ.Name = customerInfo.getUserInfo().getFirstName() + " " + customerInfo.getUserInfo().getLastName();
+
+                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
+                    customerInfoNJ.Fax = customerInfo.getUserInfo().getFax();
+                    customerInfoNJ.Email = customerInfo.getUserInfo().getEmail();
+                    customerInfoNJ.Website = customerInfo.getUserInfo().getWebsite();
 
                     _customerList.Add(customerInfoNJ);
                 }
@@ -44,4 +50,5 @@ namespace Ribbon.ViewModel
         }
     }
 }
+
 

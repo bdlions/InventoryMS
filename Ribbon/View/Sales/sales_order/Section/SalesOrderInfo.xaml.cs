@@ -48,5 +48,20 @@ namespace Ribbon.View
             Popup productSelector = (Popup)grid.FindName("productSelector");
             productSelector.IsOpen = false;
         }
+
+
+        private void CustomerTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Popup customerSelector = (Popup)FindName("CustomerSelector");
+            if (customerSelector.IsOpen)
+            {
+                customerSelector.IsOpen = false;
+            }
+            else
+            {
+                customerSelector.IsOpen = true;
+            }
+
+        }
     }
 }
