@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:popupbox="clr-namespace:Ribbon.View.PopUpWindow"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:command="http://www.galasoft.ch/mvvmlight"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="662">
     <Grid Margin="5">
@@ -26,7 +28,9 @@
 
             <!-- 1st row-->
             <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier" Grid.ColumnSpan="2" Margin="0,0,157,0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding SupplierName}" MouseDoubleClick="TextBox_MouseDoubleClick"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding SupplierName}" MouseDoubleClick="TextBox_MouseDoubleClick">
+            </TextBox>
+
             <popupbox:PurchaseOrderSupplierSelector  x:Name="SupplierSelector"/>
             
 

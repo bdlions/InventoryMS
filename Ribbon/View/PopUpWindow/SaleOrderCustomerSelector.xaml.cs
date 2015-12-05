@@ -25,5 +25,10 @@ namespace Ribbon.View.PopUpWindow
         {
             InitializeComponent();
         }
+
+        private void customerSelectionGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IsOpen = false;
+        }
     }
 }

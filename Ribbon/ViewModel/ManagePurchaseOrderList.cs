@@ -21,7 +21,7 @@ namespace Ribbon.ViewModel
 
         ObservableCollection<PurchaseInfoNJ> _purchaseList;
 
-        public ObservableCollection<PurchaseInfoNJ> SuppplierList
+        public ObservableCollection<PurchaseInfoNJ> PurchaseList
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Ribbon.ViewModel
                     purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
                     purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
                     purchaseInfoNJ.RequestedShipDate = purchaseInfo.getRequestShippedDate();
-                    purchaseInfoNJ.OrderDate = purchaseInfo.getOrderDate();
+                    //purchaseInfoNJ.OrderDate = purchaseInfo.getOrderDate();
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                     purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
 

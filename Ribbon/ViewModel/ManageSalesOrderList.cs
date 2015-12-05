@@ -32,7 +32,9 @@ namespace Ribbon.ViewModel
                 {
                     SaleInfo saleInfo = (SaleInfo)i.next();
                     SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
-
+                    saleInfoNJ.Order = saleInfo.getOrderNo();
+                    saleInfoNJ.OrderDate = saleInfo.getSaleDate();
+                    saleInfoNJ.Status = saleInfo.getStatusId();
 
 
                     _saleList.Add(saleInfoNJ);

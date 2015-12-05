@@ -114,8 +114,8 @@ namespace Ribbon.Model
             }
         }
 
-        private long _discount;
-        public long Discount
+        private double _discount;
+        public double Discount
         {
             get
             {

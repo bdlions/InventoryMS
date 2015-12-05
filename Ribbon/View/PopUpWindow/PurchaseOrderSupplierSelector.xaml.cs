@@ -25,5 +25,15 @@ namespace Ribbon.View.PopUpWindow
         {
             InitializeComponent();
         }
+
+        private void supplierSelectionGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            IsOpen = false;
+        }
+
+        private void supplierSelectionGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IsOpen = false;
+        }
     }
 }

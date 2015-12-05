@@ -588,10 +588,10 @@ namespace Ribbon.ViewModel
                     purchaseInfo.setProductList(productList);
                     purchaseInfo.setSupplierUserId(SupplierUserId);
                     purchaseInfo.setOrderNo(Order);
-                    purchaseInfo.setStatusId(Status);
+                    purchaseInfo.setStatusId(1);
                     purchaseInfo.setRemarks(OrderRemark);
-                    purchaseInfo.setOrderDate(Order);
-                    purchaseInfo.setRequestShippedDate(RequestShippedDate);
+                    //purchaseInfo.setOrderDate(Order);
+                    //purchaseInfo.setRequestShippedDate(RequestShippedDate);
 
                     PurchaseManager purchaseManager = new PurchaseManager();
                     purchaseManager.addPurchaseOrder(purchaseInfo);
@@ -691,10 +691,11 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Discount = productInfo.getDiscount();
                     productInfoNJ.ProductId = productInfo.getId();
 
-                    SupplierInfo supplierInfo = new SupplierInfo();
+                    
+                    //SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
+                    supplierInfoNJ.SupplierFirstName = SupplierFirstName;
+                    supplierInfoNJ.SupplierLastName = SupplierLastName;
                 }
                 return _purchaseList;
 
@@ -791,13 +792,14 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((SelectedSupplier) =>
                 {
-
+                    if (SelectedSupplier is SupplierInfoNJ) {
+                        SupplierInfoNJ supplierInfo = (SupplierInfoNJ)SelectedSupplier;
+                        SupplierFirstName = supplierInfo.SupplierFirstName;
+                        SupplierLastName = supplierInfo.SupplierLastName;
+                        Phone = supplierInfo.Phone;
+                        SupplierUserId = supplierInfo.SupplierUserID;
+                    }
                     
-                    SupplierInfoNJ supplierInfo = (SupplierInfoNJ)SelectedSupplier;
-                    SupplierFirstName = supplierInfo.SupplierFirstName;
-                    SupplierLastName = supplierInfo.SupplierLastName;
-                    Phone = supplierInfo.Phone;
-                    SupplierUserId = supplierInfo.SupplierUserID;
                    
 
                 });

@@ -640,7 +640,7 @@ namespace Ribbon.ViewModel
 
                     SaleInfo saleInfo = new SaleInfo();
                     saleInfo.setProductList(productList);
-                    saleInfo.setCustomerUserId(5905093);
+                    saleInfo.setCustomerUserId(CusomerUserId);
                     saleInfo.setOrderNo(Order);
                     saleInfo.setStatusId(1);
                     saleInfo.setRemarks(OrderRemark);
@@ -668,6 +668,7 @@ namespace Ribbon.ViewModel
                     CustomerLastName = customerInfoNJ.CustomerLastName;
                     
                     Phone = customerInfoNJ.Phone;
+                    CusomerUserId = customerInfoNJ.CusomerUserId;
                     //SupplierFirstName = supplierInfo.SupplierFirstName;
                     //SupplierLastName = supplierInfo.SupplierLastName;
                     
@@ -773,7 +774,33 @@ namespace Ribbon.ViewModel
                 this._customerList = value;
             }
         }
+        ObservableCollection<ProductInfoNJ> _productItemList;
 
+        public ObservableCollection<ProductInfoNJ> ProductItemList
+        {
+            get
+            {
+                ProductManager productManager = new ProductManager();
+
+                _productItemList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                {
+                    ProductInfo prodcutInfo = (ProductInfo)i.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Code = prodcutInfo.getCode();
+                    productInfoNJ.Name = prodcutInfo.getName();
+                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                    productInfoNJ.ProductId = prodcutInfo.getId();
+
+                    _productItemList.Add(productInfoNJ);
+                }
+                return _productItemList;
+            }
+            set
+            {
+                this._productItemList = value;
+            }
+        }
 
 
         /// <summary>

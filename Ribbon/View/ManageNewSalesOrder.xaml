@@ -11,7 +11,8 @@
         <modelView:ManageSalesOrder x:Key="manageSalesOrder"/>
     </UserControl.Resources>
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesOrder}">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
+                Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesOrder}">
         <StackPanel>
             <newSalesOrderAddSection:NewSalesOrderSearch Margin="3 7 3 5"/>
             <newSalesOrderAddSection:NewSalesOrder Margin="3 7 3 5"/>

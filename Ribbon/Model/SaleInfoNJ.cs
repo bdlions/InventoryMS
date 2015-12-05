@@ -48,8 +48,8 @@ namespace Ribbon.Model
             }
         }
 
-        private string _OrderDate;
-        public string OrderDate
+        private int _OrderDate;
+        public int OrderDate
         {
             get
             {
@@ -61,8 +61,8 @@ namespace Ribbon.Model
             }
         }
 
-        private string _status;
-        public string Status
+        private int _status;
+        public int Status
         {
             get
             {

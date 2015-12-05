@@ -76,8 +76,8 @@ namespace Ribbon.Model
             }
         }
 
-        private long _price;
-        public long Price
+        private double _price;
+        public double Price
         {
             get
             {
@@ -89,8 +89,8 @@ namespace Ribbon.Model
             }
         }
 
-        private long _quantity;
-        public long Quantity
+        private double _quantity;
+        public double Quantity
         {
             get
             {
@@ -102,8 +102,8 @@ namespace Ribbon.Model
             }
         }
 
-        private long _discount;
-        public long Discount
+        private double _discount;
+        public double Discount
         {
             get
             {

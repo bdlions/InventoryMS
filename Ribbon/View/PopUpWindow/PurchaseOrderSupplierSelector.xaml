@@ -11,7 +11,7 @@
         <StackPanel>
             <DataGrid Name="supplierSelectionGrid" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False"
-                          Height="150" ItemsSource="{Binding SupplierItemList}">
+                          Height="150" ItemsSource="{Binding SupplierItemList}" SelectionChanged="supplierSelectionGrid_SelectionChanged">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding OnSupplierSelected}" 
