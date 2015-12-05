@@ -28,8 +28,8 @@
 
             <!-- 1st row-->
             <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier" Grid.ColumnSpan="2" Margin="0,0,157,0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding SupplierName}" MouseDoubleClick="TextBox_MouseDoubleClick">
-            </TextBox>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding SupplierName}" MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
 
             <popupbox:PurchaseOrderSupplierSelector  x:Name="SupplierSelector"/>
             

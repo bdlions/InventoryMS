@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:popupbox="clr-namespace:Ribbon.View.PopUpWindow"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="662">
@@ -41,6 +42,8 @@
             <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Contact}"/>
             <Label Grid.Row="1" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:"/>
             <TextBox Grid.Row="1" Grid.Column="3" Margin="3" Text="{Binding Location}"/>
+            <popupbox:LocationSelector  x:Name="LocationSelector"/>
+            
             <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:"/>
 
             <!-- 3rd row-->

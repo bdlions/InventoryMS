@@ -13,7 +13,7 @@
                 <DataGridTextColumn Width="80"  Header="Order" FontFamily="Arial" Binding="{Binding Order}"/>
                 <DataGridTextColumn Width="80"  Header="Order Date" FontFamily="Arial" Binding="{Binding OrderDate}"/>
                 <DataGridTextColumn Width="80"  Header="Status" FontFamily="Arial" Binding="{Binding Status}"/>
-                <DataGridTextColumn Width="80"  Header="Customer" FontFamily="CaliArialbri" Binding="{Binding Customer}"/>
+                <DataGridTextColumn Width="80"  Header="Customer" FontFamily="CaliArialbri" Binding="{Binding CustomerName}"/>
                 <DataGridTextColumn Width="80"  Header="Postal Code" FontFamily="Arial" Binding="{Binding PostalCode}"/>
                 <DataGridTextColumn Width="100" Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
                 <DataGridTextColumn Width="80"  Header="Requested&#x0a;Ship Date" FontFamily="Arial" Binding="{Binding RequestedShipDate}"/>

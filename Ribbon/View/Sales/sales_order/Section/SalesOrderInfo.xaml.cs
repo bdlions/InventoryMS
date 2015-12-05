@@ -63,5 +63,19 @@ namespace Ribbon.View
             }
 
         }
+
+        private void LocationTextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Popup supplierSelector = (Popup)FindName("LocationSelector");
+            if (supplierSelector.IsOpen)
+            {
+                supplierSelector.IsOpen = false;
+            }
+            else
+            {
+                supplierSelector.IsOpen = true;
+            }
+
+        }
     }
 }

@@ -83,8 +83,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private double _supplierUserID;
-        public double SupplierUserID
+        private int _supplierUserID;
+        public int SupplierUserID
         {
             get
             {
@@ -298,7 +298,6 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-
             UserInfo userInfo = new UserInfo();
             userInfo.setFirstName(FirstName);
             userInfo.setLastName(LastName);
@@ -306,17 +305,7 @@ namespace Ribbon.ViewModel
             userInfo.setPhone(Phone);
             userInfo.setFax(Fax);
             userInfo.setWebsite(Website);
-            userInfo.setId(userInfo.getId());
-
-            //AddressInfo addressInfo = new AddressInfo();
-            //addressInfo.setAddress(Address);
-            //addressInfo.setCity(City);
-            //addressInfo.setState(State);
-            //addressInfo.setZip(Zip);
-
-            //java.util.List addresses = new java.util.ArrayList();
-            //addresses.add(addressInfo);
-            //userInfo.setAddresses(addresses);
+            userInfo.setId(SupplierUserID);
 
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setUserInfo(userInfo);
@@ -324,34 +313,6 @@ namespace Ribbon.ViewModel
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);
 
-
-
-            //UserInfo userInfo = new UserInfo();
-            //userInfo.setFirstName(FirstName);
-            //userInfo.setLastName(LastName);
-            ////userInfo.setBalance(Balance);
-            //userInfo.setEmail(Email);
-            //userInfo.setPhone(Phone);
-            //userInfo.setFax(Fax);
-            //userInfo.setWebsite(Website);
-            //userInfo.setGroupId(1);
-
-            //AddressInfo addressInfo = new AddressInfo();
-            //addressInfo.setAddress(Address);
-            //addressInfo.setCity(City);
-            //addressInfo.setState(State);
-            //addressInfo.setZip(Zip);
-
-            //java.util.List addresses = new java.util.ArrayList();
-            //addresses.add(addressInfo);
-            //userInfo.setAddresses(addresses);
-
-            //SupplierInfo supplierInfo = new SupplierInfo();
-            //supplierInfo.setUserInfo(userInfo);
-            //supplierInfo.setRemarks(Remark);
-
-            //SupplierManager supplierManager = new SupplierManager();
-            //supplierManager.createSupplier(supplierInfo);
 
             MessageBox.Show("Save Successfully.");
         }

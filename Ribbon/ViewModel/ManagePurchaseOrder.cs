@@ -590,8 +590,6 @@ namespace Ribbon.ViewModel
                     purchaseInfo.setOrderNo(Order);
                     purchaseInfo.setStatusId(1);
                     purchaseInfo.setRemarks(OrderRemark);
-                    //purchaseInfo.setOrderDate(Order);
-                    //purchaseInfo.setRequestShippedDate(RequestShippedDate);
 
                     PurchaseManager purchaseManager = new PurchaseManager();
                     purchaseManager.addPurchaseOrder(purchaseInfo);
@@ -610,8 +608,6 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-            //ProductInfo productInfo = new ProductInfo();
-
             //productInfo.setId(productInfo.getId());
             //productInfo.setUnitPrice(productInfo.getUnitPrice());
             //productInfo.setQuantity(productInfo.getQuantity());
@@ -620,14 +616,15 @@ namespace Ribbon.ViewModel
             java.util.List productList = new java.util.ArrayList();
                       
             for(int i = 0; i < ProductItemList.Count; i ++){
-                ProductInfo product = new ProductInfo();
-                ProductInfoNJ productNJ = ProductItemList.ElementAt(i);
-                product.setId(productNJ.ProductId);
-                product.setUnitPrice(productNJ.Price);
-                product.setQuantity(productNJ.Quantity);
-                product.setDiscount(productNJ.Discount);
-                productList.add(product);
+                ProductInfo productInfo = new ProductInfo();
+                ProductInfoNJ productInfoNJ = ProductItemList.ElementAt(i);
+                productInfo.setId(productInfoNJ.ProductId);
+                productInfo.setUnitPrice(productInfoNJ.Price);
+                productInfo.setQuantity(productInfoNJ.Quantity);
+                productInfo.setDiscount(productInfoNJ.Discount);
+                productList.add(productInfo);
             }
+
             PurchaseInfo purchaseInfo = new PurchaseInfo();
             purchaseInfo.setProductList(productList);
             purchaseInfo.setSupplierUserId(SupplierUserId);
@@ -636,7 +633,7 @@ namespace Ribbon.ViewModel
             purchaseInfo.setRemarks(purchaseInfo.getRemarks());
             purchaseInfo.setOrderDate(purchaseInfo.getOrderDate());
             purchaseInfo.setRequestShippedDate(purchaseInfo.getRequestShippedDate());
-                      
+
             PurchaseManager purchaseManager = new PurchaseManager();
             purchaseManager.addPurchaseOrder(purchaseInfo);
             

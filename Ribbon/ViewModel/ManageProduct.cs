@@ -57,6 +57,8 @@ namespace Ribbon.ViewModel
             }
         }
 
+
+
         public ICommand Add
         {
             get
@@ -108,17 +110,17 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-            ProductInfo productInfo1 = new ProductInfo();
-            productInfo1.setName(ProductName);
-            productInfo1.setCode(ProductCode);
-            productInfo1.setUnitPrice(Price);
+            ProductInfo productInfo = new ProductInfo();
+            productInfo.setName(ProductName);
+            productInfo.setCode(ProductCode);
+            productInfo.setUnitPrice(Price);
             //productInfo1.setLength("c1");
             //productInfo1.setWidth("d1");
             //productInfo1.setHeight("e1");
             //productInfo1.setWeight("f1");
 
             ProductManager productManager = new ProductManager();
-            productManager.createProduct(productInfo1);
+            productManager.createProduct(productInfo);
 
 
             MessageBox.Show("Save Successfully");

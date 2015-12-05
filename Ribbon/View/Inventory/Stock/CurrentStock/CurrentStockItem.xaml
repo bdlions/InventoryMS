@@ -5,7 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="1000">
-    <Grid Margin="10">
+
+    <StackPanel>
+        <DataGrid Name="dgDownloadsInfo" Grid.Row="2" Grid.Column="0" Width="980" Margin="5" HorizontalAlignment="Left" AutoGenerateColumns="False" CanUserAddRows="True"
+              CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
+              CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding CurrentStockList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="140" Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="84"  Header="Category" FontFamily="Arial" Binding="{Binding Category}"/>
+                <DataGridTextColumn Width="84"  Header="Last Supplier" FontFamily="Arial" Binding="{Binding LastSupplier}"/>
+                <DataGridTextColumn Width="84"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
+                <DataGridTextColumn Width="84"  Header="Quantity" FontFamily="Arial" Binding="{Binding Quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+
+
+
+    <!--<Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
@@ -27,7 +44,7 @@
             <ColumnDefinition Width="195" />
         </Grid.ColumnDefinitions>
 
-        <!-- 1st Column-->
+        --><!-- 1st Column--><!--
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Item" BorderBrush="Gray" BorderThickness="1 1 0 1" />
         <TextBox Grid.Row="1" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0"  Margin="0,1,0,0"/>
         <TextBox Grid.Row="2" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"  Margin="0,1,0,0"/>
@@ -40,7 +57,7 @@
         <TextBox Grid.Row="9" Grid.Column="0" Padding="0 3" VerticalAlignment="Center"  BorderThickness="1 1 0 0"  Margin="0,1,0,0"/>
         <TextBox Grid.Row="10" Grid.Column="0" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1"  Margin="0,1,0,0"/>
 
-        <!-- 2nd Column-->
+        --><!-- 2nd Column--><!--
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Category" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" Margin="0,1,0,0" />
         <TextBox Grid.Row="2" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"  />
@@ -53,7 +70,7 @@
         <TextBox Grid.Row="9" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"  />
         <TextBox Grid.Row="10" Grid.Column="1" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1" Margin="0,1,0,0"  />
 
-        <!-- 3rd Column-->
+        --><!-- 3rd Column--><!--
         <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Last Supplier" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="2" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="2" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"/>
@@ -66,7 +83,7 @@
         <TextBox Grid.Row="9" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="10" Grid.Column="2"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1" Margin="0,1,0,0"/>
 
-        <!-- 4th Column-->
+        --><!-- 4th Column--><!--
         <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
         <TextBox Grid.Row="1" Grid.Column="3" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 0 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="2" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"/>
@@ -79,7 +96,7 @@
         <TextBox Grid.Row="9" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="10" Grid.Column="3"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 0 1" Margin="0,1,0,0"/>
 
-        <!-- 5th Column-->
+        --><!-- 5th Column--><!--
         <Label Grid.Row="0" Grid.Column="4" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Quantity" BorderBrush="Gray" BorderThickness="1"/>
         <TextBox Grid.Row="1" Grid.Column="4" Padding="0 3" VerticalAlignment="Center" BorderThickness="1 0 1 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="2" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0" Margin="0,1,0,0"/>
@@ -92,6 +109,6 @@
         <TextBox Grid.Row="9" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1 1 1 0" Margin="0,1,0,0"/>
         <TextBox Grid.Row="10" Grid.Column="4"  Padding="0 3" VerticalAlignment="Center" BorderThickness="1" Margin="0,1,0,0"/>
 
-    </Grid>
+    </Grid>-->
 </UserControl>
 

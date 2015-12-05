@@ -8,19 +8,6 @@ namespace Ribbon.Model
 {
     class ProductInfoNJ
     {
-        private string _name;
-        public string Name
-        {
-            get
-            {
-                return this._name;
-            }
-            set
-            {
-                this._name = value;
-            }
-        }
-
 
         private string _fname;
         public string SupplierFirstName
@@ -62,6 +49,18 @@ namespace Ribbon.Model
             }
         }
 
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this._name = value;
+            }
+        }
 
         private string _code;
         public string Code

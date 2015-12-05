@@ -296,6 +296,9 @@
     <Compile Include="View\ManageSupplierList.xaml.cs">
       <DependentUpon>ManageSupplierList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PopUpWindow\LocationSelector.xaml.cs">
+      <DependentUpon>LocationSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PopUpWindow\PurchaseOrderProductSelector.xaml.cs">
       <DependentUpon>PurchaseOrderProductSelector.xaml</DependentUpon>
     </Compile>
@@ -580,6 +583,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManageSupplierList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PopUpWindow\LocationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

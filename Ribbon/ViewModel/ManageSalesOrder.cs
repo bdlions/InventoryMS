@@ -234,16 +234,16 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _pricing;
-        public string Pricing
+        private double _price;
+        public double Price
         {
             get
             {
-                return this._pricing;
+                return this._price;
             }
             set
             {
-                this._pricing = value;
+                this._price = value;
             }
         }
 
@@ -301,8 +301,8 @@ namespace Ribbon.ViewModel
                 this._orderItemCategory = value;
             }
         }
-        private string _orderItemQuantity;
-        public string OrderItemQuantity
+        private double _orderItemQuantity;
+        public double OrderItemQuantity
         {
             get
             {
@@ -327,8 +327,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderItemDiscount;
-        public string OrderItemDiscount
+        private double _orderItemDiscount;
+        public double OrderItemDiscount
         {
             get
             {
@@ -577,9 +577,9 @@ namespace Ribbon.ViewModel
         {
 
             ProductInfo productInfo = new ProductInfo();
-            productInfo.setUnitPrice(productInfo.getUnitPrice());
-            productInfo.setQuantity(productInfo.getQuantity());
-            productInfo.setDiscount(productInfo.getDiscount());
+            productInfo.setUnitPrice(Price);
+            productInfo.setQuantity(OrderItemQuantity);
+            productInfo.setDiscount(OrderItemDiscount);
             productInfo.setPurchaseOrderNo(productInfo.getPurchaseOrderNo());
 
             List productList = new ArrayList();
@@ -644,8 +644,6 @@ namespace Ribbon.ViewModel
                     saleInfo.setOrderNo(Order);
                     saleInfo.setStatusId(1);
                     saleInfo.setRemarks(OrderRemark);
-                    //purchaseInfo.setOrderDate(123);
-                    //saleInfo.setRequestShippedDate(456);
 
                     SaleManager saleManager = new SaleManager();
                     saleManager.addSaleOrder(saleInfo);
@@ -669,8 +667,6 @@ namespace Ribbon.ViewModel
                     
                     Phone = customerInfoNJ.Phone;
                     CusomerUserId = customerInfoNJ.CusomerUserId;
-                    //SupplierFirstName = supplierInfo.SupplierFirstName;
-                    //SupplierLastName = supplierInfo.SupplierLastName;
                     
 
                   
