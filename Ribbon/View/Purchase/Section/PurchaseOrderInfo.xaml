@@ -74,12 +74,21 @@
                           BeginningEdit="productPurchaseOrderGrid_BeginningEdit" 
                           CellEditEnding="productPurchaseOrderGrid_CellEditEnding">
 
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  
+                                                   CommandParameter="{Binding ElementName=productPurchaseOrderGrid, Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="255" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name}"/>
-                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
+                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity}"/>
                         <DataGridTextColumn Width="100"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
                         <DataGridTextColumn Width="100"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
                         <DataGridTextColumn Width="100"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
+                        <DataGridTextColumn Width="100"  Header="ProductId" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <popupbox:PurchaseOrderProductSelector  x:Name="productSelector"/>

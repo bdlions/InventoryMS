@@ -116,11 +116,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
-
-
         /*  ------------------------- Purchase Order Item ----------------------*/
-
 
         private string _orderItem;
         public string OrderItem
@@ -201,8 +197,6 @@ namespace Ribbon.ViewModel
 
         /*-------------------------------------------------------------------------------*/
 
-
-
         private string _location;
         public string Location
         {
@@ -227,10 +221,6 @@ namespace Ribbon.ViewModel
                 this._address = value;
             }
         }
-
-
-
-
 
         private string _order;
         public string Order
@@ -258,7 +248,6 @@ namespace Ribbon.ViewModel
                 this._status = value;
             }
         }
-
 
         /* Purchase Order */
 
@@ -341,16 +330,33 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderSubTotal;
-        public string OrderSubTotalAmount
+        private double _orderSubTotal;
+        public double OrderSubTotalAmount
         {
             get
             {
+                double total = 0;
+                for (int i = 0; i < this._purchaseList.Count; i++)
+                {
+                    ProductInfoNJ product = _purchaseList.ElementAt(i);
+                    total += product.Price * product.Quantity;
+                }
+                this._orderSubTotal = total;
                 return this._orderSubTotal;
             }
             set
             {
                 this._orderSubTotal = value;
+            }
+        }
+        public DelegateCommand<object> SelectedItemChangedCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    OnPropertyChanged("OrderSubTotalAmount");
+                });
             }
         }
 
@@ -777,7 +783,7 @@ namespace Ribbon.ViewModel
                 {
                     PurchaseList.Insert(PurchaseList.Count - 1, (ProductInfoNJ)selectedItem);
                     PurchaseList.RemoveAt(PurchaseList.Count - 1);
-
+                    OnPropertyChanged("OrderSubTotalAmount");
                 });
             }
         }

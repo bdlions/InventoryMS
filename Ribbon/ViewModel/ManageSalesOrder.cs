@@ -63,7 +63,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-       
+
 
         private string _contact;
         public string Contact
@@ -247,11 +247,18 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _salesOrderSubTotal;
-        public string SalesOrderSubTotal
+        private double _salesOrderSubTotal;
+        public double SalesOrderSubTotal
         {
             get
             {
+                double total = 0;
+                for (int i = 0; i < this._saleList.Count; i++)
+                {
+                    ProductInfoNJ product =  _saleList.ElementAt(i);
+                    total +=  product.Price * product.Quantity;
+                }
+                this._salesOrderSubTotal = total;
                 return this._salesOrderSubTotal;
             }
             set
@@ -600,7 +607,7 @@ namespace Ribbon.ViewModel
         }
 
 
-       
+
 
         public DelegateCommand<object> OnItemSelected
         {
@@ -610,10 +617,21 @@ namespace Ribbon.ViewModel
                 {
                     SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
                     SaleList.RemoveAt(SaleList.Count - 1);
+                    OnPropertyChanged("SalesOrderSubTotal");
                 });
             }
         }
-
+        public DelegateCommand<object> SelectedItemChangedCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    OnPropertyChanged("SalesOrderSubTotal");
+                });
+            }
+        }
+        
 
         public ICommand SaveSale
         {
@@ -627,6 +645,7 @@ namespace Ribbon.ViewModel
                     foreach (ProductInfoNJ productInfoNJ in SaleList)
                     {
                         ProductInfo productInfo = new ProductInfo();
+                        productInfo.setId(productInfoNJ.ProductId);
                         productInfo.setName(productInfoNJ.Name);
                         productInfo.setCode(productInfoNJ.Code);
                         productInfo.setUnitPrice(productInfoNJ.Price);
@@ -664,19 +683,19 @@ namespace Ribbon.ViewModel
 
                     CustomerFirstName = customerInfoNJ.CustomerFirstName;
                     CustomerLastName = customerInfoNJ.CustomerLastName;
-                    
+
                     Phone = customerInfoNJ.Phone;
                     CusomerUserId = customerInfoNJ.CusomerUserId;
-                    
 
-                  
+
+
 
                 });
             }
         }
 
 
-        ObservableCollection<ProductInfoNJ> _saleList;
+        ObservableCollection<ProductInfoNJ> _saleList = new ObservableCollection<ProductInfoNJ>();
 
         public ObservableCollection<ProductInfoNJ> SaleList
         {
@@ -760,7 +779,7 @@ namespace Ribbon.ViewModel
                     customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
                     customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
 
-                    
+
                 }
                 return _customerList;
 

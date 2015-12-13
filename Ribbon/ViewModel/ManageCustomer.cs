@@ -27,19 +27,7 @@ namespace Ribbon.ViewModel
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
-                if (!String.IsNullOrEmpty(propertyName))
-                {
-                    if (propertyName.ToLower().Equals("CustomerFirstName") || propertyName.ToLower().Equals("CustomerLastName"))
-                    {
-                        CustomerName = CustomerFirstName + " " + CustomerLastName;
-                        handler(this, new PropertyChangedEventArgs("CustomerName"));
-                    }
-                }
-                else
-                {
-                    handler(this, new PropertyChangedEventArgs(propertyName));
-                }
-
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
         private string _fName;
@@ -52,7 +40,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fName = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CustomerName");
             }
         }
 
@@ -67,7 +55,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._lName = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CustomerName");
             }
         }
 

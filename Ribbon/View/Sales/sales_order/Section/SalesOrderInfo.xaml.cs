@@ -47,6 +47,7 @@ namespace Ribbon.View
             DataGrid grid = (DataGrid)sender;
             Popup productSelector = (Popup)grid.FindName("productSelector");
             productSelector.IsOpen = false;
+            
         }
 
 
@@ -77,5 +78,6 @@ namespace Ribbon.View
             }
 
         }
+
     }
 }

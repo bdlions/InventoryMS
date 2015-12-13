@@ -66,6 +66,7 @@
                           AutoGenerateColumns="False" CanUserAddRows="True"
                           CanUserDeleteRows="False" CanUserReorderColumns="False" 
                           CanUserResizeColumns="False" 
+                          
                           ScrollViewer.CanContentScroll="True" 
                           ScrollViewer.VerticalScrollBarVisibility="Auto" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
@@ -76,12 +77,17 @@
                           BeginningEdit="productSaleOrderGrid_BeginningEdit" 
                           CellEditEnding="productSaleOrderGrid_CellEditEnding">
 
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  CommandParameter="{Binding ElementName=productSaleOrderGrid, Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="255" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name, Mode=TwoWay}" />
-                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=OrderItemQuantity, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="100"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=OrderItemUnitPrice, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="100"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=OrderItemDiscount, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="100"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="100"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="100"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount, Mode=TwoWay}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <popupbox:SaleOrderProductSelector  x:Name="productSelector"/>
