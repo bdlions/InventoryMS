@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using java.util;
+using com.inventory.db.manager;
 
 namespace Ribbon.ViewModel
 {
@@ -298,7 +299,7 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-            UserInfo userInfo = new UserInfo();
+            ProfileInfo userInfo = new ProfileInfo();
             userInfo.setFirstName(FirstName);
             userInfo.setLastName(LastName);
             userInfo.setEmail(Email);
@@ -308,7 +309,7 @@ namespace Ribbon.ViewModel
             userInfo.setId(SupplierUserID);
 
             SupplierInfo supplierInfo = new SupplierInfo();
-            supplierInfo.setUserInfo(userInfo);
+            supplierInfo.setProfileInfo(userInfo);
             supplierInfo.setRemarks(Remark);
             SupplierManager supplierManager = new SupplierManager();
             supplierManager.createSupplier(supplierInfo);

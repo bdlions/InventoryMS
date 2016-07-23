@@ -14,6 +14,7 @@ using com.inventory.db.repositories;
 using com.inventory.db;
 using java.util;
 using Ribbon.Model;
+using com.inventory.db.manager;
 
 namespace Ribbon.ViewModel
 {

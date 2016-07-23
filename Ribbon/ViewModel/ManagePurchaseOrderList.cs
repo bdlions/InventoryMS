@@ -1,5 +1,6 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using com.inventory.db.manager;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -41,9 +42,9 @@ namespace Ribbon.ViewModel
 
                     SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
 
                     _purchaseList.Add(purchaseInfoNJ);

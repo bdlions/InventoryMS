@@ -1,5 +1,6 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using com.inventory.db.manager;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -270,7 +271,7 @@ namespace Ribbon.ViewModel
 
 
 
-            UserInfo userInfo = new UserInfo();
+            ProfileInfo userInfo = new ProfileInfo();
             userInfo.setFirstName(CustomerFirstName);
             userInfo.setLastName(CustomerLastName);
             userInfo.setEmail(CustomerEmail);

@@ -14,6 +14,7 @@ using com.inventory.db.repositories;
 using com.inventory.db;
 using java.util;
 using Ribbon.Model;
+using com.inventory.db.manager;
 
 namespace Ribbon.ViewModel
 {
@@ -33,12 +34,12 @@ namespace Ribbon.ViewModel
                     SupplierInfo supplierInfo = (SupplierInfo)i.next();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
 
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
-                    supplierInfoNJ.Fax = supplierInfo.getUserInfo().getFax();
-                    supplierInfoNJ.Email = supplierInfo.getUserInfo().getEmail();
-                    supplierInfoNJ.Website = supplierInfo.getUserInfo().getWebsite();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                    supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                    supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                    supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
 
                     _supplierList.Add(supplierInfoNJ);
                 }

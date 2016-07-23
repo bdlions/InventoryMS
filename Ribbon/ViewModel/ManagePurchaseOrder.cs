@@ -1,5 +1,6 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using com.inventory.db.manager;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -725,10 +726,10 @@ namespace Ribbon.ViewModel
                 {
                     SupplierInfo supplierInfo = (SupplierInfo)i.next();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
 
 
@@ -756,10 +757,10 @@ namespace Ribbon.ViewModel
                     SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
                     
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getUserInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getUserInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getUserInfo().getPhone();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getUserInfo().getId();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
                 }
                 return _supplierList;
 
