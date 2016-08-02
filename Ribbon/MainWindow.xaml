@@ -12,6 +12,7 @@
         Title="InventoryMS" MinHeight="720" MinWidth="1024" 
         WindowStyle="threedborderwindow" 
         xmlns:ViewModel="clr-namespace:Ribbon.ViewModel"
+        
         Background="#f8f8f8f8" 
         Icon="img/bdlions.png">
 
@@ -190,8 +191,8 @@
 
             
             <!-- Ribbon Tab #1: Home -->
-            <RibbonTab x:Name="home" Header="Home" Margin="0,0,-100,-627">
-                <RibbonGroup x:Name="homePage" Width="1000" Background="{StaticResource HomePage}">
+            <RibbonTab x:Name="home" Header="Home" Margin="-2,-5,-100,-534">
+                <RibbonGroup x:Name="homePage" Width="1004" Background="{StaticResource HomePage}">
                     <partial:HomePage Margin="50 200 0 0"/>
                 </RibbonGroup>
             </RibbonTab>

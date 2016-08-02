@@ -13,7 +13,6 @@
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Inventory}" DataContext="{StaticResource manageProduct}">
         <StackPanel>
-            <Label Content="Search" FontSize="20" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
             <productAddSection:ProductSearch Margin="3 7 3 5"/>
             <productAddSection:ProductItem Margin="3 7 3 5"/>
         </StackPanel>

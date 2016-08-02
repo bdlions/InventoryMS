@@ -25,7 +25,7 @@ namespace Ribbon
         public MainWindow()
         {
             InitializeComponent();
-
+            
             buttonAddTab.Click += onClickTabCreationButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
@@ -42,6 +42,7 @@ namespace Ribbon
            // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
             subMenuManageCustomerList.Click += onClicksuManageCustomerList;
             subMenuManageCurrentStock.Click += onClicksuManageCurrentStock;
+
         }
 
         private void onClicksuManageCurrentStock(object sender, RoutedEventArgs e)
@@ -322,7 +323,7 @@ namespace Ribbon
                 dashboardTabGroup.Background = (Brush)FindResource("HomePage");
 
                 UserControl dashboardTabContent = new HomePage();
-                dashboardTabContent.Margin = new Thickness(50, 200, 30, 0);
+                dashboardTabContent.Margin = new Thickness(76, 200, 3, 0);
 
                 dashboardTabGroup.Items.Add(dashboardTabContent);
                 selectedTab.Items.Add(dashboardTabGroup);
@@ -342,12 +343,11 @@ namespace Ribbon
                 homeTabGroup.Background = (Brush)FindResource("HomePage");
 
                 UserControl homeTabContent = new HomePage();
-                homeTabContent.Margin = new Thickness(50, 200, 30, 0);
+                homeTabContent.Margin = new Thickness(76, 200, 3, 0);
 
                 homeTabGroup.Items.Add(homeTabContent);
                 selectedTab.Items.Add(homeTabGroup);
 
-                
             }
             
         }
@@ -364,7 +364,7 @@ namespace Ribbon
             homeTabGroup.Background = (Brush)FindResource("HomePage");
 
             UserControl homeTabContent = new HomePage();
-            homeTabContent.Margin = new Thickness(50, 200, 0, 0);
+            homeTabContent.Margin = new Thickness(76, 200, 3, 0);
             
             homeTabGroup.Items.Add(homeTabContent);
             homeTab.Items.Add(homeTabGroup);

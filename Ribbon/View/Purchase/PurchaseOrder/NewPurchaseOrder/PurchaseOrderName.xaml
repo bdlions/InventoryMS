@@ -28,7 +28,7 @@
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Foreground="{StaticResource Purchase_ForeBackground}"  FontWeight="Bold" Content="Order:" FontSize="20" Margin="-5 0 0 0"/>
+        <Label Grid.Row="0" Foreground="{StaticResource Purchase_ForeBackground}"  FontWeight="Bold" Content="Order" FontSize="16" BorderThickness="1 1 1 1"/>
         <TextBox Grid.Row="1" Padding="0 3" BorderThickness="1 1 1 0" IsReadOnly="True"/>
         <TextBox Grid.Row="2" Padding="0 3" BorderThickness="1 1 1 0" IsReadOnly="True" />
         <TextBox Grid.Row="3" Padding="0 3" BorderThickness="1 1 1 0" IsReadOnly="True"/>

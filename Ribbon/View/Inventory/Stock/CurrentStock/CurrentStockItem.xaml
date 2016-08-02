@@ -11,11 +11,11 @@
               CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
               CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding CurrentStockList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="140" Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="84"  Header="Category" FontFamily="Arial" Binding="{Binding Category}"/>
-                <DataGridTextColumn Width="84"  Header="Last Supplier" FontFamily="Arial" Binding="{Binding LastSupplier}"/>
-                <DataGridTextColumn Width="84"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
-                <DataGridTextColumn Width="84"  Header="Quantity" FontFamily="Arial" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Width="285" Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="175"  Header="Category" FontFamily="Arial" Binding="{Binding Category}"/>
+                <DataGridTextColumn Width="175"  Header="Last Supplier" FontFamily="Arial" Binding="{Binding LastSupplier}"/>
+                <DataGridTextColumn Width="175"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
+                <DataGridTextColumn Width="175"  Header="Quantity" FontFamily="Arial" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

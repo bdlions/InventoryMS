@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
               d:DesignHeight="600" d:DesignWidth="632">
-    <Grid Margin="5">
+    <Grid Margin="5 5 4 5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -30,9 +30,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="204" />
-            <ColumnDefinition Width="204" />
-            <ColumnDefinition Width="204" />
+            <ColumnDefinition Width="213" />
+            <ColumnDefinition Width="213" />
+            <ColumnDefinition Width="213" />
         </Grid.ColumnDefinitions>
 
         <!-- 1st row-->

@@ -7,21 +7,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="615" d:DesignWidth="632">
-    <Grid Height="615">
+    <Grid >
         <TabControl TabStripPlacement="Bottom">
-            <TabItem Header="Customer Info" Padding="5" Margin="-2 0 0 0">
+            <TabItem Header="Customer Info" Padding="20 5" Margin="-2 0 0 0">
                 <StackPanel>
                     <CustomerTopMenu:customer_top_menu />
                     <View:new_customer_info Height="534"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Extra Info">
+            <TabItem Header="Extra Info" Padding="20 5">
                 <StackPanel>
                     <CustomerTopMenu:customer_top_menu />
                     <View:new_customer_extra_info />
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Order History" >
+            <TabItem Header="Order History" Padding="20 5">
                 <StackPanel>
                     <CustomerTopMenu:customer_top_menu />
                     <View:customer_oder_history />

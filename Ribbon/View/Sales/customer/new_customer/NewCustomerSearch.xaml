@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
@@ -20,8 +21,8 @@
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
-        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1">
+        <Label Content="Search" FontSize="16" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="0"/>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1" Grid.Column="0">
             <ComboBoxItem IsSelected="True" Content="Order"/>
             <ComboBoxItem Content="Oder Date" />
             <ComboBoxItem Content="Status" />
@@ -44,7 +45,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="2" Grid.Column="0">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem IsSelected="True" Content="Oder Date" />
             <ComboBoxItem Content="Status" />
@@ -67,7 +68,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="2">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="3" Grid.Column="0">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date" />
             <ComboBoxItem IsSelected="True" Content="Status" />
@@ -90,7 +91,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="3">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="4" Grid.Column="0">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date" />
             <ComboBoxItem Content="Status" />
@@ -113,7 +114,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="4" Margin="0 0 0 24" Grid.RowSpan="2">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="5" Grid.Column="0" Margin="0 0 0 24" Grid.RowSpan="2">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date" />
             <ComboBoxItem Content="Status" />
@@ -137,12 +138,12 @@
         </ComboBox>
 
         <!--2nd column-->
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
-        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
+        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,0.5,5,-2"/>
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
     </Grid>
 </UserControl>
 

@@ -18,23 +18,32 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="303" />
+            <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Foreground="{StaticResource Sales_ForeBackground}"  FontWeight="Bold" Content="Name:" FontSize="20" Margin="-5 0 0 0"/>
+        <Label Grid.Row="0" Foreground="{StaticResource Sales_ForeBackground}" Padding="0 3" BorderThickness="1 1 1 0"  FontWeight="Bold" Content="Name" FontSize="16"/>
 
         <TextBox Grid.Row="1" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="2" Padding="0 3" BorderThickness="1 1 1 0" />
-        <TextBox Grid.Row="3" Padding="0 3.5 0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="3" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="4" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="5" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="6" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="7" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="8" Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="9" Padding="0 3" BorderThickness="1 1 1 0"/>
-        <TextBox Grid.Row="10" Padding="0 3" BorderThickness="1" />
-
+        <TextBox Grid.Row="10" Padding="0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="11" Padding="0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="12" Padding="0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="13" Padding="0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="14" Padding="0 3" BorderThickness="1 1 1 0"/>
+        <TextBox Grid.Row="15" Padding="0 3" BorderThickness="1" />
     </Grid>
 </UserControl>

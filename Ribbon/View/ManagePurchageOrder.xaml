@@ -9,9 +9,9 @@
     <UserControl.Resources>
         <modelView:ManagePurchaseOrder x:Key="managePurchaseOrder"/>
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource managePurchaseOrder}">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
+                Background="{StaticResource Purchase}" DataContext="{StaticResource managePurchaseOrder}">
         <StackPanel>
-            <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="2 0 0 -10"/>
             <newPurchaseOrderAddSection:PurchaseOrderSearch Margin="3 7 3 5"/>
             <newPurchaseOrderAddSection:PurchaseOrderName Margin="3 7 3 5"/>
         </StackPanel>

@@ -13,7 +13,6 @@
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageCustomer}">
         <StackPanel>
-            <Label Content="Search" FontSize="20" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
             <newCustomerAddSection:NewCustomerSearch Margin="3 7 3 5"/>
             <newCustomerAddSection:CustomerName Margin="3 7 3 5"/>
         </StackPanel>

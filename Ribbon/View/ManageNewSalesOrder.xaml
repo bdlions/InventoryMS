@@ -12,7 +12,7 @@
     </UserControl.Resources>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
-                Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesOrder}">
+                Background="{StaticResource Sales}" DataContext="{StaticResource manageSalesOrder}" Margin="-7 0 0 0">
         <StackPanel>
             <newSalesOrderAddSection:NewSalesOrderSearch Margin="3 7 3 5"/>
             <newSalesOrderAddSection:NewSalesOrder Margin="3 7 3 5"/>

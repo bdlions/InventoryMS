@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
             d:DesignHeight="600" d:DesignWidth="632">
-    <Grid Margin="10">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="308" />
-            <ColumnDefinition Width="308" />
+            <ColumnDefinition Width="324" />
+            <ColumnDefinition Width="324" />
         </Grid.ColumnDefinitions>
 
 
@@ -41,9 +41,9 @@
             <ComboBoxItem Content="VISA"/>
         </ComboBox>
 
-        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Unit of Measure" Margin="-2,264,20,-32" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
+        <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Unit of Measure" Margin="-2,264,28,-32" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
         <Label Content="Standard UoM" HorizontalAlignment="Left" Margin="10,305,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,310,18,-79" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,327,28,-62" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -51,7 +51,7 @@
         </ComboBox>
 
         <Label Content="Sales UoM:" HorizontalAlignment="Left" Margin="10,342,0,-125" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,347,18,-112" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,363,28,-96" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -65,7 +65,7 @@
         <Label Content="Reorder Quantity:" HorizontalAlignment="Left" Margin="11,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
         <TextBox Margin="137,97,20,128" Grid.Row="1" Width="150" Height="27"/>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,380,18,-142" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,395,28,-127" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -121,7 +121,7 @@
         <Label Content="Weight:" HorizontalAlignment="Left" Margin="13,403,0,-156" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
         <TextBox Margin="140,415,18,-167" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="0,427,18,-178" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
-        <TextBox Margin="11,466,10,-238" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Height="60"/>
+        <TextBox Margin="11,468,28,-236" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Height="60"/>
 
 
     </Grid>

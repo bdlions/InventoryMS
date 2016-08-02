@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="315">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -13,15 +13,16 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="122" />
+            <ColumnDefinition Width="183" />
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
-        
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1">
+        <Label Content="Search" FontSize="16" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Grid.Row="0"/>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1">
             <ComboBoxItem IsSelected="True" Content="Show"/>
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Contact"/>
@@ -39,7 +40,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="2">
             <ComboBoxItem Content="Show"/>
             <ComboBoxItem IsSelected="True" Content="Name"/>
             <ComboBoxItem Content="Contact"/>
@@ -57,7 +58,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="2">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="3">
             <ComboBoxItem Content="Show"/>
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem IsSelected="True" Content="Contact"/>
@@ -75,7 +76,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="3">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="4">
             <ComboBoxItem Content="Show"/>
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Contact"/>
@@ -93,7 +94,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="4" Margin="0 0 0 24" Grid.RowSpan="2">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="5" Margin="0 0 0 24" Grid.RowSpan="2">
             <ComboBoxItem Content="Show"/>
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Contact"/>
@@ -112,7 +113,7 @@
         </ComboBox>
 
         <!--2nd column-->
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="5,0.5,5,0.5"  Grid.Row="0" Grid.Column="1">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="5,0.5,5,0.5"  Grid.Row="1" Grid.Column="1">
             <ComboBoxItem IsSelected="True" Content="Show"/>
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Contact"/>
@@ -129,11 +130,11 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
-        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,1,5,24" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
+        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,1,5,24" Grid.RowSpan="2"/>
 
-        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
     </Grid>
 </UserControl>

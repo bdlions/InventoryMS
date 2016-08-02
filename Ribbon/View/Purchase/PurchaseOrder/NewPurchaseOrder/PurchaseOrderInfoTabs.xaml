@@ -7,7 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="615" d:DesignWidth="632">
-    <Grid Height="615">
+    <Grid Height="615" Margin="1.5 0 1.5 0">
         <TabControl TabStripPlacement="Bottom">
             <TabItem Header="Order" Padding="20 5" Margin="-2 0 0 0">
                 <StackPanel>

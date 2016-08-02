@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-              d:DesignHeight="300" d:DesignWidth="315" >
+              d:DesignHeight="300" d:DesignWidth="300" >
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,12 +16,12 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120" />
-            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="110" />
+            <ColumnDefinition Width="170" />
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
-        <Label Grid.Row="0" Content="Search" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16"/>
+        <Label Grid.Row="0" Content="Search" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" BorderThickness="1 1 1 1"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1">
             <ComboBoxItem IsSelected="True" Content="Order"/>
             <ComboBoxItem Content="Oder Date" />

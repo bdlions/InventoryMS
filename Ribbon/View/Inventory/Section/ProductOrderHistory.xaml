@@ -30,15 +30,15 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="68"/>
-            <ColumnDefinition Width="60" />
-            <ColumnDefinition Width="76" />
-            <ColumnDefinition Width="68" />
-            <ColumnDefinition Width="68" />
-            <ColumnDefinition Width="68" />
-            <ColumnDefinition Width="68" />
-            <ColumnDefinition Width="68" />
-            <ColumnDefinition Width="68" />
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
+            <ColumnDefinition Width="71" />
         </Grid.ColumnDefinitions>
 
         <!-- 1st row-->

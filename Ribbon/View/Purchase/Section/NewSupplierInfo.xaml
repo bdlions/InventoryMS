@@ -12,8 +12,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="308" />
-            <ColumnDefinition Width="308" />
+            <ColumnDefinition Width="331" />
+            <ColumnDefinition Width="332" />
 
         </Grid.ColumnDefinitions>
         <!-- 1st row-->
@@ -28,14 +28,14 @@
         
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,-120,0,-33" Grid.Row="3" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-120,0,-33" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  IsReadOnly="True"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,12,28,167" Grid.Column="1" Grid.Row="1" Height="23">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,12,37,167" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address (Optional)" />
             <ComboBoxItem Content="Shopping Address (Optional)" />
             <Separator/>
             <ComboBoxItem Content="Add new Address"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1" Text="{Binding Address}"/>
+        <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="276" Grid.Column="1" Text="{Binding Address}"/>
 
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="0,155,0,-18" />

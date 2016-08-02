@@ -52,7 +52,7 @@
             <DatePicker Grid.Column="6" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137" BorderThickness="1" Height="22"/>
         </Grid>
 
-        <Grid Margin="5 160 5 5">
+        <Grid Margin="10 160 15 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -66,12 +66,12 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="91" />
-                <ColumnDefinition Width="91" />
-                <ColumnDefinition Width="91" />
-                <ColumnDefinition Width="91" />
-                <ColumnDefinition Width="91" />
+                <ColumnDefinition Width="195"/>
+                <ColumnDefinition Width="93" />
+                <ColumnDefinition Width="93" />
+                <ColumnDefinition Width="93" />
+                <ColumnDefinition Width="93" />
+                <ColumnDefinition Width="93" />
             </Grid.ColumnDefinitions>
 
             <!-- 1st row-->
@@ -175,7 +175,7 @@
             <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,31,0,199" Text="{Binding SalesOrderInvoiceTotal}" FontWeight="Bold" HorizontalAlignment="Left" Width="115" />
 
             <Button Grid.Column="4" Width="118" HorizontalAlignment="Right" Content="Paid in Full" FontWeight="Bold" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,56,0,85" Height="22"/>
-            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Auto Invoice" Margin="0,32,0,179" />
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Auto Invoice" Margin="0,16,0,179" Height="25" />
             <CheckBox Grid.Row="0" VerticalAlignment="Center" Height="15" Margin="0,38,94,197" Grid.Column="1"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Paid" Margin="0,52,0,170"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Balance" Margin="0,79,0,148"/>

@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="125" />
                 <ColumnDefinition Width="15" />
                 <ColumnDefinition Width="75" />
-                <ColumnDefinition Width="142" />
+                <ColumnDefinition Width="145" />
             </Grid.ColumnDefinitions>
 
             <!-- 1st row-->
@@ -37,7 +37,7 @@
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="0,1,1,1" Text="{Binding Location}"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order"/>
-            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,3,1" Text="{Binding Order}" IsReadOnly="True"/>
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,6,1" Text="{Binding Order}" IsReadOnly="True"/>
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact" Margin="0,7"/>
@@ -48,7 +48,7 @@
             <Label Grid.Row="2" Grid.Column="0" Margin="1,0,3,19" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Phone"/>
             <TextBox Grid.Row="2" Grid.Column="1" Margin="3,0,3,19" Text="{Binding Phone}"/>
             <Label Grid.Row="2" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Status" Margin="0,0,0,19"/>
-            <TextBox Grid.Row="2" Grid.Column="6" Margin="5,0,3,19" Text="{Binding Status}" IsReadOnly="True"/>
+            <TextBox Grid.Row="2" Grid.Column="6" Margin="5,0,6,19" Text="{Binding Status}" IsReadOnly="True"/>
 
             <!-- 4th row-->
             <Label Grid.Row="1" Grid.Column="2"  Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Address" Grid.ColumnSpan="2" Margin="2,7,118,10"/>
@@ -59,7 +59,7 @@
         <StackPanel>
             <StackPanel>
                 <DataGrid Name="productPurchaseOrderGrid" Grid.Row="2" 
-                          Grid.Column="0" Width="655" Margin="0 160 0 0" 
+                          Grid.Column="0" Width="645" Margin="5 150 5 0" 
                           HorizontalAlignment="Left" 
                           AutoGenerateColumns="False" CanUserAddRows="True"
                           CanUserDeleteRows="False" CanUserReorderColumns="False" 
@@ -83,12 +83,12 @@
                     </i:Interaction.Triggers>
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="255" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name}"/>
-                        <DataGridTextColumn Width="100"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity}"/>
-                        <DataGridTextColumn Width="100"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
-                        <DataGridTextColumn Width="100"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
-                        <DataGridTextColumn Width="100"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
-                        <DataGridTextColumn Width="100"  Header="ProductId" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
+                        <DataGridTextColumn Width="195" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Width="90"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity}"/>
+                        <DataGridTextColumn Width="90"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
+                        <DataGridTextColumn Width="90"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
+                        <DataGridTextColumn Width="90"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
+                        <DataGridTextColumn Width="90"  Header="ProductId" FontFamily="Arial" />
                     </DataGrid.Columns>
                 </DataGrid>
                 <popupbox:PurchaseOrderProductSelector  x:Name="productSelector"/>
@@ -198,7 +198,7 @@
             <TextBox Grid.Row="9" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
         </Grid>-->
 
-        <Grid Margin="5,425,5,5" HorizontalAlignment="Left" >
+        <Grid Margin="5,415,5,5" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

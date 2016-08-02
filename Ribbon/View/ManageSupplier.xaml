@@ -12,7 +12,6 @@
     
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource manageSupplier}">
         <StackPanel>
-            <Label Content="Search" FontSize="20" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="10 0 0 -10"/>
             <supplierAddSection:SupplierSearch Margin="3 7 3 5"/>
             <supplierAddSection:SupplierName Margin="3 7 3 5"/>
         </StackPanel>

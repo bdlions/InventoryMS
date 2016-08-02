@@ -13,14 +13,15 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
             <ColumnDefinition Width="180" />
         </Grid.ColumnDefinitions>
-
+        <Label Grid.Row="0" Content="Search" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" BorderThickness="1 1 1 1"/>
         <!--1st column-->
-        <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold">
+        <ComboBox Grid.Row="1" Grid.Column="0"  Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold">
             <ComboBoxItem IsSelected="True" Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
             <ComboBoxItem Content="Status" />
@@ -40,7 +41,7 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-        <ComboBox Grid.Row="1" Grid.Column="0"  Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0,1,0,1" >
+        <ComboBox Grid.Row="2" Grid.Column="0"  Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0,1,0,1" >
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem IsSelected="True" Content="Oder Date"/>
             <ComboBoxItem Content="Status" />
@@ -61,7 +62,7 @@
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
 
-        <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="2">
+        <ComboBox Grid.Row="3" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" >
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
             <ComboBoxItem IsSelected="True" Content="Status" />
@@ -81,7 +82,7 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-        <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="3">
+        <ComboBox Grid.Row="4" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" >
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
             <ComboBoxItem Content="Status" />
@@ -101,7 +102,7 @@
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
         </ComboBox>
-        <ComboBox Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Grid.Row="4" Margin="0 0 0 24" Grid.RowSpan="2">
+        <ComboBox Grid.Row="5" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="0 0 0 24" Grid.RowSpan="2">
             <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date"/>
             <ComboBoxItem Content="Status" />
@@ -123,8 +124,8 @@
         </ComboBox>
 
         <!--2nd column-->
-        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0"  />
-        <ComboBox  Grid.Row="1" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,1,5,0"  Height="24" VerticalAlignment="Top"  Text="">
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0"  />
+        <ComboBox  Grid.Row="2" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,1,5,0"  Height="24" VerticalAlignment="Top"  Text="">
             <ComboBoxItem Content="All"/>
             <Separator/>
             <ComboBoxItem Content="Today"/>
@@ -152,7 +153,7 @@
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,0,5,1"  Text="">
+        <ComboBox Grid.Row="3" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,0,5,1"  Text="">
             <ComboBoxItem Content="All"/>
             <ComboBoxItem Content="Open"/>
             <ComboBoxItem Content="In Progress"/>
@@ -160,9 +161,9 @@
             <ComboBoxItem Content="Paid"/>
             <ComboBoxItem Content="Cancelled"/>
         </ComboBox>
-        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" />
-        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  />
+        <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,0.5,5,-2"/>
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  />
     </Grid>
 </UserControl>
 
