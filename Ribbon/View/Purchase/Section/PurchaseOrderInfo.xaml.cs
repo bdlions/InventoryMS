@@ -51,7 +51,9 @@ namespace Ribbon.View
 
         private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             Popup supplierSelector = (Popup)FindName("SupplierSelector");
+
             if (supplierSelector.IsOpen)
             {
                 supplierSelector.IsOpen = false;
@@ -60,7 +62,8 @@ namespace Ribbon.View
             {
                 supplierSelector.IsOpen = true;
             }
-            
+
+
         }
 
     }

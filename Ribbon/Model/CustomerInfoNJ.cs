@@ -8,43 +8,43 @@ namespace Ribbon.Model
 {
     class CustomerInfoNJ
     {
-        private string _fName;
+        private string _customerFirsrName;
         public string CustomerFirstName
         {
             get
             {
-                return this._fName;
+                return this._customerFirsrName;
             }
             set
             {
-                this._fName = value;
+                this._customerFirsrName = value;
             }
         }
 
-        private string _lName;
+        private string _customerLastName;
         public string CustomerLastName
         {
             get
             {
-                return this._lName;
+                return this._customerLastName;
 
             }
             set
             {
-                this._lName = value;
+                this._customerLastName = value;
             }
         }
 
-        private string _name;
+        private string _customerName;
         public string CustomerName
         {
             get
             {
-                return this._fName + " " + this._lName;
+                return this._customerFirsrName + " " + this._customerLastName;
             }
             set
             {
-                this._name = value;
+                this._customerName = value;
             }
         }
 

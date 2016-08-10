@@ -679,7 +679,7 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand<object>((SelectedCustomer) =>
                 {
 
-
+                    
                     CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
 
                     CustomerFirstName = customerInfoNJ.CustomerFirstName;
