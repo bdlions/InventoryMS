@@ -16,14 +16,14 @@
             <ColumnDefinition Width="327" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Basic" />
+        <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Basic" Margin="10,0,0,0"/>
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Address" Margin="19,0,0,0" />
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerFirstName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,15,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerFirstName}"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,46,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerLastName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerLastName}"/>
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,80,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerBalance}" IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,83,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerBalance}" IsReadOnly="True"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,10,28,155" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address (Optional)" />
@@ -34,28 +34,28 @@
         <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="280" Grid.Column="1" Text="{Binding CustomerAddress}"/>
 
 
-        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Contact" Margin="0,155,0,-18" />
+        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Contact" Margin="10,155,0,-18" />
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,-192" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Path = CustomerName}"/>
         <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,248,0,-208" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,248,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerPhone}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,250,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerPhone}"/>
         <Label Content="Fax:" HorizontalAlignment="Left" Margin="10,282,0,-243" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,282,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerFax}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,284,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerFax}"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,319,0,-279" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,319,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerEmail}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,321,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerEmail}"/>
         <Label Content="Website:" HorizontalAlignment="Left" Margin="10,359,0,-306" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,359,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerWebsite}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,362,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerWebsite}"/>
 
 
 
         <Label Grid.Row="1" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Purchasing Info" Margin="19,155,0,-18" />
         <Label Content="Pricing/Currency:" HorizontalAlignment="Left" Margin="19,214,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,216,28,-49" Grid.Column="1" Grid.Row="1" Height="23">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,208,28,-49" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Normal Price"/>
             <ComboBoxItem Content="Add New" />
         </ComboBox>
 
-        <Label Content="Payment Terms:" HorizontalAlignment="Left" Margin="19,287,0,-159" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
+        <Label Content="Payment Terms:" HorizontalAlignment="Left" Margin="19,289,0,-159" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,287,28,-113" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address" />
@@ -65,8 +65,8 @@
         </ComboBox>
 
 
-        <Label Content="Taxing Scheme:" HorizontalAlignment="Left" Margin="19,316,0,-187" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,321,28,-150" Grid.Column="1" Grid.Row="1" Height="23">
+        <Label Content="Taxing Scheme:" HorizontalAlignment="Left" Margin="19,322,0,-139" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="24" Grid.Column="1"/>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,318,28,-150" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address " />
             <ComboBoxItem Content="Shopping Address" />
@@ -74,14 +74,14 @@
             <ComboBoxItem Content="Add new Address"/>
         </ComboBox>
         <Label Content="Discount:" HorizontalAlignment="Left" Margin="19,253,0,-121" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="128,255,0,-78" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="171" Grid.Column="1" Text="{Binding CustomerDiscount}" FontWeight="Bold" TextAlignment="Right"/>
+        <TextBox HorizontalAlignment="Left" Height="24" Margin="128,253,0,-78" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="171" Grid.Column="1" Text="{Binding CustomerDiscount}" FontWeight="Bold" TextAlignment="Right"/>
 
-        <Label Content="Tax Exempt:" HorizontalAlignment="Left" Margin="19,359,0,-226" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25" Grid.Column="1" RenderTransformOrigin="0.607,0.512"/>
+        <Label Content="Tax Exempt:" HorizontalAlignment="Left" Margin="19,356,0,-226" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25" Grid.Column="1" RenderTransformOrigin="0.607,0.512"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="128,359,0,-182" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.Column="1" Text="{Binding CustomerTaxExempt}"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Remarks" Margin="0,402,0,-255" />
+        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Remarks" Margin="5,402,0,-255" />
         <TextBox HorizontalAlignment="Left" Height="50" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Text="{Binding CustomerRemark}"/>
-        
+
 
     </Grid>
 </UserControl>

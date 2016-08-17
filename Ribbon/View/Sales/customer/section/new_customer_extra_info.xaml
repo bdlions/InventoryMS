@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Preferences" Margin="0,0,19,95" Grid.RowSpan="2" />
         <Label Content="Default Location:" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,39,19,164" Grid.Row="1" Height="23">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,30,19,164" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Default Location"/>
             <ComboBoxItem Content="Add New Location" />
         </ComboBox>
@@ -32,7 +32,7 @@
             <ComboBoxItem Content="Add new Carrier"/>
         </ComboBox>
 
-        <Label Content="Payment Method:" HorizontalAlignment="Left" Margin="10,134,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
+        <Label Content="Payment Method:" HorizontalAlignment="Left" Margin="10,140,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,139,19,67" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="American Express " />
             <ComboBoxItem Content="Cash" />
@@ -46,7 +46,7 @@
 
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Credit Card" Margin="0,211,19,-117" Grid.Row="1" />
         <Label Content="Card Type:" HorizontalAlignment="Left" Margin="10,249,0,-85" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,254,19,-45" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,247,19,-45" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="VISA"/>
             <ComboBoxItem Content="Master Card"/>
             <ComboBoxItem Content="American Express " />

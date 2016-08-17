@@ -20,17 +20,17 @@
         <Label Content="Barcode:" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
 
         <Label Content="Default Location:" HorizontalAlignment="Left" Margin="11,130,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,131,20,96" Grid.Row="1" Width="150" Height="27">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,92,20,96" Grid.Row="1" Width="150" Height="27">
             <ComboBoxItem Content="Add new Sales Rep"/>
         </ComboBox>
 
         <Label Content="Default Sublocation:" HorizontalAlignment="Left" Margin="11,163,0,71" Grid.Row="1" Width="121"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,163,19,64" Width="150" Height="27" Grid.Row="1" Text="" RenderTransformOrigin="0.517,-0.014">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,122,19,64" Width="150" Height="27" Grid.Row="1" Text="" RenderTransformOrigin="0.517,-0.014">
             <ComboBoxItem Content="Add new Carrier"/>
         </ComboBox>
 
         <Label Content="Last Supplier:" HorizontalAlignment="Left" Margin="11,191,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="26"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,195,19,32" Width="150" Height="27" Grid.Row="1" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="137,153,19,32" Width="150" Height="27" Grid.Row="1" Text="">
             <ComboBoxItem Content="American Express " />
             <ComboBoxItem Content="Cash" />
             <ComboBoxItem Content="Cheque"/>
@@ -43,7 +43,7 @@
 
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Unit of Measure" Margin="-2,264,28,-32" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
         <Label Content="Standard UoM" HorizontalAlignment="Left" Margin="10,305,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,327,28,-62" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,285,28,-62" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -51,7 +51,7 @@
         </ComboBox>
 
         <Label Content="Sales UoM:" HorizontalAlignment="Left" Margin="10,342,0,-125" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,363,28,-96" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,322,28,-96" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -59,13 +59,13 @@
         </ComboBox>
 
         <Label Content="Purchasing UoM:" HorizontalAlignment="Left" Margin="11,375,0,-148" Grid.Row="1" VerticalAlignment="Top" Width="122" Height="28"/>
-        <TextBox Margin="137,35,20,189" Grid.Row="1" Width="150" Height="27"/>
+        <TextBox Margin="137,0,20,189" Grid.Row="1" Width="150" Height="27"/>
         <Label Content="Reorder Point:" HorizontalAlignment="Left" Margin="10,67,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <TextBox Margin="137,67,19,159" Grid.Row="1" Width="150" Height="27"/>
+        <TextBox Margin="137,32,19,159" Grid.Row="1" Width="150" Height="27"/>
         <Label Content="Reorder Quantity:" HorizontalAlignment="Left" Margin="11,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" />
-        <TextBox Margin="137,97,20,128" Grid.Row="1" Width="150" Height="27"/>
+        <TextBox Margin="137,62,20,128" Grid.Row="1" Width="150" Height="27"/>
 
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,395,28,-127" Grid.Row="1" Height="23" Text="">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="138,358,28,-127" Grid.Row="1" Height="23" Text="">
             <ComboBoxItem Content="cases"/>
             <ComboBoxItem Content="ea."/>
             <ComboBoxItem Content="packs"/>
@@ -111,15 +111,15 @@
         <TextBlock Margin="183,172,18,77" Grid.Row="1" Grid.Column="1" Text="0" VerticalAlignment="Center"/>
         <Label Content="Total Cost:" HorizontalAlignment="Left" Margin="11,210,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
         <TextBlock Margin="182,220,19,33" Grid.Row="1" Grid.Column="1" Text="$ 0.0" VerticalAlignment="Center"/>
-        <Label Content="Length:" HorizontalAlignment="Left" Margin="12,311,0,-68" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <TextBox Margin="140,319,18,-76" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
-        <Label Content="Width:" HorizontalAlignment="Left" Margin="12,341,0,-98" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <TextBox Margin="140,351,18,-106" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
-        <Label Content="Height:" HorizontalAlignment="Left" Margin="13,371,0,-128" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <TextBox Margin="140,381,18,-137" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
+        <Label Content="Length:" HorizontalAlignment="Left" Margin="12,313,0,-47" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
+        <TextBox Margin="140,285,18,-76" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
+        <Label Content="Width:" HorizontalAlignment="Left" Margin="12,345,0,-77" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
+        <TextBox Margin="140,316,18,-106" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
+        <Label Content="Height:" HorizontalAlignment="Left" Margin="13,377,0,-107" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
+        <TextBox Margin="140,347,18,-137" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Measurements" Margin="0,264,18,-32" Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1" />
-        <Label Content="Weight:" HorizontalAlignment="Left" Margin="13,403,0,-156" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <TextBox Margin="140,415,18,-167" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
+        <Label Content="Weight:" HorizontalAlignment="Left" Margin="13,410,0,-137" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="27" Grid.Column="1" />
+        <TextBox Margin="140,381,18,-167" Grid.Row="1" Width="150" Height="27" Grid.Column="1"/>
         <Label Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="0,427,18,-178" Grid.Row="1" RenderTransformOrigin="0.5,0.5" />
         <TextBox Margin="11,468,28,-236" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Height="60"/>
 

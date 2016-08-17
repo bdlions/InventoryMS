@@ -17,17 +17,17 @@
 
         </Grid.ColumnDefinitions>
         <!-- 1st row-->
-        <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
+        <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" Margin="10,0,0,0"/>
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Address" Margin="19,0,0,0" />
-        
+
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding FirstName}"  />
-        
-        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,-150,0,0" Grid.Row="2" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-150,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding LastName}"  />
-        
-        <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,-120,0,-33" Grid.Row="3" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-120,0,-33" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  IsReadOnly="True"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,15,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding FirstName}"  />
+
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding LastName}"  />
+
+        <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,-123,0,-33" Grid.Row="3" VerticalAlignment="Top" Width="77" Height="23"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,-119,0,-33" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="185"  Text="{Binding Balance}"  IsReadOnly="True"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,12,37,167" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Business Address"/>
             <ComboBoxItem Content="Billing Address (Optional)" />
@@ -38,7 +38,7 @@
         <TextBox HorizontalAlignment="Left" Height="80" Margin="19,46,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="276" Grid.Column="1" Text="{Binding Address}"/>
 
 
-        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="0,155,0,-18" />
+        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Contact" Margin="10,155,0,-18" />
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,-192" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Path = SupplierName}"/>
         <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,248,0,-208" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
@@ -52,7 +52,7 @@
 
         <Label Grid.Row="1" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Purchasing Info" Margin="19,155,0,-18" />
         <Label Content="Payment Terms:" HorizontalAlignment="Left" Margin="19,214,0,-88" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1" />
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,216,28,-49" Grid.Column="1" Grid.Row="1" Height="23">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,206,28,-49" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="Due on Receipt"/>
             <ComboBoxItem Content="Net 10" />
             <ComboBoxItem Content="Net 15" />
@@ -61,8 +61,8 @@
             <ComboBoxItem Content="Add New" />
         </ComboBox>
 
-        <Label Content="Taxing Scheme:" HorizontalAlignment="Left" Margin="19,254,0,-85" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,255,28,-82" Grid.Column="1" Grid.Row="1" Height="23">
+        <Label Content="Taxing Scheme:" HorizontalAlignment="Left" Margin="19,50,0,-64" Grid.Row="2" VerticalAlignment="Top" Width="104" Height="23" Grid.Column="1"/>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,252,28,-82" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem IsSelected="True" Content="No Tax"/>
             <ComboBoxItem Content="Add New" />
         </ComboBox>
@@ -70,7 +70,7 @@
         <TextBox Margin="128,291,28,-115" Grid.Column="1" Grid.Row="1" Height="23" Text="{Binding Carrier}"/>
 
         <Label Content="Currency:" HorizontalAlignment="Left" Margin="19,325,0,-152" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="28" Grid.Column="1"/>
-        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,328,28,-150" Grid.Column="1" Grid.Row="1" Height="23">
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="128,324,28,-150" Grid.Column="1" Grid.Row="1" Height="23">
             <ComboBoxItem Content="Ugandan Shilling (USh)" />
             <ComboBoxItem Content="UK Pound (£)" />
             <ComboBoxItem Content="Ukrainian Hryvnia (rpH.)" />
@@ -82,7 +82,7 @@
             <ComboBoxItem Content="Add New" />
         </ComboBox>
 
-        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="0,402,0,-255" />
+        <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="20" Content="Remarks" Margin="10,402,0,-255" />
         <TextBox HorizontalAlignment="Left" Height="51" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Text="{Binding Remark}"/>
 
     </Grid>
