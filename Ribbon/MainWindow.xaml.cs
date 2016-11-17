@@ -27,6 +27,7 @@ namespace Ribbon
             InitializeComponent();
             
             buttonAddTab.Click += onClickTabCreationButton;
+            buttonCloseTab.Click += onClickTabRemoveButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
           //  subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
@@ -336,6 +337,7 @@ namespace Ribbon
                 RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
                 selectedTab.Items.Clear();
                 selectedTab.Header = "Home";
+                
 
                 selectedTab.Margin = new Thickness(0, 0, -100, -627);
 
@@ -360,6 +362,7 @@ namespace Ribbon
             RibbonTab homeTab = new RibbonTab() { Header = "Home" };
             homeTab.Margin = new Thickness(0, 0, -100, -627);
 
+
             RibbonGroup homeTabGroup = new RibbonGroup();
             homeTabGroup.Background = (Brush)FindResource("HomePage");
 
@@ -373,6 +376,30 @@ namespace Ribbon
             RibbonContainer.Items.Add(homeTab);
             RibbonContainer.SelectedItem = homeTab;
             RibbonContainer.Items.Add(tabCreationButton);
+
+        }
+        private void onClickTabRemoveButton(object sender, RoutedEventArgs e)
+        {
+
+            Button tabCreationButton = (Button)RibbonContainer.Items.GetItemAt(RibbonContainer.Items.Count - 2);
+
+          // RibbonTab homeTab = new RibbonTab() { Header = "Home" };
+           // homeTab.Margin = new Thickness(0, 0, -100, -627);
+
+
+          //  RibbonGroup homeTabGroup = new RibbonGroup();
+           // homeTabGroup.Background = (Brush)FindResource("HomePage");
+
+          //  UserControl homeTabContent = new HomePage();
+          //  homeTabContent.Margin = new Thickness(76, 200, 3, 0);
+            
+          // homeTabGroup.Items.Remove(homeTabContent);
+          // homeTab.Items.Remove(homeTabGroup); 
+
+            RibbonContainer.Items.Remove(tabCreationButton);
+          // RibbonContainer.Items.Add(homeTab);
+          //  RibbonContainer.SelectedItem = homeTab;
+            //RibbonContainer.Items.Add(tabCreationButton);
 
         }
 

@@ -9,7 +9,7 @@
         xmlns:partial="clr-namespace:Ribbon.View"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Title="InventoryMS" MinHeight="720" MinWidth="1024" 
+        Title="InventoryMS" Height="720" Width="1024" 
         WindowStyle="threedborderwindow" 
         xmlns:ViewModel="clr-namespace:Ribbon.ViewModel"
         
@@ -191,12 +191,34 @@
 
             
             <!-- Ribbon Tab #1: Home -->
-            <RibbonTab x:Name="home" Header="Home" Margin="-2,-5,-100,-534">
+            <RibbonTab x:Name="home"  Header="Home" Margin="-2,-5,-100,-534">
                 <RibbonGroup x:Name="homePage" Width="1004" Background="{StaticResource HomePage}">
                     <partial:HomePage Margin="50 200 0 0"/>
                 </RibbonGroup>
             </RibbonTab>
-            
+            <Button Content="X" FontWeight="Bold" FontSize="10" Width="24" Height="24" Background="Transparent" BorderBrush="#FF683939" BorderThickness="3" Margin="-132 0 -135 -3" x:Name="buttonCloseTab">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Stroke="Black"  StrokeThickness="0">
+                                <Ellipse.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Offset="0"   Color="Gray" />
+                                        <GradientStop Offset="1"   Color="Gray" />
+                                        <GradientStop Offset="1"   Color="DarkGray" />
+                                        <RadialGradientBrush.Transform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleY="0.65" />
+                                            </TransformGroup>
+                                        </RadialGradientBrush.Transform>
+                                    </RadialGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <Button Content="+" FontWeight="Bold" FontSize="16" Width="24" Height="24" Background="Transparent" BorderBrush="#FF683939" BorderThickness="3" Margin="-132 0 -135 -3" x:Name="buttonAddTab">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
