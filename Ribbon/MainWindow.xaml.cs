@@ -1,4 +1,5 @@
-﻿using Ribbon.View;
+﻿using Ribbon.Model;
+using Ribbon.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Ribbon
             InitializeComponent();
             
             buttonAddTab.Click += onClickTabCreationButton;
-            buttonCloseTab.Click += onClickTabRemoveButton;
+            //buttonCloseTab.Click += onClickTabRemoveButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
           //  subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
@@ -408,6 +409,18 @@ namespace Ribbon
 
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                RibbonContainer.Items.Remove(selectedTab);
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@
            xmlns:productAddSection="clr-namespace:Ribbon.View.Inventory.Product.NewProduct">
 
     <UserControl.Resources>
-        <modelView:ManageProduct x:Key="manageProduct"/>
+        <modelView:ManageProduct x:Key="manageProduct" />
     </UserControl.Resources>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Inventory}" DataContext="{StaticResource manageProduct}">

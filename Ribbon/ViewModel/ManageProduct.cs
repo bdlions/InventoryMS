@@ -1,12 +1,16 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
 using com.inventory.db.manager;
+using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
+using Ribbon.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,20 +19,32 @@ using System.Windows.Input;
 
 namespace Ribbon.ViewModel
 {
-    class ManageProduct : BindableBase
+    class ManageProduct : BindableBase, INotifyPropertyChanged
     {
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
         private string _productName;
-        public string ProductName
+        public  string ProductName
         {
             get
             {
-                return this._productName;
+                return _productName;
             }
             set
             {
-                this._productName = value;
+                _productName = value;
+                OnPropertyChanged("ProductName");
             }
         }
 
@@ -42,6 +58,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._productCode = value;
+                OnPropertyChanged("ProductCode");
             }
         }
 
@@ -58,7 +75,31 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<ProductInfoNJ> _productList;
 
+        public ObservableCollection<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                ProductManager productManager = new ProductManager();
+
+                _productList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                {
+                    ProductInfo pInfo = (ProductInfo)i.next();
+                    ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                    pInfoNJ.Name = pInfo.getName();
+                    pInfoNJ.Code = pInfo.getCode();
+                    pInfoNJ.Price = pInfo.getUnitPrice();
+                    _productList.Add(pInfoNJ);
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
 
         public ICommand Add
         {
@@ -104,6 +145,13 @@ namespace Ribbon.ViewModel
             }
         }
 
+        public ICommand SelectProductEvent
+        {
+            get
+            {
+                return new DelegateCommand<ProductInfoNJ>(this.selectProductEvent);   
+            }
+        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -162,9 +210,22 @@ namespace Ribbon.ViewModel
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
-        private void OnDeactivate()
+        public void OnDeactivate()
         {
             MessageBox.Show("OnDeactivate");
         }
+
+        public static void OnProductChange()
+        {
+            //ProductName = "sdfsdf";
+            MessageBox.Show("OnDeactivate");
+        }
+
+        public void selectProductEvent(ProductInfoNJ p)
+        {
+            this.ProductName = p.Name;
+            this.ProductCode = p.Code;
+        }
+
     }
 }

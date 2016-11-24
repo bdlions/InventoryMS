@@ -10,7 +10,7 @@
     <StackPanel>
         <DataGrid Name="dgDownloadsInfo" Grid.Row="2" Grid.Column="0" Width="980" Margin="5" HorizontalAlignment="Left" AutoGenerateColumns="False" CanUserAddRows="True"
               CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MaxHeight="375"
-              CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding ProductList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}">
+              CanUserResizeRows="False" CanUserSortColumns="False" SelectionMode="Single" ItemsSource="{Binding ProductList}"  BorderBrush="Gray"  Foreground="{StaticResource Sales_ForeBackground}" IsReadOnly="True" MouseDoubleClick="dgDownloadsInfo_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="195"  Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="195"  Header="Code" FontFamily="Arial" Binding="{Binding Code}"/>
