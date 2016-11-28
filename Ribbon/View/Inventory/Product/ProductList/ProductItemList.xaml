@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="400" 
              d:DesignWidth="1000">
@@ -19,6 +20,7 @@
                 <DataGridTextColumn Width="195"  Header="Type" FontFamily="Arial" Binding="{Binding Type}"/>
                 <DataGridTextColumn Width="195"  Header="Last Supplier" FontFamily="Arial" Binding="{Binding LastSupplier}"/>
             </DataGrid.Columns>
+            
         </DataGrid>
     </StackPanel>
     

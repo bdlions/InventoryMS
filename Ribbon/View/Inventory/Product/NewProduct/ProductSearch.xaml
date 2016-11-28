@@ -23,6 +23,21 @@
         <!--1st column-->
         <Label Content="Search" FontSize="16" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1" Grid.Column="0">
+            <ComboBoxItem IsSelected="True" Content="Item Name"/>
+            <!--<ComboBoxItem Content="Code"/>
+            <ComboBoxItem Content="Price"/>-->
+        </ComboBox>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="2" Grid.Column="0">
+            <!--<ComboBoxItem Content="Item Name"/>-->
+            <ComboBoxItem IsSelected="True" Content="Code"/>
+            <!--<ComboBoxItem Content="Price"/>-->
+        </ComboBox>
+        <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,1" Grid.Row="3" Grid.Column="0">
+            <!--<ComboBoxItem Content="Item Name"/>
+            <ComboBoxItem Content="Code"/>-->
+            <ComboBoxItem IsSelected="True" Content="Price"/>
+        </ComboBox>
+        <!--<ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1" Grid.Column="0">
             <ComboBoxItem IsSelected="True" Content="Show"/>
             <ComboBoxItem Content="Item Name/Code"/>
             <ComboBoxItem Content="Description"/>
@@ -92,10 +107,14 @@
             <Separator/>
             <ComboBoxItem Content="Add"/>
             <ComboBoxItem Content="Remove"/>
-        </ComboBox>
+        </ComboBox>-->
 
         <!--2nd column-->
-        <ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="5,0.5,5,0.5"  Grid.Row="1" Grid.Column="1">
+        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1"/>
+        <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1"/>
+        <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1"/>
+
+        <!--<ComboBox Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="5,0.5,5,0.5"  Grid.Row="1" Grid.Column="1">
             <ComboBoxItem IsSelected="True" Content="Active"/>
             <ComboBoxItem Content="Inactive"/>
             <ComboBoxItem Content="Show All"/>
@@ -111,8 +130,8 @@
             <ComboBoxItem Content="Editable"/>
             <ComboBoxItem Content="Default Category"/>
         </ComboBox>
-        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,1,5,24" Grid.RowSpan="2"/>
+        <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,1,5,24" Grid.RowSpan="2"/>-->
 
-        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
     </Grid>
 </UserControl>

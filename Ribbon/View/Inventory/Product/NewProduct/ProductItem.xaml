@@ -22,8 +22,8 @@
                   IsReadOnly="True" >
             
             <DataGrid.Columns>
-                <DataGridTextColumn Width="195"  Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
-                <DataGridTextColumn Width="195"  Header="Code" FontFamily="Arial" Binding="{Binding Code}"/>
+                <DataGridTextColumn Width="150"  Header="Product Name" FontFamily="Arial" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="150"  Header="Code" FontFamily="Arial" Binding="{Binding Code}"/>
             </DataGrid.Columns>
             
             <i:Interaction.Triggers>

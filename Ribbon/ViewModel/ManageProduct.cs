@@ -62,8 +62,8 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private long _price;
-        public long Price
+        private double _price;
+        public double Price
         {
             get
             {
@@ -72,6 +72,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._price = value;
+                OnPropertyChanged("Price");
             }
         }
 
@@ -225,6 +226,7 @@ namespace Ribbon.ViewModel
         {
             this.ProductName = p.Name;
             this.ProductCode = p.Code;
+            this.Price = p.Price;
         }
 
     }

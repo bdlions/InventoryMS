@@ -377,32 +377,9 @@ namespace Ribbon
             RibbonContainer.Items.Add(homeTab);
             RibbonContainer.SelectedItem = homeTab;
             RibbonContainer.Items.Add(tabCreationButton);
-
-        }
-        private void onClickTabRemoveButton(object sender, RoutedEventArgs e)
-        {
-
-            Button tabCreationButton = (Button)RibbonContainer.Items.GetItemAt(RibbonContainer.Items.Count - 2);
-
-          // RibbonTab homeTab = new RibbonTab() { Header = "Home" };
-           // homeTab.Margin = new Thickness(0, 0, -100, -627);
-
-
-          //  RibbonGroup homeTabGroup = new RibbonGroup();
-           // homeTabGroup.Background = (Brush)FindResource("HomePage");
-
-          //  UserControl homeTabContent = new HomePage();
-          //  homeTabContent.Margin = new Thickness(76, 200, 3, 0);
             
-          // homeTabGroup.Items.Remove(homeTabContent);
-          // homeTab.Items.Remove(homeTabGroup); 
-
-            RibbonContainer.Items.Remove(tabCreationButton);
-          // RibbonContainer.Items.Add(homeTab);
-          //  RibbonContainer.SelectedItem = homeTab;
-            //RibbonContainer.Items.Add(tabCreationButton);
-
         }
+        
 
         private void RibbonContainer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -422,5 +399,9 @@ namespace Ribbon
                 RibbonContainer.Items.Remove(selectedTab);
             }
         }
+
+       
+
     }
+
 }

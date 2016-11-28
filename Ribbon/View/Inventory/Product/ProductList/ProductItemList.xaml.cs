@@ -27,7 +27,47 @@ namespace Ribbon.View.Inventory.Product.ProductList
         {
             InitializeComponent();
         }
+       
 
+        
+        private string _productName;
+        public string ProductName
+        {
+            get
+            {
+                return _productName;
+            }
+            set
+            {
+                _productName = value;
+            }
+        }
+
+        private string _productCode;
+        public string ProductCode
+        {
+            get
+            {
+                return this._productCode;
+            }
+            set
+            {
+                this._productCode = value;
+            }
+        }
+
+        private double _price;
+        public double Price
+        {
+            get
+            {
+                return this._price;
+            }
+            set
+            {
+                this._price = value;
+            }
+        }
         public event EventHandler Changed;    // the Event
         private void dgDownloadsInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -37,14 +77,18 @@ namespace Ribbon.View.Inventory.Product.ProductList
                     MessageBox.Show("Please select one item at a time.");
                     return;
                 }
-
-                ProductInfoNJ selectedProduct = (ProductInfoNJ) grid.SelectedItems[0];
-                MessageBox.Show(selectedProduct.Name);
-
+                
+                //ProductInfoNJ selectedProduct = (ProductInfoNJ) grid.SelectedItems[0];
+                //MessageBox.Show(selectedProduct.Name);
+                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                this.ProductName = pInfoNJ.Name;
+                this.ProductCode = pInfoNJ.Code;
+                this.Price = pInfoNJ.Price;
                 
                 
-                ICommand c = new Prism.Commands.DelegateCommand(Ribbon.ViewModel.ManageProduct.OnProductChange);
-                c.Execute(selectedProduct);
+                
+                //ICommand c = new Prism.Commands.DelegateCommand(Ribbon.ViewModel.ManageProduct.OnProductChange);
+                //c.Execute(selectedProduct);
                 
             }
         }

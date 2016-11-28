@@ -14,7 +14,7 @@
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Inventory}" DataContext="{StaticResource manageProduct}">
         <StackPanel>
             <productAddSection:ProductSearch Margin="3 7 3 5"/>
-            <productAddSection:ProductItem Margin="3 7 3 5"/>
+            <productAddSection:ProductItem Margin="3 57 3 5"/>
         </StackPanel>
         <productAddSection:ProductInfoTabs />
     </StackPanel>
