@@ -23,12 +23,34 @@ namespace Ribbon.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
 
+
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        protected virtual void OnPropertyChanged_1([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                if (!String.IsNullOrEmpty(propertyName))
+                {
+                    if (propertyName.ToLower().Equals("customerfirstname") || propertyName.ToLower().Equals("customerlastname"))
+                    {
+                        CustomerName = CustomerFirstName + " " + CustomerLastName;
+                        handler(this, new PropertyChangedEventArgs("CustomerName"));
+                    }
+                }
+                else
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
+
             }
         }
         private string _fName;
@@ -41,7 +63,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fName = value;
-                OnPropertyChanged("CustomerName");
+                OnPropertyChanged();
+                OnPropertyChanged_1();
             }
         }
 
@@ -56,7 +79,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._lName = value;
-                OnPropertyChanged("CustomerName");
+                OnPropertyChanged();
+                OnPropertyChanged_1();
             }
         }
 
@@ -70,6 +94,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._name = value;
+                OnPropertyChanged();
+                OnPropertyChanged_1("CustomerName");
             }
         }
 
@@ -83,6 +109,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._balance = value;
+                OnPropertyChanged("CustomerBalance");
             }
         }
 
@@ -97,6 +124,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._address = value;
+                OnPropertyChanged("Address");
             }
         }
 
@@ -110,6 +138,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._phone = value;
+                OnPropertyChanged("CustomerPhone");
             }
         }
 
@@ -123,6 +152,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fax = value;
+                OnPropertyChanged("CustomerFax");
             }
         }
 
@@ -136,6 +166,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._email = value;
+                OnPropertyChanged("CustomerEmail");
             }
         }
 
@@ -149,6 +180,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._website = value;
+                OnPropertyChanged("CustomerWebsite");
             }
         }
 
@@ -218,6 +250,38 @@ namespace Ribbon.ViewModel
         }
 
 
+        ObservableCollection<CustomerInfoNJ> _customerList;
+
+        public ObservableCollection<CustomerInfoNJ> CustomerList
+        {
+            get
+            {
+                CustomerManager customerManager = new CustomerManager();
+
+                _customerList = new ObservableCollection<CustomerInfoNJ>();
+                for (Iterator i = customerManager.getAllCustomers().iterator(); i.hasNext(); )
+                {
+                    CustomerInfo customerInfo = (CustomerInfo)i.next();
+                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
+                    customerInfoNJ.Fax = customerInfo.getUserInfo().getFax();
+                    customerInfoNJ.Email = customerInfo.getUserInfo().getEmail();
+                    customerInfoNJ.Website = customerInfo.getUserInfo().getWebsite();
+
+                    _customerList.Add(customerInfoNJ);
+                }
+                return _customerList;
+            }
+            set
+            {
+                this._customerList = value;
+            }
+        }
+
+
         public ICommand Add
         {
             get
@@ -261,15 +325,19 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnCopy);
             }
         }
-
+        public ICommand SelectCustomerEvent
+        {
+            get
+            {
+                return new DelegateCommand<CustomerInfoNJ>(this.selectCustomerEvent);
+            }
+        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
         private void OnAdd()
         {
-
-
 
             ProfileInfo userInfo = new ProfileInfo();
             userInfo.setFirstName(CustomerFirstName);
@@ -279,16 +347,13 @@ namespace Ribbon.ViewModel
             userInfo.setFax(CustomerFax);
             userInfo.setWebsite(CustomerWebsite);
 
-            
+
 
             CustomerInfo customerInfo = new CustomerInfo();
             customerInfo.setUserInfo(userInfo);
 
             CustomerManager customerManager = new CustomerManager();
             customerManager.createCustomer(customerInfo);
-
-
-
 
 
             MessageBox.Show("Save Successfully");
@@ -335,6 +400,16 @@ namespace Ribbon.ViewModel
         private void OnEmail()
         {
             MessageBox.Show("OnEmail");
+        }
+        public void selectCustomerEvent(CustomerInfoNJ c)
+        {
+            this.CustomerFirstName = c.CustomerFirstName;
+            this.CustomerLastName = c.CustomerLastName;
+            this.CustomerName = c.CustomerName;
+            this.CustomerPhone = c.Phone;
+            this.CustomerFax = c.Fax;
+            this.CustomerEmail = c.Email;
+            this.CustomerWebsite = c.Website;
         }
     }
 }

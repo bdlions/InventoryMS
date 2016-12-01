@@ -13,6 +13,8 @@ using System.Windows;
 using System.Windows.Input;
 using java.util;
 using com.inventory.db.manager;
+using Ribbon.Model;
+using System.Collections.ObjectModel;
 
 namespace Ribbon.ViewModel
 {
@@ -21,8 +23,18 @@ namespace Ribbon.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+     
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        protected virtual void OnPropertyChanged_1([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
@@ -53,6 +65,7 @@ namespace Ribbon.ViewModel
             {
                 this._fName = value;
                 OnPropertyChanged();
+                OnPropertyChanged_1();
             }
         }
 
@@ -68,6 +81,7 @@ namespace Ribbon.ViewModel
             {
                 this._lName = value;
                 OnPropertyChanged();
+                OnPropertyChanged_1();
             }
         }
 
@@ -81,6 +95,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._name = value;
+                OnPropertyChanged();
+                OnPropertyChanged_1("SupplierName");
             }
         }
 
@@ -108,6 +124,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._balance = value;
+                OnPropertyChanged("Balance");
             }
         }
 
@@ -121,6 +138,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._phone = value;
+                OnPropertyChanged("Phone");
             }
         }
 
@@ -134,6 +152,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fax = value;
+                OnPropertyChanged("Fax");
             }
         }
 
@@ -147,6 +166,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._email = value;
+                OnPropertyChanged("Email");
             }
         }
 
@@ -160,6 +180,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._website = value;
+                OnPropertyChanged("Website");
             }
         }
 
@@ -242,7 +263,36 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<SupplierInfoNJ> _supplierList;
 
+        public ObservableCollection<SupplierInfoNJ> SupplierList
+        {
+            get
+            {
+                SupplierManager supplierManager = new SupplierManager();
+
+                _supplierList = new ObservableCollection<SupplierInfoNJ>();
+                for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
+                {
+                    SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                    supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                    supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                    supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+
+                    _supplierList.Add(supplierInfoNJ);
+                }
+                return _supplierList;
+            }
+            set
+            {
+                this._supplierList = value;
+            }
+        }
 
 
         //    Supplier menu
@@ -291,7 +341,13 @@ namespace Ribbon.ViewModel
             }
         }
 
-
+        public ICommand SelectSupplierEvent
+        {
+            get
+            {
+                return new DelegateCommand<SupplierInfoNJ>(this.selectSupplierEvent);
+            }
+        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -356,6 +412,17 @@ namespace Ribbon.ViewModel
         private void OnDeactivate()
         {
             MessageBox.Show("OnDeactivate");
+        }
+        public void selectSupplierEvent(SupplierInfoNJ s)
+        {
+            this.FirstName = s.SupplierFirstName;
+            this.LastName = s.SupplierLastName;
+            this.SupplierName = s.SupplierName;
+            this.Balance = s.Balance;
+            this.Email = s.Email;
+            this.Phone = s.Phone;
+            this.Fax = s.Fax;
+            this.Website = s.Website;
         }
     }
 }

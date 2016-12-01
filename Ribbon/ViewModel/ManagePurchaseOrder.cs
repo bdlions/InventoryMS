@@ -20,6 +20,15 @@ namespace Ribbon.ViewModel
 {
     class ManagePurchaseOrder : BindableBase, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+
         private string _fname;
         public string SupplierFirstName
         {
@@ -850,15 +859,7 @@ namespace Ribbon.ViewModel
             MessageBox.Show("OnEmail");
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            handler(this, new PropertyChangedEventArgs(propertyName));
-                
-        }
+        
 
     }
 }

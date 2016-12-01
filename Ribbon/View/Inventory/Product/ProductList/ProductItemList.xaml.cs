@@ -30,44 +30,44 @@ namespace Ribbon.View.Inventory.Product.ProductList
        
 
         
-        private string _productName;
-        public string ProductName
-        {
-            get
-            {
-                return _productName;
-            }
-            set
-            {
-                _productName = value;
-            }
-        }
+        //private string _productName;
+        //public string ProductName
+        //{
+        //    get
+        //    {
+        //        return _productName;
+        //    }
+        //    set
+        //    {
+        //        _productName = value;
+        //    }
+        //}
 
-        private string _productCode;
-        public string ProductCode
-        {
-            get
-            {
-                return this._productCode;
-            }
-            set
-            {
-                this._productCode = value;
-            }
-        }
+        //private string _productCode;
+        //public string ProductCode
+        //{
+        //    get
+        //    {
+        //        return this._productCode;
+        //    }
+        //    set
+        //    {
+        //        this._productCode = value;
+        //    }
+        //}
 
-        private double _price;
-        public double Price
-        {
-            get
-            {
-                return this._price;
-            }
-            set
-            {
-                this._price = value;
-            }
-        }
+        //private double _price;
+        //public double Price
+        //{
+        //    get
+        //    {
+        //        return this._price;
+        //    }
+        //    set
+        //    {
+        //        this._price = value;
+        //    }
+        //}
         public event EventHandler Changed;    // the Event
         private void dgDownloadsInfo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -80,10 +80,10 @@ namespace Ribbon.View.Inventory.Product.ProductList
                 
                 //ProductInfoNJ selectedProduct = (ProductInfoNJ) grid.SelectedItems[0];
                 //MessageBox.Show(selectedProduct.Name);
-                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
-                this.ProductName = pInfoNJ.Name;
-                this.ProductCode = pInfoNJ.Code;
-                this.Price = pInfoNJ.Price;
+                //ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                //this.ProductName = pInfoNJ.Name;
+                //this.ProductCode = pInfoNJ.Code;
+                //this.Price = pInfoNJ.Price;
                 
                 
                 

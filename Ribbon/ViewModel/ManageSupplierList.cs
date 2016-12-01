@@ -22,7 +22,7 @@ namespace Ribbon.ViewModel
     {
         ObservableCollection<SupplierInfoNJ> _supplierList;
 
-        public ObservableCollection<SupplierInfoNJ> SuppplierList
+        public ObservableCollection<SupplierInfoNJ> SupplierList
         {
             get
             {

@@ -64,6 +64,18 @@ namespace Ribbon.Model
                 this._supplierUserID = value;
             }
         }
+        private double _balance;
+        public double Balance
+        {
+            get
+            {
+                return this._balance;
+            }
+            set
+            {
+                this._balance = value;
+            }
+        }
 
         private double _contact;
         public double Contact

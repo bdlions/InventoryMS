@@ -14,15 +14,15 @@
                 <TextBlock VerticalAlignment="Center">New</TextBlock>
             </StackPanel>
         </Button>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="54,10,0,0" Height="28" BorderBrush="#5D8AA8" 
+        <!--<Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="54,10,0,0" Height="28" BorderBrush="#5D8AA8" 
                 BorderThickness="1 1 0 1" Background="{StaticResource GlassFXDisabled}"  Command="{Binding Add}">
             <StackPanel Orientation="Horizontal" Margin="3">
                 <Image Source="/Ribbon;component/img/save.png" Width="16" Height="32" Margin="0,0,5,0"/>
                 <TextBlock VerticalAlignment="Center">Save</TextBlock>
             </StackPanel>
-        </Button>
+        </Button>-->
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="109,10,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="54,10,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
                 Background="{StaticResource GlassFXDisabled}"  Command="{Binding Print}">
             <StackPanel Orientation="Horizontal" Margin="3" Height="18">
                 <Image Source="/Ribbon;component/img/print.png" Width="16" Height="32" Margin="0,0,5,0"/>
@@ -30,21 +30,21 @@
             </StackPanel>
         </Button>
 
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="164,10,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="109,10,0,0" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
                 Background="{StaticResource GlassFXDisabled}"  Command="{Binding Email}">
             <StackPanel Orientation="Horizontal" Margin="3" Height="18">
                 <Image Source="/Ribbon;component/img/copy.png" Width="16" Height="32" Margin="0,0,5,0"/>
                 <TextBlock VerticalAlignment="Center">Copy</TextBlock>
             </StackPanel>
         </Button>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="221,10,0,-3" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="164,10,0,0" Height="28" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" 
                 Background="{StaticResource GlassFXDisabled}"  Command="{Binding Email}">
             <StackPanel Orientation="Horizontal" Margin="3">
                 <Image Source="/Ribbon;component/img/purchase/email.png" Width="16" Height="32" Margin="0,0,5,0"/>
                 <TextBlock VerticalAlignment="Center">Email</TextBlock>
             </StackPanel>
         </Button>
-        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="279,10,0,-3" Height="28" BorderBrush="#5D8AA8" BorderThickness="1" 
+        <Button VerticalAlignment="Top" HorizontalAlignment="Left" Margin="221,10,0,-3" Height="28" BorderBrush="#5D8AA8" BorderThickness="1" 
                 Background="{StaticResource GlassFXDisabled}" Command="{Binding Attachment}">
             <StackPanel Orientation="Horizontal" Margin="3">
                 <Image Source="/Ribbon;component/img/attachment.png" Width="16" Height="32" Margin="0,0,5,0"/>
