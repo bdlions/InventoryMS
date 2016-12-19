@@ -34,7 +34,7 @@ namespace Ribbon.ViewModel
                     PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
                     PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
                     purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
-                    purchaseInfoNJ.Remark = purchaseInfo.getRemarks();
+                    purchaseInfoNJ.OrderRemark = purchaseInfo.getRemarks();
                     purchaseInfoNJ.RequestedShipDate = purchaseInfo.getRequestShippedDate();
                     //purchaseInfoNJ.OrderDate = purchaseInfo.getOrderDate();
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
@@ -44,6 +44,8 @@ namespace Ribbon.ViewModel
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
                     supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
                     supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.SupplierName = supplierInfoNJ.SupplierFirstName + " " + supplierInfoNJ.SupplierLastName;
+                   
                     supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
 

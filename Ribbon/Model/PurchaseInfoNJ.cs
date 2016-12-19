@@ -73,18 +73,18 @@ namespace Ribbon.Model
             {
                 this._orderDate = value;
             }
-        } 
+        }
 
-        private string _remark;
-        public string Remark
+        private string _orderRemark;
+        public string OrderRemark
         {
             get
             {
-                return this._remark;
+                return this._orderRemark;
             }
             set
             {
-                this._remark = value;
+                this._orderRemark = value;
             }
         }
 

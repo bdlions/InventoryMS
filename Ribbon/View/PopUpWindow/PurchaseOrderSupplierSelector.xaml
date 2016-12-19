@@ -23,7 +23,7 @@
                     <DataGridTextColumn Width="50*" Header="Phone" FontFamily="Arial" Binding="{Binding Path=Phone}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Grid Height="125">
+            <!--<Grid Height="125">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25" />
                     <RowDefinition Height="25" />
@@ -35,12 +35,12 @@
                     <ColumnDefinition Width="50*" />
                 </Grid.ColumnDefinitions>
 
-                <!--1st Column-->
+                --><!--1st Column--><!--
                 <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Name"/>
                 <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Contact"/>
                 <Label Grid.Row="2" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Phone"/>
 
-                <!--2nd Column-->
+                --><!--2nd Column--><!--
                 <TextBox Grid.Row="0" Grid.Column="1"  BorderThickness="1 0 0 1"  Padding="0 3"/>
                 <TextBox Grid.Row="1" Grid.Column="1" BorderThickness="1 0 0 1"  Padding="0 3"/>
                 <TextBox Grid.Row="2" Grid.Column="1"  BorderThickness="1 0 0 1"  Padding="0 3"/>
@@ -58,15 +58,15 @@
                     <ColumnDefinition Width="50*" />
                 </Grid.ColumnDefinitions>
 
-                <!--1st Column-->
+                --><!--1st Column--><!--
                 <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="First Name"/>
                 <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" BorderBrush="#5D8AA8" BorderThickness="1 1 0 1" Content="Last Name"/>
 
-                <!--2nd Column-->
+                --><!--2nd Column--><!--
                 <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BorderThickness="1 0 0 1"  Padding="0 3" Text="{Binding SupplierFirstName}"/>
                 <TextBox Grid.Row="1" Grid.Column="1"  BorderThickness="1 0 0 1"  Padding="0 3" Text="{Binding SupplierLastName}"/>
                 <Button Grid.Row="2" Grid.Column="1" Width="70" Height="22" HorizontalAlignment="Right" Content="Add" Background="{StaticResource DarkBackground}" Foreground="White" Margin="0,5,0,1"/>
-            </Grid>
+            </Grid>-->
         </StackPanel>
     </Border>
 </Popup>

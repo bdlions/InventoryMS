@@ -695,6 +695,32 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<SaleInfoNJ> _saleOrderList;
+
+        public ObservableCollection<SaleInfoNJ> SaleOrderList
+        {
+            get
+            {
+                SaleManager saleManager = new SaleManager();
+
+                _saleOrderList = new ObservableCollection<SaleInfoNJ>();
+                for (Iterator i = saleManager.getAllSaleOrders().iterator(); i.hasNext(); )
+                {
+                    SaleInfo saleInfo = (SaleInfo)i.next();
+                    SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
+                    saleInfoNJ.Order = saleInfo.getOrderNo();
+                    saleInfoNJ.OrderDate = saleInfo.getSaleDate();
+                    saleInfoNJ.Status = saleInfo.getStatusId();
+
+                    _saleOrderList.Add(saleInfoNJ);
+                }
+                return _saleOrderList;
+            }
+            set
+            {
+                this._saleOrderList = value;
+            }
+        }
 
         ObservableCollection<ProductInfoNJ> _saleList = new ObservableCollection<ProductInfoNJ>();
 
@@ -780,7 +806,6 @@ namespace Ribbon.ViewModel
                     customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
                     customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
 
-
                 }
                 return _customerList;
 
@@ -857,10 +882,19 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-
+        public ICommand SelectSaleOrderEvent
+        {
+            get
+            {
+                return new DelegateCommand<SaleInfoNJ>(this.selectSaleOrderEvent);
+            }
+        }
+        public void selectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
+        {
+            this.Order = saleInfoNJ.Order;
+        }
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;

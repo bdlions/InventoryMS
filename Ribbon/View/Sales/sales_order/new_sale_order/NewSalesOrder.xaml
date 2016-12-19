@@ -3,9 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-              d:DesignHeight="400" Width="300" >
-    <Grid Margin="5">
+              d:DesignHeight="400" Width="290" >
+    <DataGrid  Name="dgDownloadsInfo_sale_order" Grid.Row="2" Grid.Column="0"
+                  HorizontalAlignment="Left" AutoGenerateColumns="False" 
+                  CanUserAddRows="True"
+                  CanUserDeleteRows="False" CanUserReorderColumns="False" 
+                  CanUserResizeColumns="False" 
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  MaxHeight="375" Width="300" CanUserResizeRows="False" 
+                  CanUserSortColumns="False" SelectionMode="Single" 
+                  ItemsSource="{Binding SaleOrderList}"  BorderBrush="Gray"  
+                  Foreground="{StaticResource Sales_ForeBackground}"
+                  IsReadOnly="True" >
+
+        <DataGrid.Columns>
+            <DataGridTextColumn Width="290"  Header="Sale Order" FontFamily="Arial" Binding="{Binding Order}"/>
+        </DataGrid.Columns>
+
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="MouseDoubleClick">
+                <i:InvokeCommandAction 
+                        CommandParameter="{Binding SelectedItem, ElementName=dgDownloadsInfo_sale_order}" 
+                        Command="{Binding SelectSaleOrderEvent}" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+    </DataGrid>
+    <!--<Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -50,5 +77,5 @@
         <TextBox Grid.Row="14"  Padding="0 3" BorderThickness="1 1 1 0"/>
         <TextBox Grid.Row="15"  Padding="0 3" BorderThickness="1"/>
 
-    </Grid>
+    </Grid>-->
 </UserControl>

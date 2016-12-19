@@ -578,6 +578,14 @@ namespace Ribbon.ViewModel
             }
         }
 
+        public ICommand SelectPurchaseOrderEvent
+        {
+            get
+            {
+                return new DelegateCommand<PurchaseInfoNJ>(this.selectPurchaseOrderEvent);
+            }
+        }
+
         public ICommand SavePurchase 
         {
             get 
@@ -719,7 +727,42 @@ namespace Ribbon.ViewModel
             }
         }
 
+        ObservableCollection<PurchaseInfoNJ> _purchaseOrderList;
 
+        public ObservableCollection<PurchaseInfoNJ> PurchaseOrderList
+        {
+            get
+            {
+                PurchaseManager purchaseManager = new PurchaseManager();
+
+                _purchaseOrderList = new ObservableCollection<PurchaseInfoNJ>();
+                for (Iterator i = purchaseManager.getAllPurchaseOrders().iterator(); i.hasNext(); )
+                {
+                    PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
+                    PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
+                    purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
+                    purchaseInfoNJ.OrderRemark = purchaseInfo.getRemarks();
+                    purchaseInfoNJ.RequestedShipDate = purchaseInfo.getRequestShippedDate();
+                    //purchaseInfoNJ.OrderDate = purchaseInfo.getOrderDate();
+                    purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
+                    purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
+
+                    SupplierInfo supplierInfo = new SupplierInfo();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+
+
+                    _purchaseOrderList.Add(purchaseInfoNJ);
+                }
+                return _purchaseOrderList;
+            }
+            set
+            {
+                this._purchaseOrderList = value;
+            }
+        }
 
 
         ObservableCollection<SupplierInfoNJ> _supplierItemList;
@@ -858,7 +901,11 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
-
+        public void selectPurchaseOrderEvent(PurchaseInfoNJ p)
+        {
+            this.Order = p.Order;
+          
+        }
         
 
     }

@@ -3,20 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+       
+        xmlns:View="clr-namespace:Ribbon.View"
+        
         xmlns:treeList="clr-namespace:Ribbon.View"
         xmlns:Ribbon="clr-namespace:Ribbon"
-        
-
-        mc:Ignorable="d" x:Class="Ribbon.MainWindow"
+        mc:Ignorable="d" 
+        x:Class="Ribbon.MainWindow"
         xmlns:partial="clr-namespace:Ribbon.View"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Title="InventoryMS" Height="720" Width="1024" 
+        Title="InventoryMS" 
+        Height="720" Width="1024" 
         WindowStyle="threedborderwindow" 
         xmlns:ViewModel="clr-namespace:Ribbon.ViewModel"
-        
         Background="#f8f8f8f8" 
         Icon="img/bdlions.png">
+
+        
 
 
     <Window.Resources>
@@ -63,6 +67,16 @@
         <SolidColorBrush x:Key="Brush1" Color="#FFF0F0F0"/>
 
     </Window.Resources>
+    
+
+    <!--<Grid Margin="100,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*"/>
+            </Grid.ColumnDefinitions>
+            <View:ucSpinnerDotCircle HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>-->
+
+
 
     <Grid>
 
