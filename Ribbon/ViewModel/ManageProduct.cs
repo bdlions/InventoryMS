@@ -1,6 +1,7 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
 using com.inventory.db.manager;
+using com.inventory.response;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -33,6 +34,10 @@ namespace Ribbon.ViewModel
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        protected virtual void OnPropertyChangedNull([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+        }
         
         private string _productName;
         public  string ProductName
@@ -45,6 +50,7 @@ namespace Ribbon.ViewModel
             {
                 _productName = value;
                 OnPropertyChanged("ProductName");
+                OnPropertyChangedNull(" ");
             }
         }
 
@@ -59,6 +65,7 @@ namespace Ribbon.ViewModel
             {
                 this._productCode = value;
                 OnPropertyChanged("ProductCode");
+                OnPropertyChangedNull(" ");
             }
         }
 
@@ -73,6 +80,7 @@ namespace Ribbon.ViewModel
             {
                 this._price = value;
                 OnPropertyChanged("Price");
+                OnPropertyChangedNull(" ");
             }
         }
 
@@ -159,7 +167,6 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-
             ProductInfo productInfo = new ProductInfo();
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
@@ -168,12 +175,15 @@ namespace Ribbon.ViewModel
             //productInfo1.setWidth("d1");
             //productInfo1.setHeight("e1");
             //productInfo1.setWeight("f1");
-
+            ResultEvent resultEvent = new ResultEvent();
             ProductManager productManager = new ProductManager();
-            productManager.createProduct(productInfo);
-
-
-            MessageBox.Show("Save Successfully");
+            resultEvent = productManager.createProduct(productInfo);
+            if (resultEvent.getResponseCode() == 2000)
+            {
+                //reset create product panel
+                
+            }
+            MessageBox.Show(resultEvent.getMessage());
         }
 
 

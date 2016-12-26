@@ -712,8 +712,6 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Discount = productInfo.getDiscount();
                     productInfoNJ.ProductId = productInfo.getId();
 
-                    
-                    //SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
                     supplierInfoNJ.SupplierFirstName = SupplierFirstName;
                     supplierInfoNJ.SupplierLastName = SupplierLastName;
@@ -747,11 +745,8 @@ namespace Ribbon.ViewModel
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                     purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
 
-                    SupplierInfo supplierInfo = new SupplierInfo();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                    purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                    purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
 
 
                     _purchaseOrderList.Add(purchaseInfoNJ);
@@ -823,8 +818,6 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
-
 
         
 
@@ -855,9 +848,6 @@ namespace Ribbon.ViewModel
                         Phone = supplierInfo.Phone;
                         SupplierUserId = supplierInfo.SupplierUserID;
                     }
-                    
-                   
-
                 });
             }
         }
@@ -901,13 +891,14 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
-        public void selectPurchaseOrderEvent(PurchaseInfoNJ p)
+        public void selectPurchaseOrderEvent(PurchaseInfoNJ purchaseInfoNJ)
         {
-            this.Order = p.Order;
+            Order = purchaseInfoNJ.Order;
+            SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
+            SupplierLastName = purchaseInfoNJ.SupplierLastName;
           
         }
         
-
     }
 }
 

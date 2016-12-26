@@ -596,7 +596,7 @@ namespace Ribbon.ViewModel
             SaleInfo saleInfo = new SaleInfo();
             CustomerInfo customerInfo = new CustomerInfo();
             saleInfo.setProductList(productList);
-            saleInfo.setCustomerUserId(customerInfo.getUserInfo().getId());
+            saleInfo.setCustomerUserId(customerInfo.getProfileInfo().getId());
             saleInfo.setOrderNo(saleInfo.getOrderNo());
             saleInfo.setStatusId(saleInfo.getStatusId());
             saleInfo.setRemarks(saleInfo.getRemarks());
@@ -743,8 +743,8 @@ namespace Ribbon.ViewModel
                     CustomerInfo customerInfo = new CustomerInfo();
                     CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
-                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
+                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                 }
                 return _saleList;
 
@@ -771,10 +771,10 @@ namespace Ribbon.ViewModel
                     CustomerInfo customerInfo = (CustomerInfo)i.next();
                     CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
-                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
-                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
-                    customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
+                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
 
 
                     _customerItemList.Add(customerInfoNJ);
@@ -801,10 +801,10 @@ namespace Ribbon.ViewModel
                     CustomerInfo customerInfo = new CustomerInfo();
                     CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
-                    customerInfoNJ.CustomerFirstName = customerInfo.getUserInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getUserInfo().getLastName();
-                    customerInfoNJ.Phone = customerInfo.getUserInfo().getPhone();
-                    customerInfoNJ.CusomerUserId = customerInfo.getUserInfo().getId();
+                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                    customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
 
                 }
                 return _customerList;

@@ -40,13 +40,15 @@ namespace Ribbon.ViewModel
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                     purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
 
-                    SupplierInfo supplierInfo = new SupplierInfo();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.SupplierName = supplierInfoNJ.SupplierFirstName + " " + supplierInfoNJ.SupplierLastName;
+                    purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                    purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                    //SupplierInfo supplierInfo = new SupplierInfo();
+                    //SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    //supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    //supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    //supplierInfoNJ.SupplierName = supplierInfoNJ.SupplierFirstName + " " + supplierInfoNJ.SupplierLastName;
                    
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                    //supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
 
                     _purchaseList.Add(purchaseInfoNJ);
