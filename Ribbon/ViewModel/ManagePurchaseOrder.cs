@@ -758,9 +758,11 @@ namespace Ribbon.ViewModel
 
                     SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                    purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                    purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                    //supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    //supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    //supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
                     purchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
                     _purchaseOrderList.Add(purchaseInfoNJ);
@@ -918,8 +920,11 @@ namespace Ribbon.ViewModel
             //Phone = "01711123456";
             //SupplierUserId = 2;
             //Order = p.Order;
-            SupplierFirstName = purchaseInfoNJ.SupplierInfoNJ.SupplierFirstName;
-            SupplierLastName = purchaseInfoNJ.SupplierInfoNJ.SupplierLastName;
+            //SupplierFirstName = purchaseInfoNJ.SupplierInfoNJ.SupplierFirstName;
+            //SupplierLastName = purchaseInfoNJ.SupplierInfoNJ.SupplierLastName;
+            Order = purchaseInfoNJ.Order;
+            SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
+            SupplierLastName = purchaseInfoNJ.SupplierLastName;
 
         }
     }
