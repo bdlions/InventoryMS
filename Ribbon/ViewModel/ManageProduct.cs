@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-
 namespace Ribbon.ViewModel
 {
     class ManageProduct : BindableBase, INotifyPropertyChanged
@@ -34,11 +33,18 @@ namespace Ribbon.ViewModel
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        protected virtual void OnPropertyChangedNull([CallerMemberName] string propertyName = null)
+        private int _id;
+        public int Id
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this._id = value;
+            }
         }
-        
         private string _productName;
         public  string ProductName
         {
@@ -50,7 +56,6 @@ namespace Ribbon.ViewModel
             {
                 _productName = value;
                 OnPropertyChanged("ProductName");
-                OnPropertyChangedNull(" ");
             }
         }
 
@@ -65,7 +70,6 @@ namespace Ribbon.ViewModel
             {
                 this._productCode = value;
                 OnPropertyChanged("ProductCode");
-                OnPropertyChangedNull(" ");
             }
         }
 
@@ -80,7 +84,21 @@ namespace Ribbon.ViewModel
             {
                 this._price = value;
                 OnPropertyChanged("Price");
-                OnPropertyChangedNull(" ");
+            }
+        }
+
+        // Search product items
+        private string _searchProductName;
+        public string SearchProductName
+        {
+            get
+            {
+                return this._searchProductName;
+            }
+            set
+            {
+                this._searchProductName = value;
+                //OnPropertyChanged("ProductCode");
             }
         }
 
@@ -97,6 +115,7 @@ namespace Ribbon.ViewModel
                 {
                     ProductInfo pInfo = (ProductInfo)i.next();
                     ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                    pInfoNJ.Id = pInfo.getId();
                     pInfoNJ.Name = pInfo.getName();
                     pInfoNJ.Code = pInfo.getCode();
                     pInfoNJ.Price = pInfo.getUnitPrice();
@@ -153,7 +172,13 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnCopy);
             }
         }
-
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
         public ICommand SelectProductEvent
         {
             get
@@ -168,21 +193,27 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
             ProductInfo productInfo = new ProductInfo();
+            productInfo.setId(Id);
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
             productInfo.setUnitPrice(Price);
-            //productInfo1.setLength("c1");
-            //productInfo1.setWidth("d1");
-            //productInfo1.setHeight("e1");
-            //productInfo1.setWeight("f1");
             ResultEvent resultEvent = new ResultEvent();
             ProductManager productManager = new ProductManager();
-            resultEvent = productManager.createProduct(productInfo);
+            if (Id > 0)
+            {
+                resultEvent = productManager.updateProduct(productInfo);
+            }
+            else { 
+                resultEvent = productManager.createProduct(productInfo);
+            }
             if (resultEvent.getResponseCode() == 2000)
             {
+
                 //reset create product panel
-                
+
+              
             }
+       
             MessageBox.Show(resultEvent.getMessage());
         }
 
@@ -232,11 +263,36 @@ namespace Ribbon.ViewModel
             MessageBox.Show("OnDeactivate");
         }
 
+        /// <summary>
+        /// Called when Button SendToViewModel is clicked
+        /// </summary>
+        private void OnSearch()
+        {
+
+            ProductManager productManager = new ProductManager();
+
+            _productList.Clear();
+            for (Iterator i = productManager.searchProduct(SearchProductName).iterator(); i.hasNext(); )
+            {
+                ProductInfo pInfo = (ProductInfo)i.next();
+                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                pInfoNJ.Id = pInfo.getId();
+                pInfoNJ.Name = pInfo.getName();
+                pInfoNJ.Code = pInfo.getCode();
+                pInfoNJ.Price = pInfo.getUnitPrice();
+                _productList.Add(pInfoNJ);
+            }
+            //ProductList = _productList;
+        }
+
         public void selectProductEvent(ProductInfoNJ p)
         {
+            this.Id = p.Id;
             this.ProductName = p.Name;
             this.ProductCode = p.Code;
             this.Price = p.Price;
+            
+
         }
 
     }

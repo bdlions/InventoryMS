@@ -8,7 +8,18 @@ namespace Ribbon.Model
 {
     class ProductInfoNJ
     {
-
+        private int _id;
+        public int Id
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this._id = value;
+            }
+        }
         private string _fname;
         public string SupplierFirstName
         {

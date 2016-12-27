@@ -24,5 +24,9 @@ namespace Ribbon.View
         {
             InitializeComponent();
         }
+        public void Refresh()
+        {
+            MessageBox.Show("Hello");
+        }
     }
 }

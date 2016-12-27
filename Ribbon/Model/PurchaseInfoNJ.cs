@@ -8,6 +8,35 @@ namespace Ribbon.Model
 {
     class PurchaseInfoNJ
     {
+        private List<ProductInfoNJ> _productList;
+        public List<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null) 
+                {
+                    _productList = new List<ProductInfoNJ>();
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+
+        private SupplierInfoNJ _supplierInfoNJ;
+        public SupplierInfoNJ SupplierInfoNJ
+        {
+            get
+            {
+                return this._supplierInfoNJ;
+            }
+            set
+            {
+                this._supplierInfoNJ = value;
+            }
+        }
 
         private string _supplier;
         public string SupplierName

@@ -712,6 +712,8 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Discount = productInfo.getDiscount();
                     productInfoNJ.ProductId = productInfo.getId();
 
+                    
+                    //SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
                     supplierInfoNJ.SupplierFirstName = SupplierFirstName;
                     supplierInfoNJ.SupplierLastName = SupplierLastName;
@@ -745,10 +747,22 @@ namespace Ribbon.ViewModel
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                     purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
 
-                    purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
-                    purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    //productInfoNJ.Name = "RedoyTestProduct";
+                    //productInfoNJ.Quantity = 10;
+                    //productInfoNJ.Discount = 20;
+                    //productInfoNJ.Price = 100;
+                    
 
+                    purchaseInfoNJ.ProductList.Add(productInfoNJ);
 
+                    SupplierInfo supplierInfo = new SupplierInfo();
+                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+
+                    purchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
                     _purchaseOrderList.Add(purchaseInfoNJ);
                 }
                 return _purchaseOrderList;
@@ -818,6 +832,8 @@ namespace Ribbon.ViewModel
             }
         }
 
+        
+
 
         
 
@@ -848,6 +864,9 @@ namespace Ribbon.ViewModel
                         Phone = supplierInfo.Phone;
                         SupplierUserId = supplierInfo.SupplierUserID;
                     }
+                    
+                   
+
                 });
             }
         }
@@ -893,12 +912,16 @@ namespace Ribbon.ViewModel
         }
         public void selectPurchaseOrderEvent(PurchaseInfoNJ purchaseInfoNJ)
         {
-            Order = purchaseInfoNJ.Order;
-            SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
-            SupplierLastName = purchaseInfoNJ.SupplierLastName;
-          
+            //this.Order = p.Order;
+            //SupplierFirstName = "Hello";
+            //SupplierLastName = "World";
+            //Phone = "01711123456";
+            //SupplierUserId = 2;
+            //Order = p.Order;
+            SupplierFirstName = purchaseInfoNJ.SupplierInfoNJ.SupplierFirstName;
+            SupplierLastName = purchaseInfoNJ.SupplierInfoNJ.SupplierLastName;
+
         }
-        
     }
 }
 

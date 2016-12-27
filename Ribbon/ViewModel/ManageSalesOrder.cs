@@ -21,6 +21,14 @@ namespace Ribbon.ViewModel
 {
     class ManageSalesOrder : BindableBase, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+
         private string _fName;
         public string CustomerFirstName
         {
@@ -31,7 +39,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fName = value;
-                OnPropertyChanged("CustomerName");
+                OnPropertyChanged("CustomerFirstName");
             }
         }
 
@@ -46,7 +54,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._lName = value;
-                OnPropertyChanged("CustomerName");
+                OnPropertyChanged("CustomerLastName");
             }
         }
 
@@ -711,6 +719,8 @@ namespace Ribbon.ViewModel
                     saleInfoNJ.Order = saleInfo.getOrderNo();
                     saleInfoNJ.OrderDate = saleInfo.getSaleDate();
                     saleInfoNJ.Status = saleInfo.getStatusId();
+                    saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                    saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
 
                     _saleOrderList.Add(saleInfoNJ);
                 }
@@ -882,7 +892,7 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public ICommand SelectSaleOrderEvent
         {
@@ -894,13 +904,11 @@ namespace Ribbon.ViewModel
         public void selectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
         {
             this.Order = saleInfoNJ.Order;
+            this.CustomerFirstName = saleInfoNJ.CustomerFirstName;
+            this.CustomerLastName = saleInfoNJ.CustomerLastName;
         }
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            handler(this, new PropertyChangedEventArgs(propertyName));
 
-        }
+       
 
     }
 }

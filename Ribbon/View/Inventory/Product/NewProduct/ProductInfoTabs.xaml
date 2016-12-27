@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
               d:DesignHeight="615" d:DesignWidth="632">
     <Grid Height="615">
-        <TabControl TabStripPlacement="Bottom">
+        <TabControl TabStripPlacement="Bottom" x:Name="newProductInfo">
             <TabItem Header="Product Info" Padding="5" Margin="-2 0 0 0">
                 <StackPanel>
                     <ProductsTopMenu:ProductsTopMenu/>

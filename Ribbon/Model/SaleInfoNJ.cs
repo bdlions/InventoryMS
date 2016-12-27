@@ -8,9 +8,32 @@ namespace Ribbon.Model
 {
     class SaleInfoNJ
     {
-
+        private string _customerFirstName;
+        public string CustomerFirstName
+        {
+            get
+            {
+                return this._customerFirstName;
+            }
+            set
+            {
+                this._customerFirstName = value;
+            }
+        }
+        private string _customerLastName;
+        public string CustomerLastName
+        {
+            get
+            {
+                return this._customerLastName;
+            }
+            set
+            {
+                this._customerLastName = value;
+            }
+        }
         private string _name;
-        public string Name
+        public string CustomerName
         {
             get
             {
