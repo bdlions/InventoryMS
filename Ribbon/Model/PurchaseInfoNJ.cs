@@ -38,6 +38,8 @@ namespace Ribbon.Model
             }
         }
 
+     
+
         private string _supplier;
         public string SupplierName
         {
@@ -75,8 +77,20 @@ namespace Ribbon.Model
             {
                 this._supplierLastName = value;
             }
-        } 
+        }
 
+        private string _phone;
+        public string Phone
+        {
+            get
+            {
+                return this._phone;
+            }
+            set
+            {
+                this._phone = value;
+            }
+        }
 
         private string _order;
         public string Order
@@ -143,6 +157,32 @@ namespace Ribbon.Model
             }
         }
 
+        private double _price;
+        public double Price
+        {
+            get
+            {
+                return this._price;
+            }
+            set
+            {
+                this._price = value;
+            }
+        }
+
+        private double _quantity;
+        public double Quantity
+        {
+            get
+            {
+                return this._quantity;
+            }
+            set
+            {
+                this._quantity = value;
+            }
+        }
+
         private double _discount;
         public double Discount
         {
@@ -154,7 +194,7 @@ namespace Ribbon.Model
             {
                 this._discount = value;
             }
-        } 
+        }
         
     }
 }

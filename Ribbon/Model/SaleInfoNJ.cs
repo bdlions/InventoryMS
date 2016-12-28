@@ -39,6 +39,7 @@ namespace Ribbon.Model
             }
         }
 
+
         private string _customerFirstName;
         public string CustomerFirstName
         {

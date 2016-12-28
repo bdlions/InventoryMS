@@ -1,6 +1,7 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
 using com.inventory.db.manager;
+using com.inventory.response;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -22,12 +23,31 @@ namespace Ribbon.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+
+        private PurchaseInfoNJ _purchaseInfoNJ;
+        public PurchaseInfoNJ PurchaseInfoNJ
+        {
+            get
+            {
+                if (_purchaseInfoNJ == null)
+                {
+                    _purchaseInfoNJ = new PurchaseInfoNJ();
+                }
+                return this._purchaseInfoNJ;
+            }
+            set
+            {
+                this._purchaseInfoNJ = value;
+            }
+        }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             handler(this, new PropertyChangedEventArgs(propertyName));
 
         }
+
 
         private string _fname;
         public string SupplierFirstName
@@ -85,6 +105,18 @@ namespace Ribbon.ViewModel
             }
         }
 
+        private string _phone;
+        public string Phone
+        {
+            get
+            {
+                return this._phone;
+            }
+            set
+            {
+                this._phone = value;
+            }
+        }
 
         private string _contact;
         public string Contact
@@ -112,19 +144,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _phone;
-        public string Phone
-        {
-            get
-            {
-                return this._phone;
-            }
-            set
-            {
-                this._phone = value;
-                OnPropertyChanged("Phone");
-            }
-        }
+       
 
         /*  ------------------------- Purchase Order Item ----------------------*/
 
@@ -530,8 +550,19 @@ namespace Ribbon.ViewModel
         }
 
 
-
-
+    // Search Purchase Order
+        private string _searchPurchaseOderNo;
+        public string SearchPurchaseOderNo
+        {
+            get
+            {
+                return this._searchPurchaseOderNo;
+            }
+            set
+            {
+                this._searchPurchaseOderNo = value;
+            }
+        }
 
 
         public ICommand Add
@@ -585,6 +616,13 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand<PurchaseInfoNJ>(this.selectPurchaseOrderEvent);
             }
         }
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
 
         public ICommand SavePurchase 
         {
@@ -615,10 +653,10 @@ namespace Ribbon.ViewModel
                     purchaseInfo.setStatusId(1);
                     purchaseInfo.setRemarks(OrderRemark);
 
+                    ResultEvent resultEvent = new ResultEvent();
                     PurchaseManager purchaseManager = new PurchaseManager();
-                    purchaseManager.addPurchaseOrder(purchaseInfo);
-
-                    MessageBox.Show("Save Successfully");
+                    resultEvent = purchaseManager.addPurchaseOrder(purchaseInfo);
+                    MessageBox.Show(resultEvent.getMessage());
                 }));
             }
         }
@@ -907,16 +945,31 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
+
+        private void OnSearch()
+        {
+
+            PurchaseManager purchaseManager = new PurchaseManager();
+
+            _purchaseOrderList.Clear();
+            for (Iterator i = purchaseManager.searchPurchaseOrders(SearchPurchaseOderNo).iterator(); i.hasNext(); )
+            {
+                PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
+                PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
+
+                purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
+                purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                purchaseInfoNJ.Phone = purchaseInfo.getSupplierInfo().getProfileInfo().getPhone();
+
+                _purchaseOrderList.Add(purchaseInfoNJ);
+            }
+        }
+
+
         public void selectPurchaseOrderEvent(PurchaseInfoNJ purchaseInfoNJ)
         {
-            //this.Order = p.Order;
-            //SupplierFirstName = "Hello";
-            //SupplierLastName = "World";
-            //Phone = "01711123456";
-            //SupplierUserId = 2;
-            //Order = p.Order;
-            //SupplierFirstName = purchaseInfoNJ.SupplierInfoNJ.SupplierFirstName;
-            //SupplierLastName = purchaseInfoNJ.SupplierInfoNJ.SupplierLastName;
+            
             Order = purchaseInfoNJ.Order;
             SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
             SupplierLastName = purchaseInfoNJ.SupplierLastName;

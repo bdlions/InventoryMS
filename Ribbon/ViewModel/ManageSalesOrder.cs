@@ -1,6 +1,7 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
 using com.inventory.db.manager;
+using com.inventory.response;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -29,6 +30,7 @@ namespace Ribbon.ViewModel
 
         }
 
+
         private string _customerFirstName;
         public string CustomerFirstName
         {
@@ -39,7 +41,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._customerFirstName = value;
-                OnPropertyChanged("CustomerFirstName");
+                OnPropertyChanged("CustomerName");
             }
         }
 
@@ -54,7 +56,7 @@ namespace Ribbon.ViewModel
             set
             {
                 this._customerLastName = value;
-                OnPropertyChanged("CustomerLastName");
+                OnPropertyChanged("CustomerName");
             }
         }
 
@@ -63,7 +65,7 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                return this._customerFirstName + " " + this._customerLastName;
+                return this._customerName = CustomerFirstName + " " + CustomerLastName;
             }
             set
             {
@@ -584,7 +586,20 @@ namespace Ribbon.ViewModel
                 this._salesOrderReturnCreditAmount = value;
             }
         }
-
+        
+            // Search Sale Order
+        private string _searchSaleOderNo;
+        public string SearchSaleOderNo
+        {
+            get
+            {
+                return this._searchSaleOderNo;
+            }
+            set
+            {
+                this._searchSaleOderNo = value;
+            }
+        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
@@ -673,9 +688,11 @@ namespace Ribbon.ViewModel
                     saleInfo.setStatusId(1);
                     saleInfo.setRemarks(OrderRemark);
 
+                    ResultEvent resultEvent = new ResultEvent();
                     SaleManager saleManager = new SaleManager();
-                    saleManager.addSaleOrder(saleInfo);
-                    MessageBox.Show("Save Successfully");
+                    resultEvent = saleManager.addSaleOrder(saleInfo);
+                    MessageBox.Show(resultEvent.getMessage());
+
                 }));
             }
         }
@@ -686,12 +703,14 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((SelectedCustomer) =>
                 {
-                    
-                    CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
-                    CustomerFirstName = customerInfoNJ.CustomerFirstName;
-                    CustomerLastName = customerInfoNJ.CustomerLastName;
-                    Phone = customerInfoNJ.Phone;
-                    CusomerUserId = customerInfoNJ.CusomerUserId;
+                    if (SelectedCustomer is CustomerInfoNJ)
+                    {
+                        CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
+                        CustomerFirstName = customerInfoNJ.CustomerFirstName;
+                        CustomerLastName = customerInfoNJ.CustomerLastName;
+                        Phone = customerInfoNJ.Phone;
+                        CusomerUserId = customerInfoNJ.CusomerUserId;
+                    }
                 });
             }
         }
@@ -891,6 +910,35 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand<SaleInfoNJ>(this.selectSaleOrderEvent);
             }
         }
+
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
+
+        private void OnSearch()
+        {
+
+            SaleManager saleManager = new SaleManager();
+
+            _saleOrderList.Clear();
+            for (Iterator i = saleManager.searchAllSaleOrders(SearchSaleOderNo).iterator(); i.hasNext(); )
+            {
+                SaleInfo saleInfo = (SaleInfo)i.next();
+                SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
+
+                saleInfoNJ.Order = saleInfo.getOrderNo();
+                saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+                saleInfoNJ.Phone = saleInfo.getCustomerInfo().getProfileInfo().getPhone();
+
+                _saleOrderList.Add(saleInfoNJ);
+            }
+        }
+
         public void selectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
         {
            Order = saleInfoNJ.Order;

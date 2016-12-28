@@ -124,7 +124,7 @@
         </ComboBox>
 
         <!--2nd column-->
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0"  />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0"  Text="{Binding SearchPurchaseOderNo}"/>
         <ComboBox  Grid.Row="2" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,1,5,0"  Height="24" VerticalAlignment="Top"  Text="">
             <ComboBoxItem Content="All"/>
             <Separator/>
@@ -163,7 +163,7 @@
         </ComboBox>
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
         <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  />
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  Command="{Binding Search}"/>
     </Grid>
 </UserControl>
 
