@@ -36,6 +36,8 @@ namespace Ribbon.ViewModel
                     saleInfoNJ.Order = saleInfo.getOrderNo();
                     saleInfoNJ.OrderDate = saleInfo.getSaleDate();
                     saleInfoNJ.Status = saleInfo.getStatusId();
+                    saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                    saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
 
                     _saleList.Add(saleInfoNJ);
                 }

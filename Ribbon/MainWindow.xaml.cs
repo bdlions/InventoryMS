@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using com.inventory.db.manager;
 
 namespace Ribbon
 {
@@ -44,6 +45,9 @@ namespace Ribbon
            // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
             subMenuManageCustomerList.Click += onClicksuManageCustomerList;
             subMenuManageCurrentStock.Click += onClicksuManageCurrentStock;
+
+            InitManager initManager = new InitManager();
+            initManager.initConnection();
 
         }
 

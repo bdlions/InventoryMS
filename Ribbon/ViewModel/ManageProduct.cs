@@ -5,8 +5,8 @@ using com.inventory.response;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
-using Ribbon.Model;
 using System;
+using Ribbon.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -205,11 +205,11 @@ namespace Ribbon.ViewModel
             }
             else { 
                 resultEvent = productManager.createProduct(productInfo);
+                //reset create product fields
+                OnReset();
             }
             if (resultEvent.getResponseCode() == 2000)
             {
-
-                //reset create product panel
 
               
             }
@@ -223,7 +223,10 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            MessageBox.Show("OnReset");
+            this.ProductName ="";
+            this.ProductCode = "";
+            this.Price = 0;
+          //MessageBox.Show("OnReset");
         }
 
         /// <summary>
@@ -282,7 +285,6 @@ namespace Ribbon.ViewModel
                 pInfoNJ.Price = pInfo.getUnitPrice();
                 _productList.Add(pInfoNJ);
             }
-            //ProductList = _productList;
         }
 
         public void selectProductEvent(ProductInfoNJ p)

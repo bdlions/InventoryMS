@@ -21,6 +21,21 @@ namespace Ribbon.ViewModel
 {
     class ManageProductList : BindableBase
     {
+
+        // Search product items
+        private string _searchProductName;
+        public string SearchProductName
+        {
+            get
+            {
+                return this._searchProductName;
+            }
+            set
+            {
+                this._searchProductName = value;
+            }
+        }
+
         ObservableCollection<ProductInfoNJ> _productList;
 
         public ObservableCollection<ProductInfoNJ> ProductList
@@ -44,5 +59,32 @@ namespace Ribbon.ViewModel
                 this._productList = value;
             }
         }
+
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
+
+        private void OnSearch()
+        {
+
+            ProductManager productManager = new ProductManager();
+
+            _productList.Clear();
+            for (Iterator i = productManager.searchProduct(SearchProductName).iterator(); i.hasNext(); )
+            {
+                ProductInfo pInfo = (ProductInfo)i.next();
+                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                pInfoNJ.Id = pInfo.getId();
+                pInfoNJ.Name = pInfo.getName();
+                pInfoNJ.Code = pInfo.getCode();
+                pInfoNJ.Price = pInfo.getUnitPrice();
+                _productList.Add(pInfoNJ);
+            }
+        }
+
     }
 }

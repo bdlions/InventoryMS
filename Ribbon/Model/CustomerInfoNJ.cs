@@ -8,6 +8,19 @@ namespace Ribbon.Model
 {
     class CustomerInfoNJ
     {
+        private int _customerUserID;
+        public int CustomerUserID
+        {
+            get
+            {
+                return this._customerUserID;
+            }
+            set
+            {
+                this._customerUserID = value;
+            }
+        }
+
         private string _customerFirsrName;
         public string CustomerFirstName
         {

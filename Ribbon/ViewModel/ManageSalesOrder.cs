@@ -29,45 +29,45 @@ namespace Ribbon.ViewModel
 
         }
 
-        private string _fName;
+        private string _customerFirstName;
         public string CustomerFirstName
         {
             get
             {
-                return this._fName;
+                return this._customerFirstName;
             }
             set
             {
-                this._fName = value;
+                this._customerFirstName = value;
                 OnPropertyChanged("CustomerFirstName");
             }
         }
 
-        private string _lName;
+        private string _customerLastName;
         public string CustomerLastName
         {
             get
             {
-                return this._lName;
+                return this._customerLastName;
 
             }
             set
             {
-                this._lName = value;
+                this._customerLastName = value;
                 OnPropertyChanged("CustomerLastName");
             }
         }
 
-        private string _name;
+        private string _customerName;
         public string CustomerName
         {
             get
             {
-                return this._fName + " " + this._lName;
+                return this._customerFirstName + " " + this._customerLastName;
             }
             set
             {
-                this._name = value;
+                this._customerName = value;
                 OnPropertyChanged("CustomerName");
             }
         }
@@ -686,19 +686,12 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((SelectedCustomer) =>
                 {
-
                     
                     CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
-
                     CustomerFirstName = customerInfoNJ.CustomerFirstName;
                     CustomerLastName = customerInfoNJ.CustomerLastName;
-
                     Phone = customerInfoNJ.Phone;
                     CusomerUserId = customerInfoNJ.CusomerUserId;
-
-
-
-
                 });
             }
         }
@@ -710,7 +703,6 @@ namespace Ribbon.ViewModel
             get
             {
                 SaleManager saleManager = new SaleManager();
-
                 _saleOrderList = new ObservableCollection<SaleInfoNJ>();
                 for (Iterator i = saleManager.getAllSaleOrders().iterator(); i.hasNext(); )
                 {
@@ -721,7 +713,6 @@ namespace Ribbon.ViewModel
                     saleInfoNJ.Status = saleInfo.getStatusId();
                     saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
                     saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
-
                     _saleOrderList.Add(saleInfoNJ);
                 }
                 return _saleOrderList;
@@ -755,6 +746,7 @@ namespace Ribbon.ViewModel
 
                     customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
                     customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                    customerInfoNJ.CustomerName = customerInfoNJ.CustomerFirstName + customerInfoNJ.CustomerLastName;
                 }
                 return _saleList;
 
@@ -785,8 +777,6 @@ namespace Ribbon.ViewModel
                     customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                     customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
                     customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
-
-
                     _customerItemList.Add(customerInfoNJ);
                 }
                 return _customerItemList;
@@ -903,9 +893,10 @@ namespace Ribbon.ViewModel
         }
         public void selectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
         {
-            this.Order = saleInfoNJ.Order;
-            this.CustomerFirstName = saleInfoNJ.CustomerFirstName;
-            this.CustomerLastName = saleInfoNJ.CustomerLastName;
+           Order = saleInfoNJ.Order;
+           Phone = saleInfoNJ.Phone;
+           CustomerFirstName = saleInfoNJ.CustomerFirstName;
+           CustomerLastName = saleInfoNJ.CustomerLastName;
         }
 
        

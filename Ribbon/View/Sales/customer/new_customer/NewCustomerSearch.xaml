@@ -23,7 +23,8 @@
         <!--1st column-->
         <Label Content="Search" FontSize="16" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="0"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1" Grid.Row="1" Grid.Column="0">
-            <ComboBoxItem IsSelected="True" Content="Order"/>
+            <ComboBoxItem IsSelected="True" Content="Phone"/>
+            <ComboBoxItem Content="Order"/>
             <ComboBoxItem Content="Oder Date" />
             <ComboBoxItem Content="Status" />
             <ComboBoxItem Content="Customer"/>
@@ -138,12 +139,12 @@
         </ComboBox>
 
         <!--2nd column-->
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0.5,5,0.5" Text="{Binding SearchCustomerPhone}"/>
         <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5" />
         <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
         <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  Height="22" Command="{Binding Search}"/>
     </Grid>
 </UserControl>
 

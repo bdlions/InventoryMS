@@ -1,9 +1,14 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
+using com.inventory.db.manager;
+using com.inventory.response;
+using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
+using Ribbon.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,10 +16,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using java.util;
-using com.inventory.db.manager;
-using Ribbon.Model;
-using System.Collections.ObjectModel;
 
 namespace Ribbon.ViewModel
 {
@@ -23,9 +24,24 @@ namespace Ribbon.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-     
+        private SupplierInfoNJ _supplierInfoNJ;
+        public SupplierInfoNJ SupplierInfoNJ
+        {
+            get
+            {
+                if (_supplierInfoNJ == null)
+                {
+                    _supplierInfoNJ = new SupplierInfoNJ();
+                }
+                return this._supplierInfoNJ;
+            }
+            set
+            {
+                this._supplierInfoNJ = value;
+            }
+        }
 
-
+        
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -43,7 +59,7 @@ namespace Ribbon.ViewModel
                 {
                     if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
                     {
-                        SupplierName = FirstName + " " + LastName;
+                        SupplierName = SupplierInfoNJ.ProfileInfoNJ.FirstName + " " + SupplierInfoNJ.ProfileInfoNJ.LastName;
                         handler(this, new PropertyChangedEventArgs("SupplierName"));
                     }
                 }
@@ -54,6 +70,22 @@ namespace Ribbon.ViewModel
 
             }
         }
+
+        
+
+        private int _supplierUserID;
+        public int SupplierUserID
+        {
+            get
+            {
+                return this._supplierUserID;
+            }
+            set
+            {
+                this._supplierUserID = value;
+            }
+        }
+
         private string _fName;
         public string FirstName
         {
@@ -100,19 +132,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private int _supplierUserID;
-        public int SupplierUserID
-        {
-            get
-            {
-                return this._supplierUserID;
-            }
-            set
-            {
-                this._supplierUserID = value;
-            }
-        }
-
+      
 
         private double _balance;
         public double Balance
@@ -263,6 +283,22 @@ namespace Ribbon.ViewModel
             }
         }
 
+
+        // Search Supplier
+        private string _searchSupplierPhone;
+        public string SearchSupplierPhone
+        {
+            get
+            {
+                return this._searchSupplierPhone;
+            }
+            set
+            {
+                this._searchSupplierPhone = value;
+            }
+        }
+
+
         ObservableCollection<SupplierInfoNJ> _supplierList;
 
         public ObservableCollection<SupplierInfoNJ> SupplierList
@@ -277,12 +313,14 @@ namespace Ribbon.ViewModel
                     SupplierInfo supplierInfo = (SupplierInfo)i.next();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
 
+                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
                     supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
                     supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
                     supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
                     supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
                     supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
                     supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                    //supplierInfoNJ.Remarks = supplierInfo.getRemarks();
 
                     _supplierList.Add(supplierInfoNJ);
                 }
@@ -340,7 +378,13 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnCopy);
             }
         }
-
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
         public ICommand SelectSupplierEvent
         {
             get
@@ -355,23 +399,38 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-            ProfileInfo userInfo = new ProfileInfo();
-            userInfo.setFirstName(FirstName);
-            userInfo.setLastName(LastName);
-            userInfo.setEmail(Email);
-            userInfo.setPhone(Phone);
-            userInfo.setFax(Fax);
-            userInfo.setWebsite(Website);
-            userInfo.setId(SupplierUserID);
+            ProfileInfo profileInfo = new ProfileInfo();
+            profileInfo.setFirstName(FirstName);
+            profileInfo.setLastName(LastName);
+            profileInfo.setEmail(Email);
+            profileInfo.setPhone(Phone);
+            profileInfo.setFax(Fax);
+            profileInfo.setWebsite(Website);
+            
+            //profileInfo.setId(SupplierUserID);
 
             SupplierInfo supplierInfo = new SupplierInfo();
-            supplierInfo.setProfileInfo(userInfo);
-            supplierInfo.setRemarks(Remark);
+            supplierInfo.setProfileInfo(profileInfo);
+            //supplierInfo.setRemarks(SupplierInfoNJ.Remarks);
+            
+            ResultEvent resultEvent = new ResultEvent();
             SupplierManager supplierManager = new SupplierManager();
-            supplierManager.createSupplier(supplierInfo);
+            if ( SupplierUserID > 0)
+            {
+                resultEvent = supplierManager.updateSupplier(supplierInfo);
+            }
+            else
+            {
+                resultEvent = supplierManager.createSupplier(supplierInfo);
+                OnReset();
+            }
+            if (resultEvent.getResponseCode() == 2000)
+            {
 
+                
+            }
 
-            MessageBox.Show("Save Successfully.");
+            MessageBox.Show(resultEvent.getMessage());
         }
 
 
@@ -380,7 +439,15 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            MessageBox.Show("OnReset");
+            this.FirstName = "";
+            this.LastName = "";
+            this.SupplierName = "";
+            this.Balance = 0;
+            this.Email = "";
+            this.Phone = "";
+            this.Fax = "";
+            this.Website = "";
+           // MessageBox.Show("OnReset");
         }
 
         /// <summary>
@@ -413,16 +480,40 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnDeactivate");
         }
-        public void selectSupplierEvent(SupplierInfoNJ s)
+        private void OnSearch()
         {
-            this.FirstName = s.SupplierFirstName;
-            this.LastName = s.SupplierLastName;
-            this.SupplierName = s.SupplierName;
-            this.Balance = s.Balance;
-            this.Email = s.Email;
-            this.Phone = s.Phone;
-            this.Fax = s.Fax;
-            this.Website = s.Website;
+
+            SupplierManager supplierManager = new SupplierManager();
+
+            _supplierList.Clear();
+            for (Iterator i = supplierManager.searchSuppliers(SearchSupplierPhone).iterator(); i.hasNext(); )
+            {
+                SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+
+                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+
+                _supplierList.Add(supplierInfoNJ);
+            }
+        }
+        public void selectSupplierEvent(SupplierInfoNJ supplierInfoNJ)
+        {
+
+            this.SupplierUserID = supplierInfoNJ.SupplierUserID;
+            this.FirstName = supplierInfoNJ.SupplierFirstName;
+            this.LastName = supplierInfoNJ.SupplierLastName;
+            this.SupplierName = supplierInfoNJ.SupplierName;
+            this.Balance = supplierInfoNJ.Balance;
+            this.Email = supplierInfoNJ.Email;
+            this.Phone = supplierInfoNJ.Phone;
+            this.Fax = supplierInfoNJ.Fax;
+            this.Website = supplierInfoNJ.Website;
         }
     }
 }

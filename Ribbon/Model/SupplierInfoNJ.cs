@@ -9,9 +9,55 @@ namespace Ribbon.Model
 
     class SupplierInfoNJ
     {
+        private ProfileInfoNJ _profileInfoNJ;
+        public ProfileInfoNJ ProfileInfoNJ
+        {
+            get
+            {
+                if(_profileInfoNJ == null)
+                {
+                    _profileInfoNJ = new ProfileInfoNJ();
+                }
+                return this._profileInfoNJ;
+            }
+            set
+            {
+                this._profileInfoNJ = value;
+            }
+        }
 
-       
+        private string _remarks;
+        public string Remarks
+        {
+            get
+            {
+                return this._remarks;
+            }
+            set
+            {
+                this._remarks = value;
+            }
+        }
 
+
+
+
+
+
+
+        private int _supplierUserID;
+        public int SupplierUserID
+        {
+            get
+            {
+                return this._supplierUserID;
+            }
+            set
+            {
+                this._supplierUserID = value;
+            }
+        }
+      
         private string _fname;
         public string SupplierFirstName
         {
@@ -52,18 +98,7 @@ namespace Ribbon.Model
             }
         }
 
-        private int _supplierUserID;
-        public int SupplierUserID
-        {
-            get
-            {
-                return this._supplierUserID;
-            }
-            set
-            {
-                this._supplierUserID = value;
-            }
-        }
+        
         private double _balance;
         public double Balance
         {

@@ -1,11 +1,12 @@
 ﻿using com.inventory.bean;
 using com.inventory.db;
 using com.inventory.db.manager;
+using com.inventory.response;
 using java.util;
 using Prism.Commands;
 using Prism.Mvvm;
-using Ribbon.Model;
 using System;
+using Ribbon.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -53,6 +54,19 @@ namespace Ribbon.ViewModel
 
             }
         }
+        private int _customerUserID;
+        public int CustomerUserID
+        {
+            get
+            {
+                return this._customerUserID;
+            }
+            set
+            {
+                this._customerUserID = value;
+            }
+        }
+
         private string _fName;
         public string CustomerFirstName
         {
@@ -249,6 +263,19 @@ namespace Ribbon.ViewModel
             }
         }
 
+        // Search Customer panel
+        private string _searchCustomerPhone;
+        public string SearchCustomerPhone
+        {
+            get
+            {
+                return this._searchCustomerPhone;
+            }
+            set
+            {
+                this._searchCustomerPhone = value;
+            }
+        }
 
         ObservableCollection<CustomerInfoNJ> _customerList;
 
@@ -264,6 +291,7 @@ namespace Ribbon.ViewModel
                     CustomerInfo customerInfo = (CustomerInfo)i.next();
                     CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
+                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
                     customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
                     customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                     customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
@@ -339,24 +367,37 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
 
-            ProfileInfo userInfo = new ProfileInfo();
-            userInfo.setFirstName(CustomerFirstName);
-            userInfo.setLastName(CustomerLastName);
-            userInfo.setEmail(CustomerEmail);
-            userInfo.setPhone(CustomerPhone);
-            userInfo.setFax(CustomerFax);
-            userInfo.setWebsite(CustomerWebsite);
-
-
+            ProfileInfo profileInfo = new ProfileInfo();
+            profileInfo.setFirstName(CustomerFirstName);
+            profileInfo.setLastName(CustomerLastName);
+            profileInfo.setEmail(CustomerEmail);
+            profileInfo.setPhone(CustomerPhone);
+            profileInfo.setFax(CustomerFax);
+            profileInfo.setWebsite(CustomerWebsite);
 
             CustomerInfo customerInfo = new CustomerInfo();
-            customerInfo.setProfileInfo(userInfo);
-
+            customerInfo.setProfileInfo(profileInfo);
             CustomerManager customerManager = new CustomerManager();
-            customerManager.createCustomer(customerInfo);
+
+            ResultEvent resultEvent = new ResultEvent();
+
+            if (CustomerUserID > 0)
+            {
+                resultEvent = customerManager.updateCustomer(customerInfo);
+            }
+            else
+            {
+                resultEvent = customerManager.createCustomer(customerInfo);
+                //reset create Customer fields
+                OnReset();
+            }
+            if (resultEvent.getResponseCode() == 2000)
+            {
 
 
-            MessageBox.Show("Save Successfully");
+            }
+
+            MessageBox.Show(resultEvent.getMessage());
         }
 
 
@@ -368,7 +409,12 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            MessageBox.Show("OnReset");
+            this.CustomerFirstName = "";
+            this.CustomerLastName = "";
+            this.CustomerEmail = "";
+            this.CustomerPhone = "";
+            this.CustomerFax = "";
+            this.CustomerWebsite = "";
         }
 
         /// <summary>
@@ -401,8 +447,42 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
+
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
+
+        private void OnSearch()
+        {
+
+            CustomerManager customerManager = new CustomerManager();
+
+            _customerList.Clear();
+            for (Iterator i = customerManager.searchCustomers(SearchCustomerPhone).iterator(); i.hasNext(); )
+            {
+                CustomerInfo customerInfo = (CustomerInfo)i.next();
+                CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                customerInfoNJ.CustomerUserID = customerInfo.getProfileInfo().getId();
+                customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                customerInfoNJ.Fax = customerInfo.getProfileInfo().getFax();
+                customerInfoNJ.Email = customerInfo.getProfileInfo().getEmail();
+                customerInfoNJ.Website = customerInfo.getProfileInfo().getWebsite();
+
+                _customerList.Add(customerInfoNJ);
+            }
+        }
+
+
         public void selectCustomerEvent(CustomerInfoNJ c)
         {
+            this.CustomerUserID = c.CusomerUserId;
             this.CustomerFirstName = c.CustomerFirstName;
             this.CustomerLastName = c.CustomerLastName;
             this.CustomerName = c.CustomerName;

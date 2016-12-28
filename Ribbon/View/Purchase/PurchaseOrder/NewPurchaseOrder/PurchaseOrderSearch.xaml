@@ -163,7 +163,7 @@
         </ComboBox>
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,0.5" />
         <TextBox Grid.Row="5" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  />
+        <Button Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Right" MinWidth="80" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  />
     </Grid>
 </UserControl>
 

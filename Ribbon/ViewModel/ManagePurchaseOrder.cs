@@ -760,9 +760,6 @@ namespace Ribbon.ViewModel
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
                     purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
                     purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
-                    //supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    //supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    //supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
 
                     purchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
                     _purchaseOrderList.Add(purchaseInfoNJ);
@@ -793,8 +790,6 @@ namespace Ribbon.ViewModel
                     supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
                     supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
                     supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-
-
 
                     _supplierItemList.Add(supplierInfoNJ);
                 }

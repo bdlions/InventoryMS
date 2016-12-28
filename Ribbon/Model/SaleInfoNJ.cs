@@ -8,6 +8,37 @@ namespace Ribbon.Model
 {
     class SaleInfoNJ
     {
+
+        private List<ProductInfoNJ> _productList;
+        public List<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null)
+                {
+                    _productList = new List<ProductInfoNJ>();
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+
+        private SaleInfoNJ _customerInfoNJ;
+        public SaleInfoNJ CustomerInfoNJ
+        {
+            get
+            {
+                return this._customerInfoNJ;
+            }
+            set
+            {
+                this._customerInfoNJ = value;
+            }
+        }
+
         private string _customerFirstName;
         public string CustomerFirstName
         {
@@ -32,19 +63,30 @@ namespace Ribbon.Model
                 this._customerLastName = value;
             }
         }
-        private string _name;
+        private string _customerName;
         public string CustomerName
         {
             get
             {
-                return this._name;
+                return this._customerName = _customerFirstName + " " + _customerLastName;
             }
             set
             {
-                this._name = value;
+                this._customerName = value;
             }
         }
-
+        private string _phone;
+        public string Phone
+        {
+            get
+            {
+                return this._phone;
+            }
+            set
+            {
+                this._phone = value;
+            }
+        }
         private string _order;
         public string Order
         {
@@ -205,6 +247,19 @@ namespace Ribbon.Model
                 this._balance = value;
             }
         }
+        private double _orderItemDiscount;
+        public double OrderItemDiscount
+        {
+            get
+            {
+                return this._orderItemDiscount;
+            }
+            set
+            {
+                this._orderItemDiscount = value;
+            }
+        }
+
 
     }
 }

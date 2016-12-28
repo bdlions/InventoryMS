@@ -99,7 +99,7 @@
             <ComboBoxItem Content="Inactive"/>
             <ComboBoxItem Content="Show All"/>
         </ComboBox>
-        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" />
+        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" Text="{Binding SearchProductName}"/>
         <ComboBox Grid.Row="2" Grid.Column="1" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" Margin="5,0.5,5,0.5" >
             <ComboBoxItem Content="Editable"/>
             <ComboBoxItem Content="Stockable"/>
@@ -112,7 +112,7 @@
         </ComboBox>
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,1,5,24" Grid.RowSpan="2"/>
 
-        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"/>
+        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-10" Foreground="White" FontWeight="Bold" Content="Search" Background="{StaticResource DarkBackground}" Width="73"  Height="22" Command="{Binding Search}"/>
 
     </Grid>
 </UserControl>

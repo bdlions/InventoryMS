@@ -46,11 +46,11 @@
             <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Contact}"/>
             <Label Grid.Row="1" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Location:"/>
             <TextBox Grid.Row="1" Grid.Column="3" Margin="3" Text="{Binding Location}"/>
-            <StackPanel>
+            <!--<StackPanel>
                 <StackPanel>
                     <popupbox:LocationSelector  x:Name="LocationSelector"/>
                 </StackPanel>
-            </StackPanel>
+            </StackPanel>-->
             
             <Label Grid.Row="1" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order Date:"/>
 
