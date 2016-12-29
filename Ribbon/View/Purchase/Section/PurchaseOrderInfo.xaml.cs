@@ -66,6 +66,11 @@ namespace Ribbon.View
 
         }
 
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            SupplierSelector.IsOpen = false;
+        }
+
     }
 }
 

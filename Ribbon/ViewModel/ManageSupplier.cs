@@ -398,16 +398,14 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-
             ProfileInfo profileInfo = new ProfileInfo();
+            profileInfo.setId(SupplierUserID);
             profileInfo.setFirstName(FirstName);
             profileInfo.setLastName(LastName);
             profileInfo.setEmail(Email);
             profileInfo.setPhone(Phone);
             profileInfo.setFax(Fax);
             profileInfo.setWebsite(Website);
-            
-            //profileInfo.setId(SupplierUserID);
 
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setProfileInfo(profileInfo);

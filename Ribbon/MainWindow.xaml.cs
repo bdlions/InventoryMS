@@ -27,12 +27,12 @@ namespace Ribbon
         public MainWindow()
         {
             InitializeComponent();
-            
+
             buttonAddTab.Click += onClickTabCreationButton;
             //buttonCloseTab.Click += onClickTabRemoveButton;
             subMenuHomePage.Click += onClickSubMenuHomePage;
             subMenuDashboard.Click += onClickSubMenuDashboard;
-          //  subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
+            //  subMenuSalesQuote.Click += onClickSubMenuSalesQuote;
             subMenuManageSupplier.Click += onClickSubManageSupplier;
             subMenuManageSupplierList.Click += onClickSubManageSupplierList;
             subMenuManageSalesOrderList.Click += onClickSubManageSalesOrderList;
@@ -42,13 +42,9 @@ namespace Ribbon
             subMenuManageProduct.Click += onClicksubManageProduct;
             subMenuManageNewSalesOrder.Click += onClicksubManageNewSalesOrder;
             subMenuManageNewCustomer.Click += onClicksubManageNewCustomer;
-           // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
+            // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
             subMenuManageCustomerList.Click += onClicksuManageCustomerList;
             subMenuManageCurrentStock.Click += onClicksuManageCurrentStock;
-
-            InitManager initManager = new InitManager();
-            initManager.initConnection();
-
         }
 
         private void onClicksuManageCurrentStock(object sender, RoutedEventArgs e)
@@ -338,11 +334,12 @@ namespace Ribbon
 
         private void onClickSubMenuHomePage(object sender, RoutedEventArgs e)
         {
-            if(RibbonContainer.SelectedItem is RibbonTab){
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
                 RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
                 selectedTab.Items.Clear();
                 selectedTab.Header = "Home";
-                
+
 
                 selectedTab.Margin = new Thickness(0, 0, -100, -627);
 
@@ -356,7 +353,7 @@ namespace Ribbon
                 selectedTab.Items.Add(homeTabGroup);
 
             }
-            
+
         }
 
         private void onClickTabCreationButton(object sender, RoutedEventArgs e)
@@ -370,10 +367,17 @@ namespace Ribbon
 
             RibbonGroup homeTabGroup = new RibbonGroup();
             homeTabGroup.Background = (Brush)FindResource("HomePage");
+            ContextMenu contextMenu = new ContextMenu(); ;
+            MenuItem closeMenuItem = new MenuItem();
+            closeMenuItem.Header = "Close";
+            closeMenuItem.Click += MenuItem_Click_1;
+            contextMenu.Items.Add(closeMenuItem);
+
+            homeTabGroup.ContextMenu = contextMenu;
 
             UserControl homeTabContent = new HomePage();
             homeTabContent.Margin = new Thickness(76, 200, 3, 0);
-            
+
             homeTabGroup.Items.Add(homeTabContent);
             homeTab.Items.Add(homeTabGroup);
 
@@ -381,9 +385,9 @@ namespace Ribbon
             RibbonContainer.Items.Add(homeTab);
             RibbonContainer.SelectedItem = homeTab;
             RibbonContainer.Items.Add(tabCreationButton);
-            
+
         }
-        
+
 
         private void RibbonContainer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -404,7 +408,17 @@ namespace Ribbon
             }
         }
 
-       
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+           // MessageBox.Show("Windown loaded....");
+
+            InitManager initManager = new InitManager();
+            initManager.initConnection();
+
+            MessageBox.Show("Database loaded");
+        }
+
+
 
     }
 

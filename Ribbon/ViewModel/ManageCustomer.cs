@@ -368,6 +368,7 @@ namespace Ribbon.ViewModel
         {
 
             ProfileInfo profileInfo = new ProfileInfo();
+            profileInfo.setId(CustomerUserID);
             profileInfo.setFirstName(CustomerFirstName);
             profileInfo.setLastName(CustomerLastName);
             profileInfo.setEmail(CustomerEmail);

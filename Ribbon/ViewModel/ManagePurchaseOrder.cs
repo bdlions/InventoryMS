@@ -669,12 +669,6 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-
-            //productInfo.setId(productInfo.getId());
-            //productInfo.setUnitPrice(productInfo.getUnitPrice());
-            //productInfo.setQuantity(productInfo.getQuantity());
-            //productInfo.setDiscount(productInfo.getDiscount());
-
             java.util.List productList = new java.util.ArrayList();
                       
             for(int i = 0; i < ProductItemList.Count; i ++){
@@ -698,7 +692,6 @@ namespace Ribbon.ViewModel
 
             PurchaseManager purchaseManager = new PurchaseManager();
             purchaseManager.addPurchaseOrder(purchaseInfo);
-            
 
             MessageBox.Show("Save Successfully");
         }
@@ -738,23 +731,23 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                if (_purchaseList == null || _purchaseList.Count <= 0)
+                if (_purchaseList == null)
                 {
                     _purchaseList = new ObservableCollection<ProductInfoNJ>();
 
 
-                    ProductInfo productInfo = new ProductInfo();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
-                    productInfoNJ.Quantity = productInfo.getQuantity();
-                    productInfoNJ.Discount = productInfo.getDiscount();
-                    productInfoNJ.ProductId = productInfo.getId();
+                    //ProductInfo productInfo = new ProductInfo();
+                    //ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    //productInfoNJ.Price = productInfo.getUnitPrice();
+                    //productInfoNJ.Quantity = productInfo.getQuantity();
+                    //productInfoNJ.Discount = productInfo.getDiscount();
+                    //productInfoNJ.ProductId = productInfo.getId();
 
                     
-                    //SupplierInfo supplierInfo = new SupplierInfo();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = SupplierFirstName;
-                    supplierInfoNJ.SupplierLastName = SupplierLastName;
+                    ////SupplierInfo supplierInfo = new SupplierInfo();
+                    //SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    //supplierInfoNJ.SupplierFirstName = SupplierFirstName;
+                    //supplierInfoNJ.SupplierLastName = SupplierLastName;
                 }
                 return _purchaseList;
 
@@ -973,6 +966,18 @@ namespace Ribbon.ViewModel
             Order = purchaseInfoNJ.Order;
             SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
             SupplierLastName = purchaseInfoNJ.SupplierLastName;
+
+            PurchaseList.Clear();
+
+            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+            productInfoNJ.Id = 12;
+            productInfoNJ.Name = "name";
+            productInfoNJ.Code = "code";
+            productInfoNJ.Price = 100;
+
+            PurchaseList.Add(productInfoNJ);
+
+
 
         }
     }

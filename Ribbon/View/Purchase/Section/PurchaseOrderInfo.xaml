@@ -7,7 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:command="http://www.galasoft.ch/mvvmlight"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="662">
+             d:DesignHeight="768" d:DesignWidth="1024" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
     <Grid Margin="5">
         <Grid HorizontalAlignment="Left">
             <Grid.RowDefinitions>
@@ -35,8 +35,6 @@
                     <popupbox:PurchaseOrderSupplierSelector  x:Name="SupplierSelector"/>
                 </StackPanel>
             </StackPanel>
-
-
 
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="0,1,1,1" Text="{Binding Location}"/>
