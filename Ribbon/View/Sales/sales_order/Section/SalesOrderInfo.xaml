@@ -6,7 +6,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:popupbox="clr-namespace:Ribbon.View.PopUpWindow"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="662">
+             d:DesignHeight="600" d:DesignWidth="662" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
     <Grid>
 
         <Grid Margin="5 5 5 10" HorizontalAlignment="Left" >
@@ -69,7 +69,7 @@
         <StackPanel>
             <StackPanel>
                 <DataGrid Name="productSaleOrderGrid" Grid.Row="2" 
-                          Grid.Column="0" Width="660" Margin="10 160 15 0" 
+                          Grid.Column="0" Width="670" Margin="10 160 15 0" 
                           HorizontalAlignment="Left" 
                           AutoGenerateColumns="False" CanUserAddRows="True"
                           CanUserDeleteRows="False" CanUserReorderColumns="False" 
@@ -92,12 +92,14 @@
                     </i:Interaction.Triggers>
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="195" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name, Mode=TwoWay}" />
-                        <DataGridTextColumn Width="93"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="93"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="93"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="93"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal, Mode=TwoWay}"/>
-                        <DataGridTextColumn Width="93"  Header="ProductId" FontFamily="Arial" />
+                        <DataGridTextColumn Width="200" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name, Mode=TwoWay}" />
+                        <DataGridTextColumn Width="60"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="75"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="60"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="90"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal, Mode=TwoWay}"/>
+                        <DataGridTextColumn Width="75"  Header="ProductId" FontFamily="Arial" />
+                        <DataGridTextColumn Width="50"  Header="Edit" FontFamily="Arial" />
+                        <DataGridTextColumn Width="50"  Header="Delete" FontFamily="Arial" />
                     </DataGrid.Columns>
                 </DataGrid>
                 <popupbox:SaleOrderProductSelector  x:Name="productSelector"/>

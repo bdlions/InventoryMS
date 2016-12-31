@@ -54,6 +54,21 @@ namespace Ribbon.ViewModel
 
             }
         }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+
+            }
+        }
+
         private int _customerUserID;
         public int CustomerUserID
         {
@@ -366,7 +381,11 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-
+            if (!ValidateCustomer())
+            {
+                MessageBox.Show(ErrorMessage);
+                return;
+            }
             ProfileInfo profileInfo = new ProfileInfo();
             profileInfo.setId(CustomerUserID);
             profileInfo.setFirstName(CustomerFirstName);
@@ -491,6 +510,11 @@ namespace Ribbon.ViewModel
             this.CustomerFax = c.Fax;
             this.CustomerEmail = c.Email;
             this.CustomerWebsite = c.Website;
+        }
+        public Boolean ValidateCustomer()
+        {
+            ErrorMessage = "Customer name is required.";
+            return false;
         }
     }
 }

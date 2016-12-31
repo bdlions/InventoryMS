@@ -79,5 +79,12 @@ namespace Ribbon.View
 
         //}
 
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            CustomerSelector.IsOpen = false;
+            productSelector.IsOpen = false;
+        }
+
     }
 }

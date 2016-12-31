@@ -48,6 +48,19 @@ namespace Ribbon.ViewModel
 
         }
 
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+
+            }
+        }
 
         private string _fname;
         public string SupplierFirstName
@@ -630,7 +643,11 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(new Action(() =>
                 {
-                    
+                    if (!ValidatePurchaseOrder())
+                    {
+                        MessageBox.Show(ErrorMessage);
+                        return;
+                    }
                     java.util.List productList = new java.util.ArrayList();
 
                     foreach (ProductInfoNJ productInfoNJ in PurchaseList) { 
@@ -734,20 +751,6 @@ namespace Ribbon.ViewModel
                 if (_purchaseList == null)
                 {
                     _purchaseList = new ObservableCollection<ProductInfoNJ>();
-
-
-                    //ProductInfo productInfo = new ProductInfo();
-                    //ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    //productInfoNJ.Price = productInfo.getUnitPrice();
-                    //productInfoNJ.Quantity = productInfo.getQuantity();
-                    //productInfoNJ.Discount = productInfo.getDiscount();
-                    //productInfoNJ.ProductId = productInfo.getId();
-
-                    
-                    ////SupplierInfo supplierInfo = new SupplierInfo();
-                    //SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    //supplierInfoNJ.SupplierFirstName = SupplierFirstName;
-                    //supplierInfoNJ.SupplierLastName = SupplierLastName;
                 }
                 return _purchaseList;
 
@@ -778,14 +781,26 @@ namespace Ribbon.ViewModel
                     purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                     purchaseInfoNJ.Discount = purchaseInfo.getDiscount();
 
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    for (Iterator j = purchaseInfo.getProductList().iterator(); j.hasNext(); )
+                    {
+                        ProductInfo productInfo = (ProductInfo)j.next();
+                        ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                        productInfoNJ.Name = productInfo.getName() ;
+                        productInfoNJ.Code = productInfo.getCode();
+                        //productInfoNJ.Discount = 20;
+                        productInfoNJ.Price = productInfo.getUnitPrice();
+                        purchaseInfoNJ.ProductList.Add(productInfoNJ);
+                    }
+
+
+                    //ProductInfoNJ productInfoNJ = new ProductInfoNJ();
                     //productInfoNJ.Name = "RedoyTestProduct";
                     //productInfoNJ.Quantity = 10;
                     //productInfoNJ.Discount = 20;
                     //productInfoNJ.Price = 100;
                     
 
-                    purchaseInfoNJ.ProductList.Add(productInfoNJ);
+                    //purchaseInfoNJ.ProductList.Add(productInfoNJ);
 
                     SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
@@ -968,17 +983,17 @@ namespace Ribbon.ViewModel
             SupplierLastName = purchaseInfoNJ.SupplierLastName;
 
             PurchaseList.Clear();
+            for (int i = 0; i < purchaseInfoNJ.ProductList.Count; i++)
+            {
+                PurchaseList.Add(purchaseInfoNJ.ProductList.ElementAt(i));
+            }
 
-            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-            productInfoNJ.Id = 12;
-            productInfoNJ.Name = "name";
-            productInfoNJ.Code = "code";
-            productInfoNJ.Price = 100;
+        }
 
-            PurchaseList.Add(productInfoNJ);
-
-
-
+        public Boolean ValidatePurchaseOrder()
+        {
+            ErrorMessage = "Supplier name is required.";
+            return false;
         }
     }
 }

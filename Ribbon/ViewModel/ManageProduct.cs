@@ -33,6 +33,21 @@ namespace Ribbon.ViewModel
                 handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+
+            }
+        }
+
         private int _id;
         public int Id
         {
@@ -46,7 +61,7 @@ namespace Ribbon.ViewModel
             }
         }
         private string _productName;
-        public  string ProductName
+        public string ProductName
         {
             get
             {
@@ -56,6 +71,7 @@ namespace Ribbon.ViewModel
             {
                 _productName = value;
                 OnPropertyChanged("ProductName");
+
             }
         }
 
@@ -183,7 +199,7 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                return new DelegateCommand<ProductInfoNJ>(this.selectProductEvent);   
+                return new DelegateCommand<ProductInfoNJ>(this.selectProductEvent);
             }
         }
 
@@ -192,18 +208,24 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
+            if(!ValidateProduct()){
+                MessageBox.Show(ErrorMessage);
+                return;
+            }
             ProductInfo productInfo = new ProductInfo();
             productInfo.setId(Id);
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
             productInfo.setUnitPrice(Price);
+
             ResultEvent resultEvent = new ResultEvent();
             ProductManager productManager = new ProductManager();
             if (Id > 0)
             {
                 resultEvent = productManager.updateProduct(productInfo);
             }
-            else { 
+            else
+            {
                 resultEvent = productManager.createProduct(productInfo);
                 //reset create product fields
                 OnReset();
@@ -211,9 +233,9 @@ namespace Ribbon.ViewModel
             if (resultEvent.getResponseCode() == 2000)
             {
 
-              
+
             }
-       
+
             MessageBox.Show(resultEvent.getMessage());
         }
 
@@ -223,10 +245,10 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            this.ProductName ="";
+            this.ProductName = "";
             this.ProductCode = "";
             this.Price = 0;
-          //MessageBox.Show("OnReset");
+            //MessageBox.Show("OnReset");
         }
 
         /// <summary>
@@ -293,9 +315,13 @@ namespace Ribbon.ViewModel
             this.ProductName = p.Name;
             this.ProductCode = p.Code;
             this.Price = p.Price;
-            
 
         }
 
+        public Boolean ValidateProduct()
+        {
+            ErrorMessage = "Product name is required.";
+            return false;
+        }
     }
 }

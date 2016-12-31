@@ -195,6 +195,7 @@ namespace Ribbon.Model
                 this._discount = value;
             }
         }
+
         
     }
 }

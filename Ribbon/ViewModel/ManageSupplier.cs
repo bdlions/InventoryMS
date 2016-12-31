@@ -71,7 +71,20 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+
+            }
+        }
+
 
         private int _supplierUserID;
         public int SupplierUserID
@@ -398,6 +411,11 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
+            if (!ValidateSupplier())
+            {
+                MessageBox.Show(ErrorMessage);
+                return;
+            }
             ProfileInfo profileInfo = new ProfileInfo();
             profileInfo.setId(SupplierUserID);
             profileInfo.setFirstName(FirstName);
@@ -512,6 +530,12 @@ namespace Ribbon.ViewModel
             this.Phone = supplierInfoNJ.Phone;
             this.Fax = supplierInfoNJ.Fax;
             this.Website = supplierInfoNJ.Website;
+        }
+
+        public Boolean ValidateSupplier()
+        {
+            ErrorMessage = "Supplier name is required.";
+            return false;
         }
     }
 }

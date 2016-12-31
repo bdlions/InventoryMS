@@ -60,6 +60,13 @@ namespace Ribbon
                 RibbonGroup ManageCurrentStockTabGroup = new RibbonGroup();
                 ManageCurrentStockTabGroup.Background = (Brush)FindResource("Inventory");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageCurrentStockTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageCurrentStockTabContent = new ManageCurrentStock();
 
                 ManageCurrentStockTabGroup.Items.Add(ManageCurrentStockTabContent);
@@ -79,6 +86,12 @@ namespace Ribbon
 
                 RibbonGroup ManageCustomerListTabGroup = new RibbonGroup();
                 ManageCustomerListTabGroup.Background = (Brush)FindResource("Sales");
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageCustomerListTabGroup.ContextMenu = contextMenu;
 
                 UserControl ManageCustomerListTabContent = new ManageCustomerList();
 
@@ -99,6 +112,12 @@ namespace Ribbon
 
                 RibbonGroup ManageMovementHistoryTabGroup = new RibbonGroup();
                 ManageMovementHistoryTabGroup.Background = (Brush)FindResource("Inventory");
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageMovementHistoryTabGroup.ContextMenu = contextMenu;
 
                 UserControl ManageMovementHistoryTabContent = new ManageMovementHistory();
 
@@ -120,6 +139,13 @@ namespace Ribbon
                 RibbonGroup ManageNewCustomerTabGroup = new RibbonGroup();
                 ManageNewCustomerTabGroup.Background = (Brush)FindResource("Sales");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageNewCustomerTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageNewCustomerTabContent = new ManageNewCustomer();
 
                 ManageNewCustomerTabGroup.Items.Add(ManageNewCustomerTabContent);
@@ -140,6 +166,13 @@ namespace Ribbon
                 RibbonGroup ManageNewSalesOrderTabGroup = new RibbonGroup();
                 ManageNewSalesOrderTabGroup.Background = (Brush)FindResource("Sales");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageNewSalesOrderTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageNewSalesOrderTabContent = new ManageNewSalesOrder();
 
                 ManageNewSalesOrderTabGroup.Items.Add(ManageNewSalesOrderTabContent);
@@ -159,6 +192,13 @@ namespace Ribbon
 
                 RibbonGroup ManageProductTabGroup = new RibbonGroup();
                 ManageProductTabGroup.Background = (Brush)FindResource("Inventory");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageProductTabGroup.ContextMenu = contextMenu;
 
                 UserControl ManageProductTabContent = new ManageProduct();
 
@@ -181,6 +221,13 @@ namespace Ribbon
                 RibbonGroup ManageProductListTabGroup = new RibbonGroup();
                 ManageProductListTabGroup.Background = (Brush)FindResource("Inventory");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageProductListTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageProductListTabContent = new ManageProductList();
 
                 ManageProductListTabGroup.Items.Add(ManageProductListTabContent);
@@ -202,6 +249,13 @@ namespace Ribbon
                 RibbonGroup ManagePurchageOrderTabGroup = new RibbonGroup();
                 ManagePurchageOrderTabGroup.Background = (Brush)FindResource("Purchase");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManagePurchageOrderTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManagePurchageOrderTabContent = new ManagePurchageOrder();
 
                 ManagePurchageOrderTabGroup.Items.Add(ManagePurchageOrderTabContent);
@@ -221,6 +275,13 @@ namespace Ribbon
 
                 RibbonGroup ManagePurchageOrderListTabGroup = new RibbonGroup();
                 ManagePurchageOrderListTabGroup.Background = (Brush)FindResource("Purchase");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManagePurchageOrderListTabGroup.ContextMenu = contextMenu;
 
                 UserControl ManagePurchageOrderListTabContent = new ManagePurchageOrderList();
 
@@ -242,6 +303,13 @@ namespace Ribbon
                 RibbonGroup ManageSupplierListTabGroup = new RibbonGroup();
                 ManageSupplierListTabGroup.Background = (Brush)FindResource("Purchase");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageSupplierListTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageSupplierListTabContent = new ManageSupplierList();
 
                 ManageSupplierListTabGroup.Items.Add(ManageSupplierListTabContent);
@@ -261,6 +329,13 @@ namespace Ribbon
 
                 RibbonGroup ManageSupplierTabGroup = new RibbonGroup();
                 ManageSupplierTabGroup.Background = (Brush)FindResource("Purchase");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageSupplierTabGroup.ContextMenu = contextMenu;
 
                 UserControl ManageSupplierTabContent = new ManageSupplier();
 
@@ -283,6 +358,13 @@ namespace Ribbon
                 RibbonGroup ManageSalesOrderListTabGroup = new RibbonGroup();
                 ManageSalesOrderListTabGroup.Background = (Brush)FindResource("Sales");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageSalesOrderListTabGroup.ContextMenu = contextMenu;
+
                 UserControl ManageSalesOrderListTabContent = new ManageSalesOrderList();
 
                 ManageSalesOrderListTabGroup.Items.Add(ManageSalesOrderListTabContent);
@@ -302,6 +384,13 @@ namespace Ribbon
 
                 RibbonGroup SalesQuoteTabGroup = new RibbonGroup();
                 SalesQuoteTabGroup.Background = (Brush)FindResource("Sales");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                SalesQuoteTabGroup.ContextMenu = contextMenu;
 
                 UserControl SalesQuoteTabContent = new ManageSalesQuote();
 
@@ -324,6 +413,13 @@ namespace Ribbon
                 RibbonGroup dashboardTabGroup = new RibbonGroup();
                 dashboardTabGroup.Background = (Brush)FindResource("HomePage");
 
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                dashboardTabGroup.ContextMenu = contextMenu;
+
                 UserControl dashboardTabContent = new HomePage();
                 dashboardTabContent.Margin = new Thickness(76, 200, 3, 0);
 
@@ -340,11 +436,17 @@ namespace Ribbon
                 selectedTab.Items.Clear();
                 selectedTab.Header = "Home";
 
-
                 selectedTab.Margin = new Thickness(0, 0, -100, -627);
 
                 RibbonGroup homeTabGroup = new RibbonGroup();
                 homeTabGroup.Background = (Brush)FindResource("HomePage");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                homeTabGroup.ContextMenu = contextMenu;
 
                 UserControl homeTabContent = new HomePage();
                 homeTabContent.Margin = new Thickness(76, 200, 3, 0);
@@ -367,12 +469,12 @@ namespace Ribbon
 
             RibbonGroup homeTabGroup = new RibbonGroup();
             homeTabGroup.Background = (Brush)FindResource("HomePage");
-            ContextMenu contextMenu = new ContextMenu(); ;
+
+            ContextMenu contextMenu = new ContextMenu();
             MenuItem closeMenuItem = new MenuItem();
             closeMenuItem.Header = "Close";
             closeMenuItem.Click += MenuItem_Click_1;
             contextMenu.Items.Add(closeMenuItem);
-
             homeTabGroup.ContextMenu = contextMenu;
 
             UserControl homeTabContent = new HomePage();
@@ -410,15 +512,36 @@ namespace Ribbon
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
-           // MessageBox.Show("Windown loaded....");
+            // MessageBox.Show("Windown loaded....");
 
             InitManager initManager = new InitManager();
             initManager.initConnection();
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                selectedTab.Items.Clear();
+                selectedTab.Header = "Home";
 
-            MessageBox.Show("Database loaded");
+                selectedTab.Margin = new Thickness(0, 0, -100, -627);
+
+                RibbonGroup homeTabGroup = new RibbonGroup();
+                homeTabGroup.Background = (Brush)FindResource("HomePage");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                homeTabGroup.ContextMenu = contextMenu;
+
+                UserControl homeTabContent = new HomePage();
+                homeTabContent.Margin = new Thickness(76, 200, 3, 0);
+
+                homeTabGroup.Items.Add(homeTabContent);
+                selectedTab.Items.Add(homeTabGroup);
+
+            }
         }
-
-
 
     }
 

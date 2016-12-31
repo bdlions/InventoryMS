@@ -227,28 +227,27 @@
 
 
             <!-- Ribbon Tab #1: Home -->
-            <RibbonTab x:Name="home"  Header="Home" Margin="-2,-5,-100,-534">
+            <!--<RibbonTab x:Name="home"  Header="Home" Margin="-2,-5,-100,-534">
                 <RibbonGroup x:Name="homePage" Width="1004" Background="{StaticResource HomePage}">
-                    <partial:HomePage Margin="50 200 0 0"/>
+                    <partial:Loader />
                    
-                    <!--<RibbonGroup.ContextMenu x:Uid="contextMenu">
-                        <ContextMenu>
-                            -->
-                    <!--<MenuItem Header="Menu 1" />-->
-                    <!--<MenuItem Header="Menu 2" />-->
-                    <!--<Separator />-->
-                    <!--
-                            <MenuItem Header="Close" Click="MenuItem_Click_1" />
-                        </ContextMenu>
-                    </RibbonGroup.ContextMenu>-->
                     <RibbonGroup.ContextMenu x:Uid="contextMenu">
                         <ContextMenu>
                             <MenuItem Header="Close" Click="MenuItem_Click_1" />
                         </ContextMenu>
                     </RibbonGroup.ContextMenu>
                 </RibbonGroup>
+            </RibbonTab>-->
+            <RibbonTab x:Name="home"  Header="Home" Margin="-2,-5,-100,-534">
+                <RibbonGroup x:Name="homePage" Width="1024" Background="{StaticResource HomePage}" >
+                    <RibbonGroup.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Close" Click="MenuItem_Click_1" />
+                        </ContextMenu>
+                    </RibbonGroup.ContextMenu>
+                    <partial:Loader />
+                </RibbonGroup>
             </RibbonTab>
-
             <!--<Button Content="X" FontWeight="Bold" FontSize="10" Width="24" Height="24" Background="Transparent" BorderBrush="#FF683939" BorderThickness="3" Margin="-132 0 -135 -3" x:Name="buttonCloseTab">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

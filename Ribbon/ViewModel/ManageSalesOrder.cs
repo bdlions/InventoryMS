@@ -30,6 +30,19 @@ namespace Ribbon.ViewModel
 
         }
 
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+
+            }
+        }
 
         private string _customerFirstName;
         public string CustomerFirstName
@@ -663,7 +676,11 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(new Action(() =>
                 {
-
+                    if (!ValidateSaleOrdert())
+                    {
+                        MessageBox.Show(ErrorMessage);
+                        return;
+                    }
                     java.util.List productList = new java.util.ArrayList();
 
                     foreach (ProductInfoNJ productInfoNJ in SaleList)
@@ -732,6 +749,17 @@ namespace Ribbon.ViewModel
                     saleInfoNJ.Status = saleInfo.getStatusId();
                     saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
                     saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+
+                    for (Iterator j = saleInfo.getProductList().iterator(); j.hasNext(); )
+                    {
+                        ProductInfo productInfo = (ProductInfo)j.next();
+                        ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                        productInfoNJ.Name = productInfo.getName();
+                        productInfoNJ.Code = productInfo.getCode();
+                        productInfoNJ.Price = productInfo.getUnitPrice();
+                        saleInfoNJ.ProductList.Add(productInfoNJ);
+                    }
+
                     _saleOrderList.Add(saleInfoNJ);
                 }
                 return _saleOrderList;
@@ -748,24 +776,9 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                if (_saleList == null || _saleList.Count <= 0)
+                if (_saleList == null)
                 {
                     _saleList = new ObservableCollection<ProductInfoNJ>();
-
-
-                    ProductInfo productInfo = new ProductInfo();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
-                    productInfoNJ.Quantity = productInfo.getQuantity();
-                    productInfoNJ.Discount = productInfo.getDiscount();
-                    productInfoNJ.ProductId = productInfo.getId();
-
-                    CustomerInfo customerInfo = new CustomerInfo();
-                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
-
-                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
-                    customerInfoNJ.CustomerName = customerInfoNJ.CustomerFirstName + customerInfoNJ.CustomerLastName;
                 }
                 return _saleList;
 
@@ -945,10 +958,21 @@ namespace Ribbon.ViewModel
            Phone = saleInfoNJ.Phone;
            CustomerFirstName = saleInfoNJ.CustomerFirstName;
            CustomerLastName = saleInfoNJ.CustomerLastName;
+
+           SaleList.Clear();
+           for (int i = 0; i < saleInfoNJ.ProductList.Count; i++)
+           {
+               SaleList.Add(saleInfoNJ.ProductList.ElementAt(i));
+           }
+
         }
 
-       
 
+        public Boolean ValidateSaleOrdert()
+        {
+            ErrorMessage = "Customer name is required.";
+            return false;
+        }
     }
 }
 
