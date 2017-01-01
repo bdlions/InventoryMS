@@ -63,8 +63,9 @@
     <Reference Include="IntXLib">
       <HintPath>..\packages\IntX.1.0.1.0\lib\net20\IntXLib.dll</HintPath>
     </Reference>
-    <Reference Include="InvDataAccess">
-      <HintPath>references\InvDataAccess.dll</HintPath>
+    <Reference Include="InventoryDataAccess, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>references\InventoryDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -117,6 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ProfileInfoNJ.cs" />
     <Compile Include="Model\SaleInfoNJ.cs" />
     <Compile Include="Model\PurchaseInfoNJ.cs" />
     <Compile Include="Model\CustomerInfoNJ.cs" />
@@ -189,6 +191,9 @@
     </Compile>
     <Compile Include="View\Inventory\Stock\TransferStock.xaml.cs">
       <DependentUpon>TransferStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\General\Loader.xaml.cs">
+      <DependentUpon>Loader.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageCurrentStock.xaml.cs">
       <DependentUpon>ManageCurrentStock.xaml</DependentUpon>
@@ -464,6 +469,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Inventory\Stock\TransferStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\General\Loader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -914,6 +923,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\bdlions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\homePage\loader.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\homePage\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\homePage\load.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\homePage\loading.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />

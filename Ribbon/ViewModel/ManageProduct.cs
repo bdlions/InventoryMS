@@ -21,6 +21,22 @@ namespace Ribbon.ViewModel
 {
     class ManageProduct : BindableBase, INotifyPropertyChanged
     {
+        //constructor
+        public ManageProduct()
+        {
+            //loading product list on left panel
+            ProductManager productManager = new ProductManager();
+            for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+            {
+                ProductInfo pInfo = (ProductInfo)i.next();
+                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                pInfoNJ.Id = pInfo.getId();
+                pInfoNJ.Name = pInfo.getName();
+                pInfoNJ.Code = pInfo.getCode();
+                pInfoNJ.Price = pInfo.getUnitPrice();
+                ProductList.Add(pInfoNJ);
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -124,20 +140,10 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                ProductManager productManager = new ProductManager();
-
-                _productList = new ObservableCollection<ProductInfoNJ>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                if(_productList == null)
                 {
-                    ProductInfo pInfo = (ProductInfo)i.next();
-                    ProductInfoNJ pInfoNJ = new ProductInfoNJ();
-                    pInfoNJ.Id = pInfo.getId();
-                    pInfoNJ.Name = pInfo.getName();
-                    pInfoNJ.Code = pInfo.getCode();
-                    pInfoNJ.Price = pInfo.getUnitPrice();
-                    _productList.Add(pInfoNJ);
-                    
-                }
+                    _productList = new ObservableCollection<ProductInfoNJ>();
+                }                
                 return _productList;
             }
             set
@@ -226,7 +232,6 @@ namespace Ribbon.ViewModel
             if (Id > 0)
             {
                 resultEvent = productManager.updateProduct(productInfo);
-
                 for (int counter = 0; counter < ProductList.Count; counter++ )
                 {
                     ProductInfoNJ pInfoNJ = ProductList.ElementAt(counter);
@@ -241,20 +246,6 @@ namespace Ribbon.ViewModel
                         ProductList.Insert(counter, demoProductInfoNJ);
                     }
                 }
-
-               // _productList.Clear();
-                //for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
-                //{
-                //    ProductInfo pInfo = (ProductInfo)i.next();
-                //    ProductInfoNJ pInfoNJ = new ProductInfoNJ();
-                //    pInfoNJ.Id = pInfo.getId();
-                //    pInfoNJ.Name = pInfo.getName();
-                //    pInfoNJ.Code = pInfo.getCode();
-                //    pInfoNJ.Price = pInfo.getUnitPrice();
-                //   // _productList.Add(pInfoNJ);
-                //}
-
-
             }
             else
             {
