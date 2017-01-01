@@ -513,8 +513,18 @@ namespace Ribbon.ViewModel
         }
         public Boolean ValidateCustomer()
         {
-            ErrorMessage = "Customer name is required.";
-            return false;
+            if (CustomerFirstName == null)
+            {
+                ErrorMessage = "Customer first name is required.";
+                return false;
+            }
+            if (CustomerLastName == null)
+            {
+                ErrorMessage = "Customer Last name is required.";
+                return false;
+            }
+
+            return true;
         }
     }
 }

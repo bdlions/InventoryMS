@@ -676,7 +676,7 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(new Action(() =>
                 {
-                    if (!ValidateSaleOrdert())
+                    if (!ValidateSaleOrder())
                     {
                         MessageBox.Show(ErrorMessage);
                         return;
@@ -968,10 +968,19 @@ namespace Ribbon.ViewModel
         }
 
 
-        public Boolean ValidateSaleOrdert()
+        public Boolean ValidateSaleOrder()
         {
-            ErrorMessage = "Customer name is required.";
-            return false;
+            if (CustomerName == null)
+            {
+                ErrorMessage = "Customer name is required.";
+                return false;
+            }
+            if(SaleList == null || SaleList.Count == 0){
+                ErrorMessage = "Please select a product.";
+                return false;
+            }
+
+            return true;
         }
     }
 }

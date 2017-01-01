@@ -136,6 +136,7 @@ namespace Ribbon.ViewModel
                     pInfoNJ.Code = pInfo.getCode();
                     pInfoNJ.Price = pInfo.getUnitPrice();
                     _productList.Add(pInfoNJ);
+                    
                 }
                 return _productList;
             }
@@ -208,11 +209,13 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnAdd()
         {
-            if(!ValidateProduct()){
+            if (!ValidateProduct())
+            {
                 MessageBox.Show(ErrorMessage);
                 return;
             }
             ProductInfo productInfo = new ProductInfo();
+            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
             productInfo.setId(Id);
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
@@ -223,10 +226,40 @@ namespace Ribbon.ViewModel
             if (Id > 0)
             {
                 resultEvent = productManager.updateProduct(productInfo);
+
+                for (int counter = 0; counter < ProductList.Count; counter++ )
+                {
+                    ProductInfoNJ pInfoNJ = ProductList.ElementAt(counter);
+                    if(pInfoNJ.Id == Id)
+                    {
+                        ProductList.RemoveAt(counter);
+                        ProductInfoNJ demoProductInfoNJ = new ProductInfoNJ();
+                        demoProductInfoNJ.Id = Id;
+                        demoProductInfoNJ.Name = ProductName;
+                        demoProductInfoNJ.Code = ProductCode;
+                        demoProductInfoNJ.Price = Price;
+                        ProductList.Insert(counter, demoProductInfoNJ);
+                    }
+                }
+
+               // _productList.Clear();
+                //for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                //{
+                //    ProductInfo pInfo = (ProductInfo)i.next();
+                //    ProductInfoNJ pInfoNJ = new ProductInfoNJ();
+                //    pInfoNJ.Id = pInfo.getId();
+                //    pInfoNJ.Name = pInfo.getName();
+                //    pInfoNJ.Code = pInfo.getCode();
+                //    pInfoNJ.Price = pInfo.getUnitPrice();
+                //   // _productList.Add(pInfoNJ);
+                //}
+
+
             }
             else
             {
                 resultEvent = productManager.createProduct(productInfo);
+
                 //reset create product fields
                 OnReset();
             }
@@ -293,7 +326,6 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnSearch()
         {
-
             ProductManager productManager = new ProductManager();
 
             _productList.Clear();
@@ -315,13 +347,32 @@ namespace Ribbon.ViewModel
             this.ProductName = p.Name;
             this.ProductCode = p.Code;
             this.Price = p.Price;
-
         }
 
         public Boolean ValidateProduct()
         {
-            ErrorMessage = "Product name is required.";
-            return false;
+            if (ProductName == null)
+            {
+                ErrorMessage = "Product name is required.";
+                return false;
+            }
+            if (ProductCode == null)
+            {
+                ErrorMessage = "Product code is required.";
+                return false;
+            }
+            if (Price == 0)
+            {
+                ErrorMessage = "Price is required.";
+                return false;
+            }
+            if (Price < 0)
+            {
+                ErrorMessage = "Price never be negative.";
+                return false;
+            }
+            return true;
         }
+
     }
 }

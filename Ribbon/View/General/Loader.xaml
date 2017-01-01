@@ -7,6 +7,6 @@
              
              d:DesignHeight="700" d:DesignWidth="1024">
     <Grid>
-        <Image  Source="/Ribbon;component/img/homePage/loading.gif"  Width="800" Margin="112,91,112,109"/>
+        <Image  Source="/Ribbon;component/img/homePage/loading.png"  Width="800" Margin="112,91,112,109"/>
     </Grid>
 </UserControl>

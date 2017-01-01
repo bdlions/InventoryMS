@@ -534,8 +534,18 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidateSupplier()
         {
-            ErrorMessage = "Supplier name is required.";
-            return false;
+            if (FirstName == null)
+            {
+                ErrorMessage = "Supplier first name is required.";
+                return false;
+            }
+            if (LastName == null)
+            {
+                ErrorMessage = "Supplier Last name is required.";
+                return false;
+            }
+            
+            return true;
         }
     }
 }
