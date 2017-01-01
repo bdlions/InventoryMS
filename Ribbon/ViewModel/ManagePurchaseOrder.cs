@@ -157,7 +157,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-       
+
 
         /*  ------------------------- Purchase Order Item ----------------------*/
 
@@ -563,7 +563,7 @@ namespace Ribbon.ViewModel
         }
 
 
-    // Search Purchase Order
+        // Search Purchase Order
         private string _searchPurchaseOderNo;
         public string SearchPurchaseOderNo
         {
@@ -637,9 +637,9 @@ namespace Ribbon.ViewModel
             }
         }
 
-        public ICommand SavePurchase 
+        public ICommand SavePurchase
         {
-            get 
+            get
             {
                 return new DelegateCommand(new Action(() =>
                 {
@@ -650,7 +650,8 @@ namespace Ribbon.ViewModel
                     }
                     java.util.List productList = new java.util.ArrayList();
 
-                    foreach (ProductInfoNJ productInfoNJ in PurchaseList) { 
+                    foreach (ProductInfoNJ productInfoNJ in PurchaseList)
+                    {
                         ProductInfo productInfo = new ProductInfo();
                         productInfo.setName(productInfoNJ.Name);
                         productInfo.setCode(productInfoNJ.Code);
@@ -658,7 +659,7 @@ namespace Ribbon.ViewModel
                         productInfo.setQuantity(productInfoNJ.Quantity);
                         productInfo.setDiscount(productInfoNJ.Discount);
                         productInfo.setId(productInfoNJ.ProductId);
-                        
+
                         productList.add(productInfo);
                     }
 
@@ -687,8 +688,9 @@ namespace Ribbon.ViewModel
         private void OnAdd()
         {
             java.util.List productList = new java.util.ArrayList();
-                      
-            for(int i = 0; i < ProductItemList.Count; i ++){
+
+            for (int i = 0; i < ProductItemList.Count; i++)
+            {
                 ProductInfo productInfo = new ProductInfo();
                 ProductInfoNJ productInfoNJ = ProductItemList.ElementAt(i);
                 productInfo.setId(productInfoNJ.ProductId);
@@ -785,7 +787,7 @@ namespace Ribbon.ViewModel
                     {
                         ProductInfo productInfo = (ProductInfo)j.next();
                         ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                        productInfoNJ.Name = productInfo.getName() ;
+                        productInfoNJ.Name = productInfo.getName();
                         productInfoNJ.Code = productInfo.getCode();
                         //productInfoNJ.Discount = 20;
                         productInfoNJ.Price = productInfo.getUnitPrice();
@@ -798,7 +800,7 @@ namespace Ribbon.ViewModel
                     //productInfoNJ.Quantity = 10;
                     //productInfoNJ.Discount = 20;
                     //productInfoNJ.Price = 100;
-                    
+
 
                     //purchaseInfoNJ.ProductList.Add(productInfoNJ);
 
@@ -860,7 +862,7 @@ namespace Ribbon.ViewModel
 
                     SupplierInfo supplierInfo = new SupplierInfo();
                     SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    
+
                     supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
                     supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
                     supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
@@ -875,10 +877,10 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
 
 
-        
+
+
 
         public DelegateCommand<object> OnItemSelected
         {
@@ -900,15 +902,16 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((SelectedSupplier) =>
                 {
-                    if (SelectedSupplier is SupplierInfoNJ) {
+                    if (SelectedSupplier is SupplierInfoNJ)
+                    {
                         SupplierInfoNJ supplierInfo = (SupplierInfoNJ)SelectedSupplier;
                         SupplierFirstName = supplierInfo.SupplierFirstName;
                         SupplierLastName = supplierInfo.SupplierLastName;
                         Phone = supplierInfo.Phone;
                         SupplierUserId = supplierInfo.SupplierUserID;
                     }
-                    
-                   
+
+
 
                 });
             }
@@ -977,7 +980,7 @@ namespace Ribbon.ViewModel
 
         public void selectPurchaseOrderEvent(PurchaseInfoNJ purchaseInfoNJ)
         {
-            
+
             Order = purchaseInfoNJ.Order;
             SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
             SupplierLastName = purchaseInfoNJ.SupplierLastName;
@@ -992,9 +995,21 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidatePurchaseOrder()
         {
-            ErrorMessage = "Supplier name is required.";
-            return false;
+           
+            if(SupplierName == null)
+            {
+                ErrorMessage = "Supplier name is required.";
+                return false;
+            }
+            if (PurchaseList == null || PurchaseList.Count == 0)
+            {
+                ErrorMessage = "Please select a product.";
+                return false;
+            }
+            
+            return true;
         }
+
     }
 }
 
