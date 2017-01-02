@@ -39,7 +39,7 @@
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="0,1,1,1" Text="{Binding Location}"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order"/>
-            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,6,1" Text="{Binding Order}" IsReadOnly="True"/>
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,6,1" Text="{Binding Order}"/>
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact" Margin="0,7"/>
@@ -98,6 +98,8 @@
                 <popupbox:PurchaseOrderProductSelector  x:Name="productSelector"/>
             </StackPanel>
         </StackPanel>
+        
+
         <Grid Margin="5,415,5,5" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

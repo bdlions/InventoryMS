@@ -589,13 +589,6 @@ namespace Ribbon.ViewModel
         }
 
 
-        public ICommand Add
-        {
-            get
-            {
-                return new DelegateCommand(this.OnAdd);
-            }
-        }
         public ICommand Reset
         {
             get
@@ -693,38 +686,6 @@ namespace Ribbon.ViewModel
 
 
 
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnAdd()
-        {
-            java.util.List productList = new java.util.ArrayList();
-
-            for (int i = 0; i < ProductItemList.Count; i++)
-            {
-                ProductInfo productInfo = new ProductInfo();
-                ProductInfoNJ productInfoNJ = ProductItemList.ElementAt(i);
-                productInfo.setId(productInfoNJ.ProductId);
-                productInfo.setUnitPrice(productInfoNJ.Price);
-                productInfo.setQuantity(productInfoNJ.Quantity);
-                productInfo.setDiscount(productInfoNJ.Discount);
-                productList.add(productInfo);
-            }
-
-            PurchaseInfo purchaseInfo = new PurchaseInfo();
-            purchaseInfo.setProductList(productList);
-            purchaseInfo.setSupplierUserId(SupplierUserId);
-            purchaseInfo.setOrderNo(purchaseInfo.getOrderNo());
-            purchaseInfo.setStatusId(purchaseInfo.getStatusId());
-            purchaseInfo.setRemarks(purchaseInfo.getRemarks());
-            purchaseInfo.setOrderDate(purchaseInfo.getOrderDate());
-            purchaseInfo.setRequestShippedDate(purchaseInfo.getRequestShippedDate());
-
-            PurchaseManager purchaseManager = new PurchaseManager();
-            purchaseManager.addPurchaseOrder(purchaseInfo);
-
-            MessageBox.Show("Save Successfully");
-        }
 
 
         ObservableCollection<ProductInfoNJ> _productItemList;
@@ -766,7 +727,6 @@ namespace Ribbon.ViewModel
                     _purchaseList = new ObservableCollection<ProductInfoNJ>();
                 }
                 return _purchaseList;
-
             }
             set
             {
@@ -899,7 +859,9 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
-                    PurchaseList.Insert(PurchaseList.Count - 1, (ProductInfoNJ)selectedItem);
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    selectedProductInfoNJ.Quantity = 1;
+                    PurchaseList.Insert(PurchaseList.Count - 1, selectedProductInfoNJ);
                     PurchaseList.RemoveAt(PurchaseList.Count - 1);
                     OnPropertyChanged("OrderSubTotalAmount");
                     OnPropertyChanged("OrderItemSubTotal");
@@ -991,17 +953,43 @@ namespace Ribbon.ViewModel
 
 
         public void selectPurchaseOrderEvent(PurchaseInfoNJ purchaseInfoNJ)
-        {
-
-            Order = purchaseInfoNJ.Order;
-            SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
-            SupplierLastName = purchaseInfoNJ.SupplierLastName;
-
-            PurchaseList.Clear();
-            for (int i = 0; i < purchaseInfoNJ.ProductList.Count; i++)
+        {   
+            PurchaseManager purchaseManager = new PurchaseManager();
+            ResultEvent resultEvent = purchaseManager.getPurchaseOrderInfo(purchaseInfoNJ.Order);
+            if (resultEvent.getResponseCode() == 2000)
             {
-                PurchaseList.Add(purchaseInfoNJ.ProductList.ElementAt(i));
+                Order = purchaseInfoNJ.Order;
+                PurchaseInfo purchaseInfo = (PurchaseInfo)resultEvent.getResult();
+                SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                SupplierUserId = purchaseInfo.getSupplierInfo().getProfileInfo().getId();
+                PurchaseList.Clear();
+                for (Iterator j = purchaseInfo.getProductList().iterator(); j.hasNext(); )
+                {
+                    ProductInfo productInfo = (ProductInfo)j.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Name = productInfo.getName();
+                    productInfoNJ.Code = productInfo.getCode();
+                    productInfoNJ.Quantity = productInfo.getQuantity();
+                    purchaseInfoNJ.ProductList.Add(productInfoNJ);
+                    PurchaseList.Add(productInfoNJ);
+                }
             }
+            else 
+            {
+                MessageBox.Show(resultEvent.getMessage());
+            }
+
+
+
+            //SupplierFirstName = purchaseInfoNJ.SupplierFirstName;
+            //SupplierLastName = purchaseInfoNJ.SupplierLastName;
+
+            //PurchaseList.Clear();
+            //for (int i = 0; i < purchaseInfoNJ.ProductList.Count; i++)
+            //{
+            //    PurchaseList.Add(purchaseInfoNJ.ProductList.ElementAt(i));
+            //}
 
         }
 

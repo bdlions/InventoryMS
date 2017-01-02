@@ -39,7 +39,7 @@
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sales Rep:"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="3" Text="{Binding SalesRep}"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:"/>
-            <TextBox Grid.Row="0" Grid.Column="6" Margin="3,3,0,3" Text="{Binding Order}" IsReadOnly="True"/>
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="3,3,0,3" Text="{Binding Order}"/>
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Contact:"/>

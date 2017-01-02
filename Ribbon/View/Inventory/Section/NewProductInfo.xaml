@@ -19,7 +19,8 @@
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Basic" />
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource InventoryForeBackground}" FontWeight="Bold" FontSize="20" Content="Picture" Margin="19,0,0,0" />
         <Label Grid.Row="1" Content="Item Name:" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductName}"/>
+
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,12,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductName}" />
         <Label Grid.Row="1" Content="Item Code:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="114,46,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductCode}"/>
         <Label Grid.Row="1" Content="Price:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
