@@ -7,7 +7,7 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:command="http://www.galasoft.ch/mvvmlight"
              mc:Ignorable="d" 
-             d:DesignHeight="768" d:DesignWidth="1024" MouseLeftButtonDown="UserControl_MouseLeftButtonDown">
+             d:DesignHeight="768" d:DesignWidth="1024" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" >
     <Grid Margin="5">
         <Grid HorizontalAlignment="Left">
             <Grid.RowDefinitions>
@@ -80,7 +80,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding SelectedItemChangedCommand}"  
-                                                   CommandParameter="{Binding ElementName=productPurchaseOrderGrid, Path=SelectedItem}"/>
+                               CommandParameter="{Binding ElementName=productPurchaseOrderGrid, Path=SelectedItem}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     
@@ -89,7 +89,7 @@
                         <DataGridTextColumn Width="70"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity}"/>
                         <DataGridTextColumn Width="70"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
                         <DataGridTextColumn Width="70"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
-                        <DataGridTextColumn Width="70"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}"/>
+                        <DataGridTextColumn Width="70"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}" IsReadOnly="True"/>
                         <DataGridTextColumn Width="70"  Header="ProductId" FontFamily="Arial" />
                         <DataGridTextColumn Width="50"  Header="Edit" FontFamily="Arial" />
                         <DataGridTextColumn Width="50"  Header="Delete" FontFamily="Arial" />
@@ -98,7 +98,58 @@
                 <popupbox:PurchaseOrderProductSelector  x:Name="productSelector"/>
             </StackPanel>
         </StackPanel>
+        <Grid Margin="5,415,5,5" HorizontalAlignment="Left" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="65" />
+                <ColumnDefinition Width="110" />
 
+            </Grid.ColumnDefinitions>
+            <!-- 1st row-->
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Taxing Scheme" Margin="0,0,0,46"/>
+            <ComboBox Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,53" Height="23">
+                <ComboBoxItem IsSelected="True" Content="No Tax"/>
+                <ComboBoxItem Content="Add New" />
+            </ComboBox>
+            <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
+            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60" Text="{Binding OrderRemark}"/>
+            <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sub-Total"/>
+            <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding OrderSubTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-14,58"  />
+
+            <!-- 2nd row-->
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Non-Supplier Costs" Margin="0,24,0,22"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,26,0,28" Text="{Binding NonSupplierCost}"/>
+            <Button Grid.Row="1" Grid.Column="4" Width="70" Height="22" HorizontalAlignment="Right" Content="Save" FontWeight="Bold" 
+                    Background="{StaticResource DarkBackground}" 
+                    Command="{Binding SavePurchase}"
+                    Foreground="White" Margin="0,5,0,1"/>
+            <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total" Margin="0,28,0,-6" Grid.RowSpan="3"/>
+            <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,33,-14,22" Text="{Binding OrderTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left" />
+
+            <!-- 3rd row-->
+            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Currency" Margin="0,50,0,0"/>
+            <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="0" Grid.Column="1" Margin="0,51,0,0" Height="23" FontSize="11" >
+                <ComboBoxItem Content="Ugandan Shilling (USh)" />
+                <ComboBoxItem Content="UK Pound (£)" />
+                <ComboBoxItem Content="Ukrainian Hryvnia (rpH.)" />
+                <ComboBoxItem IsSelected="True" Content="US Dollar ($)"/>
+                <ComboBoxItem Content="Venezuelan Bolivar (Bs)" />
+                <ComboBoxItem Content="Vietnamese Dong (₫)" />
+                <ComboBoxItem Content="West African CFA France (FCFA)" />
+                <ComboBoxItem Content="Zimbian Kwacha (ZK)" />
+                <ComboBoxItem Content="Add New" />
+            </ComboBox>
+        </Grid>
         <!--<Grid Margin="5 150 5 5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -202,58 +253,7 @@
             <TextBox Grid.Row="9" Grid.Column="5"  BorderThickness="1 0 1 1"  Padding="0 3"/>
         </Grid>-->
 
-        <Grid Margin="5,415,5,5" HorizontalAlignment="Left" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="60" />
-                <ColumnDefinition Width="160"/>
-                <ColumnDefinition Width="15" />
-                <ColumnDefinition Width="65" />
-                <ColumnDefinition Width="110" />
-
-            </Grid.ColumnDefinitions>
-            <!-- 1st row-->
-            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Taxing Scheme" Margin="0,0,0,46"/>
-            <ComboBox Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0,0,0,53" Height="23">
-                <ComboBoxItem IsSelected="True" Content="No Tax"/>
-                <ComboBoxItem Content="Add New" />
-            </ComboBox>
-            <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
-            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60" Text="{Binding OrderRemark}"/>
-            <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sub-Total"/>
-            <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding OrderSubTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-14,58"  />
-
-            <!-- 2nd row-->
-            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Non-Supplier Costs" Margin="0,24,0,22"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="0,26,0,28" Text="{Binding NonSupplierCost}"/>
-            <Button Grid.Row="1" Grid.Column="4" Width="70" Height="22" HorizontalAlignment="Right" Content="Save" FontWeight="Bold" 
-                    Background="{StaticResource DarkBackground}" 
-                    Command="{Binding SavePurchase}"
-                    Foreground="White" Margin="0,5,0,1"/>
-            <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Total" Margin="0,28,0,-6" Grid.RowSpan="3"/>
-            <TextBlock Grid.Row="0" Grid.Column="7" Margin="0,33,-14,22" Text="{Binding OrderTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left" />
-
-            <!-- 3rd row-->
-            <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Currency" Margin="0,50,0,0"/>
-            <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Grid.Row="0" Grid.Column="1" Margin="0,51,0,0" Height="23" FontSize="11" >
-                <ComboBoxItem Content="Ugandan Shilling (USh)" />
-                <ComboBoxItem Content="UK Pound (£)" />
-                <ComboBoxItem Content="Ukrainian Hryvnia (rpH.)" />
-                <ComboBoxItem IsSelected="True" Content="US Dollar ($)"/>
-                <ComboBoxItem Content="Venezuelan Bolivar (Bs)" />
-                <ComboBoxItem Content="Vietnamese Dong (₫)" />
-                <ComboBoxItem Content="West African CFA France (FCFA)" />
-                <ComboBoxItem Content="Zimbian Kwacha (ZK)" />
-                <ComboBoxItem Content="Add New" />
-            </ComboBox>
-        </Grid>
+        
     </Grid>
 
 </UserControl>

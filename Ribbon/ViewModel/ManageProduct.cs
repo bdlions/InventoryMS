@@ -220,46 +220,61 @@ namespace Ribbon.ViewModel
                 MessageBox.Show(ErrorMessage);
                 return;
             }
-            ProductInfo productInfo = new ProductInfo();
-            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+            ProductInfo productInfo = new ProductInfo();            
             productInfo.setId(Id);
             productInfo.setName(ProductName);
             productInfo.setCode(ProductCode);
             productInfo.setUnitPrice(Price);
 
+            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+            productInfoNJ.Name = ProductName;
+            productInfoNJ.Code = ProductCode;
+            productInfoNJ.Price = Price;
+
             ResultEvent resultEvent = new ResultEvent();
             ProductManager productManager = new ProductManager();
             if (Id > 0)
             {
-                resultEvent = productManager.updateProduct(productInfo);
-                for (int counter = 0; counter < ProductList.Count; counter++ )
-                {
-                    ProductInfoNJ pInfoNJ = ProductList.ElementAt(counter);
-                    if(pInfoNJ.Id == Id)
-                    {
-                        ProductList.RemoveAt(counter);
-                        ProductInfoNJ demoProductInfoNJ = new ProductInfoNJ();
-                        demoProductInfoNJ.Id = Id;
-                        demoProductInfoNJ.Name = ProductName;
-                        demoProductInfoNJ.Code = ProductCode;
-                        demoProductInfoNJ.Price = Price;
-                        ProductList.Insert(counter, demoProductInfoNJ);
-                    }
-                }
+                resultEvent = productManager.updateProduct(productInfo);                
             }
             else
             {
-                resultEvent = productManager.createProduct(productInfo);
-
+                resultEvent = productManager.createProduct(productInfo);                
                 //reset create product fields
                 OnReset();
             }
             if (resultEvent.getResponseCode() == 2000)
             {
-
-
+                if (Id > 0)
+                {
+                    for (int counter = 0; counter < ProductList.Count; counter++)
+                    {
+                        productInfoNJ.Id = Id;
+                        ProductInfoNJ tempProductInfoNJ = ProductList.ElementAt(counter);
+                        if (tempProductInfoNJ.Id == Id)
+                        {
+                            ProductList.RemoveAt(counter);
+                            ProductList.Insert(counter, productInfoNJ);
+                        }
+                    }
+                }
+                else
+                {
+                    ProductInfo responseProductInfo = (ProductInfo)resultEvent.getResult();
+                    Id = responseProductInfo.getId();
+                    productInfoNJ.Id = Id;
+                    if(ProductList.Count == 0)
+                    {
+                        //appending product info in product list on left panel
+                        ProductList.Add(productInfoNJ);
+                    }
+                    else
+                    {
+                        //appending productinfo at first index in product list on left panel
+                        ProductList.Insert(0, productInfoNJ);
+                    }
+                }
             }
-
             MessageBox.Show(resultEvent.getMessage());
         }
 
@@ -352,14 +367,9 @@ namespace Ribbon.ViewModel
                 ErrorMessage = "Product code is required.";
                 return false;
             }
-            if (Price == 0)
-            {
-                ErrorMessage = "Price is required.";
-                return false;
-            }
             if (Price < 0)
             {
-                ErrorMessage = "Price never be negative.";
+                ErrorMessage = "Invalid value for price field. It must be a positive number.";
                 return false;
             }
             return true;

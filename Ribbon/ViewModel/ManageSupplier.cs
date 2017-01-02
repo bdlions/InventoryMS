@@ -22,6 +22,28 @@ namespace Ribbon.ViewModel
 
     class ManageSupplier : BindableBase, INotifyPropertyChanged
     {
+        //constructor
+        public ManageSupplier()
+        {
+            //loading supplier list on left panel
+            SupplierManager supplierManager = new SupplierManager();
+            for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
+            {
+                SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+
+                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+
+                SupplierList.Add(supplierInfoNJ);
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private SupplierInfoNJ _supplierInfoNJ;
@@ -41,7 +63,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -145,7 +167,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-      
+
 
         private double _balance;
         public double Balance
@@ -318,24 +340,9 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                SupplierManager supplierManager = new SupplierManager();
-
-                _supplierList = new ObservableCollection<SupplierInfoNJ>();
-                for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
+                if (_supplierList == null)
                 {
-                    SupplierInfo supplierInfo = (SupplierInfo)i.next();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                    supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
-                    supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
-                    supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
-                    //supplierInfoNJ.Remarks = supplierInfo.getRemarks();
-
-                    _supplierList.Add(supplierInfoNJ);
+                    _supplierList = new ObservableCollection<SupplierInfoNJ>();
                 }
                 return _supplierList;
             }
@@ -427,11 +434,25 @@ namespace Ribbon.ViewModel
 
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setProfileInfo(profileInfo);
-            //supplierInfo.setRemarks(SupplierInfoNJ.Remarks);
-            
-            ResultEvent resultEvent = new ResultEvent();
             SupplierManager supplierManager = new SupplierManager();
-            if ( SupplierUserID > 0)
+            //supplierInfo.setRemarks(SupplierInfoNJ.Remarks);
+            ResultEvent resultEvent = new ResultEvent();
+
+            SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+            supplierInfoNJ.SupplierUserID = SupplierUserID;
+            supplierInfoNJ.SupplierFirstName = FirstName;
+            supplierInfoNJ.SupplierLastName = LastName;
+            supplierInfoNJ.SupplierName = SupplierName;
+            supplierInfoNJ.Balance = Balance;
+            supplierInfoNJ.Email = Email;
+            supplierInfoNJ.Phone = Phone;
+            supplierInfoNJ.Fax = Fax;
+            supplierInfoNJ.Website = Website;
+
+           
+
+           
+            if (SupplierUserID > 0)
             {
                 resultEvent = supplierManager.updateSupplier(supplierInfo);
             }
@@ -442,10 +463,29 @@ namespace Ribbon.ViewModel
             }
             if (resultEvent.getResponseCode() == 2000)
             {
+                if (SupplierUserID > 0)
+                {
+                    for (int counter = 0; counter < SupplierList.Count; counter++)
+                    {
+                      SupplierInfoNJ tempSupplierInfoNJ = SupplierList.ElementAt(counter);
 
-                
+                      if (tempSupplierInfoNJ.SupplierUserID == SupplierUserID)
+                        {
+                            SupplierList.RemoveAt(counter);
+                            SupplierList.Insert(counter, supplierInfoNJ);
+                        }
+                    }
+                }
+                else{
+                    if(SupplierList.Count == 0){
+                        SupplierList.Add(supplierInfoNJ);
+                    }
+                    else
+                    {
+                        SupplierList.Insert(0, supplierInfoNJ);
+                    }
+                }
             }
-
             MessageBox.Show(resultEvent.getMessage());
         }
 
@@ -463,7 +503,7 @@ namespace Ribbon.ViewModel
             this.Phone = "";
             this.Fax = "";
             this.Website = "";
-           // MessageBox.Show("OnReset");
+            // MessageBox.Show("OnReset");
         }
 
         /// <summary>
@@ -544,7 +584,7 @@ namespace Ribbon.ViewModel
                 ErrorMessage = "Supplier Last name is required.";
                 return false;
             }
-            
+
             return true;
         }
     }

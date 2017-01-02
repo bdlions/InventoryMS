@@ -726,7 +726,7 @@ namespace Ribbon.ViewModel
                         CustomerFirstName = customerInfoNJ.CustomerFirstName;
                         CustomerLastName = customerInfoNJ.CustomerLastName;
                         Phone = customerInfoNJ.Phone;
-                        CusomerUserId = customerInfoNJ.CusomerUserId;
+                        CusomerUserId = customerInfoNJ.CustomerUserId;
                     }
                 });
             }
@@ -808,7 +808,7 @@ namespace Ribbon.ViewModel
                     customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
                     customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                     customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
-                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
+                    customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
                     _customerItemList.Add(customerInfoNJ);
                 }
                 return _customerItemList;
@@ -836,7 +836,7 @@ namespace Ribbon.ViewModel
                     customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
                     customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                     customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
-                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
+                    customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
 
                 }
                 return _customerList;
@@ -970,11 +970,12 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidateSaleOrder()
         {
-            if (CustomerName == null)
+            if (CustomerList == null || CustomerList.Count == 0)
             {
                 ErrorMessage = "Customer name is required.";
                 return false;
             }
+
             if(SaleList == null || SaleList.Count == 0){
                 ErrorMessage = "Please select a product.";
                 return false;

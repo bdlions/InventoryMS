@@ -8,16 +8,16 @@ namespace Ribbon.Model
 {
     class CustomerInfoNJ
     {
-        private int _customerUserID;
-        public int CustomerUserID
+        private int _customerUserId;
+        public int CustomerUserId
         {
             get
             {
-                return this._customerUserID;
+                return this._customerUserId;
             }
             set
             {
-                this._customerUserID = value;
+                this._customerUserId = value;
             }
         }
 
@@ -61,18 +61,6 @@ namespace Ribbon.Model
             }
         }
 
-        private int _cusomerUserId;
-        public int CusomerUserId
-        {
-            get
-            {
-                return this._cusomerUserId;
-            }
-            set
-            {
-                this._cusomerUserId = value;
-            }
-        }
 
         private string _phone;
         public string Phone

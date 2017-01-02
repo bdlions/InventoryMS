@@ -21,10 +21,28 @@ namespace Ribbon.ViewModel
 {
     class ManageCustomer : BindableBase, INotifyPropertyChanged
     {
+         //constructor
+        public ManageCustomer()
+        {
+            //loading customer list on left panel
+            CustomerManager customerManager = new CustomerManager();
+            for (Iterator i = customerManager.getAllCustomers().iterator(); i.hasNext(); )
+            {
+                CustomerInfo customerInfo = (CustomerInfo)i.next();
+                CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+
+                customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
+                customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                customerInfoNJ.Fax = customerInfo.getProfileInfo().getFax();
+                customerInfoNJ.Email = customerInfo.getProfileInfo().getEmail();
+                customerInfoNJ.Website = customerInfo.getProfileInfo().getWebsite();
+
+                CustomerList.Add(customerInfoNJ);
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
-
-
-
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -69,16 +87,16 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private int _customerUserID;
-        public int CustomerUserID
+        private int _customerUserId;
+        public int CustomerUserId
         {
             get
             {
-                return this._customerUserID;
+                return this._customerUserId;
             }
             set
             {
-                this._customerUserID = value;
+                this._customerUserId = value;
             }
         }
 
@@ -158,7 +176,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _phone;
-        public string CustomerPhone
+        public string Phone
         {
             get
             {
@@ -172,7 +190,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _fax;
-        public string CustomerFax
+        public string Fax
         {
             get
             {
@@ -186,7 +204,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _email;
-        public string CustomerEmail
+        public string Email
         {
             get
             {
@@ -200,7 +218,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _website;
-        public string CustomerWebsite
+        public string Website
         {
             get
             {
@@ -214,7 +232,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _discount;
-        public string CustomerDiscount
+        public string Discount
         {
             get
             {
@@ -227,7 +245,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _taxExempt;
-        public string CustomerTaxExempt
+        public string TaxExempt
         {
             get
             {
@@ -240,7 +258,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _remark;
-        public string CustomerRemark
+        public string Remark
         {
             get
             {
@@ -253,7 +271,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _cardNumber;
-        public string CustomerCardNumber
+        public string CardNumber
         {
             get
             {
@@ -266,7 +284,7 @@ namespace Ribbon.ViewModel
         }
 
         private string _cardSecurityCode;
-        public string CustomerCardSecurityCode
+        public string CardSecurityCode
         {
             get
             {
@@ -292,29 +310,16 @@ namespace Ribbon.ViewModel
             }
         }
 
+
         ObservableCollection<CustomerInfoNJ> _customerList;
 
         public ObservableCollection<CustomerInfoNJ> CustomerList
         {
             get
             {
-                CustomerManager customerManager = new CustomerManager();
-
-                _customerList = new ObservableCollection<CustomerInfoNJ>();
-                for (Iterator i = customerManager.getAllCustomers().iterator(); i.hasNext(); )
+                if (_customerList == null)
                 {
-                    CustomerInfo customerInfo = (CustomerInfo)i.next();
-                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
-
-                    customerInfoNJ.CusomerUserId = customerInfo.getProfileInfo().getId();
-                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
-                    customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
-                    customerInfoNJ.Fax = customerInfo.getProfileInfo().getFax();
-                    customerInfoNJ.Email = customerInfo.getProfileInfo().getEmail();
-                    customerInfoNJ.Website = customerInfo.getProfileInfo().getWebsite();
-
-                    _customerList.Add(customerInfoNJ);
+                    _customerList = new ObservableCollection<CustomerInfoNJ>();
                 }
                 return _customerList;
             }
@@ -354,7 +359,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        public ICommand Email
+        public ICommand Emailing
         {
             get
             {
@@ -387,13 +392,13 @@ namespace Ribbon.ViewModel
                 return;
             }
             ProfileInfo profileInfo = new ProfileInfo();
-            profileInfo.setId(CustomerUserID);
+            profileInfo.setId(CustomerUserId);
             profileInfo.setFirstName(CustomerFirstName);
             profileInfo.setLastName(CustomerLastName);
-            profileInfo.setEmail(CustomerEmail);
-            profileInfo.setPhone(CustomerPhone);
-            profileInfo.setFax(CustomerFax);
-            profileInfo.setWebsite(CustomerWebsite);
+            profileInfo.setEmail(Email);
+            profileInfo.setPhone(Phone);
+            profileInfo.setFax(Fax);
+            profileInfo.setWebsite(Website);
 
             CustomerInfo customerInfo = new CustomerInfo();
             customerInfo.setProfileInfo(profileInfo);
@@ -401,9 +406,19 @@ namespace Ribbon.ViewModel
 
             ResultEvent resultEvent = new ResultEvent();
 
-            if (CustomerUserID > 0)
+            CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+            customerInfoNJ.CustomerUserId = CustomerUserId;
+            customerInfoNJ.CustomerFirstName = CustomerFirstName;
+            customerInfoNJ.CustomerLastName = CustomerLastName;
+            customerInfoNJ.CustomerName = CustomerName;
+            customerInfoNJ.Email = Email;
+            customerInfoNJ.Phone = Phone;
+            customerInfoNJ.Fax = Fax;
+            customerInfoNJ.Website = Website;
+
+            if (CustomerUserId > 0)
             {
-                resultEvent = customerManager.updateCustomer(customerInfo);
+                resultEvent = customerManager.updateCustomer(customerInfo);                
             }
             else
             {
@@ -413,7 +428,30 @@ namespace Ribbon.ViewModel
             }
             if (resultEvent.getResponseCode() == 2000)
             {
+                if (CustomerUserId > 0)
+                {
+                    for (int counter = 0; counter < CustomerList.Count; counter++)
+                    {
+                        CustomerInfoNJ tempCustomerInfoNJ = CustomerList.ElementAt(counter);
 
+                        if (tempCustomerInfoNJ.CustomerUserId == CustomerUserId)
+                        {
+                            CustomerList.RemoveAt(counter);
+                            CustomerList.Insert(counter, customerInfoNJ);
+                        }
+                    }
+                }
+                else 
+                {
+                    if (CustomerList.Count == 0)
+                    {
+                        CustomerList.Add(customerInfoNJ);
+                    }
+                    else 
+                    {
+                        CustomerList.Insert(0, customerInfoNJ);
+                    }
+                }
 
             }
 
@@ -431,10 +469,10 @@ namespace Ribbon.ViewModel
         {
             this.CustomerFirstName = "";
             this.CustomerLastName = "";
-            this.CustomerEmail = "";
-            this.CustomerPhone = "";
-            this.CustomerFax = "";
-            this.CustomerWebsite = "";
+            this.Email = "";
+            this.Phone = "";
+            this.Fax = "";
+            this.Website = "";
         }
 
         /// <summary>
@@ -487,7 +525,7 @@ namespace Ribbon.ViewModel
                 CustomerInfo customerInfo = (CustomerInfo)i.next();
                 CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
-                customerInfoNJ.CustomerUserID = customerInfo.getProfileInfo().getId();
+                customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
                 customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
                 customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
                 customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
@@ -502,14 +540,14 @@ namespace Ribbon.ViewModel
 
         public void selectCustomerEvent(CustomerInfoNJ c)
         {
-            this.CustomerUserID = c.CusomerUserId;
+            this.CustomerUserId = c.CustomerUserId;
             this.CustomerFirstName = c.CustomerFirstName;
             this.CustomerLastName = c.CustomerLastName;
             this.CustomerName = c.CustomerName;
-            this.CustomerPhone = c.Phone;
-            this.CustomerFax = c.Fax;
-            this.CustomerEmail = c.Email;
-            this.CustomerWebsite = c.Website;
+            this.Phone = c.Phone;
+            this.Fax = c.Fax;
+            this.Email = c.Email;
+            this.Website = c.Website;
         }
         public Boolean ValidateCustomer()
         {

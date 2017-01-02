@@ -225,12 +225,19 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private string _orderItemSubTotal;
-        public string OrderItemSubTotal
+        private double _orderItemSubTotal;
+        public double OrderItemSubTotal
         {
             get
             {
-                return this._orderItemSubTotal;
+                double subTotal = 0;
+                for (int i = 0; i < this._purchaseList.Count; i++)
+                {
+                    ProductInfoNJ product = _purchaseList.ElementAt(i);
+                    subTotal = product.Price * product.Quantity;
+                }
+                this._orderItemSubTotal = subTotal;
+                return this._orderSubTotal;
             }
             set
             {
@@ -392,6 +399,9 @@ namespace Ribbon.ViewModel
                 this._orderSubTotal = value;
             }
         }
+
+       
+
         public DelegateCommand<object> SelectedItemChangedCommand
         {
             get
@@ -399,6 +409,7 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand<object>((selectedItem) =>
                 {
                     OnPropertyChanged("OrderSubTotalAmount");
+                    OnPropertyChanged("OrderItemSubTotal");
                 });
             }
         }
@@ -856,20 +867,20 @@ namespace Ribbon.ViewModel
         {
             get
             {
-                if (_supplierList == null || _supplierList.Count <= 0)
+                if (_supplierList == null)
                 {
                     _supplierList = new ObservableCollection<SupplierInfoNJ>();
 
-                    SupplierInfo supplierInfo = new SupplierInfo();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                    //SupplierInfo supplierInfo = new SupplierInfo();
+                    //SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
 
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                    //supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                    //supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                    //supplierInfoNJ.SupplierName = supplierInfoNJ.SupplierFirstName + " " + supplierInfoNJ.SupplierLastName;
+                    //supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                    //supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
                 }
                 return _supplierList;
-
             }
             set
             {
@@ -891,6 +902,7 @@ namespace Ribbon.ViewModel
                     PurchaseList.Insert(PurchaseList.Count - 1, (ProductInfoNJ)selectedItem);
                     PurchaseList.RemoveAt(PurchaseList.Count - 1);
                     OnPropertyChanged("OrderSubTotalAmount");
+                    OnPropertyChanged("OrderItemSubTotal");
                 });
             }
         }
@@ -995,12 +1007,12 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidatePurchaseOrder()
         {
-           
-            if(SupplierName == null)
+            if (SupplierUserId == 0)
             {
-                ErrorMessage = "Supplier name is required.";
+                ErrorMessage = "Please select a supplier.";
                 return false;
             }
+
             if (PurchaseList == null || PurchaseList.Count == 0)
             {
                 ErrorMessage = "Please select a product.";

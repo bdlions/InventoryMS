@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ribbon.util;
 
+
 namespace Ribbon.View
 {
     /// <summary>
@@ -71,7 +72,7 @@ namespace Ribbon.View
             SupplierSelector.IsOpen = false;
             productSelector.IsOpen = false;
         }
-
+        
     }
 }
 
