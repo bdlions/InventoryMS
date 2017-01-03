@@ -40,13 +40,31 @@ namespace Ribbon.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private ProductInfoNJ _productInfoNJ;
+        public ProductInfoNJ ProductInfoNJ
+        {
+            get
+            {
+                if(_productInfoNJ == null)
+                {
+                    _productInfoNJ = new ProductInfoNJ();
+                }
+                return _productInfoNJ;
+            }
+            set
+            {
+                _productInfoNJ = value;
+                OnPropertyChanged("ProductInfoNJ");
+
             }
         }
 
@@ -347,22 +365,23 @@ namespace Ribbon.ViewModel
             }
         }
 
-        public void selectProductEvent(ProductInfoNJ p)
+        public void selectProductEvent(ProductInfoNJ productInfoNJ)
         {
-            this.Id = p.Id;
-            this.ProductName = p.Name;
-            this.ProductCode = p.Code;
-            this.Price = p.Price;
+            this.Id = productInfoNJ.Id;
+            //this.ProductName = productInfoNJ.Name;
+            //this.ProductCode = productInfoNJ.Code;
+            this.Price = productInfoNJ.Price;
+            ProductInfoNJ = productInfoNJ;
         }
 
         public Boolean ValidateProduct()
         {
-            if (ProductName == null)
+            if (ProductInfoNJ.Name == null)
             {
                 ErrorMessage = "Product name is required.";
                 return false;
             }
-            if (ProductCode == null)
+            if (String.IsNullOrEmpty(ProductInfoNJ.Code))
             {
                 ErrorMessage = "Product code is required.";
                 return false;

@@ -980,7 +980,7 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidateSaleOrder()
         {
-            if (CustomerUserId == 0)
+            if (CusomerUserId == 0)
             {
                 ErrorMessage = "Please select a customer.";
                 return false;
