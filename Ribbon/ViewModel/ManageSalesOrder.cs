@@ -639,7 +639,9 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
-                    SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    selectedProductInfoNJ.Quantity = 1;
+                    SaleList.Insert(SaleList.Count - 1, selectedProductInfoNJ);
                     SaleList.RemoveAt(SaleList.Count - 1);
                     OnPropertyChanged("SalesOrderSubTotal");
                 });
@@ -668,6 +670,7 @@ namespace Ribbon.ViewModel
                         MessageBox.Show(ErrorMessage);
                         return;
                     }
+
                     java.util.List productList = new java.util.ArrayList();
 
                     foreach (ProductInfoNJ productInfoNJ in SaleList)
@@ -711,7 +714,7 @@ namespace Ribbon.ViewModel
                         CustomerFirstName = customerInfoNJ.CustomerFirstName;
                         CustomerLastName = customerInfoNJ.CustomerLastName;
                         Phone = customerInfoNJ.Phone;
-                        CusomerUserId = customerInfoNJ.CustomerUserId;
+                        CustomerUserId = customerInfoNJ.CustomerUserId;
                     }
                 });
             }
@@ -994,6 +997,10 @@ namespace Ribbon.ViewModel
 
             return true;
         }
+
+
+
+
     }
 }
 
