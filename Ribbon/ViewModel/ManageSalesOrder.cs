@@ -668,6 +668,7 @@ namespace Ribbon.ViewModel
                         MessageBox.Show(ErrorMessage);
                         return;
                     }
+
                     java.util.List productList = new java.util.ArrayList();
 
                     foreach (ProductInfoNJ productInfoNJ in SaleList)
@@ -711,7 +712,7 @@ namespace Ribbon.ViewModel
                         CustomerFirstName = customerInfoNJ.CustomerFirstName;
                         CustomerLastName = customerInfoNJ.CustomerLastName;
                         Phone = customerInfoNJ.Phone;
-                        CusomerUserId = customerInfoNJ.CustomerUserId;
+                        CustomerUserId = customerInfoNJ.CustomerUserId;
                     }
                 });
             }
@@ -994,6 +995,10 @@ namespace Ribbon.ViewModel
 
             return true;
         }
+
+
+
+
     }
 }
 
