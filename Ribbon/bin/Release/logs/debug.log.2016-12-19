@@ -1,0 +1,9 @@
+2016-08-10 13:43:47,152 [SupplierManager.java:Thread-0:95] - Incomplete db setup error: cli.System.IO.FileNotFoundException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+2016-08-10 13:43:48,964 [ProductManager.java:Thread-0:88] - Incomplete db setup error: cli.System.IO.FileNotFoundException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=8.0.5449.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+2016-08-10 13:45:40,886 [EasyStatement.java:Thread-0:200] - Set value: null to column: order_no at indexes[1]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:217] - Set value: 0 to column: supplier_user_id at indexes[2]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:217] - Set value: 0 to column: status_id at indexes[3]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:234] - Set value: 1470815140 to column: order_date at indexes[4]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:234] - Set value: 0 to column: requested_ship_date at indexes[5]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:251] - Set value: 0.0 to column: discount at indexes[6]
+2016-08-10 13:45:40,995 [EasyStatement.java:Thread-0:200] - Set value: null to column: remarks at indexes[7]

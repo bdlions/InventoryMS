@@ -667,7 +667,6 @@ namespace Ribbon.ViewModel
                         productList.add(productInfo);
                     }
 
-
                     PurchaseInfo purchaseInfo = new PurchaseInfo();
                     purchaseInfo.setProductList(productList);
                     purchaseInfo.setSupplierUserId(SupplierUserId);

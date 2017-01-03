@@ -140,18 +140,7 @@ namespace Ribbon.Model
             }
         }
 
-        private string _customer;
-        public string Customer
-        {
-            get
-            {
-                return this._customer;
-            }
-            set
-            {
-                this._customer = value;
-            }
-        }
+      
         private string _postalCode;
         public string PostalCode
         {
