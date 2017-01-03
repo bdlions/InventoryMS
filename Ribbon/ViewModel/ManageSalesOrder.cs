@@ -639,7 +639,9 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand<object>((selectedItem) =>
                 {
-                    SaleList.Insert(SaleList.Count - 1, (ProductInfoNJ)selectedItem);
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    selectedProductInfoNJ.Quantity = 1;
+                    SaleList.Insert(SaleList.Count - 1, selectedProductInfoNJ);
                     SaleList.RemoveAt(SaleList.Count - 1);
                     OnPropertyChanged("SalesOrderSubTotal");
                 });
