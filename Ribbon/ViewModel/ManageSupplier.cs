@@ -458,8 +458,7 @@ namespace Ribbon.ViewModel
             }
             else
             {
-                resultEvent = supplierManager.createSupplier(supplierInfo);
-                OnReset();
+                resultEvent = supplierManager.createSupplier(supplierInfo);                
             }
             if (resultEvent.getResponseCode() == 2000)
             {
@@ -476,8 +475,12 @@ namespace Ribbon.ViewModel
                         }
                     }
                 }
-                else{
-                    if(SupplierList.Count == 0){
+                else
+                {
+                    SupplierInfo responseSupplierInfo = (SupplierInfo)resultEvent.getResult();
+                    supplierInfoNJ.SupplierUserID = responseSupplierInfo.getProfileInfo().getId();
+                    if(SupplierList.Count == 0)
+                    {
                         SupplierList.Add(supplierInfoNJ);
                     }
                     else
@@ -487,6 +490,8 @@ namespace Ribbon.ViewModel
                 }
             }
             MessageBox.Show(resultEvent.getMessage());
+            //resetting supplier info fields
+            OnReset();
         }
 
 
@@ -495,6 +500,7 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
+            SupplierUserID = 0;
             this.FirstName = "";
             this.LastName = "";
             this.SupplierName = "";

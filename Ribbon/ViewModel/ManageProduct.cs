@@ -239,9 +239,7 @@ namespace Ribbon.ViewModel
             }
             else
             {
-                resultEvent = productManager.createProduct(productInfo);                
-                //reset create product fields
-                OnReset();
+                resultEvent = productManager.createProduct(productInfo);
             }
             if (resultEvent.getResponseCode() == 2000)
             {
@@ -272,10 +270,12 @@ namespace Ribbon.ViewModel
                     {
                         //appending productinfo at first index in product list on left panel
                         ProductList.Insert(0, productInfoNJ);
-                    }
+                    }                    
                 }
             }
             MessageBox.Show(resultEvent.getMessage());
+            //reset create product fields
+            OnReset();
         }
 
 
@@ -284,10 +284,10 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            this.ProductName = "";
-            this.ProductCode = "";
-            this.Price = 0;
-            //MessageBox.Show("OnReset");
+            Id = 0;
+            ProductName = "";
+            ProductCode = "";
+            Price = 0;
         }
 
         /// <summary>

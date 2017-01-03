@@ -185,7 +185,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._phone = value;
-                OnPropertyChanged("CustomerPhone");
+                //OnPropertyChanged("CustomerPhone");
+                OnPropertyChanged("Phone");
             }
         }
 
@@ -199,7 +200,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._fax = value;
-                OnPropertyChanged("CustomerFax");
+                //OnPropertyChanged("CustomerFax");
+                OnPropertyChanged("Fax");
             }
         }
 
@@ -213,7 +215,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._email = value;
-                OnPropertyChanged("CustomerEmail");
+                //OnPropertyChanged("CustomerEmail");
+                OnPropertyChanged("Email");
             }
         }
 
@@ -227,7 +230,8 @@ namespace Ribbon.ViewModel
             set
             {
                 this._website = value;
-                OnPropertyChanged("CustomerWebsite");
+                //OnPropertyChanged("CustomerWebsite");
+                OnPropertyChanged("Website");
             }
         }
 
@@ -422,9 +426,7 @@ namespace Ribbon.ViewModel
             }
             else
             {
-                resultEvent = customerManager.createCustomer(customerInfo);
-                //reset create Customer fields
-                OnReset();
+                resultEvent = customerManager.createCustomer(customerInfo);                
             }
             if (resultEvent.getResponseCode() == 2000)
             {
@@ -443,6 +445,8 @@ namespace Ribbon.ViewModel
                 }
                 else 
                 {
+                    CustomerInfo responseCustomerInfo = (CustomerInfo)resultEvent.getResult();
+                    customerInfoNJ.CustomerUserId = responseCustomerInfo.getProfileInfo().getId();
                     if (CustomerList.Count == 0)
                     {
                         CustomerList.Add(customerInfoNJ);
@@ -452,10 +456,10 @@ namespace Ribbon.ViewModel
                         CustomerList.Insert(0, customerInfoNJ);
                     }
                 }
-
             }
-
             MessageBox.Show(resultEvent.getMessage());
+            //reset create Customer fields
+            OnReset();
         }
 
 
@@ -467,12 +471,14 @@ namespace Ribbon.ViewModel
         /// </summary>
         private void OnReset()
         {
-            this.CustomerFirstName = "";
-            this.CustomerLastName = "";
-            this.Email = "";
-            this.Phone = "";
-            this.Fax = "";
-            this.Website = "";
+            CustomerUserId = 0;
+            CustomerFirstName = "";
+            CustomerLastName = "";
+            CustomerName = "";
+            Email = "";
+            Phone = "";
+            Fax = "";
+            Website = "";
         }
 
         /// <summary>
