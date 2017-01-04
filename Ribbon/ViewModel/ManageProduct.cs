@@ -7,6 +7,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using Ribbon.Model;
+using Ribbon.Constants;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -143,17 +144,17 @@ namespace Ribbon.ViewModel
         {
             if (ProductInfoNJ.Name == null)
             {
-                ErrorMessage = "Product name is required.";
+                ErrorMessage = Messages.ERROR_PRODUCT_NAME_REQUIRED;
                 return false;
             }
             if (String.IsNullOrEmpty(ProductInfoNJ.Code))
             {
-                ErrorMessage = "Product code is required.";
+                ErrorMessage = Messages.ERROR_PRODUCT_CODE_REQUIRED;
                 return false;
             }
             if (ProductInfoNJ.UnitPrice < 0)
             {
-                ErrorMessage = "Invalid value for price field. It must be a positive number.";
+                ErrorMessage = Messages.ERROR_PRODUCT_UNIT_PRICE_INVALID;
                 return false;
             }
             return true;

@@ -20,6 +20,46 @@ namespace Ribbon.Model
                 this._id = value;
             }
         }
+
+        private string _name;
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this._name = value;
+            }
+        }
+
+        private string _code;
+        public string Code
+        {
+            get
+            {
+                return this._code;
+            }
+            set
+            {
+                this._code = value;
+            }
+        }
+
+        private double _unitPrice;
+        public double UnitPrice
+        {
+            get
+            {
+                return this._unitPrice;
+            }
+            set
+            {
+                this._unitPrice = value;
+            }
+        }
+
         private string _fname;
         public string SupplierFirstName
         {
@@ -60,31 +100,9 @@ namespace Ribbon.Model
             }
         }
 
-        private string _name;
-        public string Name
-        {
-            get
-            {
-                return this._name;
-            }
-            set
-            {
-                this._name = value;
-            }
-        }
+        
 
-        private string _code;
-        public string Code
-        {
-            get
-            {
-                return this._code;
-            }
-            set
-            {
-                this._code = value;
-            }
-        }
+        
 
         private double _price;
         public double Price
