@@ -24,7 +24,7 @@
         <Label Grid.Row="1" Content="Item Code:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
         <TextBox HorizontalAlignment="Left" Height="25" Margin="114,46,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductInfoNJ.Code}"/>
         <Label Grid.Row="1" Content="Price:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="104" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,80,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Price}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="114,80,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding ProductInfoNJ.UnitPrice}"/>
         <Label Content="Category:" HorizontalAlignment="Left" Margin="10,108,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99" Height="25"/>
         <Image/>
         <TextBox HorizontalAlignment="Left" Height="97" Margin="19,12,0,0" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Grid.Column="1"/>

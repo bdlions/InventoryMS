@@ -28,13 +28,13 @@ namespace Ribbon.ViewModel
             ProductManager productManager = new ProductManager();
             for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
             {
-                ProductInfo pInfo = (ProductInfo)i.next();
-                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
-                pInfoNJ.Id = pInfo.getId();
-                pInfoNJ.Name = pInfo.getName();
-                pInfoNJ.Code = pInfo.getCode();
-                pInfoNJ.Price = pInfo.getUnitPrice();
-                ProductList.Add(pInfoNJ);
+                ProductInfo productInfo = (ProductInfo)i.next();
+                ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                productInfoNJ.Id = productInfo.getId();
+                productInfoNJ.Name = productInfo.getName();
+                productInfoNJ.Code = productInfo.getCode();
+                productInfoNJ.UnitPrice = productInfo.getUnitPrice();
+                ProductList.Add(productInfoNJ);
             }
         }
 
@@ -49,6 +49,7 @@ namespace Ribbon.ViewModel
             }
         }
 
+        //product info
         private ProductInfoNJ _productInfoNJ;
         public ProductInfoNJ ProductInfoNJ
         {
@@ -82,62 +83,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private int _id;
-        public int Id
-        {
-            get
-            {
-                return this._id;
-            }
-            set
-            {
-                this._id = value;
-            }
-        }
-        private string _productName;
-        public string ProductName
-        {
-            get
-            {
-                return _productName;
-            }
-            set
-            {
-                _productName = value;
-                OnPropertyChanged("ProductName");
-
-            }
-        }
-
-        private string _productCode;
-        public string ProductCode
-        {
-            get
-            {
-                return this._productCode;
-            }
-            set
-            {
-                this._productCode = value;
-                OnPropertyChanged("ProductCode");
-            }
-        }
-
-        private double _price;
-        public double Price
-        {
-            get
-            {
-                return this._price;
-            }
-            set
-            {
-                this._price = value;
-                OnPropertyChanged("Price");
-            }
-        }
-
-        // Search product items
+        // search product by name
         private string _searchProductName;
         public string SearchProductName
         {
@@ -148,12 +94,11 @@ namespace Ribbon.ViewModel
             set
             {
                 this._searchProductName = value;
-                //OnPropertyChanged("ProductCode");
             }
         }
 
+        //product list on left panel
         ObservableCollection<ProductInfoNJ> _productList;
-
         public ObservableCollection<ProductInfoNJ> ProductList
         {
             get
@@ -168,8 +113,55 @@ namespace Ribbon.ViewModel
             {
                 this._productList = value;
             }
+        }        
+        
+        /*
+         * EventHandler if product item is clicked on left panel
+         */
+        public ICommand SelectProductEvent
+        {
+            get
+            {
+                return new DelegateCommand<ProductInfoNJ>(this.OnSelectProductEvent);
+            }
         }
 
+        /*
+         * This method will set product info based on selected product from left panel
+         * @author nazmul hasan
+         */
+        public void OnSelectProductEvent(ProductInfoNJ productInfoNJ)
+        {
+            ProductInfoNJ = productInfoNJ;
+        }
+
+        /*
+         * This method will validate Product info
+         * @author nazmul hasan on 4th january 2017
+         */
+        public Boolean validateProduct()
+        {
+            if (ProductInfoNJ.Name == null)
+            {
+                ErrorMessage = "Product name is required.";
+                return false;
+            }
+            if (String.IsNullOrEmpty(ProductInfoNJ.Code))
+            {
+                ErrorMessage = "Product code is required.";
+                return false;
+            }
+            if (ProductInfoNJ.UnitPrice < 0)
+            {
+                ErrorMessage = "Invalid value for price field. It must be a positive number.";
+                return false;
+            }
+            return true;
+        }
+
+        /*
+         * Event handler to add/save product
+         */
         public ICommand Add
         {
             get
@@ -177,6 +169,77 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnAdd);
             }
         }
+        /*
+         * This method will add/save product
+         * @author nazmul hasan on 4th january 2017
+         */
+        private void OnAdd()
+        {
+            if (!validateProduct())
+            {
+                MessageBox.Show(ErrorMessage);
+                return;
+            }
+            ProductInfo productInfo = new ProductInfo();            
+            productInfo.setId(ProductInfoNJ.Id);
+            productInfo.setName(ProductInfoNJ.Name);
+            productInfo.setCode(ProductInfoNJ.Code);
+            productInfo.setUnitPrice(ProductInfoNJ.UnitPrice);
+
+            ProductInfoNJ productInfoNJ = ProductInfoNJ;
+            productInfoNJ.Name = ProductInfoNJ.Name;
+            productInfoNJ.Code = ProductInfoNJ.Code;
+            productInfoNJ.UnitPrice = ProductInfoNJ.UnitPrice;
+
+            ResultEvent resultEvent = new ResultEvent();
+            ProductManager productManager = new ProductManager();
+            if (ProductInfoNJ.Id > 0)
+            {
+                resultEvent = productManager.updateProduct(productInfo);                
+            }
+            else
+            {
+                resultEvent = productManager.createProduct(productInfo);
+            }
+            if (resultEvent.getResponseCode() == 2000)
+            {
+                if (ProductInfoNJ.Id > 0)
+                {
+                    for (int counter = 0; counter < ProductList.Count; counter++)
+                    {
+                        productInfoNJ.Id = ProductInfoNJ.Id;
+                        ProductInfoNJ tempProductInfoNJ = ProductList.ElementAt(counter);
+                        if (tempProductInfoNJ.Id == ProductInfoNJ.Id)
+                        {
+                            ProductList.RemoveAt(counter);
+                            ProductList.Insert(counter, productInfoNJ);
+                        }
+                    }
+                }
+                else
+                {
+                    ProductInfo responseProductInfo = (ProductInfo)resultEvent.getResult();
+                    productInfoNJ.Id = responseProductInfo.getId();
+                    if(ProductList.Count == 0)
+                    {
+                        //appending product info in product list on left panel
+                        ProductList.Add(productInfoNJ);
+                    }
+                    else
+                    {
+                        //appending productinfo at first index in product list on left panel
+                        ProductList.Insert(0, productInfoNJ);
+                    }                    
+                }
+            }
+            MessageBox.Show(resultEvent.getMessage());
+            //reset create product fields
+            OnReset();
+        }
+
+        /*
+         * Event handler to reset product
+         */
         public ICommand Reset
         {
             get
@@ -184,6 +247,40 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnReset);
             }
         }
+
+        /*
+         * This method will reset product info
+         * @author nazmul hasan on 4th january 2017
+         */
+        private void OnReset()
+        {
+            ProductInfoNJ = new ProductInfoNJ();
+        }
+
+        /*
+         * Event Handler to search product
+         * @author nazmul hasan on 4th january 2017
+         */
+        private void OnSearch()
+        {
+            ProductManager productManager = new ProductManager();
+            ProductList.Clear();
+            for (Iterator i = productManager.searchProduct(SearchProductName).iterator(); i.hasNext(); )
+            {
+                ProductInfo productInfo = (ProductInfo)i.next();
+                ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                productInfoNJ.Id = productInfo.getId();
+                productInfoNJ.Name = productInfo.getName();
+                productInfoNJ.Code = productInfo.getCode();
+                productInfoNJ.UnitPrice = productInfo.getUnitPrice();
+                ProductList.Add(productInfoNJ);
+            }
+        }
+
+        
+
+
+        //-----------------------------Implement later ---------------------------//
         public ICommand Print
         {
             get
@@ -219,93 +316,6 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(this.OnSearch);
             }
-        }
-        public ICommand SelectProductEvent
-        {
-            get
-            {
-                return new DelegateCommand<ProductInfoNJ>(this.selectProductEvent);
-            }
-        }
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnAdd()
-        {
-            if (!ValidateProduct())
-            {
-                MessageBox.Show(ErrorMessage);
-                return;
-            }
-            ProductInfo productInfo = new ProductInfo();            
-            productInfo.setId(Id);
-            productInfo.setName(ProductName);
-            productInfo.setCode(ProductCode);
-            productInfo.setUnitPrice(Price);
-
-            ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-            productInfoNJ.Name = ProductName;
-            productInfoNJ.Code = ProductCode;
-            productInfoNJ.Price = Price;
-
-            ResultEvent resultEvent = new ResultEvent();
-            ProductManager productManager = new ProductManager();
-            if (Id > 0)
-            {
-                resultEvent = productManager.updateProduct(productInfo);                
-            }
-            else
-            {
-                resultEvent = productManager.createProduct(productInfo);
-            }
-            if (resultEvent.getResponseCode() == 2000)
-            {
-                if (Id > 0)
-                {
-                    for (int counter = 0; counter < ProductList.Count; counter++)
-                    {
-                        productInfoNJ.Id = Id;
-                        ProductInfoNJ tempProductInfoNJ = ProductList.ElementAt(counter);
-                        if (tempProductInfoNJ.Id == Id)
-                        {
-                            ProductList.RemoveAt(counter);
-                            ProductList.Insert(counter, productInfoNJ);
-                        }
-                    }
-                }
-                else
-                {
-                    ProductInfo responseProductInfo = (ProductInfo)resultEvent.getResult();
-                    Id = responseProductInfo.getId();
-                    productInfoNJ.Id = Id;
-                    if(ProductList.Count == 0)
-                    {
-                        //appending product info in product list on left panel
-                        ProductList.Add(productInfoNJ);
-                    }
-                    else
-                    {
-                        //appending productinfo at first index in product list on left panel
-                        ProductList.Insert(0, productInfoNJ);
-                    }                    
-                }
-            }
-            MessageBox.Show(resultEvent.getMessage());
-            //reset create product fields
-            OnReset();
-        }
-
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnReset()
-        {
-            Id = 0;
-            ProductName = "";
-            ProductCode = "";
-            Price = 0;
         }
 
         /// <summary>
@@ -344,55 +354,5 @@ namespace Ribbon.ViewModel
             //ProductName = "sdfsdf";
             MessageBox.Show("OnDeactivate");
         }
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnSearch()
-        {
-            ProductManager productManager = new ProductManager();
-
-            _productList.Clear();
-            for (Iterator i = productManager.searchProduct(SearchProductName).iterator(); i.hasNext(); )
-            {
-                ProductInfo pInfo = (ProductInfo)i.next();
-                ProductInfoNJ pInfoNJ = new ProductInfoNJ();
-                pInfoNJ.Id = pInfo.getId();
-                pInfoNJ.Name = pInfo.getName();
-                pInfoNJ.Code = pInfo.getCode();
-                pInfoNJ.Price = pInfo.getUnitPrice();
-                _productList.Add(pInfoNJ);
-            }
-        }
-
-        public void selectProductEvent(ProductInfoNJ productInfoNJ)
-        {
-            this.Id = productInfoNJ.Id;
-            //this.ProductName = productInfoNJ.Name;
-            //this.ProductCode = productInfoNJ.Code;
-            this.Price = productInfoNJ.Price;
-            ProductInfoNJ = productInfoNJ;
-        }
-
-        public Boolean ValidateProduct()
-        {
-            if (ProductInfoNJ.Name == null)
-            {
-                ErrorMessage = "Product name is required.";
-                return false;
-            }
-            if (String.IsNullOrEmpty(ProductInfoNJ.Code))
-            {
-                ErrorMessage = "Product code is required.";
-                return false;
-            }
-            if (Price < 0)
-            {
-                ErrorMessage = "Invalid value for price field. It must be a positive number.";
-                return false;
-            }
-            return true;
-        }
-
     }
 }
