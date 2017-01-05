@@ -11,5 +11,7 @@ namespace Ribbon.Constants
         public static String ERROR_PRODUCT_NAME_REQUIRED = "Product name is required.";
         public static String ERROR_PRODUCT_CODE_REQUIRED = "Product code is required.";
         public static String ERROR_PRODUCT_UNIT_PRICE_INVALID = "Invalid product price.";
+
+        public static String ERROR_PROFILE_FIRST_NAME_REQUIRED = "First Name is required.";
     }
 }

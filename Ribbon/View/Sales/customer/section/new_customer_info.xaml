@@ -19,9 +19,9 @@
         <Label Grid.Row="0" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Basic" Margin="10,0,0,0"/>
         <Label Grid.Row="0" Grid.Column="1" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Address" Margin="19,0,0,0" />
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,15,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerFirstName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,15,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.FirstName}"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,46,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerLastName}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.LastName}"/>
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="10,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,83,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerBalance}" IsReadOnly="True"/>
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="19,10,28,155" Grid.Column="1" Grid.Row="1" Height="23">
@@ -38,13 +38,13 @@
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,214,0,-192" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="87,214,0,-177" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Path = CustomerName}" IsReadOnly="True"/>
         <Label Content="Phone:" HorizontalAlignment="Left" Margin="10,248,0,-208" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="23"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,250,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Phone}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="87,250,0,-212" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.Phone}"/>
         <Label Content="Fax:" HorizontalAlignment="Left" Margin="10,282,0,-243" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,284,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Fax}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,284,0,-249" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.Fax}"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,319,0,-279" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,321,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Email}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,321,0,-276" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.Email}"/>
         <Label Content="Website:" HorizontalAlignment="Left" Margin="10,359,0,-306" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="25"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,362,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding Website}"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="87,362,0,-307" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Text="{Binding CustomerInfoNJ.ProfileInfoNJ.Website}"/>
 
 
 

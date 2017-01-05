@@ -98,5 +98,13 @@ namespace Ribbon.Model
                 this._website = value;
             }
         }
+
+        public string Name
+        {
+            get
+            {
+                return this._firstName + " " + this._lastName;
+            }
+        }
     }
 }

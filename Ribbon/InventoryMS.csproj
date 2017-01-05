@@ -118,6 +118,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants\Messages.cs" />
+    <Compile Include="Constants\Responses.cs" />
     <Compile Include="Model\ProfileInfoNJ.cs" />
     <Compile Include="Model\SaleInfoNJ.cs" />
     <Compile Include="Model\PurchaseInfoNJ.cs" />

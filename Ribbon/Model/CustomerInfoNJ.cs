@@ -8,6 +8,28 @@ namespace Ribbon.Model
 {
     class CustomerInfoNJ
     {
+        private ProfileInfoNJ _profileInfoNJ;
+        public ProfileInfoNJ ProfileInfoNJ
+        {
+            get
+            {
+                if (_profileInfoNJ == null)
+                {
+                    _profileInfoNJ = new ProfileInfoNJ();
+                }
+                return this._profileInfoNJ;
+            }
+            set
+            {
+                this._profileInfoNJ = value;
+            }
+        }
+
+
+
+
+
+
         private int _customerUserId;
         public int CustomerUserId
         {

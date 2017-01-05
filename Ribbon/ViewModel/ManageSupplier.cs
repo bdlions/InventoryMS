@@ -7,6 +7,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using Ribbon.Model;
+using Ribbon.Constants;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -31,21 +32,29 @@ namespace Ribbon.ViewModel
             {
                 SupplierInfo supplierInfo = (SupplierInfo)i.next();
                 SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-
-                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
-                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
-                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
-
+                supplierInfoNJ.ProfileInfoNJ.Id = supplierInfo.getProfileInfo().getId();
+                supplierInfoNJ.ProfileInfoNJ.FirstName = supplierInfo.getProfileInfo().getFirstName();
+                supplierInfoNJ.ProfileInfoNJ.LastName = supplierInfo.getProfileInfo().getLastName();
+                supplierInfoNJ.ProfileInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
                 SupplierList.Add(supplierInfoNJ);
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        //supplier info
         private SupplierInfoNJ _supplierInfoNJ;
         public SupplierInfoNJ SupplierInfoNJ
         {
@@ -60,39 +69,11 @@ namespace Ribbon.ViewModel
             set
             {
                 this._supplierInfoNJ = value;
+                OnPropertyChanged("SupplierInfoNJ");
             }
         }
 
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-        protected virtual void OnPropertyChanged_1([CallerMemberName] string propertyName = null)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                if (!String.IsNullOrEmpty(propertyName))
-                {
-                    if (propertyName.ToLower().Equals("firstname") || propertyName.ToLower().Equals("lastname"))
-                    {
-                        SupplierName = SupplierInfoNJ.ProfileInfoNJ.FirstName + " " + SupplierInfoNJ.ProfileInfoNJ.LastName;
-                        handler(this, new PropertyChangedEventArgs("SupplierName"));
-                    }
-                }
-                else
-                {
-                    handler(this, new PropertyChangedEventArgs(propertyName));
-                }
-
-            }
-        }
-
+        //validation error message
         private string _errorMessage;
         public string ErrorMessage
         {
@@ -106,69 +87,7 @@ namespace Ribbon.ViewModel
 
             }
         }
-
-
-        private int _supplierUserID;
-        public int SupplierUserID
-        {
-            get
-            {
-                return this._supplierUserID;
-            }
-            set
-            {
-                this._supplierUserID = value;
-            }
-        }
-
-        private string _fName;
-        public string FirstName
-        {
-            get
-            {
-                return this._fName;
-            }
-            set
-            {
-                this._fName = value;
-                OnPropertyChanged();
-                OnPropertyChanged_1();
-            }
-        }
-
-        private string _lName;
-        public string LastName
-        {
-            get
-            {
-                return this._lName;
-
-            }
-            set
-            {
-                this._lName = value;
-                OnPropertyChanged();
-                OnPropertyChanged_1();
-            }
-        }
-
-        private string _name;
-        public string SupplierName
-        {
-            get
-            {
-                return this._fName + " " + this._lName;
-            }
-            set
-            {
-                this._name = value;
-                OnPropertyChanged();
-                OnPropertyChanged_1("SupplierName");
-            }
-        }
-
-
-
+        
         private double _balance;
         public double Balance
         {
@@ -182,142 +101,6 @@ namespace Ribbon.ViewModel
                 OnPropertyChanged("Balance");
             }
         }
-
-        private string _phone;
-        public string Phone
-        {
-            get
-            {
-                return this._phone;
-            }
-            set
-            {
-                this._phone = value;
-                OnPropertyChanged("Phone");
-            }
-        }
-
-        private string _fax;
-        public string Fax
-        {
-            get
-            {
-                return this._fax;
-            }
-            set
-            {
-                this._fax = value;
-                OnPropertyChanged("Fax");
-            }
-        }
-
-        private string _email;
-        public string Email
-        {
-            get
-            {
-                return this._email;
-            }
-            set
-            {
-                this._email = value;
-                OnPropertyChanged("Email");
-            }
-        }
-
-        private string _website;
-        public string Website
-        {
-            get
-            {
-                return this._website;
-            }
-            set
-            {
-                this._website = value;
-                OnPropertyChanged("Website");
-            }
-        }
-
-        private string _address;
-        public string Address
-        {
-            get
-            {
-                return this._address;
-            }
-            set
-            {
-                this._address = value;
-            }
-        }
-
-        private string _city;
-        public string City
-        {
-            get
-            {
-                return this._city;
-            }
-            set
-            {
-                this._city = value;
-            }
-        }
-
-        private string _state;
-        public string State
-        {
-            get
-            {
-                return this._state;
-            }
-            set
-            {
-                this._state = value;
-            }
-        }
-
-        private string _zip;
-        public string Zip
-        {
-            get
-            {
-                return this._zip;
-            }
-            set
-            {
-                this._zip = value;
-            }
-        }
-
-
-        private string _remark;
-        public string Remark
-        {
-            get
-            {
-                return this._remark;
-            }
-            set
-            {
-                this._remark = value;
-            }
-        }
-
-        private string _carrier;
-        public string Carrier
-        {
-            get
-            {
-                return this._carrier;
-            }
-            set
-            {
-                this._carrier = value;
-            }
-        }
-
 
         // Search Supplier
         private string _searchSupplierPhone;
@@ -352,9 +135,24 @@ namespace Ribbon.ViewModel
             }
         }
 
+        /*
+         * This method will validate supplier info
+         * @author nazmul hasan on 5th january 2016
+         */
+        public Boolean ValidateSupplier()
+        {
+            if (SupplierInfoNJ.ProfileInfoNJ.FirstName == null)
+            {
+                ErrorMessage = Messages.ERROR_PROFILE_FIRST_NAME_REQUIRED;
+                return false;
+            }
+            return true;
+        }
 
-        //    Supplier menu
-
+        /*
+         * Event Handler to add/update supplier
+         * @author nazmul hasan on 5th january 2016
+         */
         public ICommand Add
         {
             get
@@ -362,6 +160,86 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnAdd);
             }
         }
+        /*
+         * This method will add/update a supplier
+         * @author nazmul hasan on 5th january 2016
+         */
+        private void OnAdd()
+        {
+            if (!ValidateSupplier())
+            {
+                MessageBox.Show(ErrorMessage);
+                return;
+            }
+            ProfileInfo profileInfo = new ProfileInfo();
+            profileInfo.setId(SupplierInfoNJ.ProfileInfoNJ.Id);
+            profileInfo.setFirstName(SupplierInfoNJ.ProfileInfoNJ.FirstName);
+            profileInfo.setLastName(SupplierInfoNJ.ProfileInfoNJ.LastName);
+            profileInfo.setEmail(SupplierInfoNJ.ProfileInfoNJ.Email);
+            profileInfo.setPhone(SupplierInfoNJ.ProfileInfoNJ.Phone);
+            profileInfo.setFax(SupplierInfoNJ.ProfileInfoNJ.Fax);
+            profileInfo.setWebsite(SupplierInfoNJ.ProfileInfoNJ.Website);
+            SupplierInfo supplierInfo = new SupplierInfo();
+            supplierInfo.setProfileInfo(profileInfo);
+            SupplierManager supplierManager = new SupplierManager();            
+
+            SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+            supplierInfoNJ.ProfileInfoNJ.Id = SupplierInfoNJ.ProfileInfoNJ.Id;
+            supplierInfoNJ.ProfileInfoNJ.FirstName = SupplierInfoNJ.ProfileInfoNJ.FirstName;
+            supplierInfoNJ.ProfileInfoNJ.LastName = SupplierInfoNJ.ProfileInfoNJ.LastName;
+            supplierInfoNJ.ProfileInfoNJ.Email = SupplierInfoNJ.ProfileInfoNJ.Email;
+            supplierInfoNJ.ProfileInfoNJ.Phone = SupplierInfoNJ.ProfileInfoNJ.Phone;
+            supplierInfoNJ.ProfileInfoNJ.Fax = SupplierInfoNJ.ProfileInfoNJ.Fax;
+            supplierInfoNJ.ProfileInfoNJ.Website = SupplierInfoNJ.ProfileInfoNJ.Website;
+
+            ResultEvent resultEvent = new ResultEvent();
+            if (SupplierInfoNJ.ProfileInfoNJ.Id > 0)
+            {
+                resultEvent = supplierManager.updateSupplier(supplierInfo);
+            }
+            else
+            {
+                resultEvent = supplierManager.createSupplier(supplierInfo);
+            }
+            if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
+            {
+                if (SupplierInfoNJ.ProfileInfoNJ.Id > 0)
+                {
+                    for (int counter = 0; counter < SupplierList.Count; counter++)
+                    {
+                        SupplierInfoNJ tempSupplierInfoNJ = SupplierList.ElementAt(counter);
+
+                        if (tempSupplierInfoNJ.ProfileInfoNJ.Id == SupplierInfoNJ.ProfileInfoNJ.Id)
+                        {
+                            SupplierList.RemoveAt(counter);
+                            SupplierList.Insert(counter, supplierInfoNJ);
+                        }
+                    }
+                }
+                else
+                {
+                    SupplierInfo responseSupplierInfo = (SupplierInfo)resultEvent.getResult();
+                    SupplierInfoNJ.ProfileInfoNJ.Id = responseSupplierInfo.getProfileInfo().getId();
+                    supplierInfoNJ.ProfileInfoNJ.Id = SupplierInfoNJ.ProfileInfoNJ.Id;
+                    if (SupplierList.Count == 0)
+                    {
+                        SupplierList.Add(supplierInfoNJ);
+                    }
+                    else
+                    {
+                        SupplierList.Insert(0, supplierInfoNJ);
+                    }
+                }
+            }
+            MessageBox.Show(resultEvent.getMessage());
+            //resetting supplier info fields
+            OnReset();
+        }
+
+        /*
+         * Event Handler to reset supplier info
+         * @author nazmul hasan on 5th january 2016
+         */
         public ICommand Reset
         {
             get
@@ -369,6 +247,71 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnReset);
             }
         }
+        /*
+         * This method will reset supplier info
+         * @author nazmul hasan on 5th january 2016
+         */
+        private void OnReset()
+        {
+            SupplierInfoNJ = new SupplierInfoNJ();
+        }
+
+        /*
+         * Event Handler to select a supplier from left panel
+         * @author nazmul hasan on 5th january 2016
+         */
+        public ICommand SelectSupplierEvent
+        {
+            get
+            {
+                return new DelegateCommand<SupplierInfoNJ>(this.OnSelectSupplierEvent);
+            }
+        }
+        /*
+         * This method will select a supplier from left panel and update reference of currently selected
+         * supplier info
+         * @author nazmul hasan on 5th january 2016
+         */
+        public void OnSelectSupplierEvent(SupplierInfoNJ supplierInfoNJ)
+        {
+            SupplierInfoNJ = supplierInfoNJ;
+        }
+
+        /*
+         * Event Handler to searh supplier
+         * @author nazmul hasan on 5th january 2016
+         */
+        public ICommand Search
+        {
+            get
+            {
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
+        /*
+        * This method will search supplier info
+        * @author nazmul hasan on 5th january 2016
+        */
+        private void OnSearch()
+        {
+            SupplierManager supplierManager = new SupplierManager();
+            SupplierList.Clear();
+            for (Iterator i = supplierManager.searchSuppliers(SearchSupplierPhone).iterator(); i.hasNext(); )
+            {
+                SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
+                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
+                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
+                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                SupplierList.Add(supplierInfoNJ);
+            }
+        }
+        
+        //-----------------------------------Implement it later ---------------------------------//
         public ICommand Print
         {
             get
@@ -398,120 +341,7 @@ namespace Ribbon.ViewModel
                 return new DelegateCommand(this.OnCopy);
             }
         }
-        public ICommand Search
-        {
-            get
-            {
-                return new DelegateCommand(this.OnSearch);
-            }
-        }
-        public ICommand SelectSupplierEvent
-        {
-            get
-            {
-                return new DelegateCommand<SupplierInfoNJ>(this.selectSupplierEvent);
-            }
-        }
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnAdd()
-        {
-            if (!ValidateSupplier())
-            {
-                MessageBox.Show(ErrorMessage);
-                return;
-            }
-            ProfileInfo profileInfo = new ProfileInfo();
-            profileInfo.setId(SupplierUserID);
-            profileInfo.setFirstName(FirstName);
-            profileInfo.setLastName(LastName);
-            profileInfo.setEmail(Email);
-            profileInfo.setPhone(Phone);
-            profileInfo.setFax(Fax);
-            profileInfo.setWebsite(Website);
-
-            SupplierInfo supplierInfo = new SupplierInfo();
-            supplierInfo.setProfileInfo(profileInfo);
-            SupplierManager supplierManager = new SupplierManager();
-            //supplierInfo.setRemarks(SupplierInfoNJ.Remarks);
-            ResultEvent resultEvent = new ResultEvent();
-
-            SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-            supplierInfoNJ.SupplierUserID = SupplierUserID;
-            supplierInfoNJ.SupplierFirstName = FirstName;
-            supplierInfoNJ.SupplierLastName = LastName;
-            supplierInfoNJ.SupplierName = SupplierName;
-            supplierInfoNJ.Balance = Balance;
-            supplierInfoNJ.Email = Email;
-            supplierInfoNJ.Phone = Phone;
-            supplierInfoNJ.Fax = Fax;
-            supplierInfoNJ.Website = Website;
-
-           
-
-           
-            if (SupplierUserID > 0)
-            {
-                resultEvent = supplierManager.updateSupplier(supplierInfo);
-            }
-            else
-            {
-                resultEvent = supplierManager.createSupplier(supplierInfo);                
-            }
-            if (resultEvent.getResponseCode() == 2000)
-            {
-                if (SupplierUserID > 0)
-                {
-                    for (int counter = 0; counter < SupplierList.Count; counter++)
-                    {
-                      SupplierInfoNJ tempSupplierInfoNJ = SupplierList.ElementAt(counter);
-
-                      if (tempSupplierInfoNJ.SupplierUserID == SupplierUserID)
-                        {
-                            SupplierList.RemoveAt(counter);
-                            SupplierList.Insert(counter, supplierInfoNJ);
-                        }
-                    }
-                }
-                else
-                {
-                    SupplierInfo responseSupplierInfo = (SupplierInfo)resultEvent.getResult();
-                    supplierInfoNJ.SupplierUserID = responseSupplierInfo.getProfileInfo().getId();
-                    if(SupplierList.Count == 0)
-                    {
-                        SupplierList.Add(supplierInfoNJ);
-                    }
-                    else
-                    {
-                        SupplierList.Insert(0, supplierInfoNJ);
-                    }
-                }
-            }
-            MessageBox.Show(resultEvent.getMessage());
-            //resetting supplier info fields
-            OnReset();
-        }
-
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnReset()
-        {
-            SupplierUserID = 0;
-            this.FirstName = "";
-            this.LastName = "";
-            this.SupplierName = "";
-            this.Balance = 0;
-            this.Email = "";
-            this.Phone = "";
-            this.Fax = "";
-            this.Website = "";
-            // MessageBox.Show("OnReset");
-        }
-
+        
         /// <summary>
         /// Called when Button SendToViewModel is clicked
         /// </summary>
@@ -541,57 +371,6 @@ namespace Ribbon.ViewModel
         private void OnDeactivate()
         {
             MessageBox.Show("OnDeactivate");
-        }
-        private void OnSearch()
-        {
-
-            SupplierManager supplierManager = new SupplierManager();
-
-            _supplierList.Clear();
-            for (Iterator i = supplierManager.searchSuppliers(SearchSupplierPhone).iterator(); i.hasNext(); )
-            {
-                SupplierInfo supplierInfo = (SupplierInfo)i.next();
-                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-
-                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
-                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
-                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
-
-                _supplierList.Add(supplierInfoNJ);
-            }
-        }
-        public void selectSupplierEvent(SupplierInfoNJ supplierInfoNJ)
-        {
-
-            this.SupplierUserID = supplierInfoNJ.SupplierUserID;
-            this.FirstName = supplierInfoNJ.SupplierFirstName;
-            this.LastName = supplierInfoNJ.SupplierLastName;
-            this.SupplierName = supplierInfoNJ.SupplierName;
-            this.Balance = supplierInfoNJ.Balance;
-            this.Email = supplierInfoNJ.Email;
-            this.Phone = supplierInfoNJ.Phone;
-            this.Fax = supplierInfoNJ.Fax;
-            this.Website = supplierInfoNJ.Website;
-        }
-
-        public Boolean ValidateSupplier()
-        {
-            if (FirstName == null)
-            {
-                ErrorMessage = "Supplier first name is required.";
-                return false;
-            }
-            if (LastName == null)
-            {
-                ErrorMessage = "Supplier Last name is required.";
-                return false;
-            }
-
-            return true;
         }
     }
 }

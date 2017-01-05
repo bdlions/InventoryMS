@@ -202,7 +202,7 @@ namespace Ribbon.ViewModel
             {
                 resultEvent = productManager.createProduct(productInfo);
             }
-            if (resultEvent.getResponseCode() == 2000)
+            if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
             {
                 if (ProductInfoNJ.Id > 0)
                 {
