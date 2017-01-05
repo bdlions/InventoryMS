@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Ribbon.View.ManageCustomer"
+﻿<UserControl x:Class="Ribbon.View.ManageNewCustomer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
               xmlns:newCustomerAddSection="clr-namespace:Ribbon.View.Sales.customer.new_customer">
 
     <UserControl.Resources>
-        <modelView:ManageCustomer  x:Key="manageCustomer"/>
+        <modelView:ManageCustomer x:Key="manageCustomer"/>
     </UserControl.Resources>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Sales}" DataContext="{StaticResource manageCustomer}">

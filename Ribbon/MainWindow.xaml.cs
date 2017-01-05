@@ -146,7 +146,7 @@ namespace Ribbon
                 contextMenu.Items.Add(closeMenuItem);
                 ManageNewCustomerTabGroup.ContextMenu = contextMenu;
 
-                UserControl ManageNewCustomerTabContent = new ManageCustomer();
+                UserControl ManageNewCustomerTabContent = new ManageNewCustomer();
 
                 ManageNewCustomerTabGroup.Items.Add(ManageNewCustomerTabContent);
                 selectedTab.Items.Add(ManageNewCustomerTabGroup);

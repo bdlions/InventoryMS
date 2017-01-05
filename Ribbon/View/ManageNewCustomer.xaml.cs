@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ribbon.View.Sales.customer.section
+namespace Ribbon.View
 {
     /// <summary>
-    /// Interaction logic for CustomerOrderHistory.xaml
+    /// Interaction logic for ManageNewCustomer.xaml
     /// </summary>
-    public partial class CustomerOrderHistory : UserControl
+    public partial class ManageNewCustomer : UserControl
     {
-        public CustomerOrderHistory()
+        public ManageNewCustomer()
         {
             InitializeComponent();
         }
