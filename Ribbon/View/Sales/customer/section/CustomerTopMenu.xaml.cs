@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Ribbon.View.sales.customer.section
+namespace Ribbon.View.Sales.customer.section
 {
     /// <summary>
-    /// Interaction logic for customer_top_menu.xaml
+    /// Interaction logic for CustomerTopMenu.xaml
     /// </summary>
-    public partial class customer_top_menu : UserControl
+    public partial class CustomerTopMenu : UserControl
     {
-        public customer_top_menu()
+        public CustomerTopMenu()
         {
             InitializeComponent();
         }

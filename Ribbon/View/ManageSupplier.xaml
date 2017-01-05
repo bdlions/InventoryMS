@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <modelView:ManageSupplier x:Key="manageSupplier"/>
     </UserControl.Resources>
-    
+
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Purchase}" DataContext="{StaticResource manageSupplier}">
         <StackPanel>
             <supplierAddSection:SupplierSearch Margin="3 7 3 5"/>

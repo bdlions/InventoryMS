@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Ribbon.View
 {
     /// <summary>
-    /// Interaction logic for new_customer_extra_info.xaml
+    /// Interaction logic for ManageNewCustomer.xaml
     /// </summary>
-    public partial class new_customer_extra_info : UserControl
+    public partial class ManageCustomer : UserControl
     {
-        public new_customer_extra_info()
+        public ManageCustomer()
         {
             InitializeComponent();
         }
