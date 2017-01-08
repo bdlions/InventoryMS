@@ -206,8 +206,8 @@
     <Compile Include="View\ManageMovementHistory.xaml.cs">
       <DependentUpon>ManageMovementHistory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ManageNewCustomer.xaml.cs">
-      <DependentUpon>ManageNewCustomer.xaml</DependentUpon>
+    <Compile Include="View\ManageCustomer.xaml.cs">
+      <DependentUpon>ManageCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ManageNewSalesOrder.xaml.cs">
       <DependentUpon>ManageNewSalesOrder.xaml</DependentUpon>
@@ -287,6 +287,18 @@
     <Compile Include="View\Sales\customer\new_customer\NewCustomerSearch.xaml.cs">
       <DependentUpon>NewCustomerSearch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Sales\customer\section\CustomerOrderHistory.xaml.cs">
+      <DependentUpon>CustomerOrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\section\CustomerTopMenu.xaml.cs">
+      <DependentUpon>CustomerTopMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\section\NewCustomerExtraInfo.xaml.cs">
+      <DependentUpon>NewCustomerExtraInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sales\customer\section\NewCustomerInfo.xaml.cs">
+      <DependentUpon>NewCustomerInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Sales\sales_order\new_sale_order\NewSalesOrder.xaml.cs">
       <DependentUpon>NewSalesOrder.xaml</DependentUpon>
     </Compile>
@@ -340,18 +352,6 @@
     </Compile>
     <Compile Include="View\Purchase\Section\SupplierTopMenu.xaml.cs">
       <DependentUpon>SupplierTopMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\section\customer_oder_history.xaml.cs">
-      <DependentUpon>customer_oder_history.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\section\customer_top_menu.xaml.cs">
-      <DependentUpon>customer_top_menu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\section\new_customer_extra_info.xaml.cs">
-      <DependentUpon>new_customer_extra_info.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Sales\customer\section\new_customer_info.xaml.cs">
-      <DependentUpon>new_customer_info.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sales\sales_quote\SalesQuoteInfo.xaml.cs">
       <DependentUpon>SalesQuoteInfo.xaml</DependentUpon>
@@ -490,7 +490,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ManageNewCustomer.xaml">
+    <Page Include="View\ManageCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -598,6 +598,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Sales\customer\section\CustomerOrderHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\section\CustomerTopMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\section\NewCustomerExtraInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Sales\customer\section\NewCustomerInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Sales\sales_order\new_sale_order\NewSalesOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -667,22 +683,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Purchase\Section\SupplierTopMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\section\customer_oder_history.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\section\customer_top_menu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\section\new_customer_extra_info.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Sales\customer\section\new_customer_info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
