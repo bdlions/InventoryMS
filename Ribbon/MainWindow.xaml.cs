@@ -173,7 +173,7 @@ namespace Ribbon
                 contextMenu.Items.Add(closeMenuItem);
                 ManageNewSalesOrderTabGroup.ContextMenu = contextMenu;
 
-                UserControl ManageNewSalesOrderTabContent = new ManageNewSalesOrder();
+                UserControl ManageNewSalesOrderTabContent = new ManageSalesOrder();
 
                 ManageNewSalesOrderTabGroup.Items.Add(ManageNewSalesOrderTabContent);
                 selectedTab.Items.Add(ManageNewSalesOrderTabGroup);

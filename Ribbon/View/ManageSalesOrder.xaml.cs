@@ -18,9 +18,9 @@ namespace Ribbon.View
     /// <summary>
     /// Interaction logic for ManageNewSalesOrder.xaml
     /// </summary>
-    public partial class ManageNewSalesOrder : UserControl
+    public partial class ManageSalesOrder : UserControl
     {
-        public ManageNewSalesOrder()
+        public ManageSalesOrder()
         {
             InitializeComponent();
         }
