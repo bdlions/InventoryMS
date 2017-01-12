@@ -74,6 +74,8 @@
             <MenuItem Header="Close" Click="MenuItem_Click_1" />
         </ContextMenu>
 
+        
+        
     </Window.Resources>
 
 
@@ -206,14 +208,12 @@
 
 
                     <!-- Application Menu: Reports, located at the left-hand side (down arrow) -->
-                    <!--<RibbonApplicationMenuItem Header="Reports" ImageSource="img\report.png" Background="{StaticResource Report}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
+                    <RibbonApplicationMenuItem Header="Reports" ImageSource="img\report.png" Background="{StaticResource Report}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
+                        <RibbonApplicationMenuItem Header="All Reports" ImageSource="img\report\all_reports.png" FontSize="12" Foreground="#6E7F80" x:Name="subMenuManageReport"/>
+                    </RibbonApplicationMenuItem>
 
-                        <RibbonApplicationMenuItem Header="All Reports" ImageSource="img\report\all_reports.png" FontSize="12" Foreground="#6E7F80"/>
-                    </RibbonApplicationMenuItem>-->
-
-                    <!-- Application Menu: Options, located at the left-hand side (down arrow) -->
+                     <!--Application Menu: Options, located at the left-hand side (down arrow)--> 
                     <!--<RibbonApplicationMenuItem Header="Options" ImageSource="img\option\options.png" Background="{StaticResource Option}" TextElement.Foreground="WhiteSmoke" TextElement.FontSize="20" TextElement.FontWeight="Bold" Height="100" BorderBrush="Bisque" BorderThickness="5">
-
                         <RibbonApplicationMenuItem Header="Settings" ImageSource="img\option\settings.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem Header="Print Settings" ImageSource="img\option\print_settings.png" FontSize="12" Foreground="#6E7F80"/>
                         <RibbonApplicationMenuItem Header="Persnal Settings" ImageSource="img\option\personal_settings.png" FontSize="12" Foreground="#6E7F80"/>
@@ -221,7 +221,7 @@
                         <RibbonApplicationMenuItem Header="About" ImageSource="img\option\about.png" FontSize="12" Foreground="#6E7F80"/>
                     </RibbonApplicationMenuItem>-->
 
-                    <!-- <RibbonApplicationMenuItem Header="Exit" ImageSource="img\quit.png" />-->
+                     <!--<RibbonApplicationMenuItem Header="Exit" ImageSource="img\quit.png" />-->
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
 

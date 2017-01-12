@@ -135,6 +135,7 @@
     <Compile Include="ViewModel\ManageProductList.cs" />
     <Compile Include="ViewModel\ManagePurchaseOrder.cs" />
     <Compile Include="ViewModel\ManagePurchaseOrderList.cs" />
+    <Compile Include="ViewModel\ManageReport.cs" />
     <Compile Include="ViewModel\ManageSalesOrder.cs" />
     <Compile Include="ViewModel\ManageSalesOrderList.cs" />
     <Compile Include="ViewModel\ManageSalesQuote.cs" />
@@ -209,6 +210,9 @@
     <Compile Include="View\ManageCustomer.xaml.cs">
       <DependentUpon>ManageCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ManageReport.xaml.cs">
+      <DependentUpon>ManageReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ManageSalesOrder.xaml.cs">
       <DependentUpon>ManageSalesOrder.xaml</DependentUpon>
     </Compile>
@@ -271,6 +275,15 @@
     </Compile>
     <Compile Include="View\Purchase\Supplier\SupplierList\SupplierSearchList.xaml.cs">
       <DependentUpon>SupplierSearchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\section\AllReports.xaml.cs">
+      <DependentUpon>AllReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\section\ReportList.xaml.cs">
+      <DependentUpon>ReportList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\section\ReportSample.xaml.cs">
+      <DependentUpon>ReportSample.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Sales\customer\customer_list\CustomerListSearch.xaml.cs">
       <DependentUpon>CustomerListSearch.xaml</DependentUpon>
@@ -494,6 +507,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ManageReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ManageSalesOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -575,6 +592,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Purchase\Supplier\SupplierList\SupplierSearchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report\section\AllReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report\section\ReportList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report\section\ReportSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -811,7 +840,9 @@
     <Folder Include="img\general\" />
     <Folder Include="View\Inventory\Product\ProductCategory\" />
     <Folder Include="View\Option\" />
-    <Folder Include="View\Report\" />
+    <Folder Include="View\Report\inventory_reports\" />
+    <Folder Include="View\Report\purchase_reports\" />
+    <Folder Include="View\Report\sales_reports\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\home.png" />

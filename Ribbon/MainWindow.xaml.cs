@@ -45,6 +45,7 @@ namespace Ribbon
             // subMenuManageMovementHistory.Click += onClicksubManageMovementHistory;
             subMenuManageCustomerList.Click += onClicksuManageCustomerList;
             subMenuManageCurrentStock.Click += onClicksuManageCurrentStock;
+            subMenuManageReport.Click += onClicksubManageReport;
         }
 
         private void onClicksuManageCurrentStock(object sender, RoutedEventArgs e)
@@ -449,7 +450,7 @@ namespace Ribbon
                 homeTabGroup.ContextMenu = contextMenu;
 
                 UserControl homeTabContent = new HomePage();
-                homeTabContent.Margin = new Thickness(76, 200, 3, 0);
+                homeTabContent.Margin = new Thickness(26, 200, 50, 0);
 
                 homeTabGroup.Items.Add(homeTabContent);
                 selectedTab.Items.Add(homeTabGroup);
@@ -478,7 +479,7 @@ namespace Ribbon
             homeTabGroup.ContextMenu = contextMenu;
 
             UserControl homeTabContent = new HomePage();
-            homeTabContent.Margin = new Thickness(76, 200, 3, 0);
+            homeTabContent.Margin = new Thickness(26, 200, 50, 0);
 
             homeTabGroup.Items.Add(homeTabContent);
             homeTab.Items.Add(homeTabGroup);
@@ -490,6 +491,33 @@ namespace Ribbon
 
         }
 
+        private void onClicksubManageReport(object sender, RoutedEventArgs e)
+        {
+            if (RibbonContainer.SelectedItem is RibbonTab)
+            {
+                RibbonTab selectedTab = (RibbonTab)RibbonContainer.SelectedItem;
+                selectedTab.Items.Clear();
+                selectedTab.Header = "Report List";
+
+                selectedTab.Margin = new Thickness(0, 0, -200, -727);
+
+                RibbonGroup ManageReportTabGroup = new RibbonGroup();
+                ManageReportTabGroup.Background = (Brush)FindResource("Report");
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem closeMenuItem = new MenuItem();
+                closeMenuItem.Header = "Close";
+                closeMenuItem.Click += MenuItem_Click_1;
+                contextMenu.Items.Add(closeMenuItem);
+                ManageReportTabGroup.ContextMenu = contextMenu;
+
+                UserControl ManageReportTabGroupTabContent = new ManageReport();
+
+                ManageReportTabGroup.Items.Add(ManageReportTabGroupTabContent);
+                selectedTab.Items.Add(ManageReportTabGroup);
+            }
+        }
+        
 
         private void RibbonContainer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -535,7 +563,7 @@ namespace Ribbon
                 homeTabGroup.ContextMenu = contextMenu;
 
                 UserControl homeTabContent = new HomePage();
-                homeTabContent.Margin = new Thickness(76, 200, 3, 0);
+                homeTabContent.Margin = new Thickness(26, 200, 50, 0);
 
                 homeTabGroup.Items.Add(homeTabContent);
                 selectedTab.Items.Add(homeTabGroup);

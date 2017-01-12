@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Ribbon.View.ManageReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:modelView="clr-namespace:Ribbon.ViewModel"
+             xmlns:reportAddSection="clr-namespace:Ribbon.View.Report.section">
+    <UserControl.Resources>
+        <modelView:ManageReport x:Key="manageReport" />
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="{StaticResource Report}" DataContext="{StaticResource manageReport}">
+        <StackPanel>
+            <reportAddSection:ReportList Margin="3 7 3 5"/>
+        </StackPanel>
+        <StackPanel>
+            <reportAddSection:ReportSample/>
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>
+

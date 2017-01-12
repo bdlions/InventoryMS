@@ -55,8 +55,14 @@
     
     <!-- ForeBackground-->
     <LinearGradientBrush x:Key="ReportForeBackground" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Offset="0" Color="#FFA50B5E"></GradientStop>
-        <GradientStop Offset="0" Color="#FFA50B5E"></GradientStop>
+        <!--<GradientStop Offset="0" Color="#FFA50B5E"></GradientStop>
+        <GradientStop Offset="0" Color="#FFA50B5E"></GradientStop>-->
+        <GradientStop Offset="0" Color="#FF0077E8"></GradientStop>
+        <GradientStop Offset="1" Color="#FF4FC4FF"></GradientStop>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="ReportWhiteForeBackground" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#FFFFFFFF"></GradientStop>
+        <GradientStop Offset="1" Color="#FFFFFFFF"></GradientStop>
     </LinearGradientBrush>
 
     <!-- ============================================================== Option =========================================================================== -->
