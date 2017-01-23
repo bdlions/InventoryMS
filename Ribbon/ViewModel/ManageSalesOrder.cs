@@ -40,7 +40,6 @@ namespace Ribbon.ViewModel
             set
             {
                 _errorMessage = value;
-
             }
         }
 
@@ -116,18 +115,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        private int _cusomerUserId;
-        public int CusomerUserId
-        {
-            get
-            {
-                return this._cusomerUserId;
-            }
-            set
-            {
-                this._cusomerUserId = value;
-            }
-        }
+   
 
         private string _phone;
         public string Phone
@@ -688,7 +676,7 @@ namespace Ribbon.ViewModel
                     }
                     SaleInfo saleInfo = new SaleInfo();
                     saleInfo.setProductList(productList);
-                    saleInfo.setCustomerUserId(CusomerUserId);
+                    saleInfo.setCustomerUserId(CustomerUserId);
                     saleInfo.setOrderNo(Order);
                     saleInfo.setStatusId(1);
                     saleInfo.setRemarks(OrderRemark);
@@ -983,7 +971,7 @@ namespace Ribbon.ViewModel
 
         public Boolean ValidateSaleOrder()
         {
-            if (CusomerUserId == 0)
+            if (CustomerUserId == 0)
             {
                 ErrorMessage = "Please select a customer.";
                 return false;
