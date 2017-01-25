@@ -124,7 +124,7 @@
                 <ComboBoxItem Content="Add New" />
             </ComboBox>
             <Label Grid.Row="0" Grid.Column="3" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Remarks"/>
-            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60" Text="{Binding OrderRemark}"/>
+            <TextBox Grid.Row="0" Grid.Column="4" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,15" Height="60" Text="{Binding PurchaseInfoNJ.Remarks}"/>
             <Label Grid.Row="0" Grid.Column="6" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sub-Total"/>
             <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding OrderSubTotalAmount}" FontWeight="Bold" HorizontalAlignment="Left"  Margin="0,4,-14,58"  />
 

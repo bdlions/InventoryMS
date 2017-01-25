@@ -8,6 +8,33 @@ namespace Ribbon.Model
 {
     class PurchaseInfoNJ
     {
+        //purchase remarks
+        private string _remarks;
+        public string Remarks
+        {
+            get
+            {
+                return this._remarks;
+            }
+            set
+            {
+                this._remarks = value;
+            }
+        }
+        
+        private SupplierInfoNJ _supplierInfoNJ;
+        public SupplierInfoNJ SupplierInfoNJ
+        {
+            get
+            {
+                return this._supplierInfoNJ;
+            }
+            set
+            {
+                this._supplierInfoNJ = value;
+            }
+        }
+
         private List<ProductInfoNJ> _productList;
         public List<ProductInfoNJ> ProductList
         {
@@ -25,18 +52,7 @@ namespace Ribbon.Model
             }
         }
 
-        private SupplierInfoNJ _supplierInfoNJ;
-        public SupplierInfoNJ SupplierInfoNJ
-        {
-            get
-            {
-                return this._supplierInfoNJ;
-            }
-            set
-            {
-                this._supplierInfoNJ = value;
-            }
-        }
+        
 
      
 

@@ -671,8 +671,9 @@ namespace Ribbon.ViewModel
                     purchaseInfo.setProductList(productList);
                     purchaseInfo.setSupplierUserId(SupplierUserId);
                     purchaseInfo.setOrderNo(Order);
+                    purchaseInfo.setRemarks(PurchaseInfoNJ.Remarks);
                     purchaseInfo.setStatusId(1);
-                    purchaseInfo.setRemarks(OrderRemark);
+                    //purchaseInfo.setRemarks(OrderRemark);
 
                     ResultEvent resultEvent = new ResultEvent();
                     PurchaseManager purchaseManager = new PurchaseManager();
