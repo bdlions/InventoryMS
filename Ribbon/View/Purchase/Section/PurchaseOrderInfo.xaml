@@ -90,12 +90,12 @@
                     </i:Interaction.Triggers>
                     
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="195" Header="Item" FontFamily="Arial" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Width="100" Header="Name" FontFamily="Arial" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Width="100" Header="Code" FontFamily="Arial" Binding="{Binding Path=Code}"/>
                         <DataGridTextColumn Width="70"  Header="Quantity" FontFamily="Arial" Binding="{Binding Path=Quantity}"/>
                         <DataGridTextColumn Width="70"  Header="Unit Price" FontFamily="Arial" Binding="{Binding Path=Price}"/>
                         <DataGridTextColumn Width="70"  Header="Discount" FontFamily="Arial" Binding="{Binding Path=Discount}"/>
                         <DataGridTextColumn Width="70"  Header="Sub-Total" FontFamily="Arial" Binding="{Binding Path=OrderItemSubTotal}" IsReadOnly="True"/>
-                        <DataGridTextColumn Width="70"  Header="ProductId" FontFamily="Arial" />
                         <DataGridTextColumn Width="50"  Header="Edit" FontFamily="Arial" />
                         <DataGridTextColumn Width="50"  Header="Delete" FontFamily="Arial" />
                     </DataGrid.Columns>

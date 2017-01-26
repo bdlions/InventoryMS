@@ -41,6 +41,7 @@ namespace Ribbon.ViewModel
                 {
                     ProductInfo productInfo = (ProductInfo)j.next();
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
                     productInfoNJ.Price = productInfo.getUnitPrice();
@@ -79,7 +80,6 @@ namespace Ribbon.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -105,6 +105,7 @@ namespace Ribbon.ViewModel
                 OnPropertyChanged("PurchaseInfoNJ");
             }
         }
+
         //error message
         private string _errorMessage;
         public string ErrorMessage
@@ -117,6 +118,111 @@ namespace Ribbon.ViewModel
             {
                 _errorMessage = value;
 
+            }
+        }
+
+        //popup product list to be displayed while selecting product for purchase
+        ObservableCollection<ProductInfoNJ> _productList;
+        public ObservableCollection<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null)
+                {
+                    _productList = new ObservableCollection<ProductInfoNJ>();
+                    //retrieving product list
+                    ProductManager productManager = new ProductManager();
+                    for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                    {
+                        ProductInfo prodcutInfo = (ProductInfo)i.next();
+                        ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                        productInfoNJ.Id = prodcutInfo.getId();
+                        productInfoNJ.Name = prodcutInfo.getName();
+                        productInfoNJ.Code = prodcutInfo.getCode();                        
+                        productInfoNJ.Price = prodcutInfo.getUnitPrice();                        
+                        _productList.Add(productInfoNJ);
+                    }
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+        /*
+         * Event Handler if a product is selected from popup product list
+         * @author nazmul hasan on 26th january 2016
+         */
+        public DelegateCommand<object> OnProductItemSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    if (selectedProductInfoNJ != null)
+                    {
+                        selectedProductInfoNJ.Quantity = 1;
+                        PurchaseInfoNJ.ProductList.Insert(PurchaseInfoNJ.ProductList.Count - 1, selectedProductInfoNJ);
+                        PurchaseInfoNJ.ProductList.RemoveAt(PurchaseInfoNJ.ProductList.Count - 1);
+                        //OnPropertyChanged("OrderSubTotalAmount");
+                        //OnPropertyChanged("OrderItemSubTotal");
+                    }                    
+                });
+            }
+        }
+
+        //popup supplier list to be displayed while selecting a supplier
+        ObservableCollection<SupplierInfoNJ> _supplierList;
+        public ObservableCollection<SupplierInfoNJ> SupplierList
+        {
+            get
+            {
+                if (_supplierList == null)
+                {
+                    _supplierList = new ObservableCollection<SupplierInfoNJ>();
+                    SupplierManager supplierManager = new SupplierManager();
+                    for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
+                    {
+                        SupplierInfo supplierInfo = (SupplierInfo)i.next();
+                        SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+                        supplierInfoNJ.ProfileInfoNJ.Id = supplierInfo.getProfileInfo().getId();
+                        supplierInfoNJ.ProfileInfoNJ.FirstName = supplierInfo.getProfileInfo().getFirstName();
+                        supplierInfoNJ.ProfileInfoNJ.LastName = supplierInfo.getProfileInfo().getLastName();
+                        supplierInfoNJ.ProfileInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();                        
+                        _supplierList.Add(supplierInfoNJ);
+                    }
+                }                
+                return _supplierList;
+            }
+            set
+            {
+                this._supplierList = value;
+            }
+        }
+        /*
+         * Event Handler if a supplier is selected from popup supplier list
+         * @author nazmul hasan on 26th january 2016
+         */
+        public DelegateCommand<object> OnSupplierSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((SelectedSupplier) =>
+                {
+                    if (SelectedSupplier is SupplierInfoNJ)
+                    {
+                        SupplierInfoNJ supplierInfoNJ = (SupplierInfoNJ)SelectedSupplier;
+                        PurchaseInfoNJ tempPurchaseInfoNJ = PurchaseInfoNJ;
+                        SupplierInfoNJ tempSupplierInfoNJ = new SupplierInfoNJ();
+                        tempSupplierInfoNJ.ProfileInfoNJ.Id = supplierInfoNJ.ProfileInfoNJ.Id;
+                        tempSupplierInfoNJ.ProfileInfoNJ.FirstName = supplierInfoNJ.ProfileInfoNJ.FirstName;
+                        tempSupplierInfoNJ.ProfileInfoNJ.LastName = supplierInfoNJ.ProfileInfoNJ.LastName;                        
+                        tempPurchaseInfoNJ.SupplierInfoNJ = tempSupplierInfoNJ;
+                        PurchaseInfoNJ = tempPurchaseInfoNJ;
+                    }
+                });
             }
         }
 
@@ -150,6 +256,7 @@ namespace Ribbon.ViewModel
                 {
                     ProductInfo productInfo = (ProductInfo)j.next();
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
                     productInfoNJ.Price = productInfo.getUnitPrice();
@@ -170,53 +277,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        /*
-         * Event Handler if a supplier is selected from popup supplier list
-         * @author nazmul hasan on 26th january 2016
-         */
-        public DelegateCommand<object> OnSupplierSelected
-        {
-            get
-            {
-                return new DelegateCommand<object>((SelectedSupplier) =>
-                {
-                    if (SelectedSupplier is SupplierInfoNJ)
-                    {
-                        //modify logic to use SupplierInfoNJ structure instead of SupplierFirstName, SupplierLastName etc
-                        SupplierInfoNJ supplierInfo = (SupplierInfoNJ)SelectedSupplier;
-                        PurchaseInfoNJ tempPurchaseInfoNJ = PurchaseInfoNJ;
-                        SupplierInfoNJ tempSupplierInfoNJ = new SupplierInfoNJ();
-                        tempSupplierInfoNJ.ProfileInfoNJ.FirstName = supplierInfo.SupplierFirstName;
-                        tempSupplierInfoNJ.ProfileInfoNJ.LastName = supplierInfo.SupplierLastName;
-                        tempSupplierInfoNJ.ProfileInfoNJ.Id = supplierInfo.SupplierUserID;
-                        tempPurchaseInfoNJ.SupplierInfoNJ = tempSupplierInfoNJ;
-                        PurchaseInfoNJ = tempPurchaseInfoNJ;
-                    }
-                });
-            }
-        }
-
-        /*
-         * Event Handler if a product is selected from popup product list
-         * @author nazmul hasan on 26th january 2016
-         */
-        public DelegateCommand<object> OnProductItemSelected
-        {
-            get
-            {
-                return new DelegateCommand<object>((selectedItem) =>
-                {
-                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
-                    selectedProductInfoNJ.Quantity = 1;
-
-                    PurchaseInfoNJ.ProductList.Insert(PurchaseInfoNJ.ProductList.Count - 1, selectedProductInfoNJ);
-                    PurchaseInfoNJ.ProductList.RemoveAt(PurchaseInfoNJ.ProductList.Count - 1);
-                    //OnPropertyChanged("OrderSubTotalAmount");
-                    //OnPropertyChanged("OrderItemSubTotal");
-                });
-            }
-        }
-
+        
         /*
          * This method will validate purchase order info
          * @author nazmul hasan on 26th january 2016
@@ -262,7 +323,7 @@ namespace Ribbon.ViewModel
                         productInfo.setUnitPrice(productInfoNJ.Price);
                         productInfo.setQuantity(productInfoNJ.Quantity);
                         productInfo.setDiscount(productInfoNJ.Discount);
-                        productInfo.setId(productInfoNJ.ProductId);
+                        productInfo.setId(productInfoNJ.Id);
                         productList.add(productInfo);
                     }
 
@@ -881,34 +942,6 @@ namespace Ribbon.ViewModel
 
 
 
-        ObservableCollection<ProductInfoNJ> _productItemList;
-
-        public ObservableCollection<ProductInfoNJ> ProductItemList
-        {
-            get
-            {
-                ProductManager productManager = new ProductManager();
-
-                _productItemList = new ObservableCollection<ProductInfoNJ>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
-                {
-                    ProductInfo prodcutInfo = (ProductInfo)i.next();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Code = prodcutInfo.getCode();
-                    productInfoNJ.Name = prodcutInfo.getName();
-                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
-                    productInfoNJ.ProductId = prodcutInfo.getId();
-
-                    _productItemList.Add(productInfoNJ);
-                }
-                return _productItemList;
-            }
-            set
-            {
-                this._productItemList = value;
-            }
-        }
-
         ObservableCollection<ProductInfoNJ> _purchaseList;
         public ObservableCollection<ProductInfoNJ> PurchaseList
         {
@@ -927,36 +960,10 @@ namespace Ribbon.ViewModel
         }
 
         
-        ObservableCollection<SupplierInfoNJ> _supplierItemList;
-
-        public ObservableCollection<SupplierInfoNJ> SupplierItemList
-        {
-            get
-            {
-                SupplierManager supplierManager = new SupplierManager();
-
-                _supplierItemList = new ObservableCollection<SupplierInfoNJ>();
-                for (Iterator i = supplierManager.getAllSuppliers().iterator(); i.hasNext(); )
-                {
-                    SupplierInfo supplierInfo = (SupplierInfo)i.next();
-                    SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                    supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                    supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                    supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                    supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-
-                    _supplierItemList.Add(supplierInfoNJ);
-                }
-                return _supplierItemList;
-            }
-            set
-            {
-                this._supplierItemList = value;
-            }
-        }
+        
 
 
-        ObservableCollection<SupplierInfoNJ> _supplierList;
+        /*ObservableCollection<SupplierInfoNJ> _supplierList;
 
         public ObservableCollection<SupplierInfoNJ> SupplierList
         {
@@ -981,7 +988,7 @@ namespace Ribbon.ViewModel
             {
                 this._supplierList = value;
             }
-        }
+        }*/
 
 
 
