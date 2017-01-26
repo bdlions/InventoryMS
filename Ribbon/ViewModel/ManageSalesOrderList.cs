@@ -35,7 +35,7 @@ namespace Ribbon.ViewModel
                     SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
                     saleInfoNJ.Order = saleInfo.getOrderNo();
                     //saleInfoNJ.OrderDate = saleInfo.getSaleDate();
-                    saleInfoNJ.Status = saleInfo.getStatusId();
+                    saleInfoNJ.StatusId = saleInfo.getStatusId();
                     saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
                     saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
 

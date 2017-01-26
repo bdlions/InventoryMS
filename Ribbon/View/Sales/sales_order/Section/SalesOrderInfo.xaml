@@ -31,7 +31,14 @@
 
                     <!--1st row-->
                     <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Customer" Grid.ColumnSpan="2" Margin="0,0,157,0"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding CustomerName}" MouseDoubleClick="CustomerTextBox_MouseDoubleClick"/>
+                   
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" MouseDoubleClick="CustomerTextBox_MouseDoubleClick">
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.FirstName" />
+                            <Binding Path="SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.LastName" />
+                        </MultiBinding>
+                    </TextBox>
+
                     <StackPanel>
                         <StackPanel>
                             <popupbox:SaleOrderCustomerSelector  x:Name="CustomerSelector"/>
@@ -40,7 +47,7 @@
                     <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Sales Rep:"/>
                     <TextBox Grid.Row="0" Grid.Column="3" Margin="3" Text="{Binding SalesRep}"/>
                     <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Order:"/>
-                    <TextBox Grid.Row="0" Grid.Column="6" Margin="3,3,0,3" Text="{Binding Order}"/>
+                    <TextBox Grid.Row="0" Grid.Column="6" Margin="3,3,0,3" Text="{Binding SaleInfoNJ.OrderNo}"/>
 
                     <!--2nd row-->
                     <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Content="Contact:"/>
@@ -175,7 +182,7 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                           Height="235" CanUserResizeRows="False" 
                           CanUserSortColumns="False" SelectionMode="Single" 
-                          ItemsSource="{Binding SaleList}" BorderBrush="Gray"  
+                          ItemsSource="{Binding SaleInfoNJ.ProductList}" BorderBrush="Gray"  
                           Foreground="{StaticResource Sales_ForeBackground}" 
                           BeginningEdit="productSaleOrderGrid_BeginningEdit" 
                           CellEditEnding="productSaleOrderGrid_CellEditEnding">

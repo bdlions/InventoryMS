@@ -15,14 +15,74 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using Ribbon.Constants;
 
 namespace Ribbon.ViewModel
 {
     class ManageSalesOrder : BindableBase, INotifyPropertyChanged
     {
+
+        //constructor
+        public ManageSalesOrder()
+        {
+            //loading sale list on left panel
+            SaleManager saleManager = new SaleManager();
+            for (Iterator i = saleManager.getAllSaleOrders().iterator(); i.hasNext(); )
+            {
+                SaleInfo saleInfo = (SaleInfo)i.next();
+                SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
+                //We will display order no in grid view on left panel
+                saleInfoNJ.OrderNo = saleInfo.getOrderNo();
+                //right now after clicking on item on left panel sale info is again retrived from the database
+                //so we can ignore rest of the part right now if required.
+                saleInfoNJ.StatusId = saleInfo.getStatusId();
+                saleInfoNJ.Remarks = saleInfo.getRemarks();
+                for (Iterator j = saleInfo.getProductList().iterator(); j.hasNext(); )
+                {
+                    ProductInfo productInfo = (ProductInfo)j.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Name = productInfo.getName();
+                    productInfoNJ.Code = productInfo.getCode();
+                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.Quantity = productInfo.getQuantity();
+                    saleInfoNJ.ProductList.Add(productInfoNJ);
+                }
+                CustomerInfo customerInfo = new CustomerInfo();
+                CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+                customerInfoNJ.ProfileInfoNJ.Id = saleInfo.getCustomerInfo().getProfileInfo().getId();
+                customerInfoNJ.ProfileInfoNJ.FirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                customerInfoNJ.ProfileInfoNJ.LastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+                saleInfoNJ.CustomerInfoNJ = customerInfoNJ;
+                SaleOrderList.Add(saleInfoNJ);
+            }
+
+            //Setting a default random Order No for Sale Info
+            SaleInfoNJ.OrderNo = Guid.NewGuid().ToString().ToUpper(); ;
+        }
+
+
+        //sale order list on left panel
+        ObservableCollection<SaleInfoNJ> _saleOrderList;
+        public ObservableCollection<SaleInfoNJ> SaleOrderList
+        {
+            get
+            {
+                if (_saleOrderList == null)
+                {
+                    _saleOrderList = new ObservableCollection<SaleInfoNJ>();
+                }
+                return _saleOrderList;
+            }
+            set
+            {
+                this._saleOrderList = value;
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -30,6 +90,25 @@ namespace Ribbon.ViewModel
 
         }
 
+        //sale order info
+        private SaleInfoNJ _saleInfoNJ;
+        public SaleInfoNJ SaleInfoNJ
+        {
+            get
+            {
+                if (_saleInfoNJ == null)
+                {
+                    _saleInfoNJ = new SaleInfoNJ();
+                }
+                return this._saleInfoNJ;
+            }
+            set
+            {
+                this._saleInfoNJ = value;
+                OnPropertyChanged("SaleInfoNJ");
+            }
+        }
+        //error message
         private string _errorMessage;
         public string ErrorMessage
         {
@@ -40,8 +119,181 @@ namespace Ribbon.ViewModel
             set
             {
                 _errorMessage = value;
+
             }
         }
+
+
+        /*
+       * Event Handler if sale info is selected from left panel
+       * @author A.K.M. Nazmul Islam on 26th january 2016
+       */
+        public ICommand SelectSaleOrderEvent
+        {
+            get
+            {
+                return new DelegateCommand<SaleInfoNJ>(this.OnSelectSaleOrderEvent);
+            }
+        }
+
+        /*
+     * This method will display selected sale info
+     * @author A.K.M. Nazmul Islam on 26th january 2016
+     */
+        public void OnSelectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
+        {
+            SaleManager saleManager = new SaleManager();
+            ResultEvent resultEvent = saleManager.getSaleOrderInfo(saleInfoNJ.OrderNo);
+            if (resultEvent.getResponseCode() == 2000)
+            {
+                SaleInfo saleInfo = (SaleInfo)resultEvent.getResult();
+                SaleInfoNJ tempSaleInfoNJ = new SaleInfoNJ();
+                tempSaleInfoNJ.OrderNo = saleInfo.getOrderNo();
+                tempSaleInfoNJ.StatusId = saleInfo.getStatusId();
+                tempSaleInfoNJ.Remarks = saleInfo.getRemarks();
+                for (Iterator j = saleInfo.getProductList().iterator(); j.hasNext(); )
+                {
+                    ProductInfo productInfo = (ProductInfo)j.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Name = productInfo.getName();
+                    productInfoNJ.Code = productInfo.getCode();
+                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.Quantity = productInfo.getQuantity();
+                    tempSaleInfoNJ.ProductList.Add(productInfoNJ);
+                }
+                CustomerInfo customerInfo = new CustomerInfo();
+                CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+                customerInfoNJ.ProfileInfoNJ.Id = saleInfo.getCustomerInfo().getProfileInfo().getId();
+                customerInfoNJ.ProfileInfoNJ.FirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                customerInfoNJ.ProfileInfoNJ.LastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+                tempSaleInfoNJ.CustomerInfoNJ = customerInfoNJ;
+                SaleInfoNJ = tempSaleInfoNJ;
+            }
+            else
+            {
+                MessageBox.Show(resultEvent.getMessage());
+            }
+        }
+
+
+        /*
+   * Event Handler if a customer is selected from popup customer list
+   * @author A.K.M. Nazmul Islam on 26th january 2016
+   */
+        public DelegateCommand<object> OnCustomerSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((SelectedCustomer) =>
+                {
+                    if (SelectedCustomer is CustomerInfoNJ)
+                    {
+                        //modify logic to use CustomerInfoNJ structure instead of CustomerFirstName, CustomerLastName etc
+                        CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
+                        SaleInfoNJ tempSaleInfoNJ = SaleInfoNJ;
+                        CustomerInfoNJ tempCustomerInfoNJ = new CustomerInfoNJ();
+                        tempCustomerInfoNJ.ProfileInfoNJ.FirstName = customerInfoNJ.CustomerFirstName;
+                        tempCustomerInfoNJ.ProfileInfoNJ.LastName = customerInfoNJ.CustomerLastName;
+                        tempCustomerInfoNJ.ProfileInfoNJ.Id = customerInfoNJ.CustomerUserId;
+                        tempSaleInfoNJ.CustomerInfoNJ = tempCustomerInfoNJ;
+                        SaleInfoNJ = tempSaleInfoNJ;
+                    }
+                });
+            }
+        }
+
+        /*
+         * Event Handler if a product is selected from popup product list
+         * @author A.K.M. Nazmul Islam on 26th january 2016
+         */
+        public DelegateCommand<object> OnProductItemSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    selectedProductInfoNJ.Quantity = 1;
+
+                    SaleInfoNJ.ProductList.Insert(SaleInfoNJ.ProductList.Count - 1, selectedProductInfoNJ);
+                    SaleInfoNJ.ProductList.RemoveAt(SaleInfoNJ.ProductList.Count - 1);
+                    //OnPropertyChanged("OrderSubTotalAmount");
+                    //OnPropertyChanged("OrderItemSubTotal");
+                });
+            }
+        }
+
+
+        /*
+         * This method will validate sale order info
+         * @author A.K.M. Nazmul Islam on 26th january 2016
+         */
+        public Boolean ValidateSaleOrder()
+        {
+            if (SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.Id == 0)
+            {
+                ErrorMessage = Messages.ERROR_SALE_CUSTOMER_SELECTION_REQURIED;
+                return false;
+            }
+
+            if (SaleInfoNJ.ProductList == null || SaleInfoNJ.ProductList.Count == 0)
+            {
+                ErrorMessage = Messages.ERROR_SALE_PRODUCT_SELECTION_REQURIED;
+                return false;
+            }
+            return true;
+        }
+
+
+        /*
+               * Event Handler to save purchase order info
+               * @author  A.K.M. Nazmul Islam on 26th january 2016
+               */
+        public ICommand SaveSale
+        {
+            get
+            {
+                return new DelegateCommand(new Action(() =>
+                {
+                    if (!ValidateSaleOrder())
+                    {
+                        MessageBox.Show(ErrorMessage);
+                        return;
+                    }
+                    java.util.List productList = new java.util.ArrayList();
+
+                    foreach (ProductInfoNJ productInfoNJ in SaleInfoNJ.ProductList)
+                    {
+                        ProductInfo productInfo = new ProductInfo();
+                        productInfo.setName(productInfoNJ.Name);
+                        productInfo.setCode(productInfoNJ.Code);
+                        productInfo.setUnitPrice(productInfoNJ.Price);
+                        productInfo.setQuantity(productInfoNJ.Quantity);
+                        productInfo.setDiscount(productInfoNJ.Discount);
+                        productInfo.setId(productInfoNJ.ProductId);
+                        productList.add(productInfo);
+                    }
+
+                    SaleInfo saleInfo = new SaleInfo();
+                    saleInfo.setProductList(productList);
+                    saleInfo.setCustomerUserId(SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.Id);
+                    saleInfo.setOrderNo(SaleInfoNJ.OrderNo);
+                    saleInfo.setRemarks(SaleInfoNJ.Remarks);
+                    saleInfo.setStatusId(1);
+
+                    ResultEvent resultEvent = new ResultEvent();
+                    SaleManager saleManager = new SaleManager();
+                    resultEvent = saleManager.addSaleOrder(saleInfo);
+                    MessageBox.Show(resultEvent.getMessage());
+                }));
+            }
+        }
+
+
+
+        //----------------------------------Implement later ------------------------------//
+
+
 
         private int _customerUserId;
         public int CustomerUserId
@@ -115,7 +367,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-   
+
 
         private string _phone;
         public string Phone
@@ -279,11 +531,16 @@ namespace Ribbon.ViewModel
             get
             {
                 double total = 0;
-                for (int i = 0; i < this._saleList.Count; i++)
+                for (int i = 0; i < SaleInfoNJ.ProductList.Count; i++)
                 {
-                    ProductInfoNJ product =  _saleList.ElementAt(i);
-                    total +=  product.Price * product.Quantity;
+                    ProductInfoNJ product = SaleInfoNJ.ProductList.ElementAt(i);
+                    total += product.Price * product.Quantity;
                 }
+                /*for (int i = 0; i < this._purchaseList.Count; i++)
+                {
+                     ProductInfoNJ product = _saleList.ElementAt(i);
+                     total += product.Price * product.Quantity;
+                }*/
                 this._salesOrderSubTotal = total;
                 return this._salesOrderSubTotal;
             }
@@ -293,6 +550,17 @@ namespace Ribbon.ViewModel
             }
         }
 
+
+        public DelegateCommand<object> SelectedItemChangedCommand
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    OnPropertyChanged("SalesOrderSubTotal");
+                });
+            }
+        }
 
         private string _salesOrderTotal;
         public string SalesOrderTotal
@@ -601,8 +869,13 @@ namespace Ribbon.ViewModel
                 this._salesOrderReturnCreditAmount = value;
             }
         }
+
+
         
-            // Search Sale Order
+
+
+
+        // Search Sale Order
         private string _searchSaleOderNo;
         public string SearchSaleOderNo
         {
@@ -616,135 +889,80 @@ namespace Ribbon.ViewModel
             }
         }
 
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-
-
-        public DelegateCommand<object> OnItemSelected
+        public ICommand Reset
         {
             get
             {
-                return new DelegateCommand<object>((selectedItem) =>
-                {
-                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
-                    selectedProductInfoNJ.Quantity = 1;
-                    SaleList.Insert(SaleList.Count - 1, selectedProductInfoNJ);
-                    SaleList.RemoveAt(SaleList.Count - 1);
-                    OnPropertyChanged("SalesOrderSubTotal");
-                });
+                return new DelegateCommand(this.OnReset);
             }
         }
-        public DelegateCommand<object> SelectedItemChangedCommand
+        public ICommand Print
         {
             get
             {
-                return new DelegateCommand<object>((selectedItem) =>
-                {
-                    OnPropertyChanged("SalesOrderSubTotal");
-                });
+                return new DelegateCommand(this.OnPrint);
             }
         }
-        
-
-        public ICommand SaveSale
+        public ICommand Attachment
         {
             get
             {
-                return new DelegateCommand(new Action(() =>
-                {
-                    if (!ValidateSaleOrder())
-                    {
-                        MessageBox.Show(ErrorMessage);
-                        return;
-                    }
-
-                    java.util.List productList = new java.util.ArrayList();
-
-                    foreach (ProductInfoNJ productInfoNJ in SaleList)
-                    {
-                        ProductInfo productInfo = new ProductInfo();
-                        productInfo.setId(productInfoNJ.ProductId);
-                        productInfo.setName(productInfoNJ.Name);
-                        productInfo.setCode(productInfoNJ.Code);
-                        productInfo.setUnitPrice(productInfoNJ.Price);
-                        productInfo.setQuantity(productInfoNJ.Quantity);
-                        productInfo.setDiscount(productInfoNJ.Discount);
-                        productInfo.setId(productInfoNJ.ProductId);
-
-                        productList.add(productInfo);
-                    }
-                    SaleInfo saleInfo = new SaleInfo();
-                    saleInfo.setProductList(productList);
-                    saleInfo.setCustomerUserId(CustomerUserId);
-                    saleInfo.setOrderNo(Order);
-                    saleInfo.setStatusId(1);
-                    saleInfo.setRemarks(OrderRemark);
-
-                    ResultEvent resultEvent = new ResultEvent();
-                    SaleManager saleManager = new SaleManager();
-                    resultEvent = saleManager.addSaleOrder(saleInfo);
-                    MessageBox.Show(resultEvent.getMessage());
-
-                }));
+                return new DelegateCommand(this.OnAddAttachment);
             }
         }
 
-        public DelegateCommand<object> OnCustomerSelected
+        public ICommand Email
         {
             get
             {
-                return new DelegateCommand<object>((SelectedCustomer) =>
-                {
-                    if (SelectedCustomer is CustomerInfoNJ)
-                    {
-                        CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
-                        CustomerFirstName = customerInfoNJ.CustomerFirstName;
-                        CustomerLastName = customerInfoNJ.CustomerLastName;
-                        Phone = customerInfoNJ.Phone;
-                        CustomerUserId = customerInfoNJ.CustomerUserId;
-                    }
-                });
+                return new DelegateCommand(this.OnEmail);
+            }
+        }
+        public ICommand Copy
+        {
+            get
+            {
+                return new DelegateCommand(this.OnCopy);
             }
         }
 
-        ObservableCollection<SaleInfoNJ> _saleOrderList;
 
-        public ObservableCollection<SaleInfoNJ> SaleOrderList
+        public ICommand Search
         {
             get
             {
-                SaleManager saleManager = new SaleManager();
-                _saleOrderList = new ObservableCollection<SaleInfoNJ>();
-                for (Iterator i = saleManager.getAllSaleOrders().iterator(); i.hasNext(); )
+                return new DelegateCommand(this.OnSearch);
+            }
+        }
+
+        ObservableCollection<ProductInfoNJ> _productItemList;
+
+        public ObservableCollection<ProductInfoNJ> ProductItemList
+        {
+            get
+            {
+                ProductManager productManager = new ProductManager();
+
+                _productItemList = new ObservableCollection<ProductInfoNJ>();
+                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
                 {
-                    SaleInfo saleInfo = (SaleInfo)i.next();
-                    SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
-                    saleInfoNJ.Order = saleInfo.getOrderNo();
-                    //saleInfoNJ.OrderDate = saleInfo.getSaleDate();
-                    saleInfoNJ.Status = saleInfo.getStatusId();
-                    saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
-                    saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+                    ProductInfo prodcutInfo = (ProductInfo)i.next();
+                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Code = prodcutInfo.getCode();
+                    productInfoNJ.Name = prodcutInfo.getName();
+                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                    productInfoNJ.ProductId = prodcutInfo.getId();
 
-                    for (Iterator j = saleInfo.getProductList().iterator(); j.hasNext(); )
-                    {
-                        ProductInfo productInfo = (ProductInfo)j.next();
-                        ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                        productInfoNJ.Name = productInfo.getName();
-                        productInfoNJ.Code = productInfo.getCode();
-                        productInfoNJ.Price = productInfo.getUnitPrice();
-                        saleInfoNJ.ProductList.Add(productInfoNJ);
-                    }
-
-                    _saleOrderList.Add(saleInfoNJ);
+                    _productItemList.Add(productInfoNJ);
                 }
-                return _saleOrderList;
+                return _productItemList;
             }
             set
             {
-                this._saleOrderList = value;
+                this._productItemList = value;
             }
         }
+
 
         ObservableCollection<ProductInfoNJ> _saleList = new ObservableCollection<ProductInfoNJ>();
 
@@ -763,7 +981,6 @@ namespace Ribbon.ViewModel
                 this._saleList = value;
             }
         }
-
 
 
         ObservableCollection<CustomerInfoNJ> _customerItemList;
@@ -794,24 +1011,23 @@ namespace Ribbon.ViewModel
             }
         }
 
-
         ObservableCollection<CustomerInfoNJ> _customerList;
 
         public ObservableCollection<CustomerInfoNJ> CustomerList
         {
             get
             {
-                if (_customerList == null || _customerList.Count <= 0)
+                if (_customerList == null)
                 {
                     _customerList = new ObservableCollection<CustomerInfoNJ>();
 
-                    CustomerInfo customerInfo = new CustomerInfo();
-                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+                    //CustomerInfo customerInfo = new CustomerInfo();
+                    //CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
 
-                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
-                    customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
-                    customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
+                    //customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
+                    //customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
+                    //customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                    //customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
 
                 }
                 return _customerList;
@@ -820,33 +1036,6 @@ namespace Ribbon.ViewModel
             set
             {
                 this._customerList = value;
-            }
-        }
-        ObservableCollection<ProductInfoNJ> _productItemList;
-
-        public ObservableCollection<ProductInfoNJ> ProductItemList
-        {
-            get
-            {
-                ProductManager productManager = new ProductManager();
-
-                _productItemList = new ObservableCollection<ProductInfoNJ>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
-                {
-                    ProductInfo prodcutInfo = (ProductInfo)i.next();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Code = prodcutInfo.getCode();
-                    productInfoNJ.Name = prodcutInfo.getName();
-                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
-                    productInfoNJ.ProductId = prodcutInfo.getId();
-
-                    _productItemList.Add(productInfoNJ);
-                }
-                return _productItemList;
-            }
-            set
-            {
-                this._productItemList = value;
             }
         }
 
@@ -889,24 +1078,11 @@ namespace Ribbon.ViewModel
         {
             MessageBox.Show("OnEmail");
         }
-        
 
-        public ICommand SelectSaleOrderEvent
-        {
-            get
-            {
-                return new DelegateCommand<SaleInfoNJ>(this.selectSaleOrderEvent);
-            }
-        }
 
-        public ICommand Search
-        {
-            get
-            {
-                return new DelegateCommand(this.OnSearch);
-            }
-        }
-
+        /// <summary>
+        /// Called when Button SendToViewModel is clicked
+        /// </summary>
         private void OnSearch()
         {
 
@@ -926,69 +1102,6 @@ namespace Ribbon.ViewModel
                 _saleOrderList.Add(saleInfoNJ);
             }
         }
-
-        public void selectSaleOrderEvent(SaleInfoNJ saleInfoNJ)
-        {
-            SaleManager saleManager = new SaleManager();
-            ResultEvent resultEvent = saleManager.getSaleOrderInfo(saleInfoNJ.Order);
-            if (resultEvent.getResponseCode() == 2000)
-            {
-                Order = saleInfoNJ.Order;
-                SaleInfo purchaseInfo = (SaleInfo)resultEvent.getResult();
-                CustomerFirstName = purchaseInfo.getCustomerInfo().getProfileInfo().getFirstName();
-                CustomerLastName = purchaseInfo.getCustomerInfo().getProfileInfo().getLastName();
-                CustomerUserId = purchaseInfo.getCustomerInfo().getProfileInfo().getId();
-                SaleList.Clear();
-                for (Iterator j = purchaseInfo.getProductList().iterator(); j.hasNext(); )
-                {
-                    ProductInfo productInfo = (ProductInfo)j.next();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Name = productInfo.getName();
-                    productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Quantity = productInfo.getQuantity();
-                    saleInfoNJ.ProductList.Add(productInfoNJ);
-                    SaleList.Add(productInfoNJ);
-                }
-            }
-            else
-            {
-                MessageBox.Show(resultEvent.getMessage());
-            }
-
-           //Order = saleInfoNJ.Order;
-           //Phone = saleInfoNJ.Phone;
-           //CustomerFirstName = saleInfoNJ.CustomerFirstName;
-           //CustomerLastName = saleInfoNJ.CustomerLastName;
-
-           //SaleList.Clear();
-           //for (int i = 0; i < saleInfoNJ.ProductList.Count; i++)
-           //{
-           //    SaleList.Add(saleInfoNJ.ProductList.ElementAt(i));
-           //}
-
-        }
-
-
-        public Boolean ValidateSaleOrder()
-        {
-            if (CustomerUserId == 0)
-            {
-                ErrorMessage = "Please select a customer.";
-                return false;
-            }
-
-            if (SaleList == null || SaleList.Count == 0)
-            {
-                ErrorMessage = "Please select a product.";
-                return false;
-            }
-
-            return true;
-        }
-
-
-
-
     }
 }
 

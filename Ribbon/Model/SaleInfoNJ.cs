@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,26 +9,51 @@ namespace Ribbon.Model
 {
     class SaleInfoNJ
     {
-
-        private List<ProductInfoNJ> _productList;
-        public List<ProductInfoNJ> ProductList
+        //sale order no
+        private string _orderNo;
+        public string OrderNo
         {
             get
             {
-                if (_productList == null)
-                {
-                    _productList = new List<ProductInfoNJ>();
-                }
-                return _productList;
+                return this._orderNo;
             }
             set
             {
-                this._productList = value;
+                this._orderNo = value;
             }
         }
 
-        private SaleInfoNJ _customerInfoNJ;
-        public SaleInfoNJ CustomerInfoNJ
+        //sale info status id
+        private int _statusId;
+        public int StatusId
+        {
+            get
+            {
+                return this._statusId;
+            }
+            set
+            {
+                this._statusId = value;
+            }
+        }
+
+        //purchase remarks
+        private string _remarks;
+        public string Remarks
+        {
+            get
+            {
+                return this._remarks;
+            }
+            set
+            {
+                this._remarks = value;
+            }
+        }
+
+        //customer info of a sale info
+        private CustomerInfoNJ _customerInfoNJ;
+        public CustomerInfoNJ CustomerInfoNJ
         {
             get
             {
@@ -38,6 +64,40 @@ namespace Ribbon.Model
                 this._customerInfoNJ = value;
             }
         }
+
+        ObservableCollection<ProductInfoNJ> _productList;
+        public ObservableCollection<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null)
+                {
+                    _productList = new ObservableCollection<ProductInfoNJ>();
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+
+        //private List<ProductInfoNJ> _productList;
+        //public List<ProductInfoNJ> ProductList
+        //{
+        //    get
+        //    {
+        //        if (_productList == null)
+        //        {
+        //            _productList = new List<ProductInfoNJ>();
+        //        }
+        //        return _productList;
+        //    }
+        //    set
+        //    {
+        //        this._productList = value;
+        //    }
+        //}
 
 
         private string _customerFirstName;
@@ -88,6 +148,7 @@ namespace Ribbon.Model
                 this._phone = value;
             }
         }
+
         private string _order;
         public string Order
         {
@@ -98,19 +159,6 @@ namespace Ribbon.Model
             set
             {
                 this._order = value;
-            }
-        }
-
-        private string _remark;
-        public string Remark
-        {
-            get
-            {
-                return this._remark;
-            }
-            set
-            {
-                this._remark = value;
             }
         }
 
@@ -127,18 +175,7 @@ namespace Ribbon.Model
             }
         }
 
-        private int _status;
-        public int Status
-        {
-            get
-            {
-                return this._status;
-            }
-            set
-            {
-                this._status = value;
-            }
-        }
+        
 
       
         private string _postalCode;

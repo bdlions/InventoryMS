@@ -21,7 +21,7 @@
                   IsReadOnly="True" >
 
         <DataGrid.Columns>
-            <DataGridTextColumn Width="290"  Header="Sale Order" FontFamily="Arial" Binding="{Binding Order}"/>
+            <DataGridTextColumn Width="290"  Header="Sale Order" FontFamily="Arial" Binding="{Binding OrderNo}"/>
         </DataGrid.Columns>
 
         <i:Interaction.Triggers>

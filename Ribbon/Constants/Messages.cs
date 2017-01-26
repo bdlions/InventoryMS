@@ -16,5 +16,8 @@ namespace Ribbon.Constants
 
         public static String ERROR_PURCHASE_SUPPLIER_SELECTION_REQURIED = "Please select a supplier.";
         public static String ERROR_PURCHASE_PRODUCT_SELECTION_REQURIED = "Please select a product.";
+
+        public static String ERROR_SALE_CUSTOMER_SELECTION_REQURIED = "Please select a customer.";
+        public static String ERROR_SALE_PRODUCT_SELECTION_REQURIED = "Please select a product.";
     }
 }

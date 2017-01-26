@@ -16,7 +16,7 @@
                           Height="100" ItemsSource="{Binding ProductItemList}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding OnItemSelected}" 
+                        <i:InvokeCommandAction Command="{Binding OnProductItemSelected}" 
                                         CommandParameter="{Binding Path=SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
