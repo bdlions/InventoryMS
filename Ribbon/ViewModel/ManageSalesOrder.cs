@@ -350,8 +350,28 @@ namespace Ribbon.ViewModel
                     SaleManager saleManager = new SaleManager();
                     resultEvent = saleManager.addSaleOrder(saleInfo);
                     MessageBox.Show(resultEvent.getMessage());
+
+                    //adding sale info on left panel
+                    if (SaleOrderList.Count == 0)
+                    {
+                        SaleOrderList.Add(SaleInfoNJ);
+                    }
+                    else
+                    {
+                        SaleOrderList.Insert(0, SaleInfoNJ);
+                    }
+                    OnReset();
                 }));
             }
+        }
+
+        /*
+         * This method will reset sale order info
+         * @author nazmul hasan on 26th january 2017
+         */
+        private void OnReset()
+        {
+            SaleInfoNJ = new SaleInfoNJ();
         }
 
 
@@ -1053,13 +1073,6 @@ namespace Ribbon.ViewModel
         }
         */
 
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnReset()
-        {
-            MessageBox.Show("OnReset");
-        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked

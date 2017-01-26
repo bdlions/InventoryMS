@@ -55,6 +55,10 @@ namespace Ribbon.Model
         {
             get
             {
+                if(_supplierInfoNJ == null)
+                {
+                    _supplierInfoNJ = new SupplierInfoNJ();
+                }
                 return this._supplierInfoNJ;
             }
             set

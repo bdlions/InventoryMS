@@ -269,7 +269,7 @@ namespace Ribbon.ViewModel
                 supplierInfoNJ.ProfileInfoNJ.FirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
                 supplierInfoNJ.ProfileInfoNJ.LastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
                 tempPurchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
-                PurchaseInfoNJ = tempPurchaseInfoNJ;
+                PurchaseInfoNJ = tempPurchaseInfoNJ;                  
             }
             else
             {
@@ -338,11 +338,29 @@ namespace Ribbon.ViewModel
                     PurchaseManager purchaseManager = new PurchaseManager();
                     resultEvent = purchaseManager.addPurchaseOrder(purchaseInfo);
                     MessageBox.Show(resultEvent.getMessage());
+
+                    //adding purchase info on left panel
+                    if (PurchaseOrderList.Count == 0)
+                    {
+                        PurchaseOrderList.Add(PurchaseInfoNJ);
+                    }
+                    else
+                    {
+                        PurchaseOrderList.Insert(0, PurchaseInfoNJ);
+                    }
+                    OnReset();
                 }));
             }
         }
 
-
+        /*
+         * This method will reset purchase order info
+         * @author nazmul hasan on 26th january 2017
+         */
+        private void OnReset()
+        {
+            PurchaseInfoNJ = new PurchaseInfoNJ();
+        }
 
 
 
@@ -999,14 +1017,6 @@ namespace Ribbon.ViewModel
 
         
 
-
-        /// <summary>
-        /// Called when Button SendToViewModel is clicked
-        /// </summary>
-        private void OnReset()
-        {
-            MessageBox.Show("OnReset");
-        }
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked
