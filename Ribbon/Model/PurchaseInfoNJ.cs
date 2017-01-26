@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,33 @@ namespace Ribbon.Model
 {
     class PurchaseInfoNJ
     {
+        //purchase order no
+        private string _orderNo;
+        public string OrderNo
+        {
+            get
+            {
+                return this._orderNo;
+            }
+            set
+            {
+                this._orderNo = value;
+            }
+        }
+        //purchase info status id
+        private int _statusId;
+        public int StatusId
+        {
+            get
+            {
+                return this._statusId;
+            }
+            set
+            {
+                this._statusId = value;
+            }
+        }
+
         //purchase remarks
         private string _remarks;
         public string Remarks
@@ -21,7 +49,7 @@ namespace Ribbon.Model
                 this._remarks = value;
             }
         }
-        
+        //supplier info of a purchase info
         private SupplierInfoNJ _supplierInfoNJ;
         public SupplierInfoNJ SupplierInfoNJ
         {
@@ -35,7 +63,24 @@ namespace Ribbon.Model
             }
         }
 
-        private List<ProductInfoNJ> _productList;
+        ObservableCollection<ProductInfoNJ> _productList;
+        public ObservableCollection<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null)
+                {
+                    _productList = new ObservableCollection<ProductInfoNJ>();
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+
+        /*private List<ProductInfoNJ> _productList;
         public List<ProductInfoNJ> ProductList
         {
             get
@@ -50,7 +95,7 @@ namespace Ribbon.Model
             {
                 this._productList = value;
             }
-        }
+        }*/
 
         
 
@@ -157,19 +202,6 @@ namespace Ribbon.Model
             set
             {
                 this._requestedShipDate = value;
-            }
-        }
-
-        private long _statusId;
-        public long StatusId
-        {
-            get
-            {
-                return this._statusId;
-            }
-            set
-            {
-                this._statusId = value;
             }
         }
 

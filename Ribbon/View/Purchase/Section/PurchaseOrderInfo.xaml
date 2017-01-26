@@ -28,8 +28,13 @@
 
             <!-- 1st row-->
             <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Supplier" Grid.ColumnSpan="2" Margin="0,0,157,0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" Text="{Binding SupplierName}" MouseDoubleClick="TextBox_MouseDoubleClick"/>
-
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3,1" MouseDoubleClick="TextBox_MouseDoubleClick">
+                <MultiBinding StringFormat="{}{0} {1}">
+                    <Binding Path="PurchaseInfoNJ.SupplierInfoNJ.ProfileInfoNJ.FirstName" />
+                    <Binding Path="PurchaseInfoNJ.SupplierInfoNJ.ProfileInfoNJ.LastName" />
+                </MultiBinding>
+            </TextBox>
+            
             <StackPanel>
                 <StackPanel>
                     <popupbox:PurchaseOrderSupplierSelector  x:Name="SupplierSelector"/>
@@ -39,7 +44,7 @@
             <Label Grid.Row="0" Grid.Column="2" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Location"/>
             <TextBox Grid.Row="0" Grid.Column="3" Margin="0,1,1,1" Text="{Binding Location}"/>
             <Label Grid.Row="0" Grid.Column="5" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Order"/>
-            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,6,1" Text="{Binding Order}"/>
+            <TextBox Grid.Row="0" Grid.Column="6" Margin="5,1,6,1" Text="{Binding PurchaseInfoNJ.OrderNo}"/>
 
             <!-- 2nd row-->
             <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Content="Contact" Margin="0,7"/>
@@ -71,7 +76,7 @@
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                           Height="235" CanUserResizeRows="False" 
                           CanUserSortColumns="False" SelectionMode="Single" 
-                          ItemsSource="{Binding PurchaseList}" BorderBrush="Gray"  
+                          ItemsSource="{Binding PurchaseInfoNJ.ProductList}" BorderBrush="Gray"  
                           Foreground="{StaticResource Sales_ForeBackground}" 
                           BeginningEdit="productPurchaseOrderGrid_BeginningEdit" 
                           CellEditEnding="productPurchaseOrderGrid_CellEditEnding">
