@@ -42,6 +42,7 @@ namespace Ribbon.ViewModel
                 {
                     ProductInfo productInfo = (ProductInfo)j.next();
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
                     productInfoNJ.Price = productInfo.getUnitPrice();
@@ -124,6 +125,113 @@ namespace Ribbon.ViewModel
         }
 
 
+        //popup product list to be displayed while selecting product for sale
+        ObservableCollection<ProductInfoNJ> _productList;
+        public ObservableCollection<ProductInfoNJ> ProductList
+        {
+            get
+            {
+                if (_productList == null)
+                {
+                    _productList = new ObservableCollection<ProductInfoNJ>();
+                    //retrieving product list
+                    ProductManager productManager = new ProductManager();
+                    for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
+                    {
+                        ProductInfo prodcutInfo = (ProductInfo)i.next();
+                        ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                        productInfoNJ.Id = prodcutInfo.getId();
+                        productInfoNJ.Name = prodcutInfo.getName();
+                        productInfoNJ.Code = prodcutInfo.getCode();
+                        productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                        _productList.Add(productInfoNJ);
+                    }
+                }
+                return _productList;
+            }
+            set
+            {
+                this._productList = value;
+            }
+        }
+
+
+        /*
+         * Event Handler if a product is selected from popup product list
+         * @author A.K.M. Nazmul Islam on 26th january 2016
+         */
+        public DelegateCommand<object> OnProductItemSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((selectedItem) =>
+                {
+                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
+                    if (selectedProductInfoNJ != null)
+                    {
+                        selectedProductInfoNJ.Quantity = 1;
+                        SaleInfoNJ.ProductList.Insert(SaleInfoNJ.ProductList.Count - 1, selectedProductInfoNJ);
+                        SaleInfoNJ.ProductList.RemoveAt(SaleInfoNJ.ProductList.Count - 1);
+                    }
+                });
+            }
+        }
+
+        //popup customer list to be displayed while selecting a customer
+        ObservableCollection<CustomerInfoNJ> _customerList;
+        public ObservableCollection<CustomerInfoNJ> CustomerList
+        {
+            get
+            {
+                if (_customerList == null)
+                {
+                    _customerList = new ObservableCollection<CustomerInfoNJ>();
+                    CustomerManager customerManager = new CustomerManager();
+                    for (Iterator i = customerManager.getAllCustomers().iterator(); i.hasNext(); )
+                    {
+                        CustomerInfo customerInfo = (CustomerInfo)i.next();
+                        CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
+                        customerInfoNJ.ProfileInfoNJ.Id = customerInfo.getProfileInfo().getId();
+                        customerInfoNJ.ProfileInfoNJ.FirstName = customerInfo.getProfileInfo().getFirstName();
+                        customerInfoNJ.ProfileInfoNJ.LastName = customerInfo.getProfileInfo().getLastName();
+                        customerInfoNJ.ProfileInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
+                        _customerList.Add(customerInfoNJ);
+                    }
+                }
+                return _customerList;
+            }
+            set
+            {
+                this._customerList = value;
+            }
+        }
+        /*
+         * Event Handler if a customer is selected from popup customer list
+         * @author A.K.M. Nazmul Islam on 26th january 2016
+         */
+        public DelegateCommand<object> OnCustomerSelected
+        {
+            get
+            {
+                return new DelegateCommand<object>((SelectedCustomer) =>
+                {
+                    if (SelectedCustomer is CustomerInfoNJ)
+                    {
+                        CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
+                        SaleInfoNJ tempSaleInfoNJ = SaleInfoNJ;
+                        CustomerInfoNJ tempCustomerInfoNJ = new CustomerInfoNJ();
+                        tempCustomerInfoNJ.ProfileInfoNJ.Id = customerInfoNJ.ProfileInfoNJ.Id;
+                        tempCustomerInfoNJ.ProfileInfoNJ.FirstName = customerInfoNJ.ProfileInfoNJ.FirstName;
+                        tempCustomerInfoNJ.ProfileInfoNJ.LastName = customerInfoNJ.ProfileInfoNJ.LastName;
+                        tempSaleInfoNJ.CustomerInfoNJ = tempCustomerInfoNJ;
+                        SaleInfoNJ = tempSaleInfoNJ;
+                    }
+                });
+            }
+        }
+
+
+
         /*
        * Event Handler if sale info is selected from left panel
        * @author A.K.M. Nazmul Islam on 26th january 2016
@@ -155,6 +263,7 @@ namespace Ribbon.ViewModel
                 {
                     ProductInfo productInfo = (ProductInfo)j.next();
                     ProductInfoNJ productInfoNJ = new ProductInfoNJ();
+                    productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
                     productInfoNJ.Price = productInfo.getUnitPrice();
@@ -176,52 +285,8 @@ namespace Ribbon.ViewModel
         }
 
 
-        /*
-   * Event Handler if a customer is selected from popup customer list
-   * @author A.K.M. Nazmul Islam on 26th january 2016
-   */
-        public DelegateCommand<object> OnCustomerSelected
-        {
-            get
-            {
-                return new DelegateCommand<object>((SelectedCustomer) =>
-                {
-                    if (SelectedCustomer is CustomerInfoNJ)
-                    {
-                        //modify logic to use CustomerInfoNJ structure instead of CustomerFirstName, CustomerLastName etc
-                        CustomerInfoNJ customerInfoNJ = (CustomerInfoNJ)SelectedCustomer;
-                        SaleInfoNJ tempSaleInfoNJ = SaleInfoNJ;
-                        CustomerInfoNJ tempCustomerInfoNJ = new CustomerInfoNJ();
-                        tempCustomerInfoNJ.ProfileInfoNJ.FirstName = customerInfoNJ.CustomerFirstName;
-                        tempCustomerInfoNJ.ProfileInfoNJ.LastName = customerInfoNJ.CustomerLastName;
-                        tempCustomerInfoNJ.ProfileInfoNJ.Id = customerInfoNJ.CustomerUserId;
-                        tempSaleInfoNJ.CustomerInfoNJ = tempCustomerInfoNJ;
-                        SaleInfoNJ = tempSaleInfoNJ;
-                    }
-                });
-            }
-        }
-
-        /*
-         * Event Handler if a product is selected from popup product list
-         * @author A.K.M. Nazmul Islam on 26th january 2016
-         */
-        public DelegateCommand<object> OnProductItemSelected
-        {
-            get
-            {
-                return new DelegateCommand<object>((selectedItem) =>
-                {
-                    ProductInfoNJ selectedProductInfoNJ = (ProductInfoNJ)selectedItem;
-                    selectedProductInfoNJ.Quantity = 1;
-
-                    SaleInfoNJ.ProductList.Insert(SaleInfoNJ.ProductList.Count - 1, selectedProductInfoNJ);
-                    SaleInfoNJ.ProductList.RemoveAt(SaleInfoNJ.ProductList.Count - 1);
-                    //OnPropertyChanged("OrderSubTotalAmount");
-                    //OnPropertyChanged("OrderItemSubTotal");
-                });
-            }
-        }
+  
+       
 
 
         /*
@@ -246,9 +311,9 @@ namespace Ribbon.ViewModel
 
 
         /*
-               * Event Handler to save purchase order info
-               * @author  A.K.M. Nazmul Islam on 26th january 2016
-               */
+        * Event Handler to save sale order info
+        * @author A.K.M. Nazmul Islam on 26th january 2016
+        */
         public ICommand SaveSale
         {
             get
@@ -270,7 +335,7 @@ namespace Ribbon.ViewModel
                         productInfo.setUnitPrice(productInfoNJ.Price);
                         productInfo.setQuantity(productInfoNJ.Quantity);
                         productInfo.setDiscount(productInfoNJ.Discount);
-                        productInfo.setId(productInfoNJ.ProductId);
+                        productInfo.setId(productInfoNJ.Id);
                         productList.add(productInfo);
                     }
 
@@ -935,33 +1000,7 @@ namespace Ribbon.ViewModel
             }
         }
 
-        ObservableCollection<ProductInfoNJ> _productItemList;
-
-        public ObservableCollection<ProductInfoNJ> ProductItemList
-        {
-            get
-            {
-                ProductManager productManager = new ProductManager();
-
-                _productItemList = new ObservableCollection<ProductInfoNJ>();
-                for (Iterator i = productManager.getAllProducts().iterator(); i.hasNext(); )
-                {
-                    ProductInfo prodcutInfo = (ProductInfo)i.next();
-                    ProductInfoNJ productInfoNJ = new ProductInfoNJ();
-                    productInfoNJ.Code = prodcutInfo.getCode();
-                    productInfoNJ.Name = prodcutInfo.getName();
-                    productInfoNJ.Price = prodcutInfo.getUnitPrice();
-                    productInfoNJ.ProductId = prodcutInfo.getId();
-
-                    _productItemList.Add(productInfoNJ);
-                }
-                return _productItemList;
-            }
-            set
-            {
-                this._productItemList = value;
-            }
-        }
+        
 
 
         ObservableCollection<ProductInfoNJ> _saleList = new ObservableCollection<ProductInfoNJ>();
@@ -983,35 +1022,9 @@ namespace Ribbon.ViewModel
         }
 
 
-        ObservableCollection<CustomerInfoNJ> _customerItemList;
+        
 
-        public ObservableCollection<CustomerInfoNJ> CustomerItemList
-        {
-            get
-            {
-                CustomerManager supplierManager = new CustomerManager();
-
-                _customerItemList = new ObservableCollection<CustomerInfoNJ>();
-                for (Iterator i = supplierManager.getAllCustomers().iterator(); i.hasNext(); )
-                {
-                    CustomerInfo customerInfo = (CustomerInfo)i.next();
-                    CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();
-
-                    customerInfoNJ.CustomerFirstName = customerInfo.getProfileInfo().getFirstName();
-                    customerInfoNJ.CustomerLastName = customerInfo.getProfileInfo().getLastName();
-                    customerInfoNJ.Phone = customerInfo.getProfileInfo().getPhone();
-                    customerInfoNJ.CustomerUserId = customerInfo.getProfileInfo().getId();
-                    _customerItemList.Add(customerInfoNJ);
-                }
-                return _customerItemList;
-            }
-            set
-            {
-                this._customerItemList = value;
-            }
-        }
-
-        ObservableCollection<CustomerInfoNJ> _customerList;
+       /* ObservableCollection<CustomerInfoNJ> _customerList;
 
         public ObservableCollection<CustomerInfoNJ> CustomerList
         {
@@ -1038,7 +1051,7 @@ namespace Ribbon.ViewModel
                 this._customerList = value;
             }
         }
-
+        */
 
         /// <summary>
         /// Called when Button SendToViewModel is clicked

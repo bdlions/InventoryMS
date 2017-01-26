@@ -11,7 +11,7 @@
         <StackPanel>
             <DataGrid Name="customerSelectionGrid" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" AutoGenerateColumns="False"
-                          Height="150" ItemsSource="{Binding CustomerItemList}" SelectionChanged="customerSelectionGrid_SelectionChanged" >
+                          Height="150" ItemsSource="{Binding CustomerList}" SelectionChanged="customerSelectionGrid_SelectionChanged" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding OnCustomerSelected}" 
@@ -19,8 +19,9 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="50*" Header="Name" FontFamily="Arial" Binding="{Binding Path=CustomerName}"/>
-                    <DataGridTextColumn Width="50*" Header="Phone" FontFamily="Arial" Binding="{Binding Path=Phone}"/>
+                    <DataGridTextColumn Width="50*" Header="First Name" FontFamily="Arial" Binding="{Binding Path=ProfileInfoNJ.FirstName}"/>
+                    <DataGridTextColumn Width="50*" Header="Last Name" FontFamily="Arial" Binding="{Binding Path=ProfileInfoNJ.LastName}"/>
+                    <DataGridTextColumn Width="50*" Header="Phone" FontFamily="Arial" Binding="{Binding Path=ProfileInfoNJ.Phone}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <!--<Grid Height="125">
