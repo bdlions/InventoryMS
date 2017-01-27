@@ -252,7 +252,7 @@ namespace Ribbon.ViewModel
         {
             SaleManager saleManager = new SaleManager();
             ResultEvent resultEvent = saleManager.getSaleOrderInfo(saleInfoNJ.OrderNo);
-            if (resultEvent.getResponseCode() == 2000)
+            if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
             {
                 SaleInfo saleInfo = (SaleInfo)resultEvent.getResult();
                 SaleInfoNJ tempSaleInfoNJ = new SaleInfoNJ();
@@ -320,6 +320,11 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(new Action(() =>
                 {
+                    //if no customer is selected then default customer is assigned
+                    if(SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.Id == 0)
+                    {
+                        SaleInfoNJ.CustomerInfoNJ.ProfileInfoNJ.Id = General.DEFAULT_CUSTOMER_USER_ID;
+                    }
                     if (!ValidateSaleOrder())
                     {
                         MessageBox.Show(ErrorMessage);
@@ -349,18 +354,20 @@ namespace Ribbon.ViewModel
                     ResultEvent resultEvent = new ResultEvent();
                     SaleManager saleManager = new SaleManager();
                     resultEvent = saleManager.addSaleOrder(saleInfo);
-                    MessageBox.Show(resultEvent.getMessage());
-
-                    //adding sale info on left panel
-                    if (SaleOrderList.Count == 0)
+                    if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
                     {
-                        SaleOrderList.Add(SaleInfoNJ);
+                        //adding sale info on left panel
+                        if (SaleOrderList.Count == 0)
+                        {
+                            SaleOrderList.Add(SaleInfoNJ);
+                        }
+                        else
+                        {
+                            SaleOrderList.Insert(0, SaleInfoNJ);
+                        }
+                        OnReset();
                     }
-                    else
-                    {
-                        SaleOrderList.Insert(0, SaleInfoNJ);
-                    }
-                    OnReset();
+                    MessageBox.Show(resultEvent.getMessage());                    
                 }));
             }
         }

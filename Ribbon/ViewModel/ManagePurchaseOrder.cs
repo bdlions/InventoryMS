@@ -245,7 +245,7 @@ namespace Ribbon.ViewModel
         {
             PurchaseManager purchaseManager = new PurchaseManager();
             ResultEvent resultEvent = purchaseManager.getPurchaseOrderInfo(purchaseInfoNJ.OrderNo);
-            if (resultEvent.getResponseCode() == 2000)
+            if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
             {
                 PurchaseInfo purchaseInfo = (PurchaseInfo)resultEvent.getResult();
                 PurchaseInfoNJ tempPurchaseInfoNJ = new PurchaseInfoNJ();
@@ -308,6 +308,11 @@ namespace Ribbon.ViewModel
             {
                 return new DelegateCommand(new Action(() =>
                 {
+                    //if no supplier is selected then default supplier is assigned
+                    if(PurchaseInfoNJ.SupplierInfoNJ.ProfileInfoNJ.Id == 0)
+                    {
+                        PurchaseInfoNJ.SupplierInfoNJ.ProfileInfoNJ.Id = General.DEFAULT_SUPPLIER_USER_ID;
+                    }
                     if (!ValidatePurchaseOrder())
                     {
                         MessageBox.Show(ErrorMessage);
@@ -337,18 +342,20 @@ namespace Ribbon.ViewModel
                     ResultEvent resultEvent = new ResultEvent();
                     PurchaseManager purchaseManager = new PurchaseManager();
                     resultEvent = purchaseManager.addPurchaseOrder(purchaseInfo);
-                    MessageBox.Show(resultEvent.getMessage());
-
-                    //adding purchase info on left panel
-                    if (PurchaseOrderList.Count == 0)
+                    if (resultEvent.getResponseCode() == Responses.RESPONSE_CODE_SUCCESS)
                     {
-                        PurchaseOrderList.Add(PurchaseInfoNJ);
+                        //adding purchase info on left panel
+                        if (PurchaseOrderList.Count == 0)
+                        {
+                            PurchaseOrderList.Add(PurchaseInfoNJ);
+                        }
+                        else
+                        {
+                            PurchaseOrderList.Insert(0, PurchaseInfoNJ);
+                        }
+                        OnReset();
                     }
-                    else
-                    {
-                        PurchaseOrderList.Insert(0, PurchaseInfoNJ);
-                    }
-                    OnReset();
+                    MessageBox.Show(resultEvent.getMessage());                    
                 }));
             }
         }
