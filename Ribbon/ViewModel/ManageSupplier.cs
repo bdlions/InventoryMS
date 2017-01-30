@@ -103,16 +103,16 @@ namespace Ribbon.ViewModel
         }
 
         // Search Supplier
-        private string _searchSupplierPhone;
-        public string SearchSupplierPhone
+        private string _searchSupplierByPhone;
+        public string SearchSupplierByPhone
         {
             get
             {
-                return this._searchSupplierPhone;
+                return this._searchSupplierByPhone;
             }
             set
             {
-                this._searchSupplierPhone = value;
+                this._searchSupplierByPhone = value;
             }
         }
 
@@ -296,17 +296,17 @@ namespace Ribbon.ViewModel
         {
             SupplierManager supplierManager = new SupplierManager();
             SupplierList.Clear();
-            for (Iterator i = supplierManager.searchSuppliers(SearchSupplierPhone).iterator(); i.hasNext(); )
+            for (Iterator i = supplierManager.searchSuppliers(SearchSupplierByPhone).iterator(); i.hasNext(); )
             {
                 SupplierInfo supplierInfo = (SupplierInfo)i.next();
                 SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
-                supplierInfoNJ.SupplierUserID = supplierInfo.getProfileInfo().getId();
-                supplierInfoNJ.SupplierFirstName = supplierInfo.getProfileInfo().getFirstName();
-                supplierInfoNJ.SupplierLastName = supplierInfo.getProfileInfo().getLastName();
-                supplierInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
-                supplierInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
-                supplierInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
-                supplierInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                supplierInfoNJ.ProfileInfoNJ.Id = supplierInfo.getProfileInfo().getId();
+                supplierInfoNJ.ProfileInfoNJ.FirstName = supplierInfo.getProfileInfo().getFirstName();
+                supplierInfoNJ.ProfileInfoNJ.LastName = supplierInfo.getProfileInfo().getLastName();
+                supplierInfoNJ.ProfileInfoNJ.Phone = supplierInfo.getProfileInfo().getPhone();
+                supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
+                supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
+                supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
                 SupplierList.Add(supplierInfoNJ);
             }
         }

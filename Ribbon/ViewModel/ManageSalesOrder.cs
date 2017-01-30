@@ -32,10 +32,7 @@ namespace Ribbon.ViewModel
             {
                 SaleInfo saleInfo = (SaleInfo)i.next();
                 SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
-                //We will display order no in grid view on left panel
                 saleInfoNJ.OrderNo = saleInfo.getOrderNo();
-                //right now after clicking on item on left panel sale info is again retrived from the database
-                //so we can ignore rest of the part right now if required.
                 saleInfoNJ.StatusId = saleInfo.getStatusId();
                 saleInfoNJ.Remarks = saleInfo.getRemarks();
                 for (Iterator j = saleInfo.getProductList().iterator(); j.hasNext(); )
@@ -968,16 +965,16 @@ namespace Ribbon.ViewModel
 
 
         // Search Sale Order
-        private string _searchSaleOderNo;
-        public string SearchSaleOderNo
+        private string _searchSaleByOderNo;
+        public string SearchSaleByOderNo
         {
             get
             {
-                return this._searchSaleOderNo;
+                return this._searchSaleByOderNo;
             }
             set
             {
-                this._searchSaleOderNo = value;
+                this._searchSaleByOderNo = value;
             }
         }
 
@@ -1121,18 +1118,20 @@ namespace Ribbon.ViewModel
 
             SaleManager saleManager = new SaleManager();
 
-            _saleOrderList.Clear();
-            for (Iterator i = saleManager.searchAllSaleOrders(SearchSaleOderNo).iterator(); i.hasNext(); )
+            SaleOrderList.Clear();
+            for (Iterator i = saleManager.searchAllSaleOrders(SearchSaleByOderNo).iterator(); i.hasNext(); )
             {
                 SaleInfo saleInfo = (SaleInfo)i.next();
                 SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
 
-                saleInfoNJ.Order = saleInfo.getOrderNo();
-                saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
-                saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
-                saleInfoNJ.Phone = saleInfo.getCustomerInfo().getProfileInfo().getPhone();
-
-                _saleOrderList.Add(saleInfoNJ);
+                saleInfoNJ.OrderNo = saleInfo.getOrderNo();
+                saleInfoNJ.StatusId = saleInfo.getStatusId();
+                saleInfoNJ.Remarks = saleInfo.getRemarks();
+                SaleOrderList.Add(saleInfoNJ);
+                //saleInfoNJ.Order = saleInfo.getOrderNo();
+                //saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
+                //saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
+                //saleInfoNJ.Phone = saleInfo.getCustomerInfo().getProfileInfo().getPhone();
             }
         }
     }

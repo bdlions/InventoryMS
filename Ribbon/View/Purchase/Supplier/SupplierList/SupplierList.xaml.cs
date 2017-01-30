@@ -39,20 +39,6 @@ namespace Ribbon.View.Purchase.Supplier.SupplierList
                     return;
                 }
 
-                //ProductInfoNJ selectedProduct = (ProductInfoNJ) grid.SelectedItems[0];
-                //MessageBox.Show(selectedProduct.Name);
-                //SupplierInfoNJ sInfoNJ = new SupplierInfoNJ();
-                //this.SupplierName = s.SupplierName;
-                //this.Email = s.Email;
-                //this.Phone = s.Phone;
-                //this.Fax = s.Fax;
-                //this.Website = s.Website;
-
-
-
-                //ICommand c = new Prism.Commands.DelegateCommand(Ribbon.ViewModel.ManageProduct.OnProductChange);
-                //c.Execute(selectedProduct);
-
             }
         }
     }

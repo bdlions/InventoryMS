@@ -116,16 +116,16 @@ namespace Ribbon.ViewModel
         }
                 
         // Search Customer panel
-        private string _searchCustomerPhone;
-        public string SearchCustomerPhone
+        private string _searchCustomerByPhone;
+        public string SearchCustomerByPhone
         {
             get
             {
-                return this._searchCustomerPhone;
+                return this._searchCustomerByPhone;
             }
             set
             {
-                this._searchCustomerPhone = value;
+                this._searchCustomerByPhone = value;
             }
         }
 
@@ -307,7 +307,7 @@ namespace Ribbon.ViewModel
         {
             CustomerManager customerManager = new CustomerManager();
             CustomerList.Clear();
-            for (Iterator i = customerManager.searchCustomers(SearchCustomerPhone).iterator(); i.hasNext(); )
+            for (Iterator i = customerManager.searchCustomers(SearchCustomerByPhone).iterator(); i.hasNext(); )
             {
                 CustomerInfo customerInfo = (CustomerInfo)i.next();
                 CustomerInfoNJ customerInfoNJ = new CustomerInfoNJ();

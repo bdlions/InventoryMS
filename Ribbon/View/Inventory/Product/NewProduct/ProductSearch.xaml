@@ -110,7 +110,7 @@
         </ComboBox>-->
 
         <!--2nd column-->
-        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1" Text="{Binding SearchProductName}" />
+        <TextBox Grid.Row="1" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1" Text="{Binding SearchProductByName}" />
         <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1"/>
         <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" Grid.RowSpan="1"/>
 

@@ -85,16 +85,16 @@ namespace Ribbon.ViewModel
         }
 
         // search product by name
-        private string _searchProductName;
-        public string SearchProductName
+        private string _searchProductByName;
+        public string SearchProductByName
         {
             get
             {
-                return this._searchProductName;
+                return this._searchProductByName;
             }
             set
             {
-                this._searchProductName = value;
+                this._searchProductByName = value;
             }
         }
 
@@ -266,7 +266,7 @@ namespace Ribbon.ViewModel
         {
             ProductManager productManager = new ProductManager();
             ProductList.Clear();
-            for (Iterator i = productManager.searchProduct(SearchProductName).iterator(); i.hasNext(); )
+            for (Iterator i = productManager.searchProduct(SearchProductByName).iterator(); i.hasNext(); )
             {
                 ProductInfo productInfo = (ProductInfo)i.next();
                 ProductInfoNJ productInfoNJ = new ProductInfoNJ();
