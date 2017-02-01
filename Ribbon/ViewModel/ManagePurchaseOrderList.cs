@@ -44,7 +44,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     purchaseInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -122,9 +122,7 @@ namespace Ribbon.ViewModel
 
         private void OnSearch()
         {
-
             PurchaseManager purchaseManager = new PurchaseManager();
-
             PurchaseOrderList.Clear();
             for (Iterator i = purchaseManager.searchPurchaseOrders(SearchPurchaseByOderNo).iterator(); i.hasNext(); )
             {
@@ -134,13 +132,16 @@ namespace Ribbon.ViewModel
                 purchaseInfoNJ.OrderNo = purchaseInfo.getOrderNo();
                 purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
                 purchaseInfoNJ.Remarks = purchaseInfo.getRemarks();
-                PurchaseOrderList.Add(purchaseInfoNJ);
 
-                //purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
-                //purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
-                //purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
-                //purchaseInfoNJ.Phone = purchaseInfo.getSupplierInfo().getProfileInfo().getPhone();
-                //_purchaseOrderList.Add(purchaseInfoNJ);
+                SupplierInfo supplierInfo = new SupplierInfo();
+                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+
+                supplierInfoNJ.ProfileInfoNJ.Id = purchaseInfo.getSupplierInfo().getProfileInfo().getId();
+                supplierInfoNJ.ProfileInfoNJ.FirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                supplierInfoNJ.ProfileInfoNJ.LastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                purchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
+
+                PurchaseOrderList.Add(purchaseInfoNJ);
             }
         }
 

@@ -84,7 +84,7 @@
         <TextBox HorizontalAlignment="Left" Height="25" Margin="128,359,0,-182" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" Grid.Column="1" Text="{Binding CustomerTaxExempt}"/>
 
         <Label Grid.Row="1" Grid.Column="0" Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" FontSize="16" Content="Remarks" Margin="5,402,0,-255" />
-        <TextBox HorizontalAlignment="Left" Height="50" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Text="{Binding CustomerRemark}"/>
+        <TextBox HorizontalAlignment="Left" Height="50" Margin="10,440,0,-305" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="262" Text="{Binding Remarks}"/>
 
 
     </Grid>

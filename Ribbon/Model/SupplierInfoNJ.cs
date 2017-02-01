@@ -14,7 +14,7 @@ namespace Ribbon.Model
         {
             get
             {
-                if(_profileInfoNJ == null)
+                if (_profileInfoNJ == null)
                 {
                     _profileInfoNJ = new ProfileInfoNJ();
                 }
@@ -39,66 +39,11 @@ namespace Ribbon.Model
             }
         }
 
+       
+
+        //----------------------------------Implement later ------------------------------//
 
 
-
-
-
-
-        private int _supplierUserID;
-        public int SupplierUserID
-        {
-            get
-            {
-                return this._supplierUserID;
-            }
-            set
-            {
-                this._supplierUserID = value;
-            }
-        }
-      
-        private string _fname;
-        public string SupplierFirstName
-        {
-            get
-            {
-                return this._fname;
-            }
-            set
-            {
-                this._fname = value;
-            }
-        }
-
-        private string _lname;
-        public string SupplierLastName
-        {
-            get
-            {
-                return this._lname;
-            }
-            set
-            {
-                this._lname = value;
-            }
-        }
-
-
-        private string _supplier;
-        public string SupplierName
-        {
-            get
-            {
-                return this._supplier = SupplierFirstName + " " + SupplierLastName;
-            }
-            set
-            {
-                this._supplier = value;
-            }
-        }
-
-        
         private double _balance;
         public double Balance
         {
@@ -122,59 +67,6 @@ namespace Ribbon.Model
             set
             {
                 this._contact = value;
-            }
-        }
-
-        private string _phone;
-        public string Phone
-        {
-            get
-            {
-                return this._phone;
-            }
-            set
-            {
-                this._phone = value;
-            }
-        }
-
-        private string _fax;
-        public string Fax
-        {
-            get
-            {
-                return this._fax;
-            }
-            set
-            {
-                this._fax = value;
-            }
-        }
-
-        private string _email;
-        public string Email
-        {
-            get
-            {
-                return this._email;
-            }
-            set
-            {
-                this._email = value;
-            }
-        }
-
-
-        private string _website;
-        public string Website
-        {
-            get
-            {
-                return this._website;
-            }
-            set
-            {
-                this._website = value;
             }
         }
 

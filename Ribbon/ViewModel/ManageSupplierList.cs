@@ -39,6 +39,7 @@ namespace Ribbon.ViewModel
                 supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
                 supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
                 supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                supplierInfoNJ.Remarks = supplierInfo.getRemarks();
                 SupplierList.Add(supplierInfoNJ);
             }
         }
@@ -128,6 +129,7 @@ namespace Ribbon.ViewModel
                 supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
                 supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
                 supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                supplierInfoNJ.Remarks = supplierInfo.getRemarks();
                 SupplierList.Add(supplierInfoNJ);
             }
         }

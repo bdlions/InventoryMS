@@ -124,7 +124,7 @@
         </ComboBox>
 
         <!--2nd column-->
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0"  Text="{Binding SearchPurchaseOderNo}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0"  Text="{Binding SearchPurchaseByOderNo}"/>
         <ComboBox  Grid.Row="2" Grid.Column="1" Foreground="{StaticResource Purchase_ForeBackground}" FontWeight="Bold" Margin="5,1,5,0"  Height="24" VerticalAlignment="Top"  Text="">
             <ComboBoxItem Content="All"/>
             <Separator/>

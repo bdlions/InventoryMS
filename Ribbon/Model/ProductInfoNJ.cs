@@ -60,63 +60,7 @@ namespace Ribbon.Model
             }
         }
 
-        private string _fname;
-        public string SupplierFirstName
-        {
-            get
-            {
-                return this._fname;
-            }
-            set
-            {
-                this._fname = value;
-            }
-        }
-
-        private string _lname;
-        public string SupplierLastName
-        {
-            get
-            {
-                return this._lname;
-            }
-            set
-            {
-                this._lname = value;
-            }
-        }
-
-
-        private string _supplier;
-        public string SupplierName
-        {
-            get
-            {
-                return this._supplier = SupplierFirstName + " " + SupplierLastName;
-            }
-            set
-            {
-                this._supplier = value;
-            }
-        }
-
-        
-
-        
-
-        private double _price;
-        public double Price
-        {
-            get
-            {
-                return this._price;
-            }
-            set
-            {
-                this._price = value;
-            }
-        }
-
+       
         private double _quantity;
         public double Quantity
         {
@@ -143,17 +87,47 @@ namespace Ribbon.Model
             }
         }
 
-        private int _productId;
-        public int ProductId
+        private double _purchaseOrderNo;
+        public double PurchaseOrderNo
         {
             get
             {
-                return this._productId;
+                return this._purchaseOrderNo;
             }
             set
             {
-                this._productId = value;
+                this._purchaseOrderNo = value;
             }
         }
+        
+
+        private string _editProductRow;
+        public string EditProductRow
+        {
+            get
+            {
+                return _editProductRow;
+            }
+            set
+            {
+                _editProductRow = value;
+
+            }
+        }
+
+        private string _deleteProductRow;
+        public string DeleteProductRow
+        {
+            get
+            {
+                return _deleteProductRow;
+            }
+            set
+            {
+                _deleteProductRow = value;
+
+            }
+        }
+
     }
 }

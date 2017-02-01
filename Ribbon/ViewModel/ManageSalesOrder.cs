@@ -42,7 +42,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     saleInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -140,7 +140,7 @@ namespace Ribbon.ViewModel
                         productInfoNJ.Id = prodcutInfo.getId();
                         productInfoNJ.Name = prodcutInfo.getName();
                         productInfoNJ.Code = prodcutInfo.getCode();
-                        productInfoNJ.Price = prodcutInfo.getUnitPrice();
+                        productInfoNJ.UnitPrice = prodcutInfo.getUnitPrice();
                         _productList.Add(productInfoNJ);
                     }
                 }
@@ -263,7 +263,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     tempSaleInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -334,7 +334,7 @@ namespace Ribbon.ViewModel
                         ProductInfo productInfo = new ProductInfo();
                         productInfo.setName(productInfoNJ.Name);
                         productInfo.setCode(productInfoNJ.Code);
-                        productInfo.setUnitPrice(productInfoNJ.Price);
+                        productInfo.setUnitPrice(productInfoNJ.UnitPrice);
                         productInfo.setQuantity(productInfoNJ.Quantity);
                         productInfo.setDiscount(productInfoNJ.Discount);
                         productInfo.setId(productInfoNJ.Id);
@@ -623,7 +623,7 @@ namespace Ribbon.ViewModel
                 for (int i = 0; i < SaleInfoNJ.ProductList.Count; i++)
                 {
                     ProductInfoNJ product = SaleInfoNJ.ProductList.ElementAt(i);
-                    total += product.Price * product.Quantity;
+                    total += product.UnitPrice * product.Quantity;
                 }
                 /*for (int i = 0; i < this._purchaseList.Count; i++)
                 {
@@ -1125,13 +1125,12 @@ namespace Ribbon.ViewModel
                 SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
 
                 saleInfoNJ.OrderNo = saleInfo.getOrderNo();
+                saleInfoNJ.CustomerUserId = saleInfo.getCustomerUserId();
                 saleInfoNJ.StatusId = saleInfo.getStatusId();
+                saleInfoNJ.SaleDate = saleInfo.getSaleDate();
+                saleInfoNJ.Discount = saleInfo.getDiscount();
                 saleInfoNJ.Remarks = saleInfo.getRemarks();
                 SaleOrderList.Add(saleInfoNJ);
-                //saleInfoNJ.Order = saleInfo.getOrderNo();
-                //saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
-                //saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
-                //saleInfoNJ.Phone = saleInfo.getCustomerInfo().getProfileInfo().getPhone();
             }
         }
     }

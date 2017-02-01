@@ -39,6 +39,7 @@ namespace Ribbon.ViewModel
                 supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
                 supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
                 supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                supplierInfoNJ.Remarks = supplierInfo.getRemarks();
                 SupplierList.Add(supplierInfoNJ);
             }
         }
@@ -179,6 +180,7 @@ namespace Ribbon.ViewModel
             profileInfo.setPhone(SupplierInfoNJ.ProfileInfoNJ.Phone);
             profileInfo.setFax(SupplierInfoNJ.ProfileInfoNJ.Fax);
             profileInfo.setWebsite(SupplierInfoNJ.ProfileInfoNJ.Website);
+            
             SupplierInfo supplierInfo = new SupplierInfo();
             supplierInfo.setProfileInfo(profileInfo);
             SupplierManager supplierManager = new SupplierManager();            
@@ -191,6 +193,7 @@ namespace Ribbon.ViewModel
             supplierInfoNJ.ProfileInfoNJ.Phone = SupplierInfoNJ.ProfileInfoNJ.Phone;
             supplierInfoNJ.ProfileInfoNJ.Fax = SupplierInfoNJ.ProfileInfoNJ.Fax;
             supplierInfoNJ.ProfileInfoNJ.Website = SupplierInfoNJ.ProfileInfoNJ.Website;
+            supplierInfoNJ.Remarks = supplierInfo.getRemarks();
 
             ResultEvent resultEvent = new ResultEvent();
             if (SupplierInfoNJ.ProfileInfoNJ.Id > 0)
@@ -307,6 +310,7 @@ namespace Ribbon.ViewModel
                 supplierInfoNJ.ProfileInfoNJ.Fax = supplierInfo.getProfileInfo().getFax();
                 supplierInfoNJ.ProfileInfoNJ.Email = supplierInfo.getProfileInfo().getEmail();
                 supplierInfoNJ.ProfileInfoNJ.Website = supplierInfo.getProfileInfo().getWebsite();
+                supplierInfoNJ.Remarks = supplierInfo.getRemarks();
                 SupplierList.Add(supplierInfoNJ);
             }
         }

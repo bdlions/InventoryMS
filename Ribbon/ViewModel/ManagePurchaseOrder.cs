@@ -44,7 +44,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     purchaseInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -139,7 +139,7 @@ namespace Ribbon.ViewModel
                         productInfoNJ.Id = prodcutInfo.getId();
                         productInfoNJ.Name = prodcutInfo.getName();
                         productInfoNJ.Code = prodcutInfo.getCode();                        
-                        productInfoNJ.Price = prodcutInfo.getUnitPrice();                        
+                        productInfoNJ.UnitPrice = prodcutInfo.getUnitPrice();                        
                         _productList.Add(productInfoNJ);
                     }
                 }
@@ -259,7 +259,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     tempPurchaseInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -325,7 +325,7 @@ namespace Ribbon.ViewModel
                         ProductInfo productInfo = new ProductInfo();
                         productInfo.setName(productInfoNJ.Name);
                         productInfo.setCode(productInfoNJ.Code);
-                        productInfo.setUnitPrice(productInfoNJ.Price);
+                        productInfo.setUnitPrice(productInfoNJ.UnitPrice);
                         productInfo.setQuantity(productInfoNJ.Quantity);
                         productInfo.setDiscount(productInfoNJ.Discount);
                         productInfo.setId(productInfoNJ.Id);
@@ -554,7 +554,7 @@ namespace Ribbon.ViewModel
                 for (int i = 0; i < this._purchaseList.Count; i++)
                 {
                     ProductInfoNJ product = _purchaseList.ElementAt(i);
-                    subTotal = product.Price * product.Quantity;
+                    subTotal = product.UnitPrice * product.Quantity;
                 }
                 this._orderItemSubTotal = subTotal;
                 return this._orderSubTotal;
@@ -709,7 +709,7 @@ namespace Ribbon.ViewModel
                 for (int i = 0; i < PurchaseInfoNJ.ProductList.Count; i++)
                 {
                     ProductInfoNJ product = PurchaseInfoNJ.ProductList.ElementAt(i);
-                    total += product.Price * product.Quantity;
+                    total += product.UnitPrice * product.Quantity;
                 }
                 /*for (int i = 0; i < this._purchaseList.Count; i++)
                 {
@@ -900,16 +900,16 @@ namespace Ribbon.ViewModel
 
 
         // Search Purchase Order
-        private string _searchPurchaseOderNo;
-        public string SearchPurchaseOderNo
+        private string _searchPurchaseByOderNo;
+        public string SearchPurchaseByOderNo
         {
             get
             {
-                return this._searchPurchaseOderNo;
+                return this._searchPurchaseByOderNo;
             }
             set
             {
-                this._searchPurchaseOderNo = value;
+                this._searchPurchaseByOderNo = value;
             }
         }
 
@@ -1058,23 +1058,29 @@ namespace Ribbon.ViewModel
 
         private void OnSearch()
         {
-
             PurchaseManager purchaseManager = new PurchaseManager();
-
-            _purchaseOrderList.Clear();
-            for (Iterator i = purchaseManager.searchPurchaseOrders(SearchPurchaseOderNo).iterator(); i.hasNext(); )
+            PurchaseOrderList.Clear();
+            for (Iterator i = purchaseManager.searchPurchaseOrders(SearchPurchaseByOderNo).iterator(); i.hasNext(); )
             {
                 PurchaseInfo purchaseInfo = (PurchaseInfo)i.next();
                 PurchaseInfoNJ purchaseInfoNJ = new PurchaseInfoNJ();
 
-                purchaseInfoNJ.Order = purchaseInfo.getOrderNo();
-                purchaseInfoNJ.SupplierFirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
-                purchaseInfoNJ.SupplierLastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
-                purchaseInfoNJ.Phone = purchaseInfo.getSupplierInfo().getProfileInfo().getPhone();
+                purchaseInfoNJ.OrderNo = purchaseInfo.getOrderNo();
+                purchaseInfoNJ.StatusId = purchaseInfo.getStatusId();
+                purchaseInfoNJ.Remarks = purchaseInfo.getRemarks();
 
-                _purchaseOrderList.Add(purchaseInfoNJ);
+                SupplierInfo supplierInfo = new SupplierInfo();
+                SupplierInfoNJ supplierInfoNJ = new SupplierInfoNJ();
+
+                supplierInfoNJ.ProfileInfoNJ.Id = purchaseInfo.getSupplierInfo().getProfileInfo().getId();
+                supplierInfoNJ.ProfileInfoNJ.FirstName = purchaseInfo.getSupplierInfo().getProfileInfo().getFirstName();
+                supplierInfoNJ.ProfileInfoNJ.LastName = purchaseInfo.getSupplierInfo().getProfileInfo().getLastName();
+                purchaseInfoNJ.SupplierInfoNJ = supplierInfoNJ;
+
+                PurchaseOrderList.Add(purchaseInfoNJ);
             }
         }
+
 
 
         

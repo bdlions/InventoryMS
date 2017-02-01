@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!--1st column-->
-        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"  Command="{Binding Search}"/>
+       
         <ComboBox Foreground="{StaticResource Sales_ForeBackground}" FontWeight="Bold" Margin="0 0 0 1">
             <ComboBoxItem IsSelected="True" Content="Show"/>
             <ComboBoxItem Content="Name"/>
@@ -133,7 +133,7 @@
         <TextBox Grid.Row="2" Grid.Column="1"  Margin="5,0.5,5,0.5"  />
         <TextBox Grid.Row="3" Grid.Column="1"  Margin="5,0.5,5,0.5" Text="{Binding SearchSupplierByPhone}"/>
         <TextBox Grid.Row="4" Grid.Column="1"  Margin="5,0.5,5,-2"/>
-
+        <Button Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Right" Margin="0,7,5,-1" Foreground="White" FontWeight="Bold" Content="Refresh" Background="{StaticResource DarkBackground}" Width="73"  Height="22"  Command="{Binding Search}"/>
 
     </Grid>
 </UserControl>

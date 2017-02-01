@@ -23,6 +23,20 @@ namespace Ribbon.Model
             }
         }
 
+        //sale info customer user id
+        private int _customerUserId;
+        public int CustomerUserId
+        {
+            get
+            {
+                return this._customerUserId;
+            }
+            set
+            {
+                this._customerUserId = value;
+            }
+        }
+
         //sale info status id
         private int _statusId;
         public int StatusId
@@ -36,6 +50,36 @@ namespace Ribbon.Model
                 this._statusId = value;
             }
         }
+
+        //sale info sale date
+        private string _saleDate;
+        public string SaleDate
+        {
+            get
+            {
+                return this._saleDate;
+            }
+            set
+            {
+                this._saleDate = value;
+            }
+        }
+
+
+        //sale info discount
+        private double _discount;
+        public double Discount
+        {
+            get
+            {
+                return this._discount;
+            }
+            set
+            {
+                this._discount = value;
+            }
+        }
+
 
         //purchase remarks
         private string _remarks;
@@ -86,211 +130,18 @@ namespace Ribbon.Model
             }
         }
 
-        //private List<ProductInfoNJ> _productList;
-        //public List<ProductInfoNJ> ProductList
-        //{
-        //    get
-        //    {
-        //        if (_productList == null)
-        //        {
-        //            _productList = new List<ProductInfoNJ>();
-        //        }
-        //        return _productList;
-        //    }
-        //    set
-        //    {
-        //        this._productList = value;
-        //    }
-        //}
-
-
-        private string _customerFirstName;
-        public string CustomerFirstName
-        {
-            get
-            {
-                return this._customerFirstName;
-            }
-            set
-            {
-                this._customerFirstName = value;
-            }
-        }
-        private string _customerLastName;
-        public string CustomerLastName
-        {
-            get
-            {
-                return this._customerLastName;
-            }
-            set
-            {
-                this._customerLastName = value;
-            }
-        }
         private string _customerName;
         public string CustomerName
         {
             get
             {
-                return this._customerName = _customerFirstName + " " + _customerLastName;
+                return this._customerName = CustomerInfoNJ.ProfileInfoNJ.FirstName + " " + CustomerInfoNJ.ProfileInfoNJ.LastName;
             }
             set
             {
                 this._customerName = value;
             }
         }
-        private string _phone;
-        public string Phone
-        {
-            get
-            {
-                return this._phone;
-            }
-            set
-            {
-                this._phone = value;
-            }
-        }
-
-        private string _order;
-        public string Order
-        {
-            get
-            {
-                return this._order;
-            }
-            set
-            {
-                this._order = value;
-            }
-        }
-
-        private int _OrderDate;
-        public int OrderDate
-        {
-            get
-            {
-                return this._OrderDate;
-            }
-            set
-            {
-                this._OrderDate = value;
-            }
-        }
-
-        
-
-      
-        private string _postalCode;
-        public string PostalCode
-        {
-            get
-            {
-                return this._postalCode;
-            }
-            set
-            {
-                this._postalCode = value;
-            }
-        }
-        private string _location;
-        public string Location
-        {
-            get
-            {
-                return this._location;
-            }
-            set
-            {
-                this._location = value;
-            }
-        }
-        private string _requestedShipDate;
-        public string RequestedShipDate
-        {
-            get
-            {
-                return this._requestedShipDate;
-            }
-            set
-            {
-                this._requestedShipDate = value;
-            }
-        }
-        private string _dueDate;
-        public string DueDate
-        {
-            get
-            {
-                return this._dueDate;
-            }
-            set
-            {
-                this._dueDate = value;
-            }
-        }
-        private string _shippedDate;
-        public string ShippedDate
-        {
-            get
-            {
-                return this._shippedDate;
-            }
-            set
-            {
-                this._shippedDate = value;
-            }
-        }
-        private string _total;
-        public string Total
-        {
-            get
-            {
-                return this._total;
-            }
-            set
-            {
-                this._total = value;
-            }
-        }
-        private string _paid;
-        public string Paid
-        {
-            get
-            {
-                return this._paid;
-            }
-            set
-            {
-                this._paid = value;
-            }
-        }
-        private string _balance;
-        public string Balance
-        {
-            get
-            {
-                return this._balance;
-            }
-            set
-            {
-                this._balance = value;
-            }
-        }
-        private double _orderItemDiscount;
-        public double OrderItemDiscount
-        {
-            get
-            {
-                return this._orderItemDiscount;
-            }
-            set
-            {
-                this._orderItemDiscount = value;
-            }
-        }
-
 
     }
 }

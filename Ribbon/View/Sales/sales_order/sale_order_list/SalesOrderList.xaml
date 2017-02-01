@@ -13,8 +13,8 @@
                 <DataGridTextColumn Width="140" Header="Order" FontFamily="Arial" Binding="{Binding OrderNo}"/>
                 <DataGridTextColumn Width="84"  Header="Order Date" FontFamily="Arial" Binding="{Binding OrderDate}"/>
                 <DataGridTextColumn Width="84"  Header="Status" FontFamily="Arial" Binding="{Binding StatusId}"/>
-                <DataGridTextColumn Width="84"  Header="Supplier" FontFamily="Arial" Binding="{Binding SupplierName}"/>
-                <DataGridTextColumn Width="84"  Header="Supplier &#10;Order" FontFamily="Arial" Binding="{Binding SupplierOrder}"/>
+                <DataGridTextColumn Width="84"  Header="Customer" FontFamily="Arial" Binding="{Binding CustomerName}"/>
+                <DataGridTextColumn Width="84"  Header="Customer &#10;Order" FontFamily="Arial" Binding="{Binding CustomerOrder}"/>
                 <DataGridTextColumn Width="84"  Header="Location" FontFamily="Arial" Binding="{Binding Location}"/>
                 <DataGridTextColumn Width="84"  Header="Requested &#10;Ship Date" FontFamily="Arial" Binding="{Binding RequestedShipDate}"/>
                 <DataGridTextColumn Width="84"  Header="Due Date" FontFamily="Arial" Binding="{Binding DueDate}"/>

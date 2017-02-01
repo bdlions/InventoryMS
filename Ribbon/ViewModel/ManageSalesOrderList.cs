@@ -43,7 +43,7 @@ namespace Ribbon.ViewModel
                     productInfoNJ.Id = productInfo.getId();
                     productInfoNJ.Name = productInfo.getName();
                     productInfoNJ.Code = productInfo.getCode();
-                    productInfoNJ.Price = productInfo.getUnitPrice();
+                    productInfoNJ.UnitPrice = productInfo.getUnitPrice();
                     productInfoNJ.Quantity = productInfo.getQuantity();
                     saleInfoNJ.ProductList.Add(productInfoNJ);
                 }
@@ -130,13 +130,12 @@ namespace Ribbon.ViewModel
                 SaleInfoNJ saleInfoNJ = new SaleInfoNJ();
 
                 saleInfoNJ.OrderNo = saleInfo.getOrderNo();
+                saleInfoNJ.CustomerUserId = saleInfo.getCustomerUserId();
                 saleInfoNJ.StatusId = saleInfo.getStatusId();
+                saleInfoNJ.SaleDate = saleInfo.getSaleDate();
+                saleInfoNJ.Discount = saleInfo.getDiscount();
                 saleInfoNJ.Remarks = saleInfo.getRemarks();
                 SaleOrderList.Add(saleInfoNJ);
-                //saleInfoNJ.Order = saleInfo.getOrderNo();
-                //saleInfoNJ.CustomerFirstName = saleInfo.getCustomerInfo().getProfileInfo().getFirstName();
-                //saleInfoNJ.CustomerLastName = saleInfo.getCustomerInfo().getProfileInfo().getLastName();
-                //saleInfoNJ.Phone = saleInfo.getCustomerInfo().getProfileInfo().getPhone();
             }
         }
 
